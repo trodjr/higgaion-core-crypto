@@ -5,10 +5,7 @@ This repository contains the core post-quantum cryptographic primitives (ML-DSA 
 ## Asciinema Demo: Zero-Downtime Migration
 To see the full state machine, ML-DSA Disjunctive Verification, and the mathematically proven Erasure-Before-WAL crash recovery in action, play the included terminal recording:
 
-```bash
-# Requires asciinema installed
-asciinema play demo.cast
-```
+![PQC Migration Zero-Downtime Demo](demo.gif)
 
 ## Quad-Tier Formal Verification
 The proofs in `verification/coq/` compile with **zero admitted lemmas** under the Coq proof assistant. They demonstrate the mechanical correctness of our:
