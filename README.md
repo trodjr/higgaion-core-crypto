@@ -19,4 +19,4 @@ The cryptographic C implementations (`pqc_crypto.c`) and the formal Coq proofs (
 **PATENT NOTICE:** 
 The overarching PQC crash-recoverable migration state machine, the Erasure-Before-WAL crash recovery architecture, and the Disjunctive (OR-Mode) Hybrid Verification protocols demonstrated in our engine are protected under **U.S. Patent Application No. 64/000,480**.
 
-For commercial licensing of the full Crash-Recoverable Enterprise SDK (which manages the state transitions, WAL journaling, and Cloud KMS integration), please contact the lead cryptographic engineering team.
+For commercial licensing of the full Crash-Recoverable Enterprise SDK (which manages the state transitions, WAL journaling, and Cloud KMS integration), please contact trodjr@gmail.com
