@@ -1,0 +1,2690 @@
+DIGEST 67066f4201cee9d77c9cc47616658d65
+FHiggaion.PQCMigration
+R1108:1120 Higgaion.HiggaionTypes <> <> lib
+R1150:1154 Stdlib.Arith.Arith <> <> lib
+R1184:1186 Stdlib.micromega.Lia <> <> lib
+R1216:1219 Stdlib.Lists.List <> <> lib
+R1249:1252 Stdlib.Bool.Bool <> <> lib
+R1262:1274 Stdlib.Lists.List ListNotations <> mod
+ind 1703:1716 <> MigrationState
+constr 1732:1740 <> Classical
+constr 1775:1780 <> Hybrid
+constr 1846:1855 <> Finalizing
+constr 1914:1920 <> PqcOnly
+scheme 1703:1716 <> MigrationState_rect
+scheme 1703:1716 <> MigrationState_ind
+scheme 1703:1716 <> MigrationState_rec
+scheme 1703:1716 <> MigrationState_sind
+R1986:1999 Higgaion.PQCMigration <> MigrationState ind
+scheme 1966:2000 <> MigrationState_eq_dec
+prf 2009:2024 <> mig_state_eq_dec
+R2044:2057 Higgaion.PQCMigration <> MigrationState ind
+binder 2036:2037 <> s1:3
+binder 2039:2040 <> s2:4
+R2063:2063 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2071:2075 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2084:2084 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2066:2068 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R2064:2065 Higgaion.PQCMigration <> s1:3 var
+R2069:2070 Higgaion.PQCMigration <> s2:4 var
+R2078:2081 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R2076:2077 Higgaion.PQCMigration <> s1:3 var
+R2082:2083 Higgaion.PQCMigration <> s2:4 var
+rec 2474:2488 <> MigrationRecord
+proj 2513:2521 <> mig_state
+proj 2549:2561 <> has_classical
+proj 2605:2611 <> has_pqc
+proj 2668:2677 <> generation
+R2531:2544 Higgaion.PQCMigration <> MigrationState ind
+R2568:2571 Corelib.Init.Datatypes <> bool ind
+R2624:2627 Corelib.Init.Datatypes <> bool ind
+R2687:2689 Corelib.Init.Datatypes <> nat ind
+prf 2733:2754 <> MigrationRecord_eq_dec
+R2774:2788 Higgaion.PQCMigration <> MigrationRecord rec
+binder 2766:2767 <> r1:10
+binder 2769:2770 <> r2:11
+R2794:2794 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2802:2806 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2815:2815 Corelib.Init.Specif <> ::type_scope:'{'_x_'}'_'+'_'{'_x_'}' not
+R2797:2799 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R2795:2796 Higgaion.PQCMigration <> r1:10 var
+R2800:2801 Higgaion.PQCMigration <> r2:11 var
+R2809:2812 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R2807:2808 Higgaion.PQCMigration <> r1:10 var
+R2813:2814 Higgaion.PQCMigration <> r2:11 var
+R2858:2873 Higgaion.PQCMigration <> mig_state_eq_dec thm
+R2890:2902 Stdlib.Bool.Bool <> bool_dec thm
+R2919:2928 Stdlib.Arith.PeanoNat Nat eq_dec thm
+R2858:2873 Higgaion.PQCMigration <> mig_state_eq_dec thm
+R2858:2873 Higgaion.PQCMigration <> mig_state_eq_dec thm
+R2858:2873 Higgaion.PQCMigration <> mig_state_eq_dec thm
+R2858:2873 Higgaion.PQCMigration <> mig_state_eq_dec thm
+R2890:2902 Stdlib.Bool.Bool <> bool_dec thm
+R2890:2902 Stdlib.Bool.Bool <> bool_dec thm
+R2890:2902 Stdlib.Bool.Bool <> bool_dec thm
+R2919:2928 Stdlib.Arith.PeanoNat Nat eq_dec thm
+def 3339:3349 <> well_formed
+R3356:3370 Higgaion.PQCMigration <> MigrationRecord rec
+binder 3352:3352 <> r:12
+R3391:3399 Higgaion.PQCMigration <> mig_state proj
+R3401:3401 Higgaion.PQCMigration <> r:12 var
+R3412:3420 Higgaion.PQCMigration <> Classical constr
+R3448:3451 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R3441:3443 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3426:3438 Higgaion.PQCMigration <> has_classical proj
+R3440:3440 Higgaion.PQCMigration <> r:12 var
+R3444:3447 Corelib.Init.Datatypes <> true constr
+R3461:3463 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3452:3458 Higgaion.PQCMigration <> has_pqc proj
+R3460:3460 Higgaion.PQCMigration <> r:12 var
+R3464:3468 Corelib.Init.Datatypes <> false constr
+R3474:3479 Higgaion.PQCMigration <> Hybrid constr
+R3510:3513 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R3503:3505 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3488:3500 Higgaion.PQCMigration <> has_classical proj
+R3502:3502 Higgaion.PQCMigration <> r:12 var
+R3506:3509 Corelib.Init.Datatypes <> true constr
+R3523:3525 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3514:3520 Higgaion.PQCMigration <> has_pqc proj
+R3522:3522 Higgaion.PQCMigration <> r:12 var
+R3526:3529 Corelib.Init.Datatypes <> true constr
+R3535:3544 Higgaion.PQCMigration <> Finalizing constr
+R3571:3574 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R3564:3566 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3549:3561 Higgaion.PQCMigration <> has_classical proj
+R3563:3563 Higgaion.PQCMigration <> r:12 var
+R3567:3570 Corelib.Init.Datatypes <> true constr
+R3584:3586 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3575:3581 Higgaion.PQCMigration <> has_pqc proj
+R3583:3583 Higgaion.PQCMigration <> r:12 var
+R3587:3590 Corelib.Init.Datatypes <> true constr
+R3596:3602 Higgaion.PQCMigration <> PqcOnly constr
+R3633:3636 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R3625:3627 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3610:3622 Higgaion.PQCMigration <> has_classical proj
+R3624:3624 Higgaion.PQCMigration <> r:12 var
+R3628:3632 Corelib.Init.Datatypes <> false constr
+R3646:3648 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R3637:3643 Higgaion.PQCMigration <> has_pqc proj
+R3645:3645 Higgaion.PQCMigration <> r:12 var
+R3649:3652 Corelib.Init.Datatypes <> true constr
+def 4164:4173 <> import_key
+R4177:4191 Higgaion.PQCMigration <> MigrationRecord rec
+R4198:4205 Higgaion.PQCMigration <> mkMigRec constr
+R4207:4215 Higgaion.PQCMigration <> Classical constr
+R4217:4220 Corelib.Init.Datatypes <> true constr
+R4222:4226 Corelib.Init.Datatypes <> false constr
+def 4370:4384 <> begin_migration
+R4391:4405 Higgaion.PQCMigration <> MigrationRecord rec
+binder 4387:4387 <> r:13
+R4410:4415 Corelib.Init.Datatypes <> option ind
+R4417:4431 Higgaion.PQCMigration <> MigrationRecord rec
+R4444:4452 Higgaion.PQCMigration <> mig_state proj
+R4454:4454 Higgaion.PQCMigration <> r:13 var
+R4465:4473 Higgaion.PQCMigration <> Classical constr
+R4478:4481 Corelib.Init.Datatypes <> Some constr
+R4484:4491 Higgaion.PQCMigration <> mkMigRec constr
+R4493:4498 Higgaion.PQCMigration <> Hybrid constr
+R4500:4503 Corelib.Init.Datatypes <> true constr
+R4505:4508 Corelib.Init.Datatypes <> true constr
+R4511:4511 Corelib.Init.Datatypes <> S constr
+R4514:4523 Higgaion.PQCMigration <> generation proj
+R4525:4525 Higgaion.PQCMigration <> r:13 var
+R4539:4542 Corelib.Init.Datatypes <> None constr
+def 4706:4721 <> enter_finalizing
+R4728:4742 Higgaion.PQCMigration <> MigrationRecord rec
+binder 4724:4724 <> r:14
+R4747:4752 Corelib.Init.Datatypes <> option ind
+R4754:4768 Higgaion.PQCMigration <> MigrationRecord rec
+R4781:4789 Higgaion.PQCMigration <> mig_state proj
+R4791:4791 Higgaion.PQCMigration <> r:14 var
+R4802:4807 Higgaion.PQCMigration <> Hybrid constr
+R4812:4815 Corelib.Init.Datatypes <> Some constr
+R4818:4825 Higgaion.PQCMigration <> mkMigRec constr
+R4827:4836 Higgaion.PQCMigration <> Finalizing constr
+R4838:4841 Corelib.Init.Datatypes <> true constr
+R4843:4846 Corelib.Init.Datatypes <> true constr
+R4849:4858 Higgaion.PQCMigration <> generation proj
+R4860:4860 Higgaion.PQCMigration <> r:14 var
+R4873:4876 Corelib.Init.Datatypes <> None constr
+def 5102:5122 <> complete_finalization
+R5129:5143 Higgaion.PQCMigration <> MigrationRecord rec
+binder 5125:5125 <> r:15
+R5148:5153 Corelib.Init.Datatypes <> option ind
+R5155:5169 Higgaion.PQCMigration <> MigrationRecord rec
+R5182:5190 Higgaion.PQCMigration <> mig_state proj
+R5192:5192 Higgaion.PQCMigration <> r:15 var
+R5203:5212 Higgaion.PQCMigration <> Finalizing constr
+R5217:5220 Corelib.Init.Datatypes <> Some constr
+R5223:5230 Higgaion.PQCMigration <> mkMigRec constr
+R5232:5238 Higgaion.PQCMigration <> PqcOnly constr
+R5240:5244 Corelib.Init.Datatypes <> false constr
+R5246:5249 Corelib.Init.Datatypes <> true constr
+R5252:5261 Higgaion.PQCMigration <> generation proj
+R5263:5263 Higgaion.PQCMigration <> r:15 var
+R5276:5279 Corelib.Init.Datatypes <> None constr
+def 5422:5429 <> rollback
+R5436:5450 Higgaion.PQCMigration <> MigrationRecord rec
+binder 5432:5432 <> r:16
+R5455:5460 Corelib.Init.Datatypes <> option ind
+R5462:5476 Higgaion.PQCMigration <> MigrationRecord rec
+R5489:5497 Higgaion.PQCMigration <> mig_state proj
+R5499:5499 Higgaion.PQCMigration <> r:16 var
+R5510:5515 Higgaion.PQCMigration <> Hybrid constr
+R5524:5527 Corelib.Init.Datatypes <> Some constr
+R5530:5537 Higgaion.PQCMigration <> mkMigRec constr
+R5539:5547 Higgaion.PQCMigration <> Classical constr
+R5549:5552 Corelib.Init.Datatypes <> true constr
+R5554:5558 Corelib.Init.Datatypes <> false constr
+R5561:5570 Higgaion.PQCMigration <> generation proj
+R5572:5572 Higgaion.PQCMigration <> r:16 var
+R5580:5589 Higgaion.PQCMigration <> Finalizing constr
+R5594:5597 Corelib.Init.Datatypes <> Some constr
+R5600:5607 Higgaion.PQCMigration <> mkMigRec constr
+R5609:5617 Higgaion.PQCMigration <> Classical constr
+R5619:5622 Corelib.Init.Datatypes <> true constr
+R5624:5628 Corelib.Init.Datatypes <> false constr
+R5631:5640 Higgaion.PQCMigration <> generation proj
+R5642:5642 Higgaion.PQCMigration <> r:16 var
+R5655:5658 Corelib.Init.Datatypes <> None constr
+prf 6050:6067 <> import_well_formed
+R6071:6081 Higgaion.PQCMigration <> well_formed def
+R6083:6092 Higgaion.PQCMigration <> import_key def
+R6111:6121 Higgaion.PQCMigration <> well_formed def
+R6124:6133 Higgaion.PQCMigration <> import_key def
+prf 6603:6620 <> begin_preserves_wf
+binder 6631:6631 <> r:17
+binder 6633:6634 <> r':18
+R6652:6657 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R6639:6649 Higgaion.PQCMigration <> well_formed def
+R6651:6651 Higgaion.PQCMigration <> r:17 var
+R6685:6690 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R6675:6677 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R6658:6672 Higgaion.PQCMigration <> begin_migration def
+R6674:6674 Higgaion.PQCMigration <> r:17 var
+R6678:6681 Corelib.Init.Datatypes <> Some constr
+R6683:6684 Higgaion.PQCMigration <> r':18 var
+R6691:6701 Higgaion.PQCMigration <> well_formed def
+R6703:6704 Higgaion.PQCMigration <> r':18 var
+R6749:6763 Higgaion.PQCMigration <> begin_migration def
+R6788:6796 Higgaion.PQCMigration <> mig_state proj
+R6788:6796 Higgaion.PQCMigration <> mig_state proj
+R6874:6884 Higgaion.PQCMigration <> well_formed def
+prf 7175:7203 <> enter_finalizing_preserves_wf
+binder 7214:7214 <> r:19
+binder 7216:7217 <> r':20
+R7235:7240 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R7222:7232 Higgaion.PQCMigration <> well_formed def
+R7234:7234 Higgaion.PQCMigration <> r:19 var
+R7269:7274 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R7259:7261 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R7241:7256 Higgaion.PQCMigration <> enter_finalizing def
+R7258:7258 Higgaion.PQCMigration <> r:19 var
+R7262:7265 Corelib.Init.Datatypes <> Some constr
+R7267:7268 Higgaion.PQCMigration <> r':20 var
+R7275:7285 Higgaion.PQCMigration <> well_formed def
+R7287:7288 Higgaion.PQCMigration <> r':20 var
+R7333:7348 Higgaion.PQCMigration <> enter_finalizing def
+R7373:7381 Higgaion.PQCMigration <> mig_state proj
+R7373:7381 Higgaion.PQCMigration <> mig_state proj
+R7459:7469 Higgaion.PQCMigration <> well_formed def
+prf 7945:7965 <> finalize_preserves_wf
+binder 7976:7976 <> r:21
+binder 7978:7979 <> r':22
+R7997:8002 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R7984:7994 Higgaion.PQCMigration <> well_formed def
+R7996:7996 Higgaion.PQCMigration <> r:21 var
+R8036:8041 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R8026:8028 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R8003:8023 Higgaion.PQCMigration <> complete_finalization def
+R8025:8025 Higgaion.PQCMigration <> r:21 var
+R8029:8032 Corelib.Init.Datatypes <> Some constr
+R8034:8035 Higgaion.PQCMigration <> r':22 var
+R8042:8052 Higgaion.PQCMigration <> well_formed def
+R8054:8055 Higgaion.PQCMigration <> r':22 var
+R8100:8120 Higgaion.PQCMigration <> complete_finalization def
+R8145:8153 Higgaion.PQCMigration <> mig_state proj
+R8145:8153 Higgaion.PQCMigration <> mig_state proj
+R8231:8241 Higgaion.PQCMigration <> well_formed def
+prf 8693:8713 <> rollback_preserves_wf
+binder 8724:8724 <> r:23
+binder 8726:8727 <> r':24
+R8745:8750 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R8732:8742 Higgaion.PQCMigration <> well_formed def
+R8744:8744 Higgaion.PQCMigration <> r:23 var
+R8771:8776 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R8761:8763 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R8751:8758 Higgaion.PQCMigration <> rollback def
+R8760:8760 Higgaion.PQCMigration <> r:23 var
+R8764:8767 Corelib.Init.Datatypes <> Some constr
+R8769:8770 Higgaion.PQCMigration <> r':24 var
+R8777:8787 Higgaion.PQCMigration <> well_formed def
+R8789:8790 Higgaion.PQCMigration <> r':24 var
+R8835:8842 Higgaion.PQCMigration <> rollback def
+R8867:8875 Higgaion.PQCMigration <> mig_state proj
+R8957:8967 Higgaion.PQCMigration <> well_formed def
+R8867:8875 Higgaion.PQCMigration <> mig_state proj
+prf 9440:9462 <> pqc_only_terminal_begin
+binder 9473:9473 <> r:25
+R9499:9502 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R9489:9491 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9478:9486 Higgaion.PQCMigration <> mig_state proj
+R9488:9488 Higgaion.PQCMigration <> r:25 var
+R9492:9498 Higgaion.PQCMigration <> PqcOnly constr
+R9520:9522 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9503:9517 Higgaion.PQCMigration <> begin_migration def
+R9519:9519 Higgaion.PQCMigration <> r:25 var
+R9523:9526 Corelib.Init.Datatypes <> None constr
+R9559:9573 Higgaion.PQCMigration <> begin_migration def
+prf 9616:9647 <> pqc_only_terminal_finalize_enter
+binder 9658:9658 <> r:26
+R9684:9687 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R9674:9676 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9663:9671 Higgaion.PQCMigration <> mig_state proj
+R9673:9673 Higgaion.PQCMigration <> r:26 var
+R9677:9683 Higgaion.PQCMigration <> PqcOnly constr
+R9706:9708 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9688:9703 Higgaion.PQCMigration <> enter_finalizing def
+R9705:9705 Higgaion.PQCMigration <> r:26 var
+R9709:9712 Corelib.Init.Datatypes <> None constr
+R9745:9760 Higgaion.PQCMigration <> enter_finalizing def
+prf 9803:9837 <> pqc_only_terminal_finalize_complete
+binder 9848:9848 <> r:27
+R9874:9877 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R9864:9866 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9853:9861 Higgaion.PQCMigration <> mig_state proj
+R9863:9863 Higgaion.PQCMigration <> r:27 var
+R9867:9873 Higgaion.PQCMigration <> PqcOnly constr
+R9901:9903 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R9878:9898 Higgaion.PQCMigration <> complete_finalization def
+R9900:9900 Higgaion.PQCMigration <> r:27 var
+R9904:9907 Corelib.Init.Datatypes <> None constr
+R9940:9960 Higgaion.PQCMigration <> complete_finalization def
+prf 10003:10028 <> pqc_only_terminal_rollback
+binder 10039:10039 <> r:28
+R10065:10068 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R10055:10057 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10044:10052 Higgaion.PQCMigration <> mig_state proj
+R10054:10054 Higgaion.PQCMigration <> r:28 var
+R10058:10064 Higgaion.PQCMigration <> PqcOnly constr
+R10079:10081 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10069:10076 Higgaion.PQCMigration <> rollback def
+R10078:10078 Higgaion.PQCMigration <> r:28 var
+R10082:10085 Corelib.Init.Datatypes <> None constr
+R10118:10125 Higgaion.PQCMigration <> rollback def
+prf 10569:10592 <> no_skip_classical_to_pqc
+binder 10603:10603 <> r:29
+R10631:10636 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R10619:10621 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10608:10616 Higgaion.PQCMigration <> mig_state proj
+R10618:10618 Higgaion.PQCMigration <> r:29 var
+R10622:10630 Higgaion.PQCMigration <> Classical constr
+R10637:10637 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R10701:10707 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R10638:10644 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R10647:10648 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 10645:10646 <> r':30
+R10676:10679 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R10666:10668 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10649:10663 Higgaion.PQCMigration <> begin_migration def
+R10665:10665 Higgaion.PQCMigration <> r:29 var
+R10669:10672 Corelib.Init.Datatypes <> Some constr
+R10674:10675 Higgaion.PQCMigration <> r':30 var
+R10692:10694 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10680:10688 Higgaion.PQCMigration <> mig_state proj
+R10690:10691 Higgaion.PQCMigration <> r':30 var
+R10695:10700 Higgaion.PQCMigration <> Hybrid constr
+R10733:10738 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R10726:10728 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10708:10723 Higgaion.PQCMigration <> enter_finalizing def
+R10725:10725 Higgaion.PQCMigration <> r:29 var
+R10729:10732 Corelib.Init.Datatypes <> None constr
+R10762:10764 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R10739:10759 Higgaion.PQCMigration <> complete_finalization def
+R10761:10761 Higgaion.PQCMigration <> r:29 var
+R10765:10768 Corelib.Init.Datatypes <> None constr
+R10822:10829 Higgaion.PQCMigration <> mkMigRec constr
+R10831:10836 Higgaion.PQCMigration <> Hybrid constr
+R10838:10841 Corelib.Init.Datatypes <> true constr
+R10843:10846 Corelib.Init.Datatypes <> true constr
+R10849:10849 Corelib.Init.Datatypes <> S constr
+R10852:10861 Higgaion.PQCMigration <> generation proj
+R10822:10829 Higgaion.PQCMigration <> mkMigRec constr
+R10831:10836 Higgaion.PQCMigration <> Hybrid constr
+R10838:10841 Corelib.Init.Datatypes <> true constr
+R10843:10846 Corelib.Init.Datatypes <> true constr
+R10849:10849 Corelib.Init.Datatypes <> S constr
+R10852:10861 Higgaion.PQCMigration <> generation proj
+R10880:10894 Higgaion.PQCMigration <> begin_migration def
+R10927:10942 Higgaion.PQCMigration <> enter_finalizing def
+R10982:11002 Higgaion.PQCMigration <> complete_finalization def
+prf 11507:11542 <> classical_key_exists_before_pqc_only
+binder 11553:11553 <> r:31
+R11571:11576 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R11558:11568 Higgaion.PQCMigration <> well_formed def
+R11570:11570 Higgaion.PQCMigration <> r:31 var
+R11599:11604 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R11588:11591 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R11577:11585 Higgaion.PQCMigration <> mig_state proj
+R11587:11587 Higgaion.PQCMigration <> r:31 var
+R11592:11598 Higgaion.PQCMigration <> PqcOnly constr
+R11620:11622 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R11605:11617 Higgaion.PQCMigration <> has_classical proj
+R11619:11619 Higgaion.PQCMigration <> r:31 var
+R11623:11626 Corelib.Init.Datatypes <> true constr
+R11666:11676 Higgaion.PQCMigration <> well_formed def
+R11698:11706 Higgaion.PQCMigration <> mig_state proj
+R11698:11706 Higgaion.PQCMigration <> mig_state proj
+prf 12330:12355 <> pqc_key_exists_after_begin
+binder 12366:12366 <> r:32
+R12384:12389 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R12371:12381 Higgaion.PQCMigration <> well_formed def
+R12383:12383 Higgaion.PQCMigration <> r:32 var
+R12414:12419 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R12401:12404 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R12390:12398 Higgaion.PQCMigration <> mig_state proj
+R12400:12400 Higgaion.PQCMigration <> r:32 var
+R12405:12413 Higgaion.PQCMigration <> Classical constr
+R12429:12431 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R12420:12426 Higgaion.PQCMigration <> has_pqc proj
+R12428:12428 Higgaion.PQCMigration <> r:32 var
+R12432:12435 Corelib.Init.Datatypes <> true constr
+R12475:12485 Higgaion.PQCMigration <> well_formed def
+R12507:12515 Higgaion.PQCMigration <> mig_state proj
+R12507:12515 Higgaion.PQCMigration <> mig_state proj
+prf 13227:13254 <> classical_erased_in_pqc_only
+binder 13265:13265 <> r:33
+R13283:13288 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R13270:13280 Higgaion.PQCMigration <> well_formed def
+R13282:13282 Higgaion.PQCMigration <> r:33 var
+R13310:13315 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R13300:13302 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R13289:13297 Higgaion.PQCMigration <> mig_state proj
+R13299:13299 Higgaion.PQCMigration <> r:33 var
+R13303:13309 Higgaion.PQCMigration <> PqcOnly constr
+R13331:13333 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R13316:13328 Higgaion.PQCMigration <> has_classical proj
+R13330:13330 Higgaion.PQCMigration <> r:33 var
+R13334:13338 Corelib.Init.Datatypes <> false constr
+R13377:13387 Higgaion.PQCMigration <> well_formed def
+prf 13873:13898 <> hybrid_both_keys_available
+binder 13909:13909 <> r:34
+R13927:13932 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R13914:13924 Higgaion.PQCMigration <> well_formed def
+R13926:13926 Higgaion.PQCMigration <> r:34 var
+R13953:13958 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R13944:13946 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R13933:13941 Higgaion.PQCMigration <> mig_state proj
+R13943:13943 Higgaion.PQCMigration <> r:34 var
+R13947:13952 Higgaion.PQCMigration <> Hybrid constr
+R13981:13984 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R13974:13976 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R13959:13971 Higgaion.PQCMigration <> has_classical proj
+R13973:13973 Higgaion.PQCMigration <> r:34 var
+R13977:13980 Corelib.Init.Datatypes <> true constr
+R13994:13996 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R13985:13991 Higgaion.PQCMigration <> has_pqc proj
+R13993:13993 Higgaion.PQCMigration <> r:34 var
+R13997:14000 Corelib.Init.Datatypes <> true constr
+R14039:14049 Higgaion.PQCMigration <> well_formed def
+prf 14529:14566 <> rollback_requires_hybrid_or_finalizing
+binder 14577:14577 <> r:35
+R14605:14608 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R14593:14595 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R14582:14590 Higgaion.PQCMigration <> mig_state proj
+R14592:14592 Higgaion.PQCMigration <> r:35 var
+R14596:14604 Higgaion.PQCMigration <> Classical constr
+R14619:14621 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R14609:14616 Higgaion.PQCMigration <> rollback def
+R14618:14618 Higgaion.PQCMigration <> r:35 var
+R14622:14625 Corelib.Init.Datatypes <> None constr
+R14658:14665 Higgaion.PQCMigration <> rollback def
+prf 14708:14749 <> rollback_requires_hybrid_or_finalizing_pqc
+binder 14760:14760 <> r:36
+R14786:14789 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R14776:14778 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R14765:14773 Higgaion.PQCMigration <> mig_state proj
+R14775:14775 Higgaion.PQCMigration <> r:36 var
+R14779:14785 Higgaion.PQCMigration <> PqcOnly constr
+R14800:14802 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R14790:14797 Higgaion.PQCMigration <> rollback def
+R14799:14799 Higgaion.PQCMigration <> r:36 var
+R14803:14806 Corelib.Init.Datatypes <> None constr
+R14839:14846 Higgaion.PQCMigration <> rollback def
+prf 15273:15298 <> begin_generation_increases
+binder 15309:15309 <> r:37
+binder 15311:15312 <> r':38
+R15344:15349 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R15334:15336 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15317:15331 Higgaion.PQCMigration <> begin_migration def
+R15333:15333 Higgaion.PQCMigration <> r:37 var
+R15337:15340 Corelib.Init.Datatypes <> Some constr
+R15342:15343 Higgaion.PQCMigration <> r':38 var
+R15363:15365 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15350:15359 Higgaion.PQCMigration <> generation proj
+R15361:15362 Higgaion.PQCMigration <> r':38 var
+R15366:15366 Corelib.Init.Datatypes <> S constr
+R15369:15378 Higgaion.PQCMigration <> generation proj
+R15380:15380 Higgaion.PQCMigration <> r:37 var
+R15417:15431 Higgaion.PQCMigration <> begin_migration def
+R15451:15459 Higgaion.PQCMigration <> mig_state proj
+R15451:15459 Higgaion.PQCMigration <> mig_state proj
+prf 15549:15574 <> finalize_generation_stable
+binder 15585:15585 <> r:39
+binder 15587:15588 <> r':40
+R15626:15631 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R15616:15618 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15593:15613 Higgaion.PQCMigration <> complete_finalization def
+R15615:15615 Higgaion.PQCMigration <> r:39 var
+R15619:15622 Corelib.Init.Datatypes <> Some constr
+R15624:15625 Higgaion.PQCMigration <> r':40 var
+R15645:15647 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15632:15641 Higgaion.PQCMigration <> generation proj
+R15643:15644 Higgaion.PQCMigration <> r':40 var
+R15648:15657 Higgaion.PQCMigration <> generation proj
+R15659:15659 Higgaion.PQCMigration <> r:39 var
+R15695:15715 Higgaion.PQCMigration <> complete_finalization def
+R15735:15743 Higgaion.PQCMigration <> mig_state proj
+R15735:15743 Higgaion.PQCMigration <> mig_state proj
+prf 15833:15858 <> rollback_generation_stable
+binder 15869:15869 <> r:41
+binder 15871:15872 <> r':42
+R15897:15902 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R15887:15889 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15877:15884 Higgaion.PQCMigration <> rollback def
+R15886:15886 Higgaion.PQCMigration <> r:41 var
+R15890:15893 Corelib.Init.Datatypes <> Some constr
+R15895:15896 Higgaion.PQCMigration <> r':42 var
+R15916:15918 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R15903:15912 Higgaion.PQCMigration <> generation proj
+R15914:15915 Higgaion.PQCMigration <> r':42 var
+R15919:15928 Higgaion.PQCMigration <> generation proj
+R15930:15930 Higgaion.PQCMigration <> r:41 var
+R15966:15973 Higgaion.PQCMigration <> rollback def
+R15993:16001 Higgaion.PQCMigration <> mig_state proj
+R15993:16001 Higgaion.PQCMigration <> mig_state proj
+prf 16551:16569 <> rollback_then_begin
+binder 16580:16580 <> r:43
+binder 16582:16589 <> r_rolled:44
+binder 16591:16597 <> r_retry:45
+R16615:16620 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R16602:16612 Higgaion.PQCMigration <> well_formed def
+R16614:16614 Higgaion.PQCMigration <> r:43 var
+R16641:16646 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R16632:16634 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R16621:16629 Higgaion.PQCMigration <> mig_state proj
+R16631:16631 Higgaion.PQCMigration <> r:43 var
+R16635:16640 Higgaion.PQCMigration <> Hybrid constr
+R16673:16678 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R16657:16659 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R16647:16654 Higgaion.PQCMigration <> rollback def
+R16656:16656 Higgaion.PQCMigration <> r:43 var
+R16660:16663 Corelib.Init.Datatypes <> Some constr
+R16665:16672 Higgaion.PQCMigration <> r_rolled:44 var
+R16718:16723 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R16703:16705 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R16679:16693 Higgaion.PQCMigration <> begin_migration def
+R16695:16702 Higgaion.PQCMigration <> r_rolled:44 var
+R16706:16709 Corelib.Init.Datatypes <> Some constr
+R16711:16717 Higgaion.PQCMigration <> r_retry:45 var
+R16750:16755 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R16741:16743 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R16724:16732 Higgaion.PQCMigration <> mig_state proj
+R16734:16740 Higgaion.PQCMigration <> r_retry:45 var
+R16744:16749 Higgaion.PQCMigration <> Hybrid constr
+R16800:16805 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R16774:16776 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R16756:16765 Higgaion.PQCMigration <> generation proj
+R16767:16773 Higgaion.PQCMigration <> r_retry:45 var
+R16777:16777 Corelib.Init.Datatypes <> S constr
+R16780:16789 Higgaion.PQCMigration <> generation proj
+R16791:16798 Higgaion.PQCMigration <> r_rolled:44 var
+R16806:16816 Higgaion.PQCMigration <> well_formed def
+R16818:16824 Higgaion.PQCMigration <> r_retry:45 var
+R16893:16900 Higgaion.PQCMigration <> rollback def
+R16985:16999 Higgaion.PQCMigration <> begin_migration def
+prf 17580:17601 <> full_migration_path_wf
+R17617:17626 Higgaion.PQCMigration <> import_key def
+binder 17611:17612 <> r0:46
+R17647:17653 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17971:17971 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17633:17643 Higgaion.PQCMigration <> well_formed def
+R17645:17646 Higgaion.PQCMigration <> r0:46 var
+binder 17661:17662 <> r1:47
+R17693:17700 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R17683:17685 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17665:17679 Higgaion.PQCMigration <> begin_migration def
+R17681:17682 Higgaion.PQCMigration <> r0:46 var
+R17686:17689 Corelib.Init.Datatypes <> Some constr
+R17691:17692 Higgaion.PQCMigration <> r1:47 var
+R17715:17723 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17970:17970 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17701:17711 Higgaion.PQCMigration <> well_formed def
+R17713:17714 Higgaion.PQCMigration <> r1:47 var
+binder 17731:17732 <> r2:48
+R17764:17773 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R17754:17756 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17735:17750 Higgaion.PQCMigration <> enter_finalizing def
+R17752:17753 Higgaion.PQCMigration <> r1:47 var
+R17757:17760 Corelib.Init.Datatypes <> Some constr
+R17762:17763 Higgaion.PQCMigration <> r2:48 var
+R17788:17798 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17969:17969 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17774:17784 Higgaion.PQCMigration <> well_formed def
+R17786:17787 Higgaion.PQCMigration <> r2:48 var
+binder 17806:17807 <> r3:49
+R17844:17855 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R17834:17836 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17810:17830 Higgaion.PQCMigration <> complete_finalization def
+R17832:17833 Higgaion.PQCMigration <> r2:48 var
+R17837:17840 Corelib.Init.Datatypes <> Some constr
+R17842:17843 Higgaion.PQCMigration <> r3:49 var
+R17870:17881 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17856:17866 Higgaion.PQCMigration <> well_formed def
+R17868:17869 Higgaion.PQCMigration <> r3:49 var
+R17904:17915 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17894:17896 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17882:17890 Higgaion.PQCMigration <> mig_state proj
+R17892:17893 Higgaion.PQCMigration <> r3:49 var
+R17897:17903 Higgaion.PQCMigration <> PqcOnly constr
+R17940:17951 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R17932:17934 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17916:17928 Higgaion.PQCMigration <> has_classical proj
+R17930:17931 Higgaion.PQCMigration <> r3:49 var
+R17935:17939 Corelib.Init.Datatypes <> false constr
+R17962:17964 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R17952:17958 Higgaion.PQCMigration <> has_pqc proj
+R17960:17961 Higgaion.PQCMigration <> r3:49 var
+R17965:17968 Corelib.Init.Datatypes <> true constr
+R18039:18056 Higgaion.PQCMigration <> import_well_formed thm
+R18039:18056 Higgaion.PQCMigration <> import_well_formed thm
+R18132:18149 Higgaion.PQCMigration <> begin_preserves_wf thm
+R18159:18176 Higgaion.PQCMigration <> import_well_formed thm
+R18132:18149 Higgaion.PQCMigration <> begin_preserves_wf thm
+R18159:18176 Higgaion.PQCMigration <> import_well_formed thm
+R18285:18299 Higgaion.PQCMigration <> begin_migration def
+R18387:18402 Higgaion.PQCMigration <> enter_finalizing def
+R18491:18501 Higgaion.PQCMigration <> well_formed def
+R18558:18572 Higgaion.PQCMigration <> begin_migration def
+R18660:18675 Higgaion.PQCMigration <> enter_finalizing def
+R18764:18784 Higgaion.PQCMigration <> complete_finalization def
+def 19618:19633 <> classical_verify
+R19642:19644 Corelib.Init.Datatypes <> nat ind
+binder 19636:19638 <> msg:50
+R19655:19657 Corelib.Init.Datatypes <> nat ind
+binder 19648:19651 <> csig:51
+R19662:19665 Corelib.Init.Datatypes <> bool ind
+R19672:19678 Stdlib.Arith.PeanoNat Nat eqb def
+R19680:19682 Higgaion.PQCMigration <> msg:50 var
+R19684:19687 Higgaion.PQCMigration <> csig:51 var
+def 19702:19715 <> pqc_verify_sig
+R19724:19726 Corelib.Init.Datatypes <> nat ind
+binder 19718:19720 <> msg:52
+R19737:19739 Corelib.Init.Datatypes <> nat ind
+binder 19730:19733 <> psig:53
+R19744:19747 Corelib.Init.Datatypes <> bool ind
+R19754:19760 Stdlib.Arith.PeanoNat Nat eqb def
+R19762:19764 Higgaion.PQCMigration <> msg:52 var
+R19766:19769 Higgaion.PQCMigration <> psig:53 var
+def 19864:19888 <> hybrid_verify_disjunctive
+R19907:19909 Corelib.Init.Datatypes <> nat ind
+binder 19891:19893 <> msg:54
+binder 19895:19898 <> csig:55
+binder 19900:19903 <> psig:56
+R19914:19917 Corelib.Init.Datatypes <> bool ind
+R19949:19952 Corelib.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R19924:19939 Higgaion.PQCMigration <> classical_verify def
+R19941:19943 Higgaion.PQCMigration <> msg:54 var
+R19945:19948 Higgaion.PQCMigration <> csig:55 var
+R19953:19966 Higgaion.PQCMigration <> pqc_verify_sig def
+R19968:19970 Higgaion.PQCMigration <> msg:54 var
+R19972:19975 Higgaion.PQCMigration <> psig:56 var
+def 20062:20086 <> hybrid_verify_conjunctive
+R20105:20107 Corelib.Init.Datatypes <> nat ind
+binder 20089:20091 <> msg:57
+binder 20093:20096 <> csig:58
+binder 20098:20101 <> psig:59
+R20112:20115 Corelib.Init.Datatypes <> bool ind
+R20147:20150 Corelib.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R20122:20137 Higgaion.PQCMigration <> classical_verify def
+R20139:20141 Higgaion.PQCMigration <> msg:57 var
+R20143:20146 Higgaion.PQCMigration <> csig:58 var
+R20151:20164 Higgaion.PQCMigration <> pqc_verify_sig def
+R20166:20168 Higgaion.PQCMigration <> msg:57 var
+R20170:20173 Higgaion.PQCMigration <> psig:59 var
+prf 20689:20716 <> disjunctive_covers_classical
+binder 20729:20731 <> msg:60
+binder 20733:20736 <> csig:61
+binder 20738:20741 <> psig:62
+R20780:20787 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R20773:20775 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R20748:20763 Higgaion.PQCMigration <> classical_verify def
+R20765:20767 Higgaion.PQCMigration <> msg:60 var
+R20769:20772 Higgaion.PQCMigration <> csig:61 var
+R20776:20779 Corelib.Init.Datatypes <> true constr
+R20827:20829 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R20788:20812 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R20814:20816 Higgaion.PQCMigration <> msg:60 var
+R20818:20821 Higgaion.PQCMigration <> csig:61 var
+R20823:20826 Higgaion.PQCMigration <> psig:62 var
+R20830:20833 Corelib.Init.Datatypes <> true constr
+R20879:20903 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+prf 21667:21702 <> disjunctive_strictly_more_permissive
+R21708:21714 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R21728:21733 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 21715:21717 <> msg:63
+binder 21719:21722 <> csig:64
+binder 21724:21727 <> psig:65
+R21780:21787 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R21773:21775 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R21734:21758 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R21760:21762 Higgaion.PQCMigration <> msg:63 var
+R21764:21767 Higgaion.PQCMigration <> csig:64 var
+R21769:21772 Higgaion.PQCMigration <> psig:65 var
+R21776:21779 Corelib.Init.Datatypes <> true constr
+R21827:21829 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R21788:21812 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R21814:21816 Higgaion.PQCMigration <> msg:63 var
+R21818:21821 Higgaion.PQCMigration <> csig:64 var
+R21823:21826 Higgaion.PQCMigration <> psig:65 var
+R21830:21834 Corelib.Init.Datatypes <> false constr
+R21943:21967 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R21970:21994 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R22006:22021 Higgaion.PQCMigration <> classical_verify def
+R22024:22037 Higgaion.PQCMigration <> pqc_verify_sig def
+def 22943:22966 <> validly_signed_for_state
+R22973:22987 Higgaion.PQCMigration <> MigrationRecord rec
+binder 22969:22969 <> r:66
+R23011:23013 Corelib.Init.Datatypes <> nat ind
+binder 22995:22997 <> msg:67
+binder 22999:23002 <> csig:68
+binder 23004:23007 <> psig:69
+R23034:23042 Higgaion.PQCMigration <> mig_state proj
+R23044:23044 Higgaion.PQCMigration <> r:66 var
+R23055:23063 Higgaion.PQCMigration <> Classical constr
+R23094:23096 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23069:23084 Higgaion.PQCMigration <> classical_verify def
+R23086:23088 Higgaion.PQCMigration <> msg:67 var
+R23090:23093 Higgaion.PQCMigration <> csig:68 var
+R23097:23100 Corelib.Init.Datatypes <> true constr
+R23106:23111 Higgaion.PQCMigration <> Hybrid constr
+R23152:23174 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R23145:23147 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23120:23135 Higgaion.PQCMigration <> classical_verify def
+R23137:23139 Higgaion.PQCMigration <> msg:67 var
+R23141:23144 Higgaion.PQCMigration <> csig:68 var
+R23148:23151 Corelib.Init.Datatypes <> true constr
+R23198:23200 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23175:23188 Higgaion.PQCMigration <> pqc_verify_sig def
+R23190:23192 Higgaion.PQCMigration <> msg:67 var
+R23194:23197 Higgaion.PQCMigration <> psig:69 var
+R23201:23204 Corelib.Init.Datatypes <> true constr
+R23210:23219 Higgaion.PQCMigration <> Finalizing constr
+R23256:23278 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R23249:23251 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23224:23239 Higgaion.PQCMigration <> classical_verify def
+R23241:23243 Higgaion.PQCMigration <> msg:67 var
+R23245:23248 Higgaion.PQCMigration <> csig:68 var
+R23252:23255 Corelib.Init.Datatypes <> true constr
+R23302:23304 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23279:23292 Higgaion.PQCMigration <> pqc_verify_sig def
+R23294:23296 Higgaion.PQCMigration <> msg:67 var
+R23298:23301 Higgaion.PQCMigration <> psig:69 var
+R23305:23308 Corelib.Init.Datatypes <> true constr
+R23314:23320 Higgaion.PQCMigration <> PqcOnly constr
+R23351:23353 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23328:23341 Higgaion.PQCMigration <> pqc_verify_sig def
+R23343:23345 Higgaion.PQCMigration <> msg:67 var
+R23347:23350 Higgaion.PQCMigration <> psig:69 var
+R23354:23357 Corelib.Init.Datatypes <> true constr
+prf 23375:23396 <> migration_completeness
+binder 23409:23409 <> r:70
+binder 23411:23413 <> msg:71
+binder 23415:23418 <> csig:72
+binder 23420:23423 <> psig:73
+R23443:23450 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R23430:23440 Higgaion.PQCMigration <> well_formed def
+R23442:23442 Higgaion.PQCMigration <> r:70 var
+R23491:23498 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R23451:23474 Higgaion.PQCMigration <> validly_signed_for_state def
+R23476:23476 Higgaion.PQCMigration <> r:70 var
+R23478:23480 Higgaion.PQCMigration <> msg:71 var
+R23482:23485 Higgaion.PQCMigration <> csig:72 var
+R23487:23490 Higgaion.PQCMigration <> psig:73 var
+R23538:23540 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R23499:23523 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R23525:23527 Higgaion.PQCMigration <> msg:71 var
+R23529:23532 Higgaion.PQCMigration <> csig:72 var
+R23534:23537 Higgaion.PQCMigration <> psig:73 var
+R23541:23544 Corelib.Init.Datatypes <> true constr
+R23600:23624 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R23636:23659 Higgaion.PQCMigration <> validly_signed_for_state def
+R23684:23692 Higgaion.PQCMigration <> mig_state proj
+R23684:23692 Higgaion.PQCMigration <> mig_state proj
+R23921:23935 Stdlib.Bool.Bool <> orb_true_r thm
+R23921:23935 Stdlib.Bool.Bool <> orb_true_r thm
+R24071:24085 Stdlib.Bool.Bool <> orb_true_r thm
+R24071:24085 Stdlib.Bool.Bool <> orb_true_r thm
+R24152:24166 Stdlib.Bool.Bool <> orb_true_r thm
+R24152:24166 Stdlib.Bool.Bool <> orb_true_r thm
+rec 24826:24839 <> HSMAwareRecord
+proj 24857:24864 <> base_rec
+proj 24888:24896 <> hsm_bound
+R24869:24883 Higgaion.PQCMigration <> MigrationRecord rec
+R24900:24903 Corelib.Init.Datatypes <> bool ind
+def 25085:25099 <> hsm_well_formed
+R25107:25120 Higgaion.PQCMigration <> HSMAwareRecord rec
+binder 25102:25103 <> hr:77
+R25135:25145 Higgaion.PQCMigration <> well_formed def
+R25148:25155 Higgaion.PQCMigration <> base_rec proj
+R25157:25158 Higgaion.PQCMigration <> hr:77 var
+prf 25663:25686 <> hsm_binding_preserves_wf
+binder 25697:25698 <> hr:78
+binder 25700:25712 <> new_hsm_state:79
+R25735:25740 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R25717:25731 Higgaion.PQCMigration <> hsm_well_formed def
+R25733:25734 Higgaion.PQCMigration <> hr:78 var
+R25741:25755 Higgaion.PQCMigration <> hsm_well_formed def
+R25758:25765 Higgaion.PQCMigration <> mkHSMRec constr
+R25768:25775 Higgaion.PQCMigration <> base_rec proj
+R25777:25778 Higgaion.PQCMigration <> hr:78 var
+R25781:25793 Higgaion.PQCMigration <> new_hsm_state:79 var
+R25844:25858 Higgaion.PQCMigration <> hsm_well_formed def
+prf 26331:26357 <> hsm_binding_state_invariant
+binder 26368:26369 <> hr:80
+binder 26371:26383 <> new_hsm_state:81
+R26447:26451 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R26388:26396 Higgaion.PQCMigration <> mig_state proj
+R26399:26406 Higgaion.PQCMigration <> base_rec proj
+R26409:26416 Higgaion.PQCMigration <> mkHSMRec constr
+R26419:26426 Higgaion.PQCMigration <> base_rec proj
+R26428:26429 Higgaion.PQCMigration <> hr:80 var
+R26432:26444 Higgaion.PQCMigration <> new_hsm_state:81 var
+R26452:26460 Higgaion.PQCMigration <> mig_state proj
+R26463:26470 Higgaion.PQCMigration <> base_rec proj
+R26472:26473 Higgaion.PQCMigration <> hr:80 var
+ind 26819:26828 <> HttpMethod
+constr 26833:26835 <> GET
+constr 26839:26842 <> POST
+scheme 26819:26828 <> HttpMethod_rect
+scheme 26819:26828 <> HttpMethod_ind
+scheme 26819:26828 <> HttpMethod_rec
+scheme 26819:26828 <> HttpMethod_sind
+ind 26855:26865 <> ApiEndpoint
+constr 26874:26888 <> MigrationStatus
+constr 26892:26904 <> MigrationKeys
+constr 26908:26918 <> VerifyStats
+constr 26924:26937 <> MigrationBegin
+constr 26941:26957 <> MigrationFinalize
+constr 26961:26977 <> MigrationRollback
+scheme 26855:26865 <> ApiEndpoint_rect
+scheme 26855:26865 <> ApiEndpoint_ind
+scheme 26855:26865 <> ApiEndpoint_rec
+scheme 26855:26865 <> ApiEndpoint_sind
+ind 26990:26998 <> ApiResult
+constr 27003:27007 <> ApiOk
+constr 27011:27018 <> ApiError
+scheme 26990:26998 <> ApiResult_rect
+scheme 26990:26998 <> ApiResult_ind
+scheme 26990:26998 <> ApiResult_rec
+scheme 26990:26998 <> ApiResult_sind
+def 27106:27117 <> api_dispatch
+R27124:27133 Higgaion.PQCMigration <> HttpMethod ind
+binder 27120:27120 <> m:88
+R27142:27152 Higgaion.PQCMigration <> ApiEndpoint ind
+binder 27137:27138 <> ep:89
+R27157:27165 Higgaion.PQCMigration <> ApiResult ind
+R27181:27182 Higgaion.PQCMigration <> ep:89 var
+R27178:27178 Higgaion.PQCMigration <> m:88 var
+R27193:27195 Higgaion.PQCMigration <> GET constr
+R27199:27213 Higgaion.PQCMigration <> MigrationStatus constr
+R27220:27224 Higgaion.PQCMigration <> ApiOk constr
+R27230:27232 Higgaion.PQCMigration <> GET constr
+R27236:27248 Higgaion.PQCMigration <> MigrationKeys constr
+R27257:27261 Higgaion.PQCMigration <> ApiOk constr
+R27267:27269 Higgaion.PQCMigration <> GET constr
+R27273:27283 Higgaion.PQCMigration <> VerifyStats constr
+R27294:27298 Higgaion.PQCMigration <> ApiOk constr
+R27304:27307 Higgaion.PQCMigration <> POST constr
+R27310:27323 Higgaion.PQCMigration <> MigrationBegin constr
+R27331:27335 Higgaion.PQCMigration <> ApiOk constr
+R27341:27344 Higgaion.PQCMigration <> POST constr
+R27347:27363 Higgaion.PQCMigration <> MigrationFinalize constr
+R27368:27372 Higgaion.PQCMigration <> ApiOk constr
+R27378:27381 Higgaion.PQCMigration <> POST constr
+R27384:27400 Higgaion.PQCMigration <> MigrationRollback constr
+R27405:27409 Higgaion.PQCMigration <> ApiOk constr
+R27423:27430 Higgaion.PQCMigration <> ApiError constr
+prf 27906:27927 <> api_get_dispatch_total
+R27973:27978 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R27965:27967 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R27933:27944 Higgaion.PQCMigration <> api_dispatch def
+R27946:27948 Higgaion.PQCMigration <> GET constr
+R27950:27964 Higgaion.PQCMigration <> MigrationStatus constr
+R27968:27972 Higgaion.PQCMigration <> ApiOk constr
+R28017:28022 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R28009:28011 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R27979:27990 Higgaion.PQCMigration <> api_dispatch def
+R27992:27994 Higgaion.PQCMigration <> GET constr
+R27996:28008 Higgaion.PQCMigration <> MigrationKeys constr
+R28012:28016 Higgaion.PQCMigration <> ApiOk constr
+R28051:28053 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R28023:28034 Higgaion.PQCMigration <> api_dispatch def
+R28036:28038 Higgaion.PQCMigration <> GET constr
+R28040:28050 Higgaion.PQCMigration <> VerifyStats constr
+R28054:28058 Higgaion.PQCMigration <> ApiOk constr
+prf 28464:28486 <> api_post_dispatch_total
+R28532:28537 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R28524:28526 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R28492:28503 Higgaion.PQCMigration <> api_dispatch def
+R28505:28508 Higgaion.PQCMigration <> POST constr
+R28510:28523 Higgaion.PQCMigration <> MigrationBegin constr
+R28527:28531 Higgaion.PQCMigration <> ApiOk constr
+R28581:28586 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R28573:28575 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R28538:28549 Higgaion.PQCMigration <> api_dispatch def
+R28551:28554 Higgaion.PQCMigration <> POST constr
+R28556:28572 Higgaion.PQCMigration <> MigrationFinalize constr
+R28576:28580 Higgaion.PQCMigration <> ApiOk constr
+R28622:28624 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R28587:28598 Higgaion.PQCMigration <> api_dispatch def
+R28600:28603 Higgaion.PQCMigration <> POST constr
+R28605:28621 Higgaion.PQCMigration <> MigrationRollback constr
+R28625:28629 Higgaion.PQCMigration <> ApiOk constr
+def 28951:28968 <> state_distribution
+R28978:28981 Corelib.Init.Datatypes <> list ind
+R28983:28997 Higgaion.PQCMigration <> MigrationRecord rec
+binder 28971:28974 <> recs:92
+R29005:29005 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29096:29100 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29191:29195 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29286:29290 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29381:29381 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29006:29011 Corelib.Init.Datatypes <> length def
+R29014:29019 Stdlib.Lists.List <> filter def
+R29091:29094 Higgaion.PQCMigration <> recs:92 var
+binder 29026:29026 <> r:93
+R29037:29045 Higgaion.PQCMigration <> mig_state proj
+R29047:29047 Higgaion.PQCMigration <> r:93 var
+R29054:29062 Higgaion.PQCMigration <> Classical constr
+R29068:29071 Corelib.Init.Datatypes <> true constr
+R29080:29084 Corelib.Init.Datatypes <> false constr
+R29101:29106 Corelib.Init.Datatypes <> length def
+R29109:29114 Stdlib.Lists.List <> filter def
+R29186:29189 Higgaion.PQCMigration <> recs:92 var
+binder 29121:29121 <> r:94
+R29132:29140 Higgaion.PQCMigration <> mig_state proj
+R29142:29142 Higgaion.PQCMigration <> r:94 var
+R29149:29154 Higgaion.PQCMigration <> Hybrid constr
+R29163:29166 Corelib.Init.Datatypes <> true constr
+R29175:29179 Corelib.Init.Datatypes <> false constr
+R29196:29201 Corelib.Init.Datatypes <> length def
+R29204:29209 Stdlib.Lists.List <> filter def
+R29281:29284 Higgaion.PQCMigration <> recs:92 var
+binder 29216:29216 <> r:95
+R29227:29235 Higgaion.PQCMigration <> mig_state proj
+R29237:29237 Higgaion.PQCMigration <> r:95 var
+R29244:29253 Higgaion.PQCMigration <> Finalizing constr
+R29258:29261 Corelib.Init.Datatypes <> true constr
+R29270:29274 Corelib.Init.Datatypes <> false constr
+R29291:29296 Corelib.Init.Datatypes <> length def
+R29299:29304 Stdlib.Lists.List <> filter def
+R29376:29379 Higgaion.PQCMigration <> recs:92 var
+binder 29311:29311 <> r:96
+R29322:29330 Higgaion.PQCMigration <> mig_state proj
+R29332:29332 Higgaion.PQCMigration <> r:96 var
+R29339:29345 Higgaion.PQCMigration <> PqcOnly constr
+R29353:29356 Corelib.Init.Datatypes <> true constr
+R29365:29369 Corelib.Init.Datatypes <> false constr
+prf 29889:29915 <> state_distribution_complete
+binder 29926:29929 <> recs:97
+R29955:29972 Higgaion.PQCMigration <> state_distribution def
+R29974:29977 Higgaion.PQCMigration <> recs:97 var
+R29939:29939 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29941:29942 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29944:29945 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29947:29948 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29950:29950 Corelib.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R29997:29999 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R29993:29995 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R29989:29991 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R29985:29987 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R30000:30005 Corelib.Init.Datatypes <> length def
+R30007:30010 Higgaion.PQCMigration <> recs:97 var
+R30143:30160 Higgaion.PQCMigration <> state_distribution def
+R30193:30201 Higgaion.PQCMigration <> mig_state proj
+R30193:30201 Higgaion.PQCMigration <> mig_state proj
+def 30530:30538 <> state_ord
+R30545:30558 Higgaion.PQCMigration <> MigrationState ind
+binder 30541:30541 <> s:98
+R30563:30565 Corelib.Init.Datatypes <> nat ind
+R30578:30578 Higgaion.PQCMigration <> s:98 var
+R30589:30597 Higgaion.PQCMigration <> Classical constr
+R30609:30614 Higgaion.PQCMigration <> Hybrid constr
+R30629:30638 Higgaion.PQCMigration <> Finalizing constr
+R30649:30655 Higgaion.PQCMigration <> PqcOnly constr
+prf 31202:31222 <> begin_state_monotonic
+binder 31233:31233 <> r:100
+binder 31235:31236 <> r':101
+R31268:31273 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R31258:31260 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R31241:31255 Higgaion.PQCMigration <> begin_migration def
+R31257:31257 Higgaion.PQCMigration <> r:100 var
+R31261:31264 Corelib.Init.Datatypes <> Some constr
+R31266:31267 Higgaion.PQCMigration <> r':101 var
+R31297:31300 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R31274:31282 Higgaion.PQCMigration <> state_ord def
+R31285:31293 Higgaion.PQCMigration <> mig_state proj
+R31295:31295 Higgaion.PQCMigration <> r:100 var
+R31301:31309 Higgaion.PQCMigration <> state_ord def
+R31312:31320 Higgaion.PQCMigration <> mig_state proj
+R31322:31323 Higgaion.PQCMigration <> r':101 var
+R31360:31374 Higgaion.PQCMigration <> begin_migration def
+R31394:31402 Higgaion.PQCMigration <> mig_state proj
+R31394:31402 Higgaion.PQCMigration <> mig_state proj
+prf 31492:31523 <> enter_finalizing_state_monotonic
+binder 31534:31534 <> r:102
+binder 31536:31537 <> r':103
+R31570:31575 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R31560:31562 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R31542:31557 Higgaion.PQCMigration <> enter_finalizing def
+R31559:31559 Higgaion.PQCMigration <> r:102 var
+R31563:31566 Corelib.Init.Datatypes <> Some constr
+R31568:31569 Higgaion.PQCMigration <> r':103 var
+R31599:31602 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R31576:31584 Higgaion.PQCMigration <> state_ord def
+R31587:31595 Higgaion.PQCMigration <> mig_state proj
+R31597:31597 Higgaion.PQCMigration <> r:102 var
+R31603:31611 Higgaion.PQCMigration <> state_ord def
+R31614:31622 Higgaion.PQCMigration <> mig_state proj
+R31624:31625 Higgaion.PQCMigration <> r':103 var
+R31662:31677 Higgaion.PQCMigration <> enter_finalizing def
+R31697:31705 Higgaion.PQCMigration <> mig_state proj
+R31697:31705 Higgaion.PQCMigration <> mig_state proj
+prf 31795:31818 <> finalize_state_monotonic
+binder 31829:31829 <> r:104
+binder 31831:31832 <> r':105
+R31870:31875 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R31860:31862 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R31837:31857 Higgaion.PQCMigration <> complete_finalization def
+R31859:31859 Higgaion.PQCMigration <> r:104 var
+R31863:31866 Corelib.Init.Datatypes <> Some constr
+R31868:31869 Higgaion.PQCMigration <> r':105 var
+R31899:31902 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R31876:31884 Higgaion.PQCMigration <> state_ord def
+R31887:31895 Higgaion.PQCMigration <> mig_state proj
+R31897:31897 Higgaion.PQCMigration <> r:104 var
+R31903:31911 Higgaion.PQCMigration <> state_ord def
+R31914:31922 Higgaion.PQCMigration <> mig_state proj
+R31924:31925 Higgaion.PQCMigration <> r':105 var
+R31962:31982 Higgaion.PQCMigration <> complete_finalization def
+R32002:32010 Higgaion.PQCMigration <> mig_state proj
+R32002:32010 Higgaion.PQCMigration <> mig_state proj
+prf 32601:32633 <> cross_shard_divergence_detectable
+binder 32644:32645 <> r1:106
+binder 32647:32648 <> r2:107
+R32681:32686 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R32665:32668 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R32653:32661 Higgaion.PQCMigration <> mig_state proj
+R32663:32664 Higgaion.PQCMigration <> r1:106 var
+R32669:32677 Higgaion.PQCMigration <> mig_state proj
+R32679:32680 Higgaion.PQCMigration <> r2:107 var
+R32711:32714 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R32687:32695 Higgaion.PQCMigration <> state_ord def
+R32698:32706 Higgaion.PQCMigration <> mig_state proj
+R32708:32709 Higgaion.PQCMigration <> r1:106 var
+R32715:32723 Higgaion.PQCMigration <> state_ord def
+R32726:32734 Higgaion.PQCMigration <> mig_state proj
+R32736:32737 Higgaion.PQCMigration <> r2:107 var
+R32781:32789 Higgaion.PQCMigration <> mig_state proj
+R32797:32805 Higgaion.PQCMigration <> mig_state proj
+R32781:32789 Higgaion.PQCMigration <> mig_state proj
+R32797:32805 Higgaion.PQCMigration <> mig_state proj
+R32797:32805 Higgaion.PQCMigration <> mig_state proj
+R32797:32805 Higgaion.PQCMigration <> mig_state proj
+R32797:32805 Higgaion.PQCMigration <> mig_state proj
+def 33145:33158 <> cnsa_compliant
+R33165:33179 Higgaion.PQCMigration <> MigrationRecord rec
+binder 33161:33161 <> r:108
+R33184:33187 Corelib.Init.Datatypes <> bool ind
+R33200:33208 Higgaion.PQCMigration <> mig_state proj
+R33210:33210 Higgaion.PQCMigration <> r:108 var
+R33221:33227 Higgaion.PQCMigration <> PqcOnly constr
+R33232:33235 Corelib.Init.Datatypes <> true constr
+R33252:33256 Corelib.Init.Datatypes <> false constr
+prf 33685:33707 <> compliance_irreversible
+binder 33718:33718 <> r:109
+R33746:33751 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R33739:33741 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R33723:33736 Higgaion.PQCMigration <> cnsa_compliant def
+R33738:33738 Higgaion.PQCMigration <> r:109 var
+R33742:33745 Corelib.Init.Datatypes <> true constr
+R33763:33765 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R33752:33760 Higgaion.PQCMigration <> mig_state proj
+R33762:33762 Higgaion.PQCMigration <> r:109 var
+R33766:33772 Higgaion.PQCMigration <> PqcOnly constr
+R33804:33817 Higgaion.PQCMigration <> cnsa_compliant def
+R33838:33846 Higgaion.PQCMigration <> mig_state proj
+R33838:33846 Higgaion.PQCMigration <> mig_state proj
+prf 33895:33913 <> compliance_terminal
+binder 33924:33924 <> r:110
+R33952:33957 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R33945:33947 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R33929:33942 Higgaion.PQCMigration <> cnsa_compliant def
+R33944:33944 Higgaion.PQCMigration <> r:110 var
+R33948:33951 Corelib.Init.Datatypes <> true constr
+R33982:33987 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R33975:33977 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R33958:33972 Higgaion.PQCMigration <> begin_migration def
+R33974:33974 Higgaion.PQCMigration <> r:110 var
+R33978:33981 Corelib.Init.Datatypes <> None constr
+R34013:34018 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R34006:34008 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R33988:34003 Higgaion.PQCMigration <> enter_finalizing def
+R34005:34005 Higgaion.PQCMigration <> r:110 var
+R34009:34012 Corelib.Init.Datatypes <> None constr
+R34049:34054 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R34042:34044 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34019:34039 Higgaion.PQCMigration <> complete_finalization def
+R34041:34041 Higgaion.PQCMigration <> r:110 var
+R34045:34048 Corelib.Init.Datatypes <> None constr
+R34065:34067 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34055:34062 Higgaion.PQCMigration <> rollback def
+R34064:34064 Higgaion.PQCMigration <> r:110 var
+R34068:34071 Corelib.Init.Datatypes <> None constr
+R34104:34126 Higgaion.PQCMigration <> compliance_irreversible thm
+R34104:34126 Higgaion.PQCMigration <> compliance_irreversible thm
+R34249:34256 Higgaion.PQCMigration <> rollback def
+R34217:34237 Higgaion.PQCMigration <> complete_finalization def
+R34187:34202 Higgaion.PQCMigration <> enter_finalizing def
+R34161:34175 Higgaion.PQCMigration <> begin_migration def
+prf 34731:34764 <> full_migration_achieves_compliance
+R34780:34789 Higgaion.PQCMigration <> import_key def
+binder 34774:34775 <> r0:111
+binder 34803:34804 <> r1:112
+binder 34806:34807 <> r2:113
+binder 34809:34810 <> r3:114
+R34845:34852 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R34835:34837 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34817:34831 Higgaion.PQCMigration <> begin_migration def
+R34833:34834 Higgaion.PQCMigration <> r0:111 var
+R34838:34841 Corelib.Init.Datatypes <> Some constr
+R34843:34844 Higgaion.PQCMigration <> r1:112 var
+R34882:34889 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R34872:34874 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34853:34868 Higgaion.PQCMigration <> enter_finalizing def
+R34870:34871 Higgaion.PQCMigration <> r1:112 var
+R34875:34878 Corelib.Init.Datatypes <> Some constr
+R34880:34881 Higgaion.PQCMigration <> r2:113 var
+R34924:34931 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R34914:34916 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34890:34910 Higgaion.PQCMigration <> complete_finalization def
+R34912:34913 Higgaion.PQCMigration <> r2:113 var
+R34917:34920 Corelib.Init.Datatypes <> Some constr
+R34922:34923 Higgaion.PQCMigration <> r3:114 var
+R34949:34951 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R34932:34945 Higgaion.PQCMigration <> cnsa_compliant def
+R34947:34948 Higgaion.PQCMigration <> r3:114 var
+R34952:34955 Corelib.Init.Datatypes <> true constr
+rec 35474:35490 <> ConstrainedRecord
+proj 35511:35521 <> constr_base
+proj 35550:35563 <> max_heap_bytes
+proj 35577:35590 <> max_concurrent
+proj 35604:35611 <> skip_kem
+R35531:35545 Higgaion.PQCMigration <> MigrationRecord rec
+R35570:35572 Corelib.Init.Datatypes <> nat ind
+R35597:35599 Corelib.Init.Datatypes <> nat ind
+R35624:35627 Corelib.Init.Datatypes <> bool ind
+def 35644:35666 <> constrained_well_formed
+R35674:35690 Higgaion.PQCMigration <> ConstrainedRecord rec
+binder 35669:35670 <> cr:120
+R35705:35715 Higgaion.PQCMigration <> well_formed def
+R35718:35728 Higgaion.PQCMigration <> constr_base proj
+R35730:35731 Higgaion.PQCMigration <> cr:120 var
+prf 36200:36222 <> constraints_preserve_wf
+binder 36233:36234 <> cr:121
+binder 36236:36243 <> new_heap:122
+binder 36245:36252 <> new_conc:123
+binder 36254:36260 <> new_kem:124
+R36291:36296 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R36265:36287 Higgaion.PQCMigration <> constrained_well_formed def
+R36289:36290 Higgaion.PQCMigration <> cr:121 var
+R36297:36319 Higgaion.PQCMigration <> constrained_well_formed def
+R36326:36336 Higgaion.PQCMigration <> mkConstrRec constr
+R36339:36349 Higgaion.PQCMigration <> constr_base proj
+R36351:36352 Higgaion.PQCMigration <> cr:121 var
+R36355:36362 Higgaion.PQCMigration <> new_heap:122 var
+R36364:36371 Higgaion.PQCMigration <> new_conc:123 var
+R36373:36379 Higgaion.PQCMigration <> new_kem:124 var
+R36442:36464 Higgaion.PQCMigration <> constrained_well_formed def
+prf 36864:36890 <> constraints_state_invariant
+binder 36901:36902 <> cr:125
+binder 36904:36911 <> new_heap:126
+binder 36913:36920 <> new_conc:127
+binder 36922:36928 <> new_kem:128
+R37013:37017 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R36933:36941 Higgaion.PQCMigration <> mig_state proj
+R36944:36954 Higgaion.PQCMigration <> constr_base proj
+R36957:36967 Higgaion.PQCMigration <> mkConstrRec constr
+R36970:36980 Higgaion.PQCMigration <> constr_base proj
+R36982:36983 Higgaion.PQCMigration <> cr:125 var
+R36986:36993 Higgaion.PQCMigration <> new_heap:126 var
+R36995:37002 Higgaion.PQCMigration <> new_conc:127 var
+R37004:37010 Higgaion.PQCMigration <> new_kem:128 var
+R37018:37026 Higgaion.PQCMigration <> mig_state proj
+R37029:37039 Higgaion.PQCMigration <> constr_base proj
+R37041:37042 Higgaion.PQCMigration <> cr:125 var
+rec 37357:37370 <> CloudKMSRecord
+proj 37393:37401 <> ckms_base
+proj 37425:37434 <> ckms_bound
+R37406:37420 Higgaion.PQCMigration <> MigrationRecord rec
+R37438:37441 Corelib.Init.Datatypes <> bool ind
+def 37458:37473 <> ckms_well_formed
+R37481:37494 Higgaion.PQCMigration <> CloudKMSRecord rec
+binder 37476:37477 <> cr:132
+R37509:37519 Higgaion.PQCMigration <> well_formed def
+R37522:37530 Higgaion.PQCMigration <> ckms_base proj
+R37532:37533 Higgaion.PQCMigration <> cr:132 var
+prf 38056:38077 <> cloud_kms_preserves_wf
+binder 38088:38089 <> cr:133
+binder 38091:38104 <> new_ckms_state:134
+R38128:38133 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R38109:38124 Higgaion.PQCMigration <> ckms_well_formed def
+R38126:38127 Higgaion.PQCMigration <> cr:133 var
+R38134:38149 Higgaion.PQCMigration <> ckms_well_formed def
+R38152:38164 Higgaion.PQCMigration <> mkCloudKMSRec constr
+R38167:38175 Higgaion.PQCMigration <> ckms_base proj
+R38177:38178 Higgaion.PQCMigration <> cr:133 var
+R38181:38194 Higgaion.PQCMigration <> new_ckms_state:134 var
+R38246:38261 Higgaion.PQCMigration <> ckms_well_formed def
+rec 38549:38560 <> TenantRecord
+proj 38581:38591 <> tenant_base
+proj 38614:38622 <> tenant_id
+proj 38635:38646 <> auto_migrate
+proj 38658:38665 <> max_keys
+R38595:38609 Higgaion.PQCMigration <> MigrationRecord rec
+R38628:38630 Corelib.Init.Datatypes <> nat ind
+R38650:38653 Corelib.Init.Datatypes <> bool ind
+R38672:38674 Corelib.Init.Datatypes <> nat ind
+def 38713:38730 <> tenant_well_formed
+R38738:38749 Higgaion.PQCMigration <> TenantRecord rec
+binder 38733:38734 <> tr:140
+R38764:38774 Higgaion.PQCMigration <> well_formed def
+R38777:38787 Higgaion.PQCMigration <> tenant_base proj
+R38789:38790 Higgaion.PQCMigration <> tr:140 var
+prf 39257:39275 <> tenant_preserves_wf
+binder 39286:39286 <> r:141
+binder 39288:39290 <> tid:142
+binder 39292:39293 <> am:143
+binder 39295:39296 <> mk:144
+R39314:39319 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R39301:39311 Higgaion.PQCMigration <> well_formed def
+R39313:39313 Higgaion.PQCMigration <> r:141 var
+R39320:39337 Higgaion.PQCMigration <> tenant_well_formed def
+R39340:39350 Higgaion.PQCMigration <> mkTenantRec constr
+R39352:39352 Higgaion.PQCMigration <> r:141 var
+R39354:39356 Higgaion.PQCMigration <> tid:142 var
+R39358:39359 Higgaion.PQCMigration <> am:143 var
+R39361:39362 Higgaion.PQCMigration <> mk:144 var
+R39408:39425 Higgaion.PQCMigration <> tenant_well_formed def
+prf 39892:39919 <> tenant_migration_independent
+binder 39930:39932 <> tr1:145
+binder 39934:39936 <> tr2:146
+binder 39938:39940 <> r1':147
+R39975:39980 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R39958:39961 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R39945:39953 Higgaion.PQCMigration <> tenant_id proj
+R39955:39957 Higgaion.PQCMigration <> tr1:145 var
+R39962:39970 Higgaion.PQCMigration <> tenant_id proj
+R39972:39974 Higgaion.PQCMigration <> tr2:146 var
+R40025:40030 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R40014:40016 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R39981:39995 Higgaion.PQCMigration <> begin_migration def
+R39998:40008 Higgaion.PQCMigration <> tenant_base proj
+R40010:40012 Higgaion.PQCMigration <> tr1:145 var
+R40017:40020 Corelib.Init.Datatypes <> Some constr
+R40022:40024 Higgaion.PQCMigration <> r1':147 var
+R40046:40048 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R40031:40041 Higgaion.PQCMigration <> tenant_base proj
+R40043:40045 Higgaion.PQCMigration <> tr2:146 var
+R40049:40059 Higgaion.PQCMigration <> tenant_base proj
+R40061:40063 Higgaion.PQCMigration <> tr2:146 var
+prf 41067:41094 <> hw_wallet_migration_complete
+R41110:41119 Higgaion.PQCMigration <> import_key def
+binder 41104:41105 <> r0:148
+binder 41133:41134 <> r1:149
+binder 41136:41137 <> r2:150
+binder 41139:41140 <> r3:151
+R41175:41182 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R41165:41167 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41147:41161 Higgaion.PQCMigration <> begin_migration def
+R41163:41164 Higgaion.PQCMigration <> r0:148 var
+R41168:41171 Corelib.Init.Datatypes <> Some constr
+R41173:41174 Higgaion.PQCMigration <> r1:149 var
+R41212:41219 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R41202:41204 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41183:41198 Higgaion.PQCMigration <> enter_finalizing def
+R41200:41201 Higgaion.PQCMigration <> r1:149 var
+R41205:41208 Corelib.Init.Datatypes <> Some constr
+R41210:41211 Higgaion.PQCMigration <> r2:150 var
+R41254:41261 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R41244:41246 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41220:41240 Higgaion.PQCMigration <> complete_finalization def
+R41242:41243 Higgaion.PQCMigration <> r2:150 var
+R41247:41250 Corelib.Init.Datatypes <> Some constr
+R41252:41253 Higgaion.PQCMigration <> r3:151 var
+R41284:41291 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R41274:41276 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41262:41270 Higgaion.PQCMigration <> mig_state proj
+R41272:41273 Higgaion.PQCMigration <> r3:151 var
+R41277:41283 Higgaion.PQCMigration <> PqcOnly constr
+R41316:41323 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R41308:41310 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41292:41304 Higgaion.PQCMigration <> has_classical proj
+R41306:41307 Higgaion.PQCMigration <> r3:151 var
+R41311:41315 Corelib.Init.Datatypes <> false constr
+R41341:41348 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R41334:41336 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41324:41330 Higgaion.PQCMigration <> has_pqc proj
+R41332:41333 Higgaion.PQCMigration <> r3:151 var
+R41337:41340 Corelib.Init.Datatypes <> true constr
+R41366:41368 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R41349:41362 Higgaion.PQCMigration <> cnsa_compliant def
+R41364:41365 Higgaion.PQCMigration <> r3:151 var
+R41369:41372 Corelib.Init.Datatypes <> true constr
+ind 42484:42488 <> WALOp
+constr 42504:42513 <> WAL_Import
+constr 42535:42543 <> WAL_Begin
+constr 42566:42577 <> WAL_Finalize
+constr 42597:42608 <> WAL_Rollback
+scheme 42484:42488 <> WALOp_rect
+scheme 42484:42488 <> WALOp_ind
+scheme 42484:42488 <> WALOp_rec
+scheme 42484:42488 <> WALOp_sind
+rec 42708:42716 <> WALRecord
+proj 42734:42739 <> wal_op
+proj 42758:42767 <> wal_key_id
+proj 42818:42826 <> wal_state
+proj 42851:42857 <> wal_seq
+proj 42913:42922 <> wal_crc_ok
+R42749:42753 Higgaion.PQCMigration <> WALOp ind
+R42773:42775 Corelib.Init.Datatypes <> nat ind
+R42833:42846 Higgaion.PQCMigration <> MigrationState ind
+R42866:42868 Corelib.Init.Datatypes <> nat ind
+R42928:42931 Corelib.Init.Datatypes <> bool ind
+def 43170:43185 <> apply_wal_record
+R43192:43206 Higgaion.PQCMigration <> MigrationRecord rec
+binder 43188:43188 <> r:160
+R43214:43222 Higgaion.PQCMigration <> WALRecord rec
+binder 43210:43210 <> w:161
+R43231:43245 Higgaion.PQCMigration <> MigrationRecord rec
+R43255:43258 Corelib.Init.Datatypes <> negb def
+R43261:43270 Higgaion.PQCMigration <> wal_crc_ok proj
+R43272:43272 Higgaion.PQCMigration <> w:161 var
+R43329:43334 Higgaion.PQCMigration <> wal_op proj
+R43336:43336 Higgaion.PQCMigration <> w:161 var
+R43349:43358 Higgaion.PQCMigration <> WAL_Import constr
+R43365:43374 Higgaion.PQCMigration <> import_key def
+R43382:43390 Higgaion.PQCMigration <> WAL_Begin constr
+R43404:43418 Higgaion.PQCMigration <> begin_migration def
+R43420:43420 Higgaion.PQCMigration <> r:160 var
+R43451:43454 Corelib.Init.Datatypes <> Some constr
+R43467:43470 Corelib.Init.Datatypes <> None constr
+R43475:43475 Higgaion.PQCMigration <> r:160 var
+R43487:43498 Higgaion.PQCMigration <> WAL_Finalize constr
+R43509:43524 Higgaion.PQCMigration <> enter_finalizing def
+R43526:43526 Higgaion.PQCMigration <> r:160 var
+R43557:43560 Corelib.Init.Datatypes <> Some constr
+R43598:43618 Higgaion.PQCMigration <> complete_finalization def
+R43654:43657 Corelib.Init.Datatypes <> Some constr
+R43670:43673 Corelib.Init.Datatypes <> None constr
+R43709:43712 Corelib.Init.Datatypes <> None constr
+R43747:43767 Higgaion.PQCMigration <> complete_finalization def
+R43769:43769 Higgaion.PQCMigration <> r:160 var
+R43802:43805 Corelib.Init.Datatypes <> Some constr
+R43818:43821 Corelib.Init.Datatypes <> None constr
+R43826:43826 Higgaion.PQCMigration <> r:160 var
+R43864:43875 Higgaion.PQCMigration <> WAL_Rollback constr
+R43886:43893 Higgaion.PQCMigration <> rollback def
+R43895:43895 Higgaion.PQCMigration <> r:160 var
+R43926:43929 Corelib.Init.Datatypes <> Some constr
+R43942:43945 Corelib.Init.Datatypes <> None constr
+R43950:43950 Higgaion.PQCMigration <> r:160 var
+R43280:43280 Higgaion.PQCMigration <> r:160 var
+def 44025:44034 <> wal_replay
+R44041:44055 Higgaion.PQCMigration <> MigrationRecord rec
+binder 44037:44037 <> r:162
+R44065:44068 Corelib.Init.Datatypes <> list ind
+R44070:44078 Higgaion.PQCMigration <> WALRecord rec
+binder 44059:44061 <> log:163
+R44087:44101 Higgaion.PQCMigration <> MigrationRecord rec
+R44114:44116 Higgaion.PQCMigration <> log:163 var
+R44127:44128 Stdlib.Lists.List ListNotations ::list_scope:'['_']' not
+R44133:44133 Higgaion.PQCMigration <> r:162 var
+R44140:44143 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R44150:44159 Higgaion.PQCMigration <> wal_replay:164 def
+R44162:44177 Higgaion.PQCMigration <> apply_wal_record def
+R44179:44179 Higgaion.PQCMigration <> r:162 var
+prf 44604:44624 <> wal_replay_idempotent
+binder 44635:44635 <> r:166
+binder 44637:44639 <> log:167
+R44676:44678 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R44644:44653 Higgaion.PQCMigration <> wal_replay def
+R44656:44665 Higgaion.PQCMigration <> wal_replay def
+R44667:44667 Higgaion.PQCMigration <> r:166 var
+R44669:44671 Higgaion.PQCMigration <> log:167 var
+R44674:44675 Stdlib.Lists.List ListNotations ::list_scope:'['_']' not
+R44679:44688 Higgaion.PQCMigration <> wal_replay def
+R44690:44690 Higgaion.PQCMigration <> r:166 var
+R44692:44694 Higgaion.PQCMigration <> log:167 var
+prf 45160:45182 <> wal_crc_invalid_skipped
+binder 45193:45193 <> r:168
+binder 45195:45195 <> w:169
+R45220:45225 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R45212:45214 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R45200:45209 Higgaion.PQCMigration <> wal_crc_ok proj
+R45211:45211 Higgaion.PQCMigration <> w:169 var
+R45215:45219 Corelib.Init.Datatypes <> false constr
+R45246:45248 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R45226:45241 Higgaion.PQCMigration <> apply_wal_record def
+R45243:45243 Higgaion.PQCMigration <> r:168 var
+R45245:45245 Higgaion.PQCMigration <> w:169 var
+R45249:45249 Higgaion.PQCMigration <> r:168 var
+R45287:45302 Higgaion.PQCMigration <> apply_wal_record def
+prf 45763:45778 <> wal_replay_empty
+binder 45789:45789 <> r:170
+R45809:45811 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R45794:45803 Higgaion.PQCMigration <> wal_replay def
+R45805:45805 Higgaion.PQCMigration <> r:170 var
+R45807:45808 Stdlib.Lists.List ListNotations ::list_scope:'['_']' not
+R45812:45812 Higgaion.PQCMigration <> r:170 var
+prf 46273:46292 <> wal_replay_import_wf
+binder 46303:46303 <> r:171
+binder 46305:46305 <> w:172
+R46331:46336 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R46318:46320 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R46310:46315 Higgaion.PQCMigration <> wal_op proj
+R46317:46317 Higgaion.PQCMigration <> w:172 var
+R46321:46330 Higgaion.PQCMigration <> WAL_Import constr
+R46356:46361 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R46349:46351 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R46337:46346 Higgaion.PQCMigration <> wal_crc_ok proj
+R46348:46348 Higgaion.PQCMigration <> w:172 var
+R46352:46355 Corelib.Init.Datatypes <> true constr
+R46362:46372 Higgaion.PQCMigration <> well_formed def
+R46375:46390 Higgaion.PQCMigration <> apply_wal_record def
+R46392:46392 Higgaion.PQCMigration <> r:171 var
+R46394:46394 Higgaion.PQCMigration <> w:172 var
+R46437:46452 Higgaion.PQCMigration <> apply_wal_record def
+R46499:46516 Higgaion.PQCMigration <> import_well_formed thm
+R46499:46516 Higgaion.PQCMigration <> import_well_formed thm
+def 47069:47083 <> wal_seq_ordered
+R47092:47095 Corelib.Init.Datatypes <> list ind
+R47097:47105 Higgaion.PQCMigration <> WALRecord rec
+binder 47086:47088 <> log:173
+R47126:47128 Higgaion.PQCMigration <> log:173 var
+R47139:47140 Stdlib.Lists.List ListNotations ::list_scope:'['_']' not
+R47145:47148 Corelib.Init.Logic <> True ind
+R47154:47154 Stdlib.Lists.List ListNotations ::list_scope:'['_x_']' not
+R47156:47156 Stdlib.Lists.List ListNotations ::list_scope:'['_x_']' not
+R47161:47164 Corelib.Init.Logic <> True ind
+R47172:47176 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R47194:47194 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R47180:47183 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R47229:47232 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R47215:47218 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R47205:47211 Higgaion.PQCMigration <> wal_seq proj
+R47219:47225 Higgaion.PQCMigration <> wal_seq proj
+R47233:47247 Higgaion.PQCMigration <> wal_seq_ordered:174 def
+prf 47270:47296 <> wal_seq_ordered_head_le_all
+binder 47307:47308 <> w1:176
+binder 47310:47311 <> w2:177
+binder 47313:47316 <> rest:178
+R47355:47360 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R47321:47335 Higgaion.PQCMigration <> wal_seq_ordered def
+R47340:47343 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R47338:47339 Higgaion.PQCMigration <> w1:176 var
+R47346:47349 Corelib.Init.Datatypes <> ::list_scope:x_'::'_x not
+R47344:47345 Higgaion.PQCMigration <> w2:177 var
+R47350:47353 Higgaion.PQCMigration <> rest:178 var
+R47371:47374 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R47361:47367 Higgaion.PQCMigration <> wal_seq proj
+R47369:47370 Higgaion.PQCMigration <> w1:176 var
+R47375:47381 Higgaion.PQCMigration <> wal_seq proj
+R47383:47384 Higgaion.PQCMigration <> w2:177 var
+prf 48099:48123 <> post_erasure_wal_ordering
+binder 48134:48134 <> r:179
+binder 48136:48136 <> w:180
+R48164:48169 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R48149:48151 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R48141:48146 Higgaion.PQCMigration <> wal_op proj
+R48148:48148 Higgaion.PQCMigration <> w:180 var
+R48152:48163 Higgaion.PQCMigration <> WAL_Finalize constr
+R48189:48194 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R48182:48184 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R48170:48179 Higgaion.PQCMigration <> wal_crc_ok proj
+R48181:48181 Higgaion.PQCMigration <> w:180 var
+R48185:48188 Corelib.Init.Datatypes <> true constr
+R48208:48213 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R48195:48205 Higgaion.PQCMigration <> well_formed def
+R48207:48207 Higgaion.PQCMigration <> r:179 var
+R48238:48243 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R48225:48227 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R48214:48222 Higgaion.PQCMigration <> mig_state proj
+R48224:48224 Higgaion.PQCMigration <> r:179 var
+R48228:48237 Higgaion.PQCMigration <> Finalizing constr
+R48280:48282 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R48244:48256 Higgaion.PQCMigration <> has_classical proj
+R48259:48274 Higgaion.PQCMigration <> apply_wal_record def
+R48276:48276 Higgaion.PQCMigration <> r:179 var
+R48278:48278 Higgaion.PQCMigration <> w:180 var
+R48283:48287 Corelib.Init.Datatypes <> false constr
+R48337:48352 Higgaion.PQCMigration <> apply_wal_record def
+R48398:48413 Higgaion.PQCMigration <> enter_finalizing def
+R48447:48467 Higgaion.PQCMigration <> complete_finalization def
+def 48908:48934 <> hybrid_verify_pqc_preferred
+R48953:48955 Corelib.Init.Datatypes <> nat ind
+binder 48937:48939 <> msg:181
+binder 48941:48944 <> csig:182
+binder 48946:48949 <> psig:183
+R48977:48980 Corelib.Init.Datatypes <> bool ind
+binder 48963:48973 <> pqc_present:184
+R48985:48988 Corelib.Init.Datatypes <> bool ind
+R48998:49008 Higgaion.PQCMigration <> pqc_present:184 var
+R49046:49061 Higgaion.PQCMigration <> classical_verify def
+R49063:49065 Higgaion.PQCMigration <> msg:181 var
+R49067:49070 Higgaion.PQCMigration <> csig:182 var
+R49015:49028 Higgaion.PQCMigration <> pqc_verify_sig def
+R49030:49032 Higgaion.PQCMigration <> msg:181 var
+R49034:49037 Higgaion.PQCMigration <> psig:183 var
+prf 49477:49507 <> conjunctive_implies_disjunctive
+binder 49518:49520 <> msg:185
+binder 49522:49525 <> csig:186
+binder 49527:49530 <> psig:187
+R49581:49586 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R49574:49576 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R49535:49559 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R49561:49563 Higgaion.PQCMigration <> msg:185 var
+R49565:49568 Higgaion.PQCMigration <> csig:186 var
+R49570:49573 Higgaion.PQCMigration <> psig:187 var
+R49577:49580 Corelib.Init.Datatypes <> true constr
+R49626:49628 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R49587:49611 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R49613:49615 Higgaion.PQCMigration <> msg:185 var
+R49617:49620 Higgaion.PQCMigration <> csig:186 var
+R49622:49625 Higgaion.PQCMigration <> psig:187 var
+R49629:49632 Corelib.Init.Datatypes <> true constr
+R49678:49702 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R49720:49744 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R49755:49772 Stdlib.Bool.Bool <> andb_true_iff thm
+R49755:49772 Stdlib.Bool.Bool <> andb_true_iff thm
+prf 50197:50220 <> pqc_preferred_covers_pqc
+binder 50231:50233 <> msg:188
+binder 50235:50238 <> csig:189
+binder 50240:50243 <> psig:190
+R50278:50283 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R50271:50273 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R50248:50261 Higgaion.PQCMigration <> pqc_verify_sig def
+R50263:50265 Higgaion.PQCMigration <> msg:188 var
+R50267:50270 Higgaion.PQCMigration <> psig:190 var
+R50274:50277 Corelib.Init.Datatypes <> true constr
+R50330:50332 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R50284:50310 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+R50312:50314 Higgaion.PQCMigration <> msg:188 var
+R50316:50319 Higgaion.PQCMigration <> csig:189 var
+R50321:50324 Higgaion.PQCMigration <> psig:190 var
+R50326:50329 Corelib.Init.Datatypes <> true constr
+R50333:50336 Corelib.Init.Datatypes <> true constr
+R50384:50410 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+prf 50782:50803 <> pqc_preferred_fallback
+binder 50814:50816 <> msg:191
+binder 50818:50821 <> csig:192
+binder 50823:50826 <> psig:193
+R50863:50868 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R50856:50858 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R50831:50846 Higgaion.PQCMigration <> classical_verify def
+R50848:50850 Higgaion.PQCMigration <> msg:191 var
+R50852:50855 Higgaion.PQCMigration <> csig:192 var
+R50859:50862 Corelib.Init.Datatypes <> true constr
+R50916:50918 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R50869:50895 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+R50897:50899 Higgaion.PQCMigration <> msg:191 var
+R50901:50904 Higgaion.PQCMigration <> csig:192 var
+R50906:50909 Higgaion.PQCMigration <> psig:193 var
+R50911:50915 Corelib.Init.Datatypes <> false constr
+R50919:50922 Corelib.Init.Datatypes <> true constr
+R50969:50995 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+prf 51518:51556 <> conjunctive_strictly_subset_disjunctive
+R51562:51562 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R51689:51696 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R51824:51824 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+binder 51570:51572 <> msg:194
+binder 51574:51577 <> csig:195
+binder 51579:51582 <> psig:196
+R51635:51642 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R51628:51630 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R51589:51613 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R51615:51617 Higgaion.PQCMigration <> msg:194 var
+R51619:51622 Higgaion.PQCMigration <> csig:195 var
+R51624:51627 Higgaion.PQCMigration <> psig:196 var
+R51631:51634 Corelib.Init.Datatypes <> true constr
+R51682:51684 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R51643:51667 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R51669:51671 Higgaion.PQCMigration <> msg:194 var
+R51673:51676 Higgaion.PQCMigration <> csig:195 var
+R51678:51681 Higgaion.PQCMigration <> psig:196 var
+R51685:51688 Corelib.Init.Datatypes <> true constr
+R51697:51703 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R51717:51722 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 51704:51706 <> msg:197
+binder 51708:51711 <> csig:198
+binder 51713:51716 <> psig:199
+R51769:51776 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R51762:51764 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R51723:51747 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R51749:51751 Higgaion.PQCMigration <> msg:197 var
+R51753:51756 Higgaion.PQCMigration <> csig:198 var
+R51758:51761 Higgaion.PQCMigration <> psig:199 var
+R51765:51768 Corelib.Init.Datatypes <> true constr
+R51816:51818 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R51777:51801 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R51803:51805 Higgaion.PQCMigration <> msg:197 var
+R51807:51810 Higgaion.PQCMigration <> csig:198 var
+R51812:51815 Higgaion.PQCMigration <> psig:199 var
+R51819:51823 Corelib.Init.Datatypes <> false constr
+R51853:51883 Higgaion.PQCMigration <> conjunctive_implies_disjunctive thm
+R51853:51883 Higgaion.PQCMigration <> conjunctive_implies_disjunctive thm
+R51896:51931 Higgaion.PQCMigration <> disjunctive_strictly_more_permissive thm
+R51896:51931 Higgaion.PQCMigration <> disjunctive_strictly_more_permissive thm
+prf 52429:52464 <> verification_policy_state_orthogonal
+binder 52475:52475 <> r:200
+R52491:52493 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R52480:52488 Higgaion.PQCMigration <> mig_state proj
+R52490:52490 Higgaion.PQCMigration <> r:200 var
+R52494:52502 Higgaion.PQCMigration <> mig_state proj
+R52504:52504 Higgaion.PQCMigration <> r:200 var
+def 52840:52854 <> batch_begin_one
+R52864:52867 Corelib.Init.Datatypes <> list ind
+R52869:52883 Higgaion.PQCMigration <> MigrationRecord rec
+binder 52857:52860 <> recs:201
+R52893:52895 Corelib.Init.Datatypes <> nat ind
+binder 52887:52889 <> idx:202
+R52904:52907 Corelib.Init.Datatypes <> list ind
+R52909:52923 Higgaion.PQCMigration <> MigrationRecord rec
+R52936:52942 Higgaion.HiggaionTypes <> nth_opt def
+R52949:52951 Higgaion.PQCMigration <> idx:202 var
+R52944:52947 Higgaion.PQCMigration <> recs:201 var
+R52962:52965 Corelib.Init.Datatypes <> Some constr
+R52982:52996 Higgaion.PQCMigration <> begin_migration def
+R53011:53014 Corelib.Init.Datatypes <> Some constr
+R53022:53031 Higgaion.HiggaionTypes <> update_nth def
+R53038:53040 Higgaion.PQCMigration <> idx:202 var
+R53033:53036 Higgaion.PQCMigration <> recs:201 var
+R53051:53054 Corelib.Init.Datatypes <> None constr
+R53062:53065 Higgaion.PQCMigration <> recs:201 var
+R53111:53114 Corelib.Init.Datatypes <> None constr
+R53119:53122 Higgaion.PQCMigration <> recs:201 var
+prf 53553:53573 <> batch_fault_isolation
+binder 53584:53587 <> recs:203
+binder 53589:53589 <> i:204
+R53594:53594 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R53656:53662 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+binder 53602:53602 <> r:205
+R53628:53631 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R53619:53621 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R53605:53611 Higgaion.HiggaionTypes <> nth_opt def
+R53618:53618 Higgaion.PQCMigration <> i:204 var
+R53613:53616 Higgaion.PQCMigration <> recs:203 var
+R53622:53625 Corelib.Init.Datatypes <> Some constr
+R53627:53627 Higgaion.PQCMigration <> r:205 var
+R53649:53651 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R53632:53646 Higgaion.PQCMigration <> begin_migration def
+R53648:53648 Higgaion.PQCMigration <> r:205 var
+R53652:53655 Corelib.Init.Datatypes <> None constr
+R53685:53687 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R53663:53677 Higgaion.PQCMigration <> batch_begin_one def
+R53679:53682 Higgaion.PQCMigration <> recs:203 var
+R53684:53684 Higgaion.PQCMigration <> i:204 var
+R53688:53691 Higgaion.PQCMigration <> recs:203 var
+R53733:53747 Higgaion.PQCMigration <> batch_begin_one def
+R53762:53768 Higgaion.HiggaionTypes <> nth_opt def
+R53762:53768 Higgaion.HiggaionTypes <> nth_opt def
+R53812:53818 Corelib.Init.Logic <> eq_refl constr
+R53812:53818 Corelib.Init.Logic <> eq_refl constr
+prf 54286:54301 <> update_nth_other
+binder 54313:54313 <> A:206
+R54328:54331 Corelib.Init.Datatypes <> list ind
+R54333:54333 Higgaion.PQCMigration <> A:206 var
+binder 54324:54324 <> l:207
+binder 54336:54336 <> i:208
+binder 54338:54338 <> j:209
+binder 54340:54340 <> v:210
+R54351:54354 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R54346:54349 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R54345:54345 Higgaion.PQCMigration <> i:208 var
+R54350:54350 Higgaion.PQCMigration <> j:209 var
+R54383:54385 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R54355:54361 Higgaion.HiggaionTypes <> nth_opt def
+R54382:54382 Higgaion.PQCMigration <> j:209 var
+R54364:54373 Higgaion.HiggaionTypes <> update_nth def
+R54379:54379 Higgaion.PQCMigration <> v:210 var
+R54377:54377 Higgaion.PQCMigration <> i:208 var
+R54375:54375 Higgaion.PQCMigration <> l:207 var
+R54386:54392 Higgaion.HiggaionTypes <> nth_opt def
+R54396:54396 Higgaion.PQCMigration <> j:209 var
+R54394:54394 Higgaion.PQCMigration <> l:207 var
+prf 54641:54666 <> batch_preserves_other_keys
+binder 54677:54680 <> recs:211
+binder 54682:54682 <> i:212
+binder 54684:54684 <> j:213
+binder 54686:54687 <> r':214
+R54698:54703 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R54693:54696 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R54692:54692 Higgaion.PQCMigration <> i:212 var
+R54697:54697 Higgaion.PQCMigration <> j:213 var
+R54728:54733 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R54718:54720 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R54704:54710 Higgaion.HiggaionTypes <> nth_opt def
+R54717:54717 Higgaion.PQCMigration <> i:212 var
+R54712:54715 Higgaion.PQCMigration <> recs:211 var
+R54721:54724 Corelib.Init.Datatypes <> Some constr
+R54726:54727 Higgaion.PQCMigration <> r':214 var
+R54762:54767 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R54752:54754 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R54734:54748 Higgaion.PQCMigration <> begin_migration def
+R54750:54751 Higgaion.PQCMigration <> r':214 var
+R54755:54758 Corelib.Init.Datatypes <> Some constr
+R54760:54761 Higgaion.PQCMigration <> r':214 var
+R54802:54804 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R54768:54774 Higgaion.HiggaionTypes <> nth_opt def
+R54801:54801 Higgaion.PQCMigration <> j:213 var
+R54777:54791 Higgaion.PQCMigration <> batch_begin_one def
+R54793:54796 Higgaion.PQCMigration <> recs:211 var
+R54798:54798 Higgaion.PQCMigration <> i:212 var
+R54805:54811 Higgaion.HiggaionTypes <> nth_opt def
+R54818:54818 Higgaion.PQCMigration <> j:213 var
+R54813:54816 Higgaion.PQCMigration <> recs:211 var
+R54876:54890 Higgaion.PQCMigration <> batch_begin_one def
+R54931:54946 Higgaion.PQCMigration <> update_nth_other thm
+R54931:54946 Higgaion.PQCMigration <> update_nth_other thm
+prf 55302:55318 <> update_nth_length
+binder 55330:55330 <> A:215
+R55345:55348 Corelib.Init.Datatypes <> list ind
+R55350:55350 Higgaion.PQCMigration <> A:215 var
+binder 55341:55341 <> l:216
+binder 55353:55353 <> i:217
+binder 55355:55355 <> v:218
+R55385:55387 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R55360:55365 Corelib.Init.Datatypes <> length def
+R55368:55377 Higgaion.HiggaionTypes <> update_nth def
+R55383:55383 Higgaion.PQCMigration <> v:218 var
+R55381:55381 Higgaion.PQCMigration <> i:217 var
+R55379:55379 Higgaion.PQCMigration <> l:216 var
+R55388:55393 Corelib.Init.Datatypes <> length def
+R55395:55395 Higgaion.PQCMigration <> l:216 var
+prf 55563:55583 <> batch_count_invariant
+binder 55594:55597 <> recs:219
+binder 55599:55599 <> i:220
+R55635:55637 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R55604:55609 Corelib.Init.Datatypes <> length def
+R55612:55626 Higgaion.PQCMigration <> batch_begin_one def
+R55628:55631 Higgaion.PQCMigration <> recs:219 var
+R55633:55633 Higgaion.PQCMigration <> i:220 var
+R55638:55643 Corelib.Init.Datatypes <> length def
+R55645:55648 Higgaion.PQCMigration <> recs:219 var
+R55684:55698 Higgaion.PQCMigration <> batch_begin_one def
+R55713:55719 Higgaion.HiggaionTypes <> nth_opt def
+R55713:55719 Higgaion.HiggaionTypes <> nth_opt def
+R55753:55767 Higgaion.PQCMigration <> begin_migration def
+R55753:55767 Higgaion.PQCMigration <> begin_migration def
+R55796:55812 Higgaion.PQCMigration <> update_nth_length thm
+R55796:55812 Higgaion.PQCMigration <> update_nth_length thm
+rec 56118:56131 <> SelfTestRecord
+proj 56148:56154 <> st_base
+proj 56183:56196 <> self_test_pass
+R56164:56178 Higgaion.PQCMigration <> MigrationRecord rec
+R56200:56203 Corelib.Init.Datatypes <> bool ind
+def 56351:56369 <> begin_with_selftest
+R56378:56391 Higgaion.PQCMigration <> SelfTestRecord rec
+binder 56372:56374 <> str:224
+R56400:56405 Corelib.Init.Datatypes <> option ind
+R56407:56420 Higgaion.PQCMigration <> SelfTestRecord rec
+R56430:56443 Higgaion.PQCMigration <> self_test_pass proj
+R56445:56447 Higgaion.PQCMigration <> str:224 var
+R56576:56579 Corelib.Init.Datatypes <> None constr
+R56464:56478 Higgaion.PQCMigration <> begin_migration def
+R56481:56487 Higgaion.PQCMigration <> st_base proj
+R56489:56491 Higgaion.PQCMigration <> str:224 var
+R56505:56508 Corelib.Init.Datatypes <> Some constr
+R56516:56519 Corelib.Init.Datatypes <> Some constr
+R56522:56528 Higgaion.PQCMigration <> mkSTRec constr
+R56533:56536 Corelib.Init.Datatypes <> true constr
+R56545:56548 Corelib.Init.Datatypes <> None constr
+R56556:56559 Corelib.Init.Datatypes <> None constr
+prf 56997:57028 <> selftest_failure_preserves_state
+binder 57039:57041 <> str:225
+R57072:57077 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R57064:57066 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R57046:57059 Higgaion.PQCMigration <> self_test_pass proj
+R57061:57063 Higgaion.PQCMigration <> str:225 var
+R57067:57071 Corelib.Init.Datatypes <> false constr
+R57101:57103 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R57078:57096 Higgaion.PQCMigration <> begin_with_selftest def
+R57098:57100 Higgaion.PQCMigration <> str:225 var
+R57104:57107 Corelib.Init.Datatypes <> None constr
+R57146:57164 Higgaion.PQCMigration <> begin_with_selftest def
+prf 57551:57574 <> hybrid_requires_selftest
+binder 57585:57587 <> str:226
+binder 57589:57592 <> str':227
+R57632:57637 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R57620:57622 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R57597:57615 Higgaion.PQCMigration <> begin_with_selftest def
+R57617:57619 Higgaion.PQCMigration <> str:226 var
+R57623:57626 Corelib.Init.Datatypes <> Some constr
+R57628:57631 Higgaion.PQCMigration <> str':227 var
+R57656:57658 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R57638:57651 Higgaion.PQCMigration <> self_test_pass proj
+R57653:57655 Higgaion.PQCMigration <> str:226 var
+R57659:57662 Corelib.Init.Datatypes <> true constr
+R57702:57720 Higgaion.PQCMigration <> begin_with_selftest def
+R57740:57753 Higgaion.PQCMigration <> self_test_pass proj
+R57740:57753 Higgaion.PQCMigration <> self_test_pass proj
+ind 58109:58120 <> ImportFormat
+constr 58129:58138 <> FmtBitcoin
+constr 58142:58152 <> FmtEthereum
+constr 58156:58163 <> FmtECDSA
+constr 58167:58176 <> FmtEd25519
+constr 58180:58189 <> FmtGeneric
+scheme 58109:58120 <> ImportFormat_rect
+scheme 58109:58120 <> ImportFormat_ind
+scheme 58109:58120 <> ImportFormat_rec
+scheme 58109:58120 <> ImportFormat_sind
+def 58271:58288 <> import_from_format
+R58297:58308 Higgaion.PQCMigration <> ImportFormat ind
+binder 58291:58293 <> fmt:230
+R58313:58327 Higgaion.PQCMigration <> MigrationRecord rec
+R58334:58343 Higgaion.PQCMigration <> import_key def
+prf 58814:58839 <> import_format_independence
+binder 58850:58852 <> fmt:231
+R58893:58898 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R58857:58867 Higgaion.PQCMigration <> well_formed def
+R58870:58887 Higgaion.PQCMigration <> import_from_format def
+R58889:58891 Higgaion.PQCMigration <> fmt:231 var
+R58945:58950 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R58933:58935 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R58899:58907 Higgaion.PQCMigration <> mig_state proj
+R58910:58927 Higgaion.PQCMigration <> import_from_format def
+R58929:58931 Higgaion.PQCMigration <> fmt:231 var
+R58936:58944 Higgaion.PQCMigration <> Classical constr
+R58996:59001 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R58989:58991 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R58951:58963 Higgaion.PQCMigration <> has_classical proj
+R58966:58983 Higgaion.PQCMigration <> import_from_format def
+R58985:58987 Higgaion.PQCMigration <> fmt:231 var
+R58992:58995 Corelib.Init.Datatypes <> true constr
+R59034:59036 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R59002:59008 Higgaion.PQCMigration <> has_pqc proj
+R59011:59028 Higgaion.PQCMigration <> import_from_format def
+R59030:59032 Higgaion.PQCMigration <> fmt:231 var
+R59037:59041 Corelib.Init.Datatypes <> false constr
+R59072:59089 Higgaion.PQCMigration <> import_from_format def
+R59092:59101 Higgaion.PQCMigration <> import_key def
+prf 59610:59640 <> key_id_stable_through_migration
+binder 59651:59651 <> r:232
+binder 59653:59654 <> r1:233
+binder 59656:59657 <> r2:234
+binder 59659:59660 <> r3:235
+R59678:59683 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R59665:59675 Higgaion.PQCMigration <> well_formed def
+R59677:59677 Higgaion.PQCMigration <> r:232 var
+R59707:59712 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R59695:59697 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R59684:59692 Higgaion.PQCMigration <> mig_state proj
+R59694:59694 Higgaion.PQCMigration <> r:232 var
+R59698:59706 Higgaion.PQCMigration <> Classical constr
+R59740:59745 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R59730:59732 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R59713:59727 Higgaion.PQCMigration <> begin_migration def
+R59729:59729 Higgaion.PQCMigration <> r:232 var
+R59733:59736 Corelib.Init.Datatypes <> Some constr
+R59738:59739 Higgaion.PQCMigration <> r1:233 var
+R59775:59780 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R59765:59767 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R59746:59761 Higgaion.PQCMigration <> enter_finalizing def
+R59763:59764 Higgaion.PQCMigration <> r1:233 var
+R59768:59771 Corelib.Init.Datatypes <> Some constr
+R59773:59774 Higgaion.PQCMigration <> r2:234 var
+R59815:59820 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R59805:59807 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R59781:59801 Higgaion.PQCMigration <> complete_finalization def
+R59803:59804 Higgaion.PQCMigration <> r2:234 var
+R59808:59811 Corelib.Init.Datatypes <> Some constr
+R59813:59814 Higgaion.PQCMigration <> r3:235 var
+R59834:59837 Corelib.Init.Peano <> ::nat_scope:x_'>='_x not
+R59821:59830 Higgaion.PQCMigration <> generation proj
+R59832:59833 Higgaion.PQCMigration <> r3:235 var
+R59838:59847 Higgaion.PQCMigration <> generation proj
+R59849:59849 Higgaion.PQCMigration <> r:232 var
+R59906:59920 Higgaion.PQCMigration <> begin_migration def
+R59991:60006 Higgaion.PQCMigration <> enter_finalizing def
+R60071:60091 Higgaion.PQCMigration <> complete_finalization def
+prf 60652:60687 <> address_immutable_until_finalization
+binder 60698:60698 <> r:236
+binder 60700:60701 <> r':237
+R60719:60724 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R60706:60716 Higgaion.PQCMigration <> well_formed def
+R60718:60718 Higgaion.PQCMigration <> r:236 var
+R60747:60752 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R60736:60739 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R60725:60733 Higgaion.PQCMigration <> mig_state proj
+R60735:60735 Higgaion.PQCMigration <> r:236 var
+R60740:60746 Higgaion.PQCMigration <> PqcOnly constr
+R60753:60753 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R60843:60849 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R60781:60787 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R60771:60773 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R60754:60768 Higgaion.PQCMigration <> begin_migration def
+R60770:60770 Higgaion.PQCMigration <> r:236 var
+R60774:60777 Corelib.Init.Datatypes <> Some constr
+R60779:60780 Higgaion.PQCMigration <> r':237 var
+R60816:60822 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R60806:60808 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R60788:60803 Higgaion.PQCMigration <> enter_finalizing def
+R60805:60805 Higgaion.PQCMigration <> r:236 var
+R60809:60812 Corelib.Init.Datatypes <> Some constr
+R60814:60815 Higgaion.PQCMigration <> r':237 var
+R60833:60835 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R60823:60830 Higgaion.PQCMigration <> rollback def
+R60832:60832 Higgaion.PQCMigration <> r:236 var
+R60836:60839 Corelib.Init.Datatypes <> Some constr
+R60841:60842 Higgaion.PQCMigration <> r':237 var
+R60866:60868 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R60850:60862 Higgaion.PQCMigration <> has_classical proj
+R60864:60865 Higgaion.PQCMigration <> r':237 var
+R60869:60872 Corelib.Init.Datatypes <> true constr
+R60963:60977 Higgaion.PQCMigration <> begin_migration def
+R61000:61008 Higgaion.PQCMigration <> mig_state proj
+R61000:61008 Higgaion.PQCMigration <> mig_state proj
+R61098:61113 Higgaion.PQCMigration <> enter_finalizing def
+R61136:61144 Higgaion.PQCMigration <> mig_state proj
+R61136:61144 Higgaion.PQCMigration <> mig_state proj
+R61234:61241 Higgaion.PQCMigration <> rollback def
+R61264:61272 Higgaion.PQCMigration <> mig_state proj
+R61264:61272 Higgaion.PQCMigration <> mig_state proj
+rec 61613:61628 <> VerifyStatsModel
+proj 61651:61658 <> vs_total
+proj 61682:61698 <> vs_classical_only
+proj 61713:61723 <> vs_pqc_only
+proj 61744:61750 <> vs_both
+proj 61775:61784 <> vs_neither
+R61675:61677 Corelib.Init.Datatypes <> nat ind
+R61706:61708 Corelib.Init.Datatypes <> nat ind
+R61737:61739 Corelib.Init.Datatypes <> nat ind
+R61768:61770 Corelib.Init.Datatypes <> nat ind
+R61799:61801 Corelib.Init.Datatypes <> nat ind
+def 61878:61893 <> stats_consistent
+R61901:61916 Higgaion.PQCMigration <> VerifyStatsModel rec
+binder 61896:61897 <> vs:244
+R61999:62001 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R61983:61985 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R61968:61972 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R61951:61953 Corelib.Init.Peano <> ::nat_scope:x_'+'_x not
+R61931:61947 Higgaion.PQCMigration <> vs_classical_only proj
+R61949:61950 Higgaion.PQCMigration <> vs:244 var
+R61954:61964 Higgaion.PQCMigration <> vs_pqc_only proj
+R61966:61967 Higgaion.PQCMigration <> vs:244 var
+R61973:61979 Higgaion.PQCMigration <> vs_both proj
+R61981:61982 Higgaion.PQCMigration <> vs:244 var
+R61986:61995 Higgaion.PQCMigration <> vs_neither proj
+R61997:61998 Higgaion.PQCMigration <> vs:244 var
+R62002:62009 Higgaion.PQCMigration <> vs_total proj
+R62011:62012 Higgaion.PQCMigration <> vs:244 var
+def 62068:62086 <> record_verification
+R62094:62109 Higgaion.PQCMigration <> VerifyStatsModel rec
+binder 62089:62090 <> vs:245
+R62139:62142 Corelib.Init.Datatypes <> bool ind
+binder 62117:62128 <> classical_ok:246
+binder 62130:62135 <> pqc_ok:247
+R62147:62162 Higgaion.PQCMigration <> VerifyStatsModel rec
+R62169:62181 Higgaion.PQCMigration <> mkVerifyStats constr
+R62188:62188 Corelib.Init.Datatypes <> S constr
+R62191:62198 Higgaion.PQCMigration <> vs_total proj
+R62200:62201 Higgaion.PQCMigration <> vs:245 var
+R62225:62228 Corelib.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R62213:62224 Higgaion.PQCMigration <> classical_ok:246 var
+R62229:62232 Corelib.Init.Datatypes <> negb def
+R62234:62239 Higgaion.PQCMigration <> pqc_ok:247 var
+R62276:62292 Higgaion.PQCMigration <> vs_classical_only proj
+R62294:62295 Higgaion.PQCMigration <> vs:245 var
+R62246:62246 Corelib.Init.Datatypes <> S constr
+R62249:62265 Higgaion.PQCMigration <> vs_classical_only proj
+R62267:62268 Higgaion.PQCMigration <> vs:245 var
+R62323:62326 Corelib.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R62306:62309 Corelib.Init.Datatypes <> negb def
+R62311:62322 Higgaion.PQCMigration <> classical_ok:246 var
+R62327:62332 Higgaion.PQCMigration <> pqc_ok:247 var
+R62363:62373 Higgaion.PQCMigration <> vs_pqc_only proj
+R62375:62376 Higgaion.PQCMigration <> vs:245 var
+R62339:62339 Corelib.Init.Datatypes <> S constr
+R62342:62352 Higgaion.PQCMigration <> vs_pqc_only proj
+R62354:62355 Higgaion.PQCMigration <> vs:245 var
+R62399:62402 Corelib.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R62387:62398 Higgaion.PQCMigration <> classical_ok:246 var
+R62403:62408 Higgaion.PQCMigration <> pqc_ok:247 var
+R62435:62441 Higgaion.PQCMigration <> vs_both proj
+R62443:62444 Higgaion.PQCMigration <> vs:245 var
+R62415:62415 Corelib.Init.Datatypes <> S constr
+R62418:62424 Higgaion.PQCMigration <> vs_both proj
+R62426:62427 Higgaion.PQCMigration <> vs:245 var
+R62472:62475 Corelib.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R62455:62458 Corelib.Init.Datatypes <> negb def
+R62460:62471 Higgaion.PQCMigration <> classical_ok:246 var
+R62476:62479 Corelib.Init.Datatypes <> negb def
+R62481:62486 Higgaion.PQCMigration <> pqc_ok:247 var
+R62516:62525 Higgaion.PQCMigration <> vs_neither proj
+R62527:62528 Higgaion.PQCMigration <> vs:245 var
+R62493:62493 Corelib.Init.Datatypes <> S constr
+R62496:62505 Higgaion.PQCMigration <> vs_neither proj
+R62507:62508 Higgaion.PQCMigration <> vs:245 var
+prf 62921:62941 <> stats_total_monotonic
+binder 62952:62953 <> vs:248
+binder 62955:62955 <> c:249
+binder 62957:62957 <> p:250
+R62999:63001 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R62962:62969 Higgaion.PQCMigration <> vs_total proj
+R62972:62990 Higgaion.PQCMigration <> record_verification def
+R62992:62993 Higgaion.PQCMigration <> vs:248 var
+R62995:62995 Higgaion.PQCMigration <> c:249 var
+R62997:62997 Higgaion.PQCMigration <> p:250 var
+R63002:63002 Corelib.Init.Datatypes <> S constr
+R63005:63012 Higgaion.PQCMigration <> vs_total proj
+R63014:63015 Higgaion.PQCMigration <> vs:248 var
+R63050:63068 Higgaion.PQCMigration <> record_verification def
+prf 63516:63542 <> stats_consistency_preserved
+binder 63553:63554 <> vs:251
+binder 63556:63556 <> c:252
+binder 63558:63558 <> p:253
+R63582:63587 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R63563:63578 Higgaion.PQCMigration <> stats_consistent def
+R63580:63581 Higgaion.PQCMigration <> vs:251 var
+R63588:63603 Higgaion.PQCMigration <> stats_consistent def
+R63606:63624 Higgaion.PQCMigration <> record_verification def
+R63626:63627 Higgaion.PQCMigration <> vs:251 var
+R63629:63629 Higgaion.PQCMigration <> c:252 var
+R63631:63631 Higgaion.PQCMigration <> p:253 var
+R63673:63688 Higgaion.PQCMigration <> stats_consistent def
+R63705:63723 Higgaion.PQCMigration <> record_verification def
+prf 64254:64290 <> threshold_independent_of_verification
+binder 64301:64302 <> vs:254
+binder 64304:64304 <> c:255
+binder 64306:64306 <> p:256
+R64337:64339 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R64311:64329 Higgaion.PQCMigration <> record_verification def
+R64331:64332 Higgaion.PQCMigration <> vs:254 var
+R64334:64334 Higgaion.PQCMigration <> c:255 var
+R64336:64336 Higgaion.PQCMigration <> p:256 var
+R64340:64358 Higgaion.PQCMigration <> record_verification def
+R64360:64361 Higgaion.PQCMigration <> vs:254 var
+R64363:64363 Higgaion.PQCMigration <> c:255 var
+R64365:64365 Higgaion.PQCMigration <> p:256 var
+def 64640:64653 <> pqc_only_count
+R64663:64666 Corelib.Init.Datatypes <> list ind
+R64668:64682 Higgaion.PQCMigration <> MigrationRecord rec
+binder 64656:64659 <> recs:257
+R64687:64689 Corelib.Init.Datatypes <> nat ind
+R64696:64701 Corelib.Init.Datatypes <> length def
+R64704:64709 Stdlib.Lists.List <> filter def
+R64778:64781 Higgaion.PQCMigration <> recs:257 var
+binder 64716:64716 <> r:258
+R64727:64735 Higgaion.PQCMigration <> mig_state proj
+R64737:64737 Higgaion.PQCMigration <> r:258 var
+R64744:64750 Higgaion.PQCMigration <> PqcOnly constr
+R64755:64758 Corelib.Init.Datatypes <> true constr
+R64767:64771 Corelib.Init.Datatypes <> false constr
+def 64838:64852 <> classical_count
+R64862:64865 Corelib.Init.Datatypes <> list ind
+R64867:64881 Higgaion.PQCMigration <> MigrationRecord rec
+binder 64855:64858 <> recs:259
+R64886:64888 Corelib.Init.Datatypes <> nat ind
+R64895:64900 Corelib.Init.Datatypes <> length def
+R64903:64908 Stdlib.Lists.List <> filter def
+R64979:64982 Higgaion.PQCMigration <> recs:259 var
+binder 64915:64915 <> r:260
+R64926:64934 Higgaion.PQCMigration <> mig_state proj
+R64936:64936 Higgaion.PQCMigration <> r:260 var
+R64943:64951 Higgaion.PQCMigration <> Classical constr
+R64956:64959 Corelib.Init.Datatypes <> true constr
+R64968:64972 Corelib.Init.Datatypes <> false constr
+prf 65526:65555 <> finalization_produces_pqc_only
+binder 65566:65566 <> r:261
+binder 65568:65569 <> r':262
+R65587:65592 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R65574:65584 Higgaion.PQCMigration <> well_formed def
+R65586:65586 Higgaion.PQCMigration <> r:261 var
+R65617:65622 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R65604:65606 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R65593:65601 Higgaion.PQCMigration <> mig_state proj
+R65603:65603 Higgaion.PQCMigration <> r:261 var
+R65607:65616 Higgaion.PQCMigration <> Finalizing constr
+R65656:65661 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R65646:65648 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R65623:65643 Higgaion.PQCMigration <> complete_finalization def
+R65645:65645 Higgaion.PQCMigration <> r:261 var
+R65649:65652 Corelib.Init.Datatypes <> Some constr
+R65654:65655 Higgaion.PQCMigration <> r':262 var
+R65684:65687 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R65674:65676 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R65662:65670 Higgaion.PQCMigration <> mig_state proj
+R65672:65673 Higgaion.PQCMigration <> r':262 var
+R65677:65683 Higgaion.PQCMigration <> PqcOnly constr
+R65688:65698 Higgaion.PQCMigration <> well_formed def
+R65700:65701 Higgaion.PQCMigration <> r':262 var
+R65781:65801 Higgaion.PQCMigration <> complete_finalization def
+R65836:65842 Corelib.Init.Logic <> f_equal thm
+binder 65849:65849 <> x:263
+R65860:65860 Higgaion.PQCMigration <> x:263 var
+R65867:65870 Corelib.Init.Datatypes <> Some constr
+R65881:65884 Corelib.Init.Datatypes <> None constr
+R65836:65842 Corelib.Init.Logic <> f_equal thm
+binder 65849:65849 <> x:265
+R65860:65860 Higgaion.PQCMigration <> x:265 var
+R65867:65870 Corelib.Init.Datatypes <> Some constr
+R65881:65884 Corelib.Init.Datatypes <> None constr
+prf 66475:66500 <> begin_eliminates_classical
+binder 66511:66511 <> r:267
+binder 66513:66514 <> r':268
+R66532:66537 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R66519:66529 Higgaion.PQCMigration <> well_formed def
+R66531:66531 Higgaion.PQCMigration <> r:267 var
+R66561:66566 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R66549:66551 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R66538:66546 Higgaion.PQCMigration <> mig_state proj
+R66548:66548 Higgaion.PQCMigration <> r:267 var
+R66552:66560 Higgaion.PQCMigration <> Classical constr
+R66594:66599 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R66584:66586 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R66567:66581 Higgaion.PQCMigration <> begin_migration def
+R66583:66583 Higgaion.PQCMigration <> r:267 var
+R66587:66590 Corelib.Init.Datatypes <> Some constr
+R66592:66593 Higgaion.PQCMigration <> r':268 var
+R66621:66624 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R66612:66614 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R66600:66608 Higgaion.PQCMigration <> mig_state proj
+R66610:66611 Higgaion.PQCMigration <> r':268 var
+R66615:66620 Higgaion.PQCMigration <> Hybrid constr
+R66625:66635 Higgaion.PQCMigration <> well_formed def
+R66637:66638 Higgaion.PQCMigration <> r':268 var
+R66720:66734 Higgaion.PQCMigration <> begin_migration def
+R66773:66779 Corelib.Init.Logic <> f_equal thm
+binder 66786:66786 <> x:269
+R66797:66797 Higgaion.PQCMigration <> x:269 var
+R66804:66807 Corelib.Init.Datatypes <> Some constr
+R66818:66821 Corelib.Init.Datatypes <> None constr
+R66773:66779 Corelib.Init.Logic <> f_equal thm
+binder 66786:66786 <> x:271
+R66797:66797 Higgaion.PQCMigration <> x:271 var
+R66804:66807 Corelib.Init.Datatypes <> Some constr
+R66818:66821 Corelib.Init.Datatypes <> None constr
+def 67379:67393 <> all_well_formed
+R67403:67406 Corelib.Init.Datatypes <> list ind
+R67408:67422 Higgaion.PQCMigration <> MigrationRecord rec
+binder 67396:67399 <> recs:273
+binder 67444:67444 <> i:274
+binder 67446:67446 <> r:275
+R67472:67475 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67463:67465 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R67449:67455 Higgaion.HiggaionTypes <> nth_opt def
+R67462:67462 Higgaion.PQCMigration <> i:274 var
+R67457:67460 Higgaion.PQCMigration <> recs:273 var
+R67466:67469 Corelib.Init.Datatypes <> Some constr
+R67471:67471 Higgaion.PQCMigration <> r:275 var
+R67476:67486 Higgaion.PQCMigration <> well_formed def
+R67488:67488 Higgaion.PQCMigration <> r:275 var
+prf 67498:67524 <> update_nth_preserves_others
+binder 67536:67536 <> A:276
+R67552:67555 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67551:67551 Higgaion.PQCMigration <> A:276 var
+binder 67547:67547 <> P:277
+R67571:67574 Corelib.Init.Datatypes <> list ind
+R67576:67576 Higgaion.PQCMigration <> A:276 var
+binder 67567:67567 <> l:278
+binder 67579:67579 <> i:279
+binder 67581:67581 <> v:280
+R67586:67586 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67636:67642 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+binder 67594:67594 <> j:281
+binder 67596:67596 <> a:282
+R67605:67608 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67600:67603 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R67599:67599 Higgaion.PQCMigration <> j:281 var
+R67604:67604 Higgaion.PQCMigration <> i:279 var
+R67629:67632 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67620:67622 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R67609:67615 Higgaion.HiggaionTypes <> nth_opt def
+R67619:67619 Higgaion.PQCMigration <> j:281 var
+R67617:67617 Higgaion.PQCMigration <> l:278 var
+R67623:67626 Corelib.Init.Datatypes <> Some constr
+R67628:67628 Higgaion.PQCMigration <> a:282 var
+R67633:67633 Higgaion.PQCMigration <> P:277 var
+R67635:67635 Higgaion.PQCMigration <> a:282 var
+R67646:67652 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67709:67709 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67643:67643 Higgaion.PQCMigration <> P:277 var
+R67645:67645 Higgaion.PQCMigration <> v:280 var
+binder 67660:67660 <> j:283
+binder 67662:67662 <> a:284
+R67702:67705 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R67693:67695 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R67665:67671 Higgaion.HiggaionTypes <> nth_opt def
+R67692:67692 Higgaion.PQCMigration <> j:283 var
+R67674:67683 Higgaion.HiggaionTypes <> update_nth def
+R67689:67689 Higgaion.PQCMigration <> v:280 var
+R67687:67687 Higgaion.PQCMigration <> i:279 var
+R67685:67685 Higgaion.PQCMigration <> l:278 var
+R67696:67699 Corelib.Init.Datatypes <> Some constr
+R67701:67701 Higgaion.PQCMigration <> a:284 var
+R67706:67706 Higgaion.PQCMigration <> P:277 var
+R67708:67708 Higgaion.PQCMigration <> a:284 var
+R67771:67780 Stdlib.Arith.PeanoNat Nat eq_dec thm
+R67771:67780 Stdlib.Arith.PeanoNat Nat eq_dec thm
+binder 68069:68070 <> j0:285
+binder 68072:68073 <> a0:286
+binder 68075:68079 <> Hneq0:287
+binder 68081:68083 <> Hk0:288
+R68097:68097 Corelib.Init.Datatypes <> S constr
+R68099:68100 Higgaion.PQCMigration <> j0:285 var
+R68103:68104 Higgaion.PQCMigration <> a0:286 var
+binder 68111:68111 <> H:289
+R68116:68120 Higgaion.PQCMigration <> Hneq0:287 var
+R68123:68130 Corelib.Init.Peano <> eq_add_S def
+R68136:68136 Higgaion.PQCMigration <> H:289 var
+R68140:68142 Higgaion.PQCMigration <> Hk0:288 var
+binder 68069:68070 <> j0:290
+binder 68072:68073 <> a0:291
+binder 68075:68079 <> Hneq0:292
+binder 68081:68083 <> Hk0:293
+R68097:68097 Corelib.Init.Datatypes <> S constr
+R68099:68100 Higgaion.PQCMigration <> j0:290 var
+R68103:68104 Higgaion.PQCMigration <> a0:291 var
+binder 68111:68111 <> H:294
+R68116:68120 Higgaion.PQCMigration <> Hneq0:292 var
+R68123:68130 Corelib.Init.Peano <> eq_add_S def
+R68136:68136 Higgaion.PQCMigration <> H:294 var
+R68140:68142 Higgaion.PQCMigration <> Hk0:293 var
+R68199:68201 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68171:68177 Higgaion.HiggaionTypes <> nth_opt def
+R68180:68189 Higgaion.HiggaionTypes <> update_nth def
+R68202:68208 Higgaion.HiggaionTypes <> nth_opt def
+R68199:68201 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68171:68177 Higgaion.HiggaionTypes <> nth_opt def
+R68180:68189 Higgaion.HiggaionTypes <> update_nth def
+R68202:68208 Higgaion.HiggaionTypes <> nth_opt def
+R68228:68243 Higgaion.PQCMigration <> update_nth_other thm
+R68228:68243 Higgaion.PQCMigration <> update_nth_other thm
+binder 68257:68257 <> H:295
+R68268:68273 Corelib.Init.Logic <> eq_sym thm
+R68275:68275 Higgaion.PQCMigration <> H:295 var
+binder 68257:68257 <> H:296
+R68268:68273 Corelib.Init.Logic <> eq_sym thm
+R68275:68275 Higgaion.PQCMigration <> H:296 var
+prf 68354:68369 <> fleet_wf_closure
+binder 68380:68383 <> recs:297
+binder 68385:68385 <> i:298
+binder 68387:68387 <> r:299
+binder 68389:68390 <> r':300
+R68415:68420 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R68395:68409 Higgaion.PQCMigration <> all_well_formed def
+R68411:68414 Higgaion.PQCMigration <> recs:297 var
+R68444:68449 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R68435:68437 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68421:68427 Higgaion.HiggaionTypes <> nth_opt def
+R68434:68434 Higgaion.PQCMigration <> i:298 var
+R68429:68432 Higgaion.PQCMigration <> recs:297 var
+R68438:68441 Corelib.Init.Datatypes <> Some constr
+R68443:68443 Higgaion.PQCMigration <> r:299 var
+R68477:68482 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R68467:68469 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68450:68464 Higgaion.PQCMigration <> begin_migration def
+R68466:68466 Higgaion.PQCMigration <> r:299 var
+R68470:68473 Corelib.Init.Datatypes <> Some constr
+R68475:68476 Higgaion.PQCMigration <> r':300 var
+R68497:68502 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R68483:68493 Higgaion.PQCMigration <> well_formed def
+R68495:68496 Higgaion.PQCMigration <> r':300 var
+R68503:68517 Higgaion.PQCMigration <> all_well_formed def
+R68520:68529 Higgaion.HiggaionTypes <> update_nth def
+R68538:68539 Higgaion.PQCMigration <> r':300 var
+R68536:68536 Higgaion.PQCMigration <> i:298 var
+R68531:68534 Higgaion.PQCMigration <> recs:297 var
+R68602:68616 Higgaion.PQCMigration <> all_well_formed def
+R68651:68660 Stdlib.Arith.PeanoNat Nat eq_dec thm
+R68651:68660 Stdlib.Arith.PeanoNat Nat eq_dec thm
+R68749:68751 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68717:68723 Higgaion.HiggaionTypes <> nth_opt def
+R68726:68735 Higgaion.HiggaionTypes <> update_nth def
+R68752:68755 Corelib.Init.Datatypes <> Some constr
+R68749:68751 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R68717:68723 Higgaion.HiggaionTypes <> nth_opt def
+R68726:68735 Higgaion.HiggaionTypes <> update_nth def
+R68752:68755 Corelib.Init.Datatypes <> Some constr
+R68978:68984 Corelib.Init.Logic <> f_equal thm
+binder 68991:68991 <> x:301
+R69002:69002 Higgaion.PQCMigration <> x:301 var
+R69009:69012 Corelib.Init.Datatypes <> Some constr
+R69023:69026 Corelib.Init.Datatypes <> None constr
+R68978:68984 Corelib.Init.Logic <> f_equal thm
+binder 68991:68991 <> x:303
+R69002:69002 Higgaion.PQCMigration <> x:303 var
+R69009:69012 Corelib.Init.Datatypes <> Some constr
+R69023:69026 Corelib.Init.Datatypes <> None constr
+R69136:69138 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R69104:69110 Higgaion.HiggaionTypes <> nth_opt def
+R69113:69122 Higgaion.HiggaionTypes <> update_nth def
+R69139:69145 Higgaion.HiggaionTypes <> nth_opt def
+R69136:69138 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R69104:69110 Higgaion.HiggaionTypes <> nth_opt def
+R69113:69122 Higgaion.HiggaionTypes <> update_nth def
+R69139:69145 Higgaion.HiggaionTypes <> nth_opt def
+R69168:69183 Higgaion.PQCMigration <> update_nth_other thm
+R69168:69183 Higgaion.PQCMigration <> update_nth_other thm
+binder 69197:69197 <> H:305
+R69208:69213 Corelib.Init.Logic <> eq_sym thm
+R69215:69215 Higgaion.PQCMigration <> H:305 var
+binder 69197:69197 <> H:306
+R69208:69213 Corelib.Init.Logic <> eq_sym thm
+R69215:69215 Higgaion.PQCMigration <> H:306 var
+ind 69506:69514 <> HTLCState
+constr 69523:69533 <> HTLC_Active
+constr 69587:69598 <> HTLC_Claimed
+constr 69652:69664 <> HTLC_Refunded
+scheme 69506:69514 <> HTLCState_rect
+scheme 69506:69514 <> HTLCState_ind
+scheme 69506:69514 <> HTLCState_rec
+scheme 69506:69514 <> HTLCState_sind
+def 69781:69790 <> htlc_claim
+R69801:69809 Higgaion.PQCMigration <> HTLCState ind
+binder 69793:69797 <> state:309
+R69830:69833 Corelib.Init.Datatypes <> bool ind
+binder 69813:69826 <> preimage_valid:310
+R69842:69847 Corelib.Init.Datatypes <> option ind
+R69849:69857 Higgaion.PQCMigration <> HTLCState ind
+R69870:69874 Higgaion.PQCMigration <> state:309 var
+R69885:69895 Higgaion.PQCMigration <> HTLC_Active constr
+R69903:69916 Higgaion.PQCMigration <> preimage_valid:310 var
+R69946:69949 Corelib.Init.Datatypes <> None constr
+R69923:69926 Corelib.Init.Datatypes <> Some constr
+R69928:69939 Higgaion.PQCMigration <> HTLC_Claimed constr
+R69960:69963 Corelib.Init.Datatypes <> None constr
+def 70049:70059 <> htlc_refund
+R70070:70078 Higgaion.PQCMigration <> HTLCState ind
+binder 70062:70066 <> state:312
+R70100:70103 Corelib.Init.Datatypes <> bool ind
+binder 70082:70096 <> timeout_expired:313
+R70112:70117 Corelib.Init.Datatypes <> option ind
+R70119:70127 Higgaion.PQCMigration <> HTLCState ind
+R70140:70144 Higgaion.PQCMigration <> state:312 var
+R70155:70165 Higgaion.PQCMigration <> HTLC_Active constr
+R70173:70187 Higgaion.PQCMigration <> timeout_expired:313 var
+R70218:70221 Corelib.Init.Datatypes <> None constr
+R70194:70197 Corelib.Init.Datatypes <> Some constr
+R70199:70211 Higgaion.PQCMigration <> HTLC_Refunded constr
+R70232:70235 Corelib.Init.Datatypes <> None constr
+prf 70596:70622 <> htlc_timeout_enables_refund
+R70656:70658 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R70628:70638 Higgaion.PQCMigration <> htlc_refund def
+R70640:70650 Higgaion.PQCMigration <> HTLC_Active constr
+R70652:70655 Corelib.Init.Datatypes <> true constr
+R70659:70662 Corelib.Init.Datatypes <> Some constr
+R70664:70676 Higgaion.PQCMigration <> HTLC_Refunded constr
+R70695:70705 Higgaion.PQCMigration <> htlc_refund def
+prf 71077:71095 <> htlc_preimage_claim
+R71128:71130 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R71101:71110 Higgaion.PQCMigration <> htlc_claim def
+R71112:71122 Higgaion.PQCMigration <> HTLC_Active constr
+R71124:71127 Corelib.Init.Datatypes <> true constr
+R71131:71134 Corelib.Init.Datatypes <> Some constr
+R71136:71147 Higgaion.PQCMigration <> HTLC_Claimed constr
+R71166:71175 Higgaion.PQCMigration <> htlc_claim def
+prf 71579:71598 <> htlc_no_double_claim
+binder 71609:71610 <> pv:315
+binder 71612:71613 <> te:316
+R71651:71656 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R71644:71646 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R71618:71627 Higgaion.PQCMigration <> htlc_claim def
+R71629:71640 Higgaion.PQCMigration <> HTLC_Claimed constr
+R71642:71643 Higgaion.PQCMigration <> pv:315 var
+R71647:71650 Corelib.Init.Datatypes <> None constr
+R71691:71696 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R71684:71686 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R71657:71667 Higgaion.PQCMigration <> htlc_refund def
+R71669:71680 Higgaion.PQCMigration <> HTLC_Claimed constr
+R71682:71683 Higgaion.PQCMigration <> te:316 var
+R71687:71690 Corelib.Init.Datatypes <> None constr
+R71731:71736 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R71724:71726 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R71697:71706 Higgaion.PQCMigration <> htlc_claim def
+R71708:71720 Higgaion.PQCMigration <> HTLC_Refunded constr
+R71722:71723 Higgaion.PQCMigration <> pv:315 var
+R71727:71730 Corelib.Init.Datatypes <> None constr
+R71765:71767 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R71737:71747 Higgaion.PQCMigration <> htlc_refund def
+R71749:71761 Higgaion.PQCMigration <> HTLC_Refunded constr
+R71763:71764 Higgaion.PQCMigration <> te:316 var
+R71768:71771 Corelib.Init.Datatypes <> None constr
+prf 73628:73667 <> conjunctive_fails_migration_completeness
+R73673:73679 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R73695:73700 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 73680:73680 <> r:317
+binder 73682:73684 <> msg:318
+binder 73686:73689 <> csig:319
+binder 73691:73694 <> psig:320
+R73714:73721 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R73701:73711 Higgaion.PQCMigration <> well_formed def
+R73713:73713 Higgaion.PQCMigration <> r:317 var
+R73762:73769 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R73722:73745 Higgaion.PQCMigration <> validly_signed_for_state def
+R73747:73747 Higgaion.PQCMigration <> r:317 var
+R73749:73751 Higgaion.PQCMigration <> msg:318 var
+R73753:73756 Higgaion.PQCMigration <> csig:319 var
+R73758:73761 Higgaion.PQCMigration <> psig:320 var
+R73809:73811 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R73770:73794 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R73796:73798 Higgaion.PQCMigration <> msg:318 var
+R73800:73803 Higgaion.PQCMigration <> csig:319 var
+R73805:73808 Higgaion.PQCMigration <> psig:320 var
+R73812:73816 Corelib.Init.Datatypes <> false constr
+R73989:73996 Higgaion.PQCMigration <> mkMigRec constr
+R73998:74006 Higgaion.PQCMigration <> Classical constr
+R74008:74011 Corelib.Init.Datatypes <> true constr
+R74013:74017 Corelib.Init.Datatypes <> false constr
+R73989:73996 Higgaion.PQCMigration <> mkMigRec constr
+R73998:74006 Higgaion.PQCMigration <> Classical constr
+R74008:74011 Corelib.Init.Datatypes <> true constr
+R74013:74017 Corelib.Init.Datatypes <> false constr
+R74116:74126 Higgaion.PQCMigration <> well_formed def
+R74242:74265 Higgaion.PQCMigration <> validly_signed_for_state def
+R74288:74303 Higgaion.PQCMigration <> classical_verify def
+R74400:74424 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R74440:74455 Higgaion.PQCMigration <> classical_verify def
+R74458:74471 Higgaion.PQCMigration <> pqc_verify_sig def
+prf 75203:75229 <> or_mode_backward_compatible
+binder 75242:75244 <> msg:321
+binder 75246:75249 <> csig:322
+binder 75251:75254 <> psig:323
+R75293:75300 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R75286:75288 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R75261:75276 Higgaion.PQCMigration <> classical_verify def
+R75278:75280 Higgaion.PQCMigration <> msg:321 var
+R75282:75285 Higgaion.PQCMigration <> csig:322 var
+R75289:75292 Corelib.Init.Datatypes <> true constr
+R75340:75342 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R75301:75325 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R75327:75329 Higgaion.PQCMigration <> msg:321 var
+R75331:75334 Higgaion.PQCMigration <> csig:322 var
+R75336:75339 Higgaion.PQCMigration <> psig:323 var
+R75343:75346 Corelib.Init.Datatypes <> true constr
+R75392:75416 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+prf 75988:76021 <> pqc_preferred_subsumes_conjunctive
+binder 76034:76036 <> msg:324
+binder 76038:76041 <> csig:325
+binder 76043:76046 <> psig:326
+R76099:76106 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R76092:76094 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R76053:76077 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R76079:76081 Higgaion.PQCMigration <> msg:324 var
+R76083:76086 Higgaion.PQCMigration <> csig:325 var
+R76088:76091 Higgaion.PQCMigration <> psig:326 var
+R76095:76098 Corelib.Init.Datatypes <> true constr
+R76153:76155 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R76107:76133 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+R76135:76137 Higgaion.PQCMigration <> msg:324 var
+R76139:76142 Higgaion.PQCMigration <> csig:325 var
+R76144:76147 Higgaion.PQCMigration <> psig:326 var
+R76149:76152 Corelib.Init.Datatypes <> true constr
+R76156:76159 Corelib.Init.Datatypes <> true constr
+R76208:76232 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R76252:76269 Stdlib.Bool.Bool <> andb_true_iff thm
+R76252:76269 Stdlib.Bool.Bool <> andb_true_iff thm
+R76317:76343 Higgaion.PQCMigration <> hybrid_verify_pqc_preferred def
+prf 76969:77006 <> disjunctive_conjunctive_non_equivalent
+R77062:77062 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R77175:77249 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R77376:77376 Corelib.Init.Logic <> ::type_scope:x_'/\'_x not
+R77063:77069 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R77083:77088 Corelib.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 77070:77072 <> msg:327
+binder 77074:77077 <> csig:328
+binder 77079:77082 <> psig:329
+R77128:77135 Corelib.Init.Logic <> ::type_scope:x_'<>'_x not
+R77089:77113 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R77115:77117 Higgaion.PQCMigration <> msg:327 var
+R77119:77122 Higgaion.PQCMigration <> csig:328 var
+R77124:77127 Higgaion.PQCMigration <> psig:329 var
+R77136:77160 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R77162:77164 Higgaion.PQCMigration <> msg:327 var
+R77166:77169 Higgaion.PQCMigration <> csig:328 var
+R77171:77174 Higgaion.PQCMigration <> psig:329 var
+binder 77257:77259 <> msg:330
+binder 77261:77264 <> csig:331
+binder 77266:77269 <> psig:332
+R77322:77329 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R77315:77317 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R77276:77300 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R77302:77304 Higgaion.PQCMigration <> msg:330 var
+R77306:77309 Higgaion.PQCMigration <> csig:331 var
+R77311:77314 Higgaion.PQCMigration <> psig:332 var
+R77318:77321 Corelib.Init.Datatypes <> true constr
+R77369:77371 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R77330:77354 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R77356:77358 Higgaion.PQCMigration <> msg:330 var
+R77360:77363 Higgaion.PQCMigration <> csig:331 var
+R77365:77368 Higgaion.PQCMigration <> psig:332 var
+R77372:77375 Corelib.Init.Datatypes <> true constr
+R77470:77494 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R77497:77521 Higgaion.PQCMigration <> hybrid_verify_conjunctive def
+R77535:77550 Higgaion.PQCMigration <> classical_verify def
+R77553:77566 Higgaion.PQCMigration <> pqc_verify_sig def
+R77654:77684 Higgaion.PQCMigration <> conjunctive_implies_disjunctive thm
+R77654:77684 Higgaion.PQCMigration <> conjunctive_implies_disjunctive thm
+prf 78415:78454 <> classical_verifier_safe_during_migration
+binder 78467:78467 <> r:333
+binder 78469:78471 <> msg:334
+binder 78473:78476 <> csig:335
+binder 78478:78481 <> psig:336
+R78501:78508 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R78488:78498 Higgaion.PQCMigration <> well_formed def
+R78500:78500 Higgaion.PQCMigration <> r:333 var
+R78509:78509 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R78557:78565 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R78533:78536 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R78521:78523 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R78510:78518 Higgaion.PQCMigration <> mig_state proj
+R78520:78520 Higgaion.PQCMigration <> r:333 var
+R78524:78532 Higgaion.PQCMigration <> Classical constr
+R78548:78550 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R78537:78545 Higgaion.PQCMigration <> mig_state proj
+R78547:78547 Higgaion.PQCMigration <> r:333 var
+R78551:78556 Higgaion.PQCMigration <> Hybrid constr
+R78598:78605 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R78591:78593 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R78566:78581 Higgaion.PQCMigration <> classical_verify def
+R78583:78585 Higgaion.PQCMigration <> msg:334 var
+R78587:78590 Higgaion.PQCMigration <> csig:335 var
+R78594:78597 Corelib.Init.Datatypes <> true constr
+R78645:78647 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R78606:78630 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R78632:78634 Higgaion.PQCMigration <> msg:334 var
+R78636:78639 Higgaion.PQCMigration <> csig:335 var
+R78641:78644 Higgaion.PQCMigration <> psig:336 var
+R78648:78651 Corelib.Init.Datatypes <> true constr
+R78788:78812 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+prf 79542:79575 <> pqc_verifier_safe_during_migration
+binder 79588:79588 <> r:337
+binder 79590:79592 <> msg:338
+binder 79594:79597 <> csig:339
+binder 79599:79602 <> psig:340
+R79622:79629 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R79609:79619 Higgaion.PQCMigration <> well_formed def
+R79621:79621 Higgaion.PQCMigration <> r:337 var
+R79630:79630 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R79676:79684 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R79651:79654 Corelib.Init.Logic <> ::type_scope:x_'\/'_x not
+R79642:79644 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R79631:79639 Higgaion.PQCMigration <> mig_state proj
+R79641:79641 Higgaion.PQCMigration <> r:337 var
+R79645:79650 Higgaion.PQCMigration <> Hybrid constr
+R79666:79668 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R79655:79663 Higgaion.PQCMigration <> mig_state proj
+R79665:79665 Higgaion.PQCMigration <> r:337 var
+R79669:79675 Higgaion.PQCMigration <> PqcOnly constr
+R79715:79722 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R79708:79710 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R79685:79698 Higgaion.PQCMigration <> pqc_verify_sig def
+R79700:79702 Higgaion.PQCMigration <> msg:338 var
+R79704:79707 Higgaion.PQCMigration <> psig:340 var
+R79711:79714 Corelib.Init.Datatypes <> true constr
+R79762:79764 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R79723:79747 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R79749:79751 Higgaion.PQCMigration <> msg:338 var
+R79753:79756 Higgaion.PQCMigration <> csig:339 var
+R79758:79761 Higgaion.PQCMigration <> psig:340 var
+R79765:79768 Corelib.Init.Datatypes <> true constr
+R79905:79929 Higgaion.PQCMigration <> hybrid_verify_disjunctive def
+R79952:79966 Stdlib.Bool.Bool <> orb_true_r thm
+R79952:79966 Stdlib.Bool.Bool <> orb_true_r thm
+rec 80967:80990 <> PeerAwareMigrationRecord
+proj 81009:81017 <> local_rec
+proj 81047:81061 <> peer_last_state
+proj 81084:81096 <> peer_shard_id
+R81028:81042 Higgaion.PQCMigration <> MigrationRecord rec
+R81066:81079 Higgaion.PQCMigration <> MigrationState ind
+R81103:81105 Corelib.Init.Datatypes <> nat ind
+def 81254:81269 <> peer_well_formed
+R81277:81300 Higgaion.PQCMigration <> PeerAwareMigrationRecord rec
+binder 81272:81273 <> pr:345
+R81315:81325 Higgaion.PQCMigration <> well_formed def
+R81328:81336 Higgaion.PQCMigration <> local_rec proj
+R81338:81339 Higgaion.PQCMigration <> pr:345 var
+def 81535:81545 <> peer_update
+R81553:81576 Higgaion.PQCMigration <> PeerAwareMigrationRecord rec
+binder 81548:81549 <> pr:346
+R81601:81614 Higgaion.PQCMigration <> MigrationState ind
+binder 81584:81597 <> incoming_state:347
+R81635:81637 Corelib.Init.Datatypes <> nat ind
+binder 81618:81631 <> incoming_shard:348
+R81646:81669 Higgaion.PQCMigration <> PeerAwareMigrationRecord rec
+R81679:81685 Stdlib.Arith.PeanoNat Nat leb def
+R81688:81696 Higgaion.PQCMigration <> state_ord def
+R81699:81713 Higgaion.PQCMigration <> peer_last_state proj
+R81715:81716 Higgaion.PQCMigration <> pr:346 var
+R81721:81729 Higgaion.PQCMigration <> state_ord def
+R81731:81744 Higgaion.PQCMigration <> incoming_state:347 var
+R81816:81817 Higgaion.PQCMigration <> pr:346 var
+R81754:81762 Higgaion.PQCMigration <> mkPeerRec constr
+R81765:81773 Higgaion.PQCMigration <> local_rec proj
+R81775:81776 Higgaion.PQCMigration <> pr:346 var
+R81779:81792 Higgaion.PQCMigration <> incoming_state:347 var
+R81794:81807 Higgaion.PQCMigration <> incoming_shard:348 var
+def 81880:81894 <> peer_divergence
+R81902:81925 Higgaion.PQCMigration <> PeerAwareMigrationRecord rec
+binder 81897:81898 <> pr:349
+R81930:81932 Corelib.Init.Datatypes <> nat ind
+R81956:81964 Higgaion.PQCMigration <> state_ord def
+R81967:81975 Higgaion.PQCMigration <> mig_state proj
+R81978:81986 Higgaion.PQCMigration <> local_rec proj
+R81988:81989 Higgaion.PQCMigration <> pr:349 var
+binder 81943:81951 <> local_ord:350
+R82014:82022 Higgaion.PQCMigration <> state_ord def
+R82025:82039 Higgaion.PQCMigration <> peer_last_state proj
+R82041:82042 Higgaion.PQCMigration <> pr:349 var
+binder 82002:82009 <> peer_ord:351
+R82053:82059 Stdlib.Arith.PeanoNat Nat leb def
+R82061:82069 Higgaion.PQCMigration <> local_ord:350 var
+R82071:82078 Higgaion.PQCMigration <> peer_ord:351 var
+R82124:82126 Corelib.Init.Peano <> ::nat_scope:x_'-'_x not
+R82115:82123 Higgaion.PQCMigration <> local_ord:350 var
+R82127:82134 Higgaion.PQCMigration <> peer_ord:351 var
+R82095:82097 Corelib.Init.Peano <> ::nat_scope:x_'-'_x not
+R82087:82094 Higgaion.PQCMigration <> peer_ord:351 var
+R82098:82106 Higgaion.PQCMigration <> local_ord:350 var
+prf 82623:82641 <> state_ord_injective
+binder 82652:82653 <> s1:352
+binder 82655:82656 <> s2:353
+R82688:82691 Corelib.Init.Logic <> ::type_scope:x_'->'_x not
+R82673:82675 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R82661:82669 Higgaion.PQCMigration <> state_ord def
+R82671:82672 Higgaion.PQCMigration <> s1:352 var
+R82676:82684 Higgaion.PQCMigration <> state_ord def
+R82686:82687 Higgaion.PQCMigration <> s2:353 var
+R82694:82696 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R82692:82693 Higgaion.PQCMigration <> s1:352 var
+R82697:82698 Higgaion.PQCMigration <> s2:353 var
+prf 83177:83191 <> state_ord_total
+binder 83202:83202 <> s:354
+R83218:83221 Corelib.Init.Peano <> ::nat_scope:x_'<='_x not
+R83207:83215 Higgaion.PQCMigration <> state_ord def
+R83217:83217 Higgaion.PQCMigration <> s:354 var
+prf 83744:83764 <> peer_update_monotonic
+binder 83775:83776 <> pr:355
+binder 83778:83791 <> incoming_state:356
+binder 83793:83806 <> incoming_shard:357
+R83885:83890 Corelib.Init.Peano <> ::nat_scope:x_'>='_x not
+R83811:83819 Higgaion.PQCMigration <> state_ord def
+R83822:83836 Higgaion.PQCMigration <> peer_last_state proj
+R83839:83849 Higgaion.PQCMigration <> peer_update def
+R83851:83852 Higgaion.PQCMigration <> pr:355 var
+R83854:83867 Higgaion.PQCMigration <> incoming_state:356 var
+R83869:83882 Higgaion.PQCMigration <> incoming_shard:357 var
+R83891:83899 Higgaion.PQCMigration <> state_ord def
+R83902:83916 Higgaion.PQCMigration <> peer_last_state proj
+R83918:83919 Higgaion.PQCMigration <> pr:355 var
+R83982:83992 Higgaion.PQCMigration <> peer_update def
+R84007:84013 Stdlib.Arith.PeanoNat Nat leb def
+R84016:84024 Higgaion.PQCMigration <> state_ord def
+R84027:84041 Higgaion.PQCMigration <> peer_last_state proj
+R84069:84077 Higgaion.PQCMigration <> state_ord def
+R84007:84013 Stdlib.Arith.PeanoNat Nat leb def
+R84016:84024 Higgaion.PQCMigration <> state_ord def
+R84027:84041 Higgaion.PQCMigration <> peer_last_state proj
+R84069:84077 Higgaion.PQCMigration <> state_ord def
+R84167:84176 Stdlib.Arith.PeanoNat Nat leb_le thm
+R84167:84176 Stdlib.Arith.PeanoNat Nat leb_le thm
+prf 84701:84722 <> peer_update_idempotent
+binder 84733:84734 <> pr:358
+binder 84736:84749 <> incoming_state:359
+binder 84751:84764 <> incoming_shard:360
+R84906:84910 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R84769:84783 Higgaion.PQCMigration <> peer_last_state proj
+R84786:84796 Higgaion.PQCMigration <> peer_update def
+R84799:84809 Higgaion.PQCMigration <> peer_update def
+R84811:84812 Higgaion.PQCMigration <> pr:358 var
+R84814:84827 Higgaion.PQCMigration <> incoming_state:359 var
+R84829:84842 Higgaion.PQCMigration <> incoming_shard:360 var
+R84876:84889 Higgaion.PQCMigration <> incoming_state:359 var
+R84891:84904 Higgaion.PQCMigration <> incoming_shard:360 var
+R84911:84925 Higgaion.PQCMigration <> peer_last_state proj
+R84928:84938 Higgaion.PQCMigration <> peer_update def
+R84940:84941 Higgaion.PQCMigration <> pr:358 var
+R84943:84956 Higgaion.PQCMigration <> incoming_state:359 var
+R84958:84971 Higgaion.PQCMigration <> incoming_shard:360 var
+R85034:85044 Higgaion.PQCMigration <> peer_update def
+R85064:85070 Stdlib.Arith.PeanoNat Nat leb def
+R85073:85081 Higgaion.PQCMigration <> state_ord def
+R85084:85098 Higgaion.PQCMigration <> peer_last_state proj
+R85126:85134 Higgaion.PQCMigration <> state_ord def
+R85064:85070 Stdlib.Arith.PeanoNat Nat leb def
+R85073:85081 Higgaion.PQCMigration <> state_ord def
+R85084:85098 Higgaion.PQCMigration <> peer_last_state proj
+R85126:85134 Higgaion.PQCMigration <> state_ord def
+R85311:85313 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R85223:85229 Stdlib.Arith.PeanoNat Nat leb def
+R85232:85240 Higgaion.PQCMigration <> state_ord def
+R85286:85294 Higgaion.PQCMigration <> state_ord def
+R85314:85317 Corelib.Init.Datatypes <> true constr
+R85311:85313 Corelib.Init.Logic <> ::type_scope:x_'='_x not
+R85223:85229 Stdlib.Arith.PeanoNat Nat leb def
+R85232:85240 Higgaion.PQCMigration <> state_ord def
+R85286:85294 Higgaion.PQCMigration <> state_ord def
+R85314:85317 Corelib.Init.Datatypes <> true constr
+R85333:85342 Stdlib.Arith.PeanoNat Nat leb_le thm
+R85333:85342 Stdlib.Arith.PeanoNat Nat leb_le thm
