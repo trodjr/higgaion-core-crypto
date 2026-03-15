@@ -7,6 +7,16 @@ To see the full state machine, ML-DSA Disjunctive Verification, and the mathemat
 
 ![PQC Migration Zero-Downtime Demo](demo.gif)
 
+## Disjunctive Verification & Erasure-Before-WAL Whitepaper
+We have published a comprehensive architectural whitepaper detailing the Disjunctive (OR-Mode) Hybrid Verification protocols and the inverted "Erasure-Before-WAL" journaling sequence. 
+
+📄 **[Read the Academic Whitepaper (PDF)](higgaion_ACADEMIC_WHITEPAPER.pdf)**
+
+The whitepaper explains:
+1. Why standard database WALs fail during classical key destruction (SNDL vulnerability).
+2. How to achieve uncoordinated, rolling zero-downtime upgrades across sharded, multi-node infrastructure.
+3. The methodology behind the adversarial quad-tier formal verification pipeline.
+
 ## Quad-Tier Formal Verification
 The proofs in `verification/coq/` compile with **zero admitted lemmas** under the Coq proof assistant. They demonstrate the mechanical correctness of our:
 1.  **4-State Transition Matrix** (CLASSICAL → HYBRID → FINALIZING → PQC_ONLY)
