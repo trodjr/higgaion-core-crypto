@@ -14,7 +14,7 @@
      - Generation monotonicity
 
    Run:
-     cd verification/coq
+     cd coq
      coqc -Q . Higgaion PQCMigrationExtract.v
      # Produces: pqc_migration_extracted.ml / pqc_migration_extracted.mli
    ========================================================================= *)
@@ -64,7 +64,7 @@ Extract Inductive MigrationState =>
    Proof terms are erased — only the verified API remains.
    ------------------------------------------------------------------------- *)
 Extraction Language OCaml.
-Set Extraction Output Directory "../../verification/coq/extracted".
+Set Extraction Output Directory "../../coq/extracted".
 
 (* Extract the full PQC migration model *)
 Recursive Extraction
