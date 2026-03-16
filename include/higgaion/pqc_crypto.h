@@ -1,0 +1,50 @@
+/**
+ * @file pqc_crypto.h
+ * @brief PQC cryptographic primitives for the migration engine.
+ *
+ * Extracted from higgaion_api.h — only the functions used by
+ * pqc_migration.c.
+ */
+#ifndef PQC_CRYPTO_H
+#define PQC_CRYPTO_H
+
+#include "pqc_types.h"
+#include <openssl/x509.h>
+
+/* ── Key lifecycle ───────────────────────────────────────────────────── */
+
+/** Initialize a HiggaionKey to safe defaults (pkey = NULL). */
+void higgaion_key_init(HiggaionKey *key);
+
+/** Free internal resources of a HiggaionKey. */
+void higgaion_key_free(HiggaionKey *key);
+
+/** Generate an ML-DSA-87 or ML-KEM-1024 keypair via OpenSSL EVP. */
+void generate_keypair(HiggaionKey *key, const char *alg_name);
+
+/* ── PQC signing (ML-DSA-87 via EVP_DigestSign) ──────────────────────── */
+
+/**
+ * Sign a message with domain separation using ML-DSA-87.
+ * Allocates *signature; caller must free().
+ */
+void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
+              size_t msg_len, const char *domain, const HiggaionKey *sk);
+
+/**
+ * Verify an ML-DSA-87 signature with domain separation.
+ * Returns true on valid signature.
+ */
+bool pqc_verify(const uint8_t *message, size_t msg_len,
+                const uint8_t *signature, size_t sig_len, const char *domain,
+                const HiggaionKey *pk);
+
+/* ── Utilities ───────────────────────────────────────────────────────── */
+
+/** Compiler-optimization-resistant memory zeroing (OPENSSL_cleanse). */
+void secure_zero(void *ptr, size_t len);
+
+/** SHA3-256 hash: out must be 32 bytes. */
+void hash(uint8_t *out, const uint8_t *data, size_t len);
+
+#endif /* PQC_CRYPTO_H */
