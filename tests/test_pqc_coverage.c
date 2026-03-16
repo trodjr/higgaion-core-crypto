@@ -58,8 +58,9 @@ int test_edge_cases() {
     }
 
     size_t huge_len = SIZE_MAX;
+    uint8_t dummy_sig[1] = {0};
     pqc_sign(&sig, &sig_len, data, huge_len, "domain", &key); // msg_len overflow
-    pqc_verify(data, huge_len, sig, sig_len, "domain", &key); // msg_len overflow
+    pqc_verify(data, huge_len, dummy_sig, sizeof(dummy_sig), "domain", &key); // msg_len overflow
 
     // Invalid/null verify checks
     pqc_verify(data, sizeof(data), NULL, sig_len, "domain", &key);

@@ -29,6 +29,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(BIN_DIR)/%: $(TEST_DIR)/%.c $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
+$(BIN_DIR)/test_pqc_mock: LDFLAGS += -Wl,--wrap=malloc -Wl,--wrap=EVP_PKEY_keygen_init -Wl,--wrap=EVP_PKEY_keygen -Wl,--wrap=EVP_MD_CTX_new -Wl,--wrap=EVP_DigestSignInit -Wl,--wrap=EVP_DigestSign -Wl,--wrap=EVP_DigestVerifyInit
+
 # Coq formal verification target
 verify:
 	@echo "==> Running mechanized proofs in Gallina (Coq)..."
