@@ -34,6 +34,11 @@ make test     # (coming in next commit — 26 roundtrip tests)
 make clean
 ```
 
+## AI Methodology Disclosure (Radical Transparency)
+This project embraces *radical transparency* regarding its development methodology. The C implementations, cryptographic state machine, and specifically the 101 Gallina formal proofs were engineered using state-of-the-art AI pair-programming models under the strict architectural guidance of a human protocol expert. 
+
+We don't ask you to trust the AI's output, nor do we ask you to trust human ego. We ask you to trust the Coq compiler's AST evaluator. If there is a single hallucination, memory leak, or unproven lemma, the 101 proofs fail to compile. Mathematical truth supersedes all origins.
+
 ## Intellectual Property & Commercial Licensing
 The cryptographic C implementations (`pqc_crypto.c`) and the formal Coq proofs (`verification/coq/`) within this repository are open-source and provided under the MIT License.
 
