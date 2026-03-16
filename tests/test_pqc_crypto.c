@@ -13,9 +13,12 @@ int main() {
     for(int i = 0; i < 13; i++) {
         generate_keypair(&key, "ML-DSA-87");
         if (!key.pkey) {
-            printf("[SKIP] ML-DSA-87 is not supported by the linked OpenSSL library.\n");
-            printf("[SKIP] Please use OpenSSL 3.5.5 or later for full PQC features.\n");
-            return 0;
+            printf("[WARN] ML-DSA-87 not supported, falling back to ED25519 for wrapper coverage.\n");
+            generate_keypair(&key, "ED25519");
+            if (!key.pkey) {
+                printf("[ERROR] Failed to generate fallback ED25519 keypair\n");
+                return 1;
+            }
         }
 
         uint8_t *sig = NULL;

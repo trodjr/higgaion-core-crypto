@@ -53,8 +53,8 @@ int test_edge_cases() {
     // Overflow check
     generate_keypair(&key, "ML-DSA-87");
     if (!key.pkey) {
-        printf("[SKIP] ML-DSA-87 not supported, skipping full signing edge cases.\n");
-        return 0; // if ML-DSA not supported, exit gracefully
+        printf("[WARN] ML-DSA-87 not supported, falling back to ED25519 for wrapper coverage.\n");
+        generate_keypair(&key, "ED25519");
     }
 
     size_t huge_len = SIZE_MAX;
