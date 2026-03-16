@@ -48,4 +48,14 @@ clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	cd $(COQ_DIR) && rm -f *.vo *.glob *.vok *.vos .*.aux
 
-.PHONY: all prep verify test clean
+# Code Coverage
+coverage: CFLAGS += --coverage
+coverage: LDFLAGS += --coverage
+coverage: clean test
+	@echo "==> Generating coverage report..."
+	lcov --capture --directory . --output-file coverage.info
+	lcov --remove coverage.info '/usr/*' 'tests/*' --output-file coverage.info
+	genhtml coverage.info --output-directory coverage_report
+	@echo "Coverage report generated in coverage_report/index.html"
+
+.PHONY: all prep verify test clean coverage
