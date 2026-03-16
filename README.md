@@ -47,7 +47,7 @@ This project embraces *radical transparency* regarding its development methodolo
 We don't ask you to trust the AI's output, nor do we ask you to trust human ego. We ask you to trust the Coq compiler's AST evaluator. If there is a single hallucination, memory leak, or unproven lemma, the 101 proofs fail to compile. Mathematical truth supersedes all origins.
 
 ## Intellectual Property & Commercial Licensing
-The cryptographic C implementations (`pqc_crypto.c`) and the formal Coq proofs (`verification/coq/`) within this repository are open-source and provided under the MIT License.
+The cryptographic C implementations (`pqc_crypto.c`) and the formal Coq proofs (`coq/`) within this repository are open-source and provided under the MIT License.
 
 **PATENT NOTICE:** 
 The overarching PQC crash-recoverable migration state machine, the Erasure-Before-WAL crash recovery architecture, and the Disjunctive (OR-Mode) Hybrid Verification protocols demonstrated in our engine are protected under **U.S. Patent Application No. 64/000,480**.
