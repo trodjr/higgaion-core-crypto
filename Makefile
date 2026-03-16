@@ -32,7 +32,8 @@ $(BIN_DIR)/%: $(TEST_DIR)/%.c $(OBJS)
 # Coq formal verification target
 verify:
 	@echo "==> Running mechanized proofs in Gallina (Coq)..."
-	cd $(COQ_DIR) && coqc PQCMigration.v
+	cd $(COQ_DIR) && coqc -Q . Higgaion HiggaionTypes.v
+	cd $(COQ_DIR) && coqc -Q . Higgaion PQCMigration.v
 
 # Main test runner
 test: prep $(TEST_BINS)
