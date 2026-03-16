@@ -1,7 +1,7 @@
 # Higgaion Core Cryptography & Proofs
 
 [![Build Status](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml/badge.svg)](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml)
-[![codecov](https://codecov.io/gh/trodjr/higgaion-core-crypto/graph/badge.svg?token=YOUR_TOKEN_HERE)](https://codecov.io/gh/trodjr/higgaion-core-crypto)
+[![codecov](https://codecov.io/gh/trodjr/higgaion-core-crypto/graph/badge.svg)](https://codecov.io/gh/trodjr/higgaion-core-crypto)
 
 This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
