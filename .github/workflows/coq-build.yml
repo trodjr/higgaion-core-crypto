@@ -1,0 +1,27 @@
+name: Quad-Tier Formal Verification & C Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make gcc libssl-dev coq
+
+    - name: Run Gallina (Coq) Mechanized Proofs
+      run: make verify
+
+    - name: Build C core primitives
+      run: make prep obj/pqc_crypto.o
+
+    - name: Run PQC Cryptographic Roundtrip tests
+      run: make test
