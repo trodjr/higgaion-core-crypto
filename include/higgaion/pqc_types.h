@@ -2,8 +2,8 @@
  * @file pqc_types.h
  * @brief Minimal type definitions for the PQC Migration Engine.
  *
- * Extracted from higgaion_types.h — contains only the types actually used
- * by the migration engine, with zero blockchain dependencies.
+ * Contains only the types used unconditionally by the migration engine,
+ * independent of any other dependencies.
  */
 #ifndef PQC_TYPES_H
 #define PQC_TYPES_H

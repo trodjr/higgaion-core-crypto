@@ -3,6 +3,9 @@
 [![Build Status](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml/badge.svg)](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml)
 [![codecov](https://codecov.io/gh/trodjr/higgaion-core-crypto/graph/badge.svg)](https://codecov.io/gh/trodjr/higgaion-core-crypto)
 
+[![Coq](https://img.shields.io/badge/Language-Coq-blue.svg)](https://coq.inria.fr)
+[![Lemmas](https://img.shields.io/badge/Admitted_Lemmas-0-success.svg)](#quad-tier-formal-verification)
+
 This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
 🌐 **Official Website:** [higgaion.io](https://higgaion.io)
@@ -32,8 +35,9 @@ The proofs in `coq/` compile with **zero admitted lemmas**. They mechanically ve
 git clone https://github.com/trodjr/higgaion-core-crypto.git
 cd higgaion-core-crypto
 
-make          # builds C + runs Coq proofs
-make test     # (coming in next commit — 26 roundtrip tests)
+make          # builds C core + runs Coq proofs
+make test     # runs the 26 cryptographic roundtrip tests
+make coverage # runs coverage suite (requires lcov/gcov)
 make clean
 ```
 

@@ -1,10 +1,9 @@
 /**
  * @file pqc_crypto.c
- * @brief PQC cryptographic primitives — standalone extraction from crypto.c.
+ * @brief PQC cryptographic primitives for the migration engine.
  *
- * Contains only the functions used by the PQC Migration Engine:
- *   generate_keypair, higgaion_key_init, higgaion_key_free,
- *   pqc_sign, pqc_verify, secure_zero, hig_error_str
+ * Provides ML-DSA OpenSSL wrappers and utility functions for
+ * the isolated PQC verification module.
  */
 #define _POSIX_C_SOURCE 200809L
 #include "../include/higgaion/pqc_crypto.h"
