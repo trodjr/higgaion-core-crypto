@@ -1,12 +1,10 @@
 # Higgaion Core Cryptography & Proofs
 
-This repository contains the core post-quantum cryptographic primitives (ML-DSA and ML-KEM OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
+This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
 🌐 **Official Website:** [higgaion.io](https://higgaion.io)
 
 ## Asciinema Demo: Zero-Downtime Migration
-To see the full state machine, ML-DSA Disjunctive Verification, and the mathematically proven Erasure-Before-WAL crash recovery in action, play the included terminal recording:
-
 ![PQC Migration Zero-Downtime Demo](demo.gif)
 
 ## Disjunctive Verification & Erasure-Before-WAL Whitepaper
@@ -20,10 +18,21 @@ The whitepaper explains:
 3. The methodology behind the adversarial quad-tier formal verification pipeline.
 
 ## Quad-Tier Formal Verification
-The proofs in `verification/coq/` compile with **zero admitted lemmas** under the Coq proof assistant. They demonstrate the mechanical correctness of our:
-1.  **4-State Transition Matrix** (CLASSICAL → HYBRID → FINALIZING → PQC_ONLY)
-2.  **Disjunctive (OR-Mode) Dual Signatures**
-3.  **Adversarial Crash Recovery Invariants**
+The proofs in `coq/` compile with **zero admitted lemmas**. They mechanically verify:
+- 4-State Transition Matrix (CLASSICAL → HYBRID → FINALIZING → PQC_ONLY)
+- Disjunctive (OR-Mode) Dual Signatures
+- Adversarial Crash Recovery + Erasure-Before-WAL invariants
+
+## Quick Start & Build
+```bash
+# Clone + build everything
+git clone https://github.com/trodjr/higgaion-core-crypto.git
+cd higgaion-core-crypto
+
+make          # builds C + runs Coq proofs
+make test     # (coming in next commit — 26 roundtrip tests)
+make clean
+```
 
 ## Intellectual Property & Commercial Licensing
 The cryptographic C implementations (`pqc_crypto.c`) and the formal Coq proofs (`verification/coq/`) within this repository are open-source and provided under the MIT License.
