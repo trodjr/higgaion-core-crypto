@@ -2,8 +2,8 @@
  * @file pqc_crypto.h
  * @brief PQC cryptographic primitives for the migration engine.
  *
- * Extracted from higgaion_api.h — only the functions used by
- * pqc_migration.c.
+ * Provides ML-DSA OpenSSL wrappers and utility functions for
+ * the isolated PQC verification module.
  */
 #ifndef PQC_CRYPTO_H
 #define PQC_CRYPTO_H
