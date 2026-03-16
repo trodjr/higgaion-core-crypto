@@ -16,7 +16,7 @@ This repository contains the core post-quantum cryptographic primitives (ML-DSA 
 ## Disjunctive Verification & Erasure-Before-WAL Whitepaper
 We have published a comprehensive architectural whitepaper detailing the Disjunctive (OR-Mode) Hybrid Verification protocols and the inverted "Erasure-Before-WAL" journaling sequence. 
 
-📄 **[Read the Academic Whitepaper (PDF)](higgaion_ACADEMIC_WHITEPAPER.pdf)**
+📄 **[Read the Academic Whitepaper (PDF)](higgaion_ACADEMIC_PAPER.pdf)**
 
 The whitepaper explains:
 1. Why standard database WALs fail during classical key destruction (SNDL vulnerability).
@@ -49,5 +49,5 @@ We don't ask you to trust the AI's output, nor do we ask you to trust human ego.
 ## Licensing
 
 - **Code & Coq proofs** (`pqc_crypto.c`, `coq/`, etc.): MIT License (see [LICENSE](LICENSE))
-- **Academic Whitepaper** (`higgaion_ACADEMIC_WHITEPAPER.pdf`): Creative Commons Attribution 4.0 (CC BY 4.0) — see footer on page 1
+- **Academic Whitepaper** (`higgaion_ACADEMIC_PAPER.pdf`): Creative Commons Attribution 4.0 (CC BY 4.0) — see footer on page 1
 - **Patent-protected core**: U.S. Provisional Patent Application No. 64/000,480 (state machine, Erasure-Before-WAL, disjunctive protocol). Full enterprise SDK available via commercial license — contact inquiries@higgaion.io
