@@ -6,6 +6,7 @@
 [![Coq](https://img.shields.io/badge/Language-Coq-blue.svg)](https://coq.inria.fr)
 [![Lemmas](https://img.shields.io/badge/Admitted_Lemmas-0-success.svg)](#quad-tier-formal-verification)
 [![Go Reference](https://pkg.go.dev/badge/github.com/trodjr/higgaion-core-crypto/go.svg)](https://pkg.go.dev/github.com/trodjr/higgaion-core-crypto/go)
+[![Python FFI](https://img.shields.io/badge/Python-CTypes_Ready-blue.svg)](python/)
 
 This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
@@ -81,6 +82,26 @@ valid := pub.Verify(message, sig, "gateway-production-zone")
 Execute the wrapper tests via the CLI:
 ```bash
 make test-go
+```
+
+## Language Bindings (Python 3)
+
+Higgaion Core Crypto provides a mathematically safe, idiomatic Python 3 FFI wrapper using standard `ctypes` over the dynamically compiled `libpqc_crypto.so` core.
+
+```python
+from higgaion import GenerateKeypair
+
+# Generate memory-safe ML-DSA-87 PQC keys. OpenSSL pointers bind to Python Garbage Collection.
+priv, pub = GenerateKeypair("ML-DSA-87")
+
+# Sign and verify over a network domain boundary natively
+sig = priv.sign(message, "gateway-production-zone")
+valid = pub.verify(message, sig, "gateway-production-zone")
+```
+
+Execute the Python wrapper CI validations:
+```bash
+make test-python
 ```
 
 ## AI Methodology Disclosure (Radical Transparency)

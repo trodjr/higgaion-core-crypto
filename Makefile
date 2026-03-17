@@ -51,6 +51,13 @@ test-go: prep obj/pqc_crypto.o
 	@echo "==> Running Go CGO integration tests..."
 	@cd go && go test -v ./...
 
+test-python: prep obj/libpqc_crypto.so
+	@echo "==> Running Python CTypes integration tests..."
+	@PYTHONPATH=$(PWD)/python python3 -m pytest -v python/tests/
+
+obj/libpqc_crypto.so: src/pqc_crypto.c
+	$(CC) $(CFLAGS) -shared -fPIC $< -o $@ $(LDFLAGS)
+
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	cd $(COQ_DIR) && rm -f *.vo *.glob *.vok *.vos .*.aux
@@ -65,4 +72,4 @@ coverage: clean test
 	genhtml coverage.info --output-directory coverage_report
 	@echo "Coverage report generated in coverage_report/index.html"
 
-.PHONY: all prep verify test test-go clean coverage
+.PHONY: all prep verify test test-go test-python clean coverage
