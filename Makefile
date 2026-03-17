@@ -55,6 +55,10 @@ test-python: prep obj/libpqc_crypto.so
 	@echo "==> Running Python CTypes integration tests..."
 	@PYTHONPATH=$(PWD)/python python3 -m pytest -v python/tests/
 
+test-rust: prep obj/libpqc_crypto.so
+	@echo "==> Running Rust FFI integration tests..."
+	@cd rust && LD_LIBRARY_PATH=$(PWD)/obj cargo test
+
 obj/libpqc_crypto.so: src/pqc_crypto.c
 	$(CC) $(CFLAGS) -shared -fPIC $< -o $@ $(LDFLAGS)
 
@@ -72,4 +76,4 @@ coverage: clean test
 	genhtml coverage.info --output-directory coverage_report
 	@echo "Coverage report generated in coverage_report/index.html"
 
-.PHONY: all prep verify test test-go test-python clean coverage
+.PHONY: all prep verify test test-go test-python test-rust clean coverage
