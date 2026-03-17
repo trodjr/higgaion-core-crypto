@@ -34,6 +34,17 @@ jobs:
     - name: Run Go CGO Language Binding Integration Tests
       run: make test-go
 
+    - name: Setup Python Environment
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Python FFI Dependencies
+      run: pip install pytest
+
+    - name: Run Python CTypes Language Binding Integration Tests
+      run: make test-python
+
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       with:
