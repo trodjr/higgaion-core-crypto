@@ -1,0 +1,19 @@
+# Build artifacts
+bin/
+obj/
+coverage_report/
+*.gcda
+*.gcno
+*.gcov
+coverage.info
+
+# Coq build files
+*.vo
+*.vok
+*.vos
+*.glob
+.*.aux
+
+# Other generated files
+*.pdf
+arxiv_submission_metadata.txt

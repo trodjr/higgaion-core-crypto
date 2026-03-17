@@ -23,6 +23,21 @@ The whitepaper explains:
 2. How to achieve uncoordinated, rolling zero-downtime upgrades across sharded, multi-node infrastructure.
 3. The methodology behind the adversarial quad-tier formal verification pipeline.
 
+## Enterprise Gateway (Zero-Trust Edge Proxy)
+Alongside the core engine, this repository also hosts the formal assurances for the **Enterprise Gateway**—a high-assurance sidecar proxy designed to bridge existing Identity Providers (IdP) to air-gapped Hardware Security Modules without exposing internal infrastructure.
+
+### Proxy Behavior Under Adversarial Load
+The proxy enforces rigorous domain-separation tags on incoming signatures.
+- **Valid PQC Authorization**: The Gateway successfully proxies the request to the offline wallet.
+![Gateway Success](assets/sidecar_success.gif)
+
+- **Invalid or Downgrade Attack**: The Gateway actively rejects classical downgrades or mis-tagged signatures at the edge.
+![Gateway Failure](assets/sidecar_failure.gif)
+
+The Gateway state machine operates under its own formally verified invariants located in:
+- `coq/Gateway.v` (Mechanized Gallina Proofs)
+- `tla/Gateway.tla` (Temporal Logic of Actions specifications)
+
 ## Quad-Tier Formal Verification
 The proofs in `coq/` compile with **zero admitted lemmas**. They mechanically verify:
 - 4-State Transition Matrix (CLASSICAL → HYBRID → FINALIZING → PQC_ONLY)
