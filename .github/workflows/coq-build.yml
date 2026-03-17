@@ -23,9 +23,6 @@ jobs:
     - name: Build C core primitives
       run: make prep obj/pqc_crypto.o
 
-    - name: Run PQC Cryptographic Roundtrip tests with Coverage
-      run: make coverage
-
     - name: Setup Golang Environment
       uses: actions/setup-go@v5
       with:
@@ -44,6 +41,9 @@ jobs:
 
     - name: Run Python CTypes Language Binding Integration Tests
       run: make test-python
+
+    - name: Run PQC Cryptographic Roundtrip tests with Coverage
+      run: make coverage
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
