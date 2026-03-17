@@ -7,6 +7,7 @@
 [![Lemmas](https://img.shields.io/badge/Admitted_Lemmas-0-success.svg)](#quad-tier-formal-verification)
 [![Go Reference](https://pkg.go.dev/badge/github.com/trodjr/higgaion-core-crypto/go.svg)](https://pkg.go.dev/github.com/trodjr/higgaion-core-crypto/go)
 [![Python FFI](https://img.shields.io/badge/Python-CTypes_Ready-blue.svg)](python/)
+[![Rust Crate](https://img.shields.io/badge/Rust-Safe_FFI-orange.svg)](rust/)
 
 This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
@@ -102,6 +103,26 @@ valid = pub.verify(message, sig, "gateway-production-zone")
 Execute the Python wrapper CI validations:
 ```bash
 make test-python
+```
+
+## Language Bindings (Rust)
+
+Higgaion Core Crypto securely exports native C OpenSSL bounds into canonical Rust types. Memory management is explicitly bounded via the `Drop` trait directly hooked to `higgaion_key_free()`, completely abstracting raw FFI `unsafe` executions from developers.
+
+```rust
+use higgaion_core_crypto::generate_keypair;
+
+// FFI generation safely bridged into canonical Rust scope
+let (priv_key, pub_key) = generate_keypair("ML-DSA-87").unwrap();
+
+// Sign and verify across the zero-trust boundary, safe from leakages 
+let sig = priv_key.sign(b"authorization_payload", "gateway-production-zone").unwrap();
+let is_valid = pub_key.verify(b"authorization_payload", &sig, "gateway-production-zone");
+```
+
+Execute the isolated Rust `cargo` validations:
+```bash
+make test-rust
 ```
 
 ## AI Methodology Disclosure (Radical Transparency)
