@@ -56,6 +56,32 @@ make coverage # runs coverage suite (requires lcov/gcov)
 make clean
 ```
 
+## Language Bindings (Golang)
+
+Higgaion Core Crypto provides a mathematically safe, idiomatic Go wrapper around the core C primitives using `cgo`. 
+
+```go
+import "github.com/trodjr/higgaion-core-crypto/go"
+
+// Generate memory-safe ML-DSA-87 PQC keys
+priv, pub, err := higgaion.GenerateKeypair("ML-DSA-87")
+if err != nil {
+	panic(err)
+}
+defer priv.Free() // Prevents OpenSSL pointer leaks
+
+// Sign over a network domain boundary
+sig, err := priv.Sign(message, "gateway-production-zone")
+
+// Validate signature cryptographically
+valid := pub.Verify(message, sig, "gateway-production-zone")
+```
+
+Execute the wrapper tests via the CLI:
+```bash
+make test-go
+```
+
 ## AI Methodology Disclosure (Radical Transparency)
 This project embraces *radical transparency* regarding its development methodology. The C implementations, cryptographic state machine, and specifically the 101 Gallina formal proofs were engineered using state-of-the-art AI pair-programming models under the strict architectural guidance of a human protocol expert. 
 

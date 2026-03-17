@@ -47,6 +47,10 @@ test: prep $(TEST_BINS)
 	done
 	@echo "==> All C tests passed."
 
+test-go: prep obj/pqc_crypto.o
+	@echo "==> Running Go CGO integration tests..."
+	@cd go && go test -v ./...
+
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	cd $(COQ_DIR) && rm -f *.vo *.glob *.vok *.vos .*.aux
@@ -61,4 +65,4 @@ coverage: clean test
 	genhtml coverage.info --output-directory coverage_report
 	@echo "Coverage report generated in coverage_report/index.html"
 
-.PHONY: all prep verify test clean coverage
+.PHONY: all prep verify test test-go clean coverage
