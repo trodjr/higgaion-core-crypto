@@ -36,6 +36,7 @@ verify:
 	@echo "==> Running mechanized proofs in Gallina (Coq)..."
 	cd $(COQ_DIR) && coqc -Q . Higgaion HiggaionTypes.v
 	cd $(COQ_DIR) && coqc -Q . Higgaion PQCMigration.v
+	cd $(COQ_DIR) && coqc -Q . Higgaion Gateway.v
 
 # Main test runner
 test: prep $(TEST_BINS)
