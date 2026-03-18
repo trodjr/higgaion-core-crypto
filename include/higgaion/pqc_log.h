@@ -23,6 +23,7 @@ static inline void log_message(const char *level, const char *module,
   time_t now = time(NULL);
   struct tm tm_buf;
   gmtime_r(&now, &tm_buf);
+  /* flawfinder: ignore */
   char ts[20];
   strftime(ts, sizeof(ts), "%Y-%m-%dT%H:%M:%S", &tm_buf);
 
