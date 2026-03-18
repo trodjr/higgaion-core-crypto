@@ -6,7 +6,7 @@ SRC_DIR = src
 TEST_DIR = tests
 OBJ_DIR = obj
 BIN_DIR = bin
-COQ_DIR = coq
+COQ_DIR = verification/coq
 
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
