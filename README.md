@@ -34,11 +34,11 @@ Alongside the core engine, this repository also hosts the formal assurances for 
 The proxy enforces rigorous domain-separation tags on incoming signatures.
 - **Valid PQC Authorization**: The Gateway successfully proxies the request to the offline wallet.
 
-![Gateway Success](assets/gateway_success.gif)
+![Gateway Success](assets/gateway_success.gif?v=2)
 
 - **Invalid or Downgrade Attack**: The Gateway actively rejects classical downgrades or mis-tagged signatures at the edge.
 
-![Gateway Failure](assets/gateway_failure.gif)
+![Gateway Failure](assets/gateway_failure.gif?v=2)
 
 The Gateway state machine operates under its own formally verified invariants located in:
 - `coq/Gateway.v` (Mechanized Gallina Proofs)
