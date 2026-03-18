@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
     - name: Install flawfinder
-      run: pip install flawfinder
+      run: sudo apt-get update && sudo apt-get install -y flawfinder
     - name: Scan Global C codebase natively for forbidden buffers
       run: flawfinder --error-level=4 src/ gateway/src/ tests/ include/
