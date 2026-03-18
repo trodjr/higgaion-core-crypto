@@ -26,9 +26,10 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         queries: security-extended,security-and-quality
-    - name: Compile C100K Gateway Bounds
+    - name: Compile Global Repository Structure
       run: |
         sudo apt-get update && sudo apt-get install -y libssl-dev
+        make all
         cd gateway && gcc -Wall -Wextra -O2 -Iinclude -Ideps/cJSON src/gateway.c -lm -lssl -lcrypto -lpthread -ldl -o higgaion_gateway
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
