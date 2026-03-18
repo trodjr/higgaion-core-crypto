@@ -1,0 +1,25 @@
+{
+  "title": "Higgaion C100K Enterprise Gateway",
+  "panels": [
+    {
+      "title": "Active Edge Connections",
+      "type": "stat",
+      "targets": [ { "expr": "higgaion_gateway_active_connections" } ]
+    },
+    {
+      "title": "L7 WAF Firewall Drops",
+      "type": "timeseries",
+      "targets": [ { "expr": "rate(higgaion_gateway_waf_drops[1m])" } ]
+    },
+    {
+      "title": "JWT Authentication Drops",
+      "type": "timeseries",
+      "targets": [ { "expr": "rate(higgaion_gateway_iam_drops[1m])" } ]
+    },
+    {
+      "title": "Physical Byte Transmission (Bandwidth)",
+      "type": "timeseries",
+      "targets": [ { "expr": "rate(higgaion_gateway_bytes_proxied[1m])" } ]
+    }
+  ]
+}
