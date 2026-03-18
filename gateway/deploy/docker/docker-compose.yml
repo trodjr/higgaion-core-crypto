@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  vault:
+    image: vault:1.13.3
+    container_name: higgaion_vault
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=dev_token
+    cap_add:
+      - IPC_LOCK
+
+  gateway:
+    build:
+      context: ../../../
+      dockerfile: gateway/deploy/docker/Dockerfile
+    container_name: higgaion_gateway
+    depends_on:
+      - vault
+    ports:
+      - "8443:8443"     # TLS Ext Edge Routing
+      - "8081:8081"     # Admin/Telemetry Endpoints
+    environment:
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=dev_token
