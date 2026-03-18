@@ -12,5 +12,5 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install flawfinder
       run: pip install flawfinder
-    - name: Scan C codebase natively for forbidden buffers
-      run: flawfinder --error-level=4 gateway/src/gateway.c
+    - name: Scan Global C codebase natively for forbidden buffers
+      run: flawfinder --error-level=4 src/ gateway/src/ tests/ include/
