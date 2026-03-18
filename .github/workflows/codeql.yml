@@ -20,9 +20,9 @@ jobs:
         language: [ 'c-cpp' ]
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
     - name: Initialize CodeQL (Security Extended)
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@38b3b7bf288d49ccf58644769dc7a6afdccd05eb # v3
       with:
         languages: ${{ matrix.language }}
         queries: security-extended,security-and-quality
@@ -32,6 +32,6 @@ jobs:
         make all
         cd gateway && gcc -Wall -Wextra -O2 -Iinclude -Ideps/cJSON src/gateway.c -lm -lssl -lcrypto -lpthread -ldl -o higgaion_gateway
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+      uses: github/codeql-action/analyze@38b3b7bf288d49ccf58644769dc7a6afdccd05eb # v3
       with:
         category: "/language:${{matrix.language}}"

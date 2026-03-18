@@ -9,8 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
     - name: Install dependencies
       run: |
@@ -24,7 +26,7 @@ jobs:
       run: make prep obj/pqc_crypto.o
 
     - name: Setup Golang Environment
-      uses: actions/setup-go@v5
+      uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
       with:
         go-version: '1.22'
 
@@ -32,7 +34,7 @@ jobs:
       run: make test-go
 
     - name: Setup Python Environment
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
       with:
         python-version: '3.12'
 
@@ -43,7 +45,7 @@ jobs:
       run: make test-python
 
     - name: Setup Rust Toolchain
-      uses: actions-rs/toolchain@v1
+      uses: actions-rs/toolchain@63eb9591781c46a70274cb3ebdf190fce92702e8 # v1
       with:
         toolchain: stable
         profile: minimal
@@ -56,7 +58,7 @@ jobs:
       run: make coverage
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage.info
