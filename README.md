@@ -32,11 +32,14 @@ Alongside the core engine, this repository also hosts the formal assurances for 
 
 ### Proxy Behavior Under Adversarial Load
 The proxy enforces rigorous domain-separation tags on incoming signatures.
-- **Valid PQC Authorization**: The Gateway successfully proxies the request to the offline wallet.
+
+**Seamless PQC Orchestration**  
+The Gateway proxy authenticates the caller via OIDC, validates the signature cryptographically, and seamlessly routes the post-quantum payload request to the enterprise HSM, abstracting away the protocol complexity.
 
 ![Gateway Success](assets/gateway_success.gif?v=2)
 
-- **Invalid or Downgrade Attack**: The Gateway actively rejects classical downgrades or mis-tagged signatures at the edge.
+**Strict Isolation Defense**  
+Every route is guarded by Coq-verified `StrictIsolation` invariants. Unauthorized scans and mathematically spoofed JWTs are instantly dropped by the Sidecar proxy at the edge, never reaching the core node logic.
 
 ![Gateway Failure](assets/gateway_failure.gif?v=2)
 
