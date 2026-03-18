@@ -8,6 +8,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/trodjr/higgaion-core-crypto/go.svg)](https://pkg.go.dev/github.com/trodjr/higgaion-core-crypto/go)
 [![Python FFI](https://img.shields.io/badge/Python-CTypes_Ready-blue.svg)](python/)
 [![Rust Crate](https://img.shields.io/badge/Rust-Safe_FFI-orange.svg)](rust/)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/63/badge)](https://bestpractices.coreinfrastructure.org/projects/63)
 
 This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the safety invariants of the Higgaion PQC Migration Engine.
 
