@@ -1,5 +1,5 @@
 # Stage 1: Build C100K Engine natively
-FROM debian:bookworm-slim AS builder
+FROM debian:bookworm-slim@sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a AS builder
 RUN apt-get update && apt-get install -y build-essential libssl-dev gcc make
 WORKDIR /opt/src
 COPY . .
@@ -7,7 +7,7 @@ RUN gcc -Wall -Wextra -O3 -pthread -DUSE_LMDB -DHIGGAION_VERSION='"1.0.0-enterpr
 RUN gcc -Wall -Wextra -O3 -pthread -o higgaion_gateway gateway/src/gateway.o -lssl -lcrypto -lpthread
 
 # Stage 2: Hardened Runtime Layer
-FROM debian:bookworm-slim
+FROM debian:bookworm-slim@sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a
 RUN apt-get update && apt-get install -y libssl3 && rm -rf /var/lib/apt/lists/*
 WORKDIR /opt/higgaion
 
