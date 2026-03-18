@@ -1,0 +1,16 @@
+name: "Flawfinder Legacy C Sub-System Isolation"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  flawfinder:
+    name: Execute Flawfinder Bounds
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install flawfinder
+      run: pip install flawfinder
+    - name: Scan C codebase natively for forbidden buffers
+      run: flawfinder --error-level=4 gateway/src/gateway.c

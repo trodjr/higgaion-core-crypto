@@ -1,0 +1,36 @@
+name: "CodeQL Advanced Security Matrix"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '24 15 * * 0'
+jobs:
+  analyze:
+    name: Analyze C100K Memory Physics
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'c-cpp' ]
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Initialize CodeQL (Security Extended)
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        queries: security-extended,security-and-quality
+    - name: Compile C100K Gateway Bounds
+      run: |
+        sudo apt-get update && sudo apt-get install -y libssl-dev
+        cd gateway && gcc -Wall -Wextra -O2 -Iinclude -Ideps/cJSON src/gateway.c -lm -lssl -lcrypto -lpthread -ldl -o higgaion_gateway
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+      with:
+        category: "/language:${{matrix.language}}"
