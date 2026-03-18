@@ -1,11 +1,3 @@
-PATENT NOTICE & LICENSE EXCEPTIONS
-
-The architecture of the PQC Migration Engine, specifically the Disjunctive (OR-Mode) Hybrid Verification and the Erasure-Before-WAL crash recovery state machine, is covered by pending intellectual property (U.S. Patent Application No. 64/000,480). 
-
-The specific files distributed in this repository (the cryptographic primitives and formal Coq proofs) are licensed under the MIT License below, but this license does NOT grant any implied or express rights to the aforementioned pending patents covering the migration architecture itself.
-
----
-
 MIT License
 
 Copyright (c) 2026

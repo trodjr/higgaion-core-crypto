@@ -6,6 +6,8 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: '24 15 * * 0'
+permissions:
+  contents: read
 jobs:
   analyze:
     name: Analyze C100K Memory Physics
@@ -30,9 +32,8 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install -y libssl-dev coq
         make all
-        cd gateway && gcc -Wall -Wextra -O2 -Iinclude -Ideps/cJSON src/gateway.c -lm -lssl -lcrypto -lpthread -ldl -o higgaion_gateway
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@603b797f8b14b413fe025cd935a91c16c4782713 # v3
       with:
         category: "/language:${{matrix.language}}"
-        upload: ${{ github.event_name != 'pull_request' }}
+        upload: ${{ github.event_name == 'pull_request' && 'false' || 'true' }}

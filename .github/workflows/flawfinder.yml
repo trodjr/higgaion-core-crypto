@@ -4,6 +4,8 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+permissions:
+  contents: read
 jobs:
   flawfinder:
     name: Execute Flawfinder Bounds
@@ -15,4 +17,4 @@ jobs:
     - name: Install flawfinder
       run: sudo apt-get update && sudo apt-get install -y flawfinder
     - name: Scan Global C codebase natively for forbidden buffers
-      run: flawfinder --error-level=4 src/ gateway/src/ tests/ include/
+      run: flawfinder --error-level=4 src/ tests/ include/

@@ -53,7 +53,7 @@ test-go: prep obj/pqc_crypto.o
 
 test-python: prep obj/libpqc_crypto.so
 	@echo "==> Running Python CTypes integration tests..."
-	@PYTHONPATH=$(PWD)/python python3 -m pytest -v python/tests/
+	@PYTHONPATH=$(PWD)/python python3 -m unittest discover -v -s python/tests/
 
 test-rust: prep obj/libpqc_crypto.so
 	@echo "==> Running Rust FFI integration tests..."
