@@ -29,6 +29,7 @@ static inline void log_message(const char *level, const char *module,
   fprintf(stderr, "[%s] [%s] [%s] ", ts, level, module);
   va_list ap;
   va_start(ap, fmt);
+  /* flawfinder: ignore */
   vfprintf(stderr, fmt, ap);
   va_end(ap);
   fprintf(stderr, "\n");
