@@ -22,7 +22,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* --- Migration states (from pqc_migration.h) --- */
+/* --- src/pqc_crypto.c
 #define MIGRATION_CLASSICAL 0
 #define MIGRATION_HYBRID 1
 #define MIGRATION_FINALIZING 2
@@ -68,7 +68,7 @@ size_t wal_record_size(void) {
 /* --- Property 2: CRC Coverage Length ---
  *
  * CRC must cover exactly sizeof(record) - sizeof(crc32) bytes.
- * Maps to: pqc_migration.c:383
+ * Maps to: src/pqc_crypto.c:383
  * "rec.crc32 = wal_crc32(&rec, offsetof(MigrationWALRecord, crc32));"
  */
 
@@ -87,7 +87,7 @@ size_t wal_crc_data_length(void) {
  *
  * The magic number must be exactly MIGRATION_WAL_MAGIC.
  * Invalid magic causes the record to be rejected during WAL replay.
- * Maps to: pqc_migration.c WAL recovery loop
+ * Maps to: src/pqc_crypto.c WAL recovery loop
  */
 
 /*@
@@ -135,7 +135,7 @@ int wal_validate_version(uint8_t version) {
  *
  * Operation codes: 0=import, 1=begin, 2=finalize, 3=rollback,
  *                  4=enter_finalizing, 5=peer_state_update
- * Maps to: pqc_migration.c:344-345
+ * Maps to: src/pqc_crypto.c:344-345
  */
 
 /*@
@@ -197,7 +197,7 @@ int wal_validate_state(uint8_t state) {
  * The KEY INVARIANT: at step 2, WAL still says FINALIZING.
  * Classical key is erased BEFORE WAL says PQC_ONLY.
  *
- * Maps to: pqc_migration.c:1850-1863
+ * Maps to: src/pqc_crypto.c:1850-1863
  */
 
 /*@
@@ -250,7 +250,7 @@ int wal_reflects_pqc_only_at_step(int step) {
  *   (b) Classical public key backup exists on disk
  *   (c) The state machine can be retried
  *
- * Maps to: Patent Claim 1, "counter-intuitive order"
+ * Maps to: src/pqc_crypto.c Claim 1, "counter-intuitive order"
  */
 
 /*@
@@ -291,7 +291,7 @@ int erasure_before_wal_safe(int step) {
 /* --- Property 9: Sequence Number Monotonicity ---
  *
  * WAL sequence numbers must be strictly increasing.
- * Maps to: pqc_migration.c:381 "rec.seq = engine->wal_seq++"
+ * Maps to: src/pqc_crypto.c:381 "rec.seq = engine->wal_seq++"
  */
 
 /*@

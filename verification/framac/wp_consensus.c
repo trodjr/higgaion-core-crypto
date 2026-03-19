@@ -13,7 +13,7 @@
  *         verification/framac/wp_consensus.c
  */
 
-/* --- BFT quorum (from src/consensus.c:34-43) ---
+/* --- src/pqc_crypto.c
  *
  * Uses unsigned int model to keep SMT integer division tractable.
  * Production code uses size_t; the algorithm is identical.
@@ -45,7 +45,7 @@ unsigned int bft_quorum(unsigned int total_nodes) {
   return (total_nodes * 2 / 3) + 1;
 }
 
-/* --- Leader selection (from src/consensus.c) --- */
+/* --- src/pqc_crypto.c
 
 /*@
   requires n_validators >= 1;

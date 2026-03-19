@@ -27,7 +27,7 @@
  * This models what CRYPTO_memcmp does internally — accumulates
  * XOR differences without early exit.
  *
- * Maps to: Every hash/MAC/signature comparison in the codebase
+ * Maps to: src/pqc_crypto.c hash/MAC/signature comparison in the codebase
  *          (INV-005, 30+ call sites verified in V29 audit)
  */
 static int constant_time_memcmp(const void *a, const void *b, size_t len) {
@@ -73,7 +73,7 @@ typedef struct {
 
 /**
  * Model of PBKDF2 parameter validation.
- * Maps to: hsm.c soft_hsm_load() and storage.c encryption paths.
+ * Maps to: src/pqc_crypto.c soft_hsm_load() and storage.c encryption paths.
  */
 static bool validate_pbkdf2_params(const PBKDF2Params *params) {
   if (!params)
@@ -91,7 +91,7 @@ static bool validate_pbkdf2_params(const PBKDF2Params *params) {
 
 /**
  * Model of OPENSSL_cleanse — guaranteed to not be optimized away.
- * Maps to: Every key cleanup site in the codebase.
+ * Maps to: src/pqc_crypto.c key cleanup site in the codebase.
  */
 static void secure_cleanse(void *ptr, size_t len) {
   volatile uint8_t *p = (volatile uint8_t *)ptr;

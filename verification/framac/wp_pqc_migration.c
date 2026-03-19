@@ -17,7 +17,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/* --- Migration states (from pqc_migration.h) --- */
+/* --- src/pqc_crypto.c
 #define MIGRATION_CLASSICAL 0
 #define MIGRATION_HYBRID 1
 #define MIGRATION_FINALIZING 2
@@ -29,7 +29,7 @@
 /* --- Property 1: State transition guard for migration_begin ---
  *
  * migration_begin() only succeeds from CLASSICAL state.
- * Maps to: src/pqc_migration.c:808 — if (rec->state != MIGRATION_CLASSICAL)
+ * Maps to: src/pqc_crypto.c:808 — if (rec->state != MIGRATION_CLASSICAL)
  */
 
 /*@
@@ -55,7 +55,7 @@ int begin_migration_guard(int state) {
 /* --- Property 2: State transition guard for migration_finalize ---
  *
  * migration_finalize() only succeeds from HYBRID or FINALIZING state.
- * Maps to: src/pqc_migration.c migration_finalize() state checks
+ * Maps to: src/pqc_crypto.c migration_finalize() state checks
  */
 
 /*@
@@ -86,7 +86,7 @@ int finalize_guard(int state) {
  *
  * migration_rollback() only succeeds from HYBRID or FINALIZING.
  * PQC_ONLY is terminal — rollback must fail.
- * Maps to: src/pqc_migration.c:975-980
+ * Maps to: src/pqc_crypto.c:975-980
  */
 
 /*@
@@ -120,7 +120,7 @@ int rollback_guard(int state) {
 /* --- Property 4: Key existence invariant ---
  *
  * Given a valid state, returns whether the classical key should exist.
- * Maps to: PQCMigration.v Theorem 8 (classical_key_exists_before_pqc_only)
+ * Maps to: src/pqc_crypto.c Theorem 8 (classical_key_exists_before_pqc_only)
  *          INV-S4 in tla/pqc_migration.tla
  */
 
@@ -154,7 +154,7 @@ int classical_key_exists(int state) {
 
 /* --- Property 5: PQC key existence invariant ---
  *
- * Maps to: PQCMigration.v Theorem 9 (pqc_key_exists_after_begin)
+ * Maps to: src/pqc_crypto.c Theorem 9 (pqc_key_exists_after_begin)
  *          INV-S5 in tla/pqc_migration.tla
  */
 
@@ -188,7 +188,7 @@ int pqc_key_exists(int state) { return (state != MIGRATION_CLASSICAL) ? 1 : 0; }
  *
  * Cannot transition directly from CLASSICAL to PQC_ONLY.
  * The next state from CLASSICAL is always HYBRID.
- * Maps to: PQCMigration.v Theorem 7 (no_skip_classical_to_pqc)
+ * Maps to: src/pqc_crypto.c Theorem 7 (no_skip_classical_to_pqc)
  *          INV-S1 in tla/pqc_migration.tla
  */
 
@@ -210,7 +210,7 @@ int next_state_from_classical(int state) {
  *
  * The CRC32 field must be the last field in the WAL record,
  * and the CRC is computed over all preceding bytes.
- * Maps to: pqc_migration.c:264-274 (wal_crc32, wal_write)
+ * Maps to: src/pqc_crypto.c:264-274 (wal_crc32, wal_write)
  */
 
 #pragma pack(push, 1)
@@ -236,7 +236,7 @@ size_t wal_crc_data_len(void) { return offsetof(MigrationWALRecord, crc32); }
 /* --- Property 8: find_record output bounds ---
  *
  * find_record returns -1 (not found) or a valid index < count.
- * Maps to: pqc_migration.c:219-228 (find_record)
+ * Maps to: src/pqc_crypto.c:219-228 (find_record)
  */
 
 /*@
