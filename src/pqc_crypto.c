@@ -18,6 +18,103 @@
 
 /* ── Internal helpers ────────────────────────────────────────────────── */
 
+/* Domain separation encoding
+ *
+ * IMPORTANT: The mapping (domain, message) -> signed bytes must be injective.
+ * Do NOT concatenate raw strings without lengths: it enables cross-domain
+ * confusion (e.g., ("A","BC") == ("AB","C")).
+ */
+static const uint8_t HIGGAION_DS_PREFIX[] = "HIGGAION_DS_V1";
+
+static void write_u32_be(uint8_t out[4], uint32_t v) {
+  out[0] = (uint8_t)((v >> 24) & 0xFFu);
+  out[1] = (uint8_t)((v >> 16) & 0xFFu);
+  out[2] = (uint8_t)((v >> 8) & 0xFFu);
+  out[3] = (uint8_t)(v & 0xFFu);
+}
+
+static void write_u64_be(uint8_t out[8], uint64_t v) {
+  out[0] = (uint8_t)((v >> 56) & 0xFFu);
+  out[1] = (uint8_t)((v >> 48) & 0xFFu);
+  out[2] = (uint8_t)((v >> 40) & 0xFFu);
+  out[3] = (uint8_t)((v >> 32) & 0xFFu);
+  out[4] = (uint8_t)((v >> 24) & 0xFFu);
+  out[5] = (uint8_t)((v >> 16) & 0xFFu);
+  out[6] = (uint8_t)((v >> 8) & 0xFFu);
+  out[7] = (uint8_t)(v & 0xFFu);
+}
+
+static bool build_domain_separated_message(uint8_t **out, size_t *out_len,
+                                           const uint8_t *message,
+                                           size_t msg_len,
+                                           const char *domain) {
+  if (!out || !out_len)
+    return false;
+
+  *out = NULL;
+  *out_len = 0;
+
+  if (msg_len > 0 && !message) {
+    log_message("ERROR", "CRYPTO",
+                "domain separation: msg_len > 0 but message is NULL");
+    return false;
+  }
+
+  size_t dom_len = 0;
+  if (domain) {
+    dom_len = strnlen(domain, (size_t)HIGGAION_DOMAIN_MAX_LEN + 1);
+    if (dom_len > (size_t)HIGGAION_DOMAIN_MAX_LEN) {
+      log_message("ERROR", "CRYPTO",
+                  "domain separation: domain tag too long (max=%d)",
+                  HIGGAION_DOMAIN_MAX_LEN);
+      return false;
+    }
+  }
+
+  const size_t prefix_len = sizeof(HIGGAION_DS_PREFIX) - 1;
+
+  size_t total_len = prefix_len;
+  if (SIZE_MAX - total_len < 4)
+    return false;
+  total_len += 4;
+  if (SIZE_MAX - total_len < dom_len)
+    return false;
+  total_len += dom_len;
+  if (SIZE_MAX - total_len < 8)
+    return false;
+  total_len += 8;
+  if (SIZE_MAX - total_len < msg_len)
+    return false;
+  total_len += msg_len;
+
+  uint8_t *buf = malloc(total_len);
+  if (!buf)
+    return false;
+
+  uint8_t *p = buf;
+  memcpy(p, HIGGAION_DS_PREFIX, prefix_len);
+  p += prefix_len;
+
+  write_u32_be(p, (uint32_t)dom_len);
+  p += 4;
+
+  if (dom_len > 0) {
+    memcpy(p, domain, dom_len);
+    p += dom_len;
+  }
+
+  write_u64_be(p, (uint64_t)msg_len);
+  p += 8;
+
+  if (msg_len > 0) {
+    memcpy(p, message, msg_len);
+  }
+
+  *out = buf;
+  *out_len = total_len;
+  return true;
+}
+
 static void log_openssl_error(const char *msg) {
   unsigned long err;
   bool first = true;
@@ -84,27 +181,28 @@ void higgaion_key_free(HiggaionKey *key) {
 
 void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
               size_t msg_len, const char *domain, const HiggaionKey *sk) {
+  if (signature)
+    *signature = NULL;
+  if (sig_len)
+    *sig_len = 0;
+
+  if (!signature || !sig_len) {
+    log_message("ERROR", "CRYPTO", "pqc_sign: invalid output pointers");
+    return;
+  }
   if (!sk || !sk->pkey)
     return;
 
-  size_t dom_len = domain ? strnlen(domain, 4096) : 0;
-  size_t total_len = dom_len + msg_len;
-  if (total_len < dom_len || total_len < msg_len) {
-    log_message("ERROR", "CRYPTO", "pqc_sign: domain+message length overflow");
+  uint8_t *buffer = NULL;
+  size_t total_len = 0;
+  if (!build_domain_separated_message(&buffer, &total_len, message, msg_len,
+                                      domain)) {
     return;
   }
-  uint8_t *buffer = malloc(total_len);
-  if (!buffer)
-    return;
-  if (domain) {
-    /* flawfinder: ignore */
-    memcpy(buffer, domain, dom_len);
-  }
-  /* flawfinder: ignore */
-  memcpy(buffer + dom_len, message, msg_len);
 
   EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
   if (!mdctx) {
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return;
   }
@@ -112,6 +210,7 @@ void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
   if (EVP_DigestSignInit(mdctx, NULL, NULL, NULL, sk->pkey) <= 0) {
     log_openssl_error("EVP_DigestSignInit");
     EVP_MD_CTX_free(mdctx);
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return;
   }
@@ -119,6 +218,7 @@ void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
   if (EVP_DigestSign(mdctx, NULL, sig_len, buffer, total_len) <= 0) {
     log_openssl_error("EVP_DigestSign (size)");
     EVP_MD_CTX_free(mdctx);
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return;
   }
@@ -126,6 +226,7 @@ void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
   *signature = malloc(*sig_len);
   if (!*signature) {
     EVP_MD_CTX_free(mdctx);
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return;
   }
@@ -135,6 +236,7 @@ void pqc_sign(uint8_t **signature, size_t *sig_len, const uint8_t *message,
     log_openssl_error("EVP_DigestSign (execute)");
     free(*signature);
     *signature = NULL;
+    *sig_len = 0;
   }
 
   EVP_MD_CTX_free(mdctx);
@@ -147,26 +249,24 @@ bool pqc_verify(const uint8_t *message, size_t msg_len,
                 const HiggaionKey *pk) {
   if (!pk || !pk->pkey || !signature)
     return false;
-
-  size_t dom_len = domain ? strnlen(domain, 4096) : 0;
-  size_t total_len = dom_len + msg_len;
-  if (total_len < dom_len || total_len < msg_len) {
+  if (sig_len == 0)
+    return false;
+  if (msg_len > 0 && !message) {
     log_message("ERROR", "CRYPTO",
-                "pqc_verify: domain+message length overflow");
+                "pqc_verify: msg_len > 0 but message is NULL");
     return false;
   }
-  uint8_t *buffer = malloc(total_len);
-  if (!buffer)
+
+  uint8_t *buffer = NULL;
+  size_t total_len = 0;
+  if (!build_domain_separated_message(&buffer, &total_len, message, msg_len,
+                                      domain)) {
     return false;
-  if (domain) {
-    /* flawfinder: ignore */
-    memcpy(buffer, domain, dom_len);
   }
-  /* flawfinder: ignore */
-  memcpy(buffer + dom_len, message, msg_len);
 
   EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
   if (!mdctx) {
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return false;
   }
@@ -174,6 +274,7 @@ bool pqc_verify(const uint8_t *message, size_t msg_len,
   if (EVP_DigestVerifyInit(mdctx, NULL, NULL, NULL, pk->pkey) <= 0) {
     log_openssl_error("EVP_DigestVerifyInit");
     EVP_MD_CTX_free(mdctx);
+    OPENSSL_cleanse(buffer, total_len);
     free(buffer);
     return false;
   }
@@ -233,4 +334,3 @@ void hash(uint8_t *out, const uint8_t *data, size_t len) {
   }
   EVP_MD_CTX_free(ctx);
 }
-
