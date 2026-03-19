@@ -135,7 +135,14 @@ static void log_openssl_error(const char *msg) {
 void generate_keypair(HiggaionKey *key, const char *alg_name) {
   if (!key)
     return;
-  key->pkey = NULL;
+
+  /* HIG-004 FIX: Free any existing key to prevent memory leak on
+   * regeneration.  The old code blindly set pkey = NULL, leaking the
+   * previous EVP_PKEY allocation if the caller reused the struct. */
+  if (key->pkey != NULL) {
+    EVP_PKEY_free(key->pkey);
+    key->pkey = NULL;
+  }
   EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new_from_name(NULL, alg_name, NULL);
   if (!ctx) {
     log_openssl_error("EVP_PKEY_CTX_new_from_name");
@@ -175,6 +182,23 @@ void higgaion_key_free(HiggaionKey *key) {
     EVP_PKEY_free(key->pkey);
     key->pkey = NULL;
   }
+}
+
+int higgaion_key_up_ref(HiggaionKey *dst, const HiggaionKey *src) {
+  if (!dst || !src || !src->pkey)
+    return 0;
+
+  /* HIG-003 FIX: Safely share an EVP_PKEY between independent owners
+   * (e.g., PrivateKey and PublicKey FFI structs) by incrementing the
+   * OpenSSL reference count instead of raw pointer aliasing.  Each
+   * owner can now call EVP_PKEY_free / higgaion_key_free independently
+   * without triggering use-after-free or double-free. */
+  if (EVP_PKEY_up_ref((EVP_PKEY *)src->pkey) != 1) {
+    log_openssl_error("EVP_PKEY_up_ref");
+    return 0;
+  }
+  dst->pkey = src->pkey;
+  return 1;
 }
 
 /* ── PQC signing (ML-DSA-87) ─────────────────────────────────────────── */
