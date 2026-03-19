@@ -40,10 +40,11 @@ verify:
 
 # ── Test object/library targets (classical algorithms allowed) ──────
 # HIG-002: Test builds permit ED25519 fallback via -DHIGGAION_ALLOW_CLASSICAL.
-# These produce artifacts that Go/Python/Rust test targets can link against.
+# Test objects use the SAME filenames as production so that CGO, ctypes,
+# and Cargo resolve them via their hardcoded paths unchanged.
 
 obj/pqc_crypto_test.o: src/pqc_crypto.c
-	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -c $< -o $@
+	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -c $< -o obj/pqc_crypto.o
 
 # Production shared library (PQC-only)
 obj/libpqc_crypto.so: src/pqc_crypto.c
@@ -64,10 +65,10 @@ test: prep $(TEST_BINS)
 	done
 	@echo "==> All C tests passed."
 
-# Go: override CGO_LDFLAGS to link the test-compiled object file
+# Go: build test object as pqc_crypto.o so CGO hardcoded link finds it
 test-go: prep obj/pqc_crypto_test.o
 	@echo "==> Running Go CGO integration tests..."
-	@cd go && CGO_LDFLAGS="-L../obj -l:pqc_crypto_test.o -lcrypto" go test -v ./...
+	@cd go && go test -v ./...
 
 # Python: build test SO under the standard name so ctypes finds it
 test-python: prep obj/libpqc_crypto_test.so
