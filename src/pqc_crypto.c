@@ -130,11 +130,58 @@ static void log_openssl_error(const char *msg) {
   }
 }
 
+/* ── Algorithm allowlist (HIG-002) ───────────────────────────────────── */
+
+/**
+ * PQC-approved algorithm names.  These are the only algorithms
+ * permitted in production builds when HIGGAION_PQC_REQUIRED == 1.
+ */
+static const char *const HIGGAION_PQC_ALLOWLIST[]
+    __attribute__((unused)) = {
+    "ML-DSA-87",   /* FIPS 204 signature */
+    "ML-DSA-65",   /* FIPS 204 signature (level 3) */
+    "ML-DSA-44",   /* FIPS 204 signature (level 2) */
+    "ML-KEM-1024", /* FIPS 203 KEM */
+    "ML-KEM-768",  /* FIPS 203 KEM (level 3) */
+    "ML-KEM-512",  /* FIPS 203 KEM (level 2) */
+    NULL};
+
+bool higgaion_is_algorithm_allowed(const char *alg_name) {
+  if (!alg_name)
+    return false;
+
+#if HIGGAION_PQC_REQUIRED
+  /* Production: only PQC algorithms permitted */
+  for (const char *const *p = HIGGAION_PQC_ALLOWLIST; *p; ++p) {
+    if (strcmp(alg_name, *p) == 0)
+      return true;
+  }
+  return false;
+#else
+  /* Test builds: all OpenSSL-supported algorithms permitted */
+  (void)alg_name;
+  return true;
+#endif
+}
+
 /* ── Key lifecycle ───────────────────────────────────────────────────── */
 
 void generate_keypair(HiggaionKey *key, const char *alg_name) {
   if (!key)
     return;
+
+  /* HIG-002 FIX: Enforce algorithm policy at the cryptographic boundary.
+   * Production builds reject non-PQC algorithms to prevent silent
+   * downgrade to classical signatures (e.g. ED25519).  Test builds
+   * compiled with -DHIGGAION_ALLOW_CLASSICAL bypass this check. */
+  if (!higgaion_is_algorithm_allowed(alg_name)) {
+    log_message("ERROR", "CRYPTO",
+                "generate_keypair: algorithm '%s' rejected by PQC policy "
+                "(only FIPS 203/204 algorithms permitted in production)",
+                alg_name ? alg_name : "(null)");
+    key->pkey = NULL;
+    return;
+  }
 
   /* HIG-004 FIX: Free any existing key to prevent memory leak on
    * regeneration.  The old code blindly set pkey = NULL, leaking the
@@ -342,6 +389,8 @@ const char *hig_error_str(HigError err) {
     return "timeout";
   case HIG_ERR_RATE_LIMITED:
     return "rate limited";
+  case HIG_ERR_ALGORITHM_REJECTED:
+    return "algorithm rejected by PQC policy";
   default:
     return "unknown error";
   }

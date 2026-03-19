@@ -25,9 +25,9 @@ prep:
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Compile test binaries
+# Compile test binaries (HIG-002: allow classical algorithms in test builds)
 $(BIN_DIR)/%: $(TEST_DIR)/%.c $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL $^ -o $@ $(LDFLAGS)
 
 $(BIN_DIR)/test_pqc_mock: LDFLAGS += -Wl,--wrap=malloc -Wl,--wrap=EVP_PKEY_keygen_init -Wl,--wrap=EVP_PKEY_keygen -Wl,--wrap=EVP_MD_CTX_new -Wl,--wrap=EVP_DigestSignInit -Wl,--wrap=EVP_DigestSign -Wl,--wrap=EVP_DigestVerifyInit
 
@@ -49,18 +49,23 @@ test: prep $(TEST_BINS)
 
 test-go: prep obj/pqc_crypto.o
 	@echo "==> Running Go CGO integration tests..."
-	@cd go && go test -v ./...
+	@cd go && CGO_CFLAGS="-DHIGGAION_ALLOW_CLASSICAL" go test -v ./...
 
-test-python: prep obj/libpqc_crypto.so
+test-python: prep obj/libpqc_crypto_test.so
 	@echo "==> Running Python CTypes integration tests..."
 	@PYTHONPATH=$(PWD)/python python3 -m unittest discover -v -s python/tests/
 
-test-rust: prep obj/libpqc_crypto.so
+test-rust: prep obj/libpqc_crypto_test.so
 	@echo "==> Running Rust FFI integration tests..."
 	@cd rust && LD_LIBRARY_PATH=$(PWD)/obj cargo test
 
+# Shared library for production (PQC-only)
 obj/libpqc_crypto.so: src/pqc_crypto.c
 	$(CC) $(CFLAGS) -shared -fPIC $< -o $@ $(LDFLAGS)
+
+# Shared library for test builds (classical algorithms allowed)
+obj/libpqc_crypto_test.so: src/pqc_crypto.c
+	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -shared -fPIC $< -o $@ $(LDFLAGS)
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
