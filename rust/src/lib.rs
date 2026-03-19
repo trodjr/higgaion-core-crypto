@@ -17,6 +17,7 @@ pub struct CHiggaionKey {
 extern "C" {
     fn higgaion_key_init(key: *mut CHiggaionKey);
     fn higgaion_key_free(key: *mut CHiggaionKey);
+    fn higgaion_key_up_ref(dst: *mut CHiggaionKey, src: *const CHiggaionKey) -> i32;
     #[link_name = "generate_keypair"]
     fn c_generate_keypair(key: *mut CHiggaionKey, alg_name: *const c_char);
     
@@ -57,6 +58,7 @@ pub struct PrivateKey {
 /// A mathematical isolation bound holding the public OpenSSL verification data.
 pub struct PublicKey {
     inner: CHiggaionKey,
+    owns_memory: bool,
 }
 
 impl Drop for PrivateKey {
@@ -64,6 +66,19 @@ impl Drop for PrivateKey {
         if self.owns_memory && !self.inner.pkey.is_null() {
             unsafe {
                 // Free the underlying OpenSSL memory reliably on Rust teardown
+                higgaion_key_free(&mut self.inner);
+            }
+            self.inner.pkey = ptr::null_mut();
+        }
+    }
+}
+
+/// HIG-003 FIX: PublicKey now independently owns its EVP_PKEY reference
+/// (via EVP_PKEY_up_ref) and can be freed separately from PrivateKey.
+impl Drop for PublicKey {
+    fn drop(&mut self) {
+        if self.owns_memory && !self.inner.pkey.is_null() {
+            unsafe {
                 higgaion_key_free(&mut self.inner);
             }
             self.inner.pkey = ptr::null_mut();
@@ -171,8 +186,17 @@ pub fn generate_keypair(alg_name: &str) -> Result<(PrivateKey, PublicKey), Higga
         return Err(HiggaionError::KeyGenerationFailed);
     }
 
-    // Hand the combined EVP_PKEY reference seamlessly into the PublicKey struct
-    pub_inner.pkey = priv_inner.pkey;
+    // HIG-003 FIX: Up-ref the EVP_PKEY so the public key holds an independent
+    // reference.  Both priv_key and pub_key can now be dropped independently
+    // without triggering use-after-free or double-free.
+    let up_ref_result = unsafe {
+        higgaion_key_up_ref(&mut pub_inner, &priv_inner)
+    };
+    if up_ref_result != 1 {
+        // Up-ref failed — clean up and report error
+        unsafe { higgaion_key_free(&mut priv_inner); }
+        return Err(HiggaionError::KeyGenerationFailed);
+    }
 
     let priv_key = PrivateKey {
         inner: priv_inner,
@@ -181,6 +205,7 @@ pub fn generate_keypair(alg_name: &str) -> Result<(PrivateKey, PublicKey), Higga
     
     let pub_key = PublicKey {
         inner: pub_inner,
+        owns_memory: true,
     };
 
     Ok((priv_key, pub_key))

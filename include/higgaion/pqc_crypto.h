@@ -29,6 +29,17 @@ void higgaion_key_init(HiggaionKey *key);
 /** Free internal resources of a HiggaionKey. */
 void higgaion_key_free(HiggaionKey *key);
 
+/**
+ * Safely share an EVP_PKEY between two HiggaionKey structs by incrementing
+ * the OpenSSL reference count (EVP_PKEY_up_ref).  Returns 1 on success, 0
+ * on failure.  Both dst and src become independent owners that can be freed
+ * separately via higgaion_key_free().
+ *
+ * HIG-003 mitigation: prevents use-after-free / double-free when FFI
+ * wrappers hold both a PrivateKey and PublicKey referencing the same EVP_PKEY.
+ */
+int higgaion_key_up_ref(HiggaionKey *dst, const HiggaionKey *src);
+
 /** Generate an ML-DSA-87 or ML-KEM-1024 keypair via OpenSSL EVP. */
 void generate_keypair(HiggaionKey *key, const char *alg_name);
 
