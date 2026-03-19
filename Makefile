@@ -88,6 +88,7 @@ sanitize: LDFLAGS += -fsanitize=address,undefined
 sanitize: clean test
 
 # Valgrind Memory Leak Checker
+valgrind: CFLAGS += -g -O0 -DHIGGAION_ALLOW_CLASSICAL
 valgrind: clean test
 	@echo "==> Running Valgrind Memcheck..."
 	@for test in $(TEST_BINS); do \
