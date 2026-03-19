@@ -10,13 +10,21 @@
            property, rollback safety, hybrid signing key availability,
            and batch migration monotonicity.
 
-   Maps to:
-     - src/pqc_migration.c: migration_begin(), migration_finalize(),
-       migration_rollback(), migration_hybrid_sign(), migration_hybrid_verify()
-     - include/pqc_migration.h: MigrationState enum, MigrationRecord
+   VERIFICATION SCOPE (HIG-006):
+     These proofs operate on an ABSTRACT MODEL of the migration state
+     machine. They establish properties of the Coq specification, not
+     of the compiled C implementation. No extraction, refinement proof,
+     or translation validation is performed. The theorems should be
+     interpreted as "the model satisfies property P," not "the deployed
+     code satisfies property P."
+
+   Corresponds to:
+     - src/pqc_crypto.c: generate_keypair(), pqc_sign(), pqc_verify()
+     - include/higgaion/pqc_crypto.h: HiggaionKey, algorithm policy
+     - include/higgaion/pqc_types.h: HigError, MigrationState enum
      - tla/pqc_migration.tla: INV-S1 through INV-S6 (model-checked)
-     - verification/cbmc_pqc_migration.c: buffer bounds (bounded model checked)
-     - docs/PQC_MIGRATION_ENGINE_TECHNICAL_SPEC.md: Claims 1-7
+     - tla/pqc_crash_recovery.tla: crash recovery invariants
+     - audit/HIG-006-proof-integrity-gap-and-vacuous-models.md
    ========================================================================= *)
 
 From Higgaion Require Import HiggaionTypes.
@@ -513,7 +521,18 @@ Qed.
      - docs/PQC_MIGRATION_ENGINE_PROVISIONAL_PATENT.md: Claim 2
    ========================================================================= *)
 
-(** Abstract signature verification results. *)
+(** Abstract signature verification results.
+
+    HIG-006 SCOPE NOTE: These definitions model signature verification
+    as integer equality (Nat.eqb). This is an intentional abstraction
+    that captures the Boolean yes/no verification outcome WITHOUT
+    modeling cryptographic security properties (EUF-CMA, IND-CCA2).
+    Theorems using these definitions prove PROTOCOL-LEVEL properties
+    (e.g., downgrade resistance, migration completeness), not
+    CRYPTOGRAPHIC properties of the underlying signature scheme.
+
+    The actual cryptographic verification in src/pqc_crypto.c uses
+    OpenSSL EVP_DigestVerify with ML-DSA-87 (FIPS 204). *)
 Definition classical_verify (msg : nat) (csig : nat) : bool :=
   Nat.eqb msg csig.
 
@@ -625,6 +644,110 @@ Proof.
     + rewrite Hp. apply Bool.orb_true_r.
   - (* PqcOnly: pqc_verify is true *)
     rewrite Hvalid. apply Bool.orb_true_r.
+Qed.
+
+(* =========================================================================
+   HIG-005 FIX: PQC-Required Hybrid Verification Policy
+
+   Addresses the OR-mode downgrade oracle vulnerability: an attacker
+   can strip the PQC signature component and still be accepted if
+   classical verifies.
+
+   Fix: introduce a verification policy that dispatches to AND-mode
+   (conjunctive) when PQC is required, ensuring that acceptance always
+   implies PQC signature validity in post-quantum threat environments.
+
+   Maps to:
+     - HybridVerifyPolicy enum in pqc_crypto.h (VERIFY_PQC_REQUIRED,
+       VERIFY_PQC_PREFERRED, VERIFY_LEGACY_ONLY)
+     - Audit ref: audit/HIG-005-or-mode-hybrid-verification-downgrade.md
+   ========================================================================= *)
+
+(** Verification policy modes. *)
+Inductive HybridVerifyPolicy : Type :=
+  | PqcRequired    (** AND-mode: both classical AND PQC must verify *)
+  | PqcPreferred   (** OR-mode with PQC presence required: PQC must be valid,
+                       classical failure tolerated *)
+  | LegacyOnly.    (** OR-mode: either signature suffices (migration compat) *)
+
+(** Policy-aware verification dispatcher. *)
+Definition policy_verify (pol : HybridVerifyPolicy)
+    (msg csig psig : nat) : bool :=
+  match pol with
+  | PqcRequired   => hybrid_verify_conjunctive msg csig psig
+  | PqcPreferred  => pqc_verify_sig msg psig
+  | LegacyOnly    => hybrid_verify_disjunctive msg csig psig
+  end.
+
+(* =========================================================================
+   Theorem 40a: PQC-Required Downgrade Resistance (HIG-005)
+
+   Under PqcRequired policy, acceptance implies the PQC signature is
+   valid. This is the core downgrade-resistance property: an attacker
+   who strips the PQC component cannot achieve acceptance.
+
+   Maps to: the formal requirement from HIG-005 audit §3:
+     "once PQC is available/required, acceptance must imply PQC
+      verification"
+   ========================================================================= *)
+Theorem pqc_required_implies_pqc_valid :
+  forall msg csig psig,
+    policy_verify PqcRequired msg csig psig = true ->
+    pqc_verify_sig msg psig = true.
+Proof.
+  intros msg csig psig Hpol.
+  unfold policy_verify in Hpol.
+  unfold hybrid_verify_conjunctive in Hpol.
+  apply Bool.andb_true_iff in Hpol.
+  destruct Hpol as [_ Hpqc]. exact Hpqc.
+Qed.
+
+(* =========================================================================
+   Theorem 40b: Stripping Resistance (HIG-005)
+
+   Under PqcRequired policy, a valid classical signature with an
+   invalid PQC signature (the "stripping attack" scenario) is
+   REJECTED. This directly counters the attack in HIG-005 §5.
+
+   Maps to: the PoC counterexample in HIG-005 §6:
+     msg=0, csig=0 (classical ok), psig=1 (PQC fails)
+     → disjunctive accepts (VULN), conjunctive rejects (FIXED)
+   ========================================================================= *)
+Theorem pqc_required_rejects_stripped :
+  forall msg csig psig,
+    classical_verify msg csig = true ->
+    pqc_verify_sig msg psig = false ->
+    policy_verify PqcRequired msg csig psig = false.
+Proof.
+  intros msg csig psig Hc Hp.
+  unfold policy_verify, hybrid_verify_conjunctive.
+  rewrite Hc, Hp. simpl. reflexivity.
+Qed.
+
+(* =========================================================================
+   Theorem 40c: Policy Monotonicity (HIG-005)
+
+   PqcRequired is strictly more restrictive than LegacyOnly:
+   anything accepted under PqcRequired is also accepted under
+   LegacyOnly (but not vice versa, as shown by Theorem 39).
+
+   This proves that upgrading from LegacyOnly to PqcRequired
+   never introduces false acceptances — it only removes them.
+
+   Maps to: policy upgrade path during migration finalization
+   ========================================================================= *)
+Theorem pqc_required_implies_legacy_accepts :
+  forall msg csig psig,
+    policy_verify PqcRequired msg csig psig = true ->
+    policy_verify LegacyOnly msg csig psig = true.
+Proof.
+  intros msg csig psig Hpol.
+  unfold policy_verify in *.
+  unfold hybrid_verify_conjunctive in Hpol.
+  unfold hybrid_verify_disjunctive.
+  apply Bool.andb_true_iff in Hpol.
+  destruct Hpol as [Hc _].
+  rewrite Hc. simpl. reflexivity.
 Qed.
 
 (* =========================================================================
@@ -1136,17 +1259,43 @@ Fixpoint wal_replay (r : MigrationRecord) (log : list WALRecord)
   end.
 
 (* =========================================================================
-   Theorem 56: WAL Replay Idempotence (Claim 1)
+   Theorem 56: WAL Replay Identity (empty log)
 
-   Replaying the same WAL twice yields the same result as replaying
-   once. This ensures that crash-recovery re-replay is safe.
+   Replaying an empty log after a prior replay is the identity.
+   This trivially holds because wal_replay r [] = r by definition.
 
-   Maps to: wal_replay() idempotence property in pqc_migration.c
+   HIG-006 NOTE: This was originally labeled "idempotence" but is
+   actually the empty-log identity property. True replay idempotence
+   (for state-machine ops) is a stronger statement proved below.
+
+   Corresponds to: WAL truncation after successful replay
    ========================================================================= *)
-Theorem wal_replay_idempotent : forall r log,
+Theorem wal_replay_identity : forall r log,
   wal_replay (wal_replay r log) [] = wal_replay r log.
 Proof.
   intros r log. simpl. reflexivity.
+Qed.
+
+(* =========================================================================
+   Theorem 56a: WAL Import Replay Idempotence (HIG-006)
+
+   Applying a WAL_Import record twice in sequence yields the same
+   result as applying it once. This is because import_key is a
+   constant constructor — repeated application is a fixed point.
+
+   This demonstrates actual idempotence for the import operation,
+   which is the most common WAL replay scenario during recovery.
+
+   Corresponds to: crash-recovery re-import safety
+   ========================================================================= *)
+Theorem wal_import_idempotent : forall r w,
+  wal_crc_ok w = true ->
+  wal_op w = WAL_Import ->
+  apply_wal_record (apply_wal_record r w) w = apply_wal_record r w.
+Proof.
+  intros r w Hcrc Hop.
+  unfold apply_wal_record. rewrite Hcrc. rewrite Hop.
+  simpl. reflexivity.
 Qed.
 
 (* =========================================================================
