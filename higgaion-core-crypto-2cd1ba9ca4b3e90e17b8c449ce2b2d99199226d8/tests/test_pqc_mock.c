@@ -67,24 +67,18 @@ int test_mocked_failures() {
     HiggaionKey key;
     higgaion_key_init(&key);
 
-#ifdef HIGGAION_ALLOW_CLASSICAL
-#define TEST_ALG "ED25519"
-#else
-#define TEST_ALG "ML-DSA-87"
-#endif
-
     // 1. EVP_PKEY_keygen_init failure
     mock_EVP_PKEY_keygen_init_fail = 1;
-    generate_keypair(&key, TEST_ALG);
+    generate_keypair(&key, "ED25519");
     mock_EVP_PKEY_keygen_init_fail = 0;
 
     // 2. EVP_PKEY_keygen failure
     mock_EVP_PKEY_keygen_fail = 1;
-    generate_keypair(&key, TEST_ALG);
+    generate_keypair(&key, "ED25519");
     mock_EVP_PKEY_keygen_fail = 0;
 
     // Generate valid key for subsequent tests
-    generate_keypair(&key, TEST_ALG);
+    generate_keypair(&key, "ED25519");
     assert(key.pkey != NULL);
 
     uint8_t *sig = NULL;

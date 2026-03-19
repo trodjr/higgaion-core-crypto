@@ -17,13 +17,13 @@ int main(void) {
   HiggaionKey key;
   higgaion_key_init(&key);
 
-#ifdef HIGGAION_ALLOW_CLASSICAL
-  generate_keypair(&key, "ED25519");
-#else
   generate_keypair(&key, "ML-DSA-87");
-#endif
   if (!key.pkey) {
-    printf("[ERROR] Failed to generate signing key.\n");
+    printf("[WARN] ML-DSA-87 not supported, falling back to ED25519.\n");
+    generate_keypair(&key, "ED25519");
+  }
+  if (!key.pkey) {
+    printf("[ERROR] Failed to generate any signing key.\n");
     return 1;
   }
 

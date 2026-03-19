@@ -1,0 +1,97 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 67611122042,
+      "run_id": 23256031763,
+      "workflow_name": "CodeQL Advanced Security Matrix",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/trodjr/higgaion-core-crypto/actions/runs/23256031763",
+      "run_attempt": 1,
+      "node_id": "CR_kwDORnE99c8AAAAPve_Zeg",
+      "head_sha": "fd818ae74d4c65e21641233f5eec58730d849795",
+      "url": "https://api.github.com/repos/trodjr/higgaion-core-crypto/actions/jobs/67611122042",
+      "html_url": "https://github.com/trodjr/higgaion-core-crypto/actions/runs/23256031763/job/67611122042",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-03-18T16:41:35Z",
+      "started_at": "2026-03-18T16:41:37Z",
+      "completed_at": "2026-03-18T16:42:47Z",
+      "name": "Analyze C100K Memory Physics (c-cpp)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-03-18T16:41:38Z",
+          "completed_at": "2026-03-18T16:42:08Z"
+        },
+        {
+          "name": "Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-03-18T16:42:08Z",
+          "completed_at": "2026-03-18T16:42:12Z"
+        },
+        {
+          "name": "Initialize CodeQL (Security Extended)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-03-18T16:42:12Z",
+          "completed_at": "2026-03-18T16:42:33Z"
+        },
+        {
+          "name": "Compile Global Repository Structure",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 4,
+          "started_at": "2026-03-18T16:42:33Z",
+          "completed_at": "2026-03-18T16:42:42Z"
+        },
+        {
+          "name": "Perform CodeQL Analysis",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 5,
+          "started_at": "2026-03-18T16:42:42Z",
+          "completed_at": "2026-03-18T16:42:42Z"
+        },
+        {
+          "name": "Post Initialize CodeQL (Security Extended)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-03-18T16:42:42Z",
+          "completed_at": "2026-03-18T16:42:44Z"
+        },
+        {
+          "name": "Post Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-03-18T16:42:44Z",
+          "completed_at": "2026-03-18T16:42:44Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-03-18T16:42:44Z",
+          "completed_at": "2026-03-18T16:42:44Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/trodjr/higgaion-core-crypto/check-runs/67611122042",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000000179,
+      "runner_name": "GitHub Actions 1000000179",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

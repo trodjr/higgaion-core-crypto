@@ -1,0 +1,48 @@
+name: "Dynamic Security Engine (Memcheck & Fuzz)"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  dynamic-analysis:
+    name: ASan, UBSan, and Valgrind
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y libssl-dev valgrind clang lld
+
+      - name: Build and Run ASan/UBSan
+        run: make sanitize
+
+      - name: Build and Run Valgrind Memcheck
+        run: make valgrind
+
+  fuzzing:
+    name: libFuzzer (Crash Detection)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y clang libssl-dev
+
+      - name: Compile and Run Fuzzer (60s burst)
+        run: |
+          export CC=clang
+          make fuzz
+          # Run fuzzer for exactly 60 seconds with strict timeout and exit on first crash
+          ./bin/fuzz_target -max_total_time=60 -error_exitcode=1

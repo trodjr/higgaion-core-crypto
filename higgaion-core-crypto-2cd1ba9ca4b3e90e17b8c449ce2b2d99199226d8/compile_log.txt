@@ -1,0 +1,1506 @@
+﻿2026-03-18T16:41:38.5895500Z Current runner version: '2.332.0'
+2026-03-18T16:41:38.5919559Z ##[group]Runner Image Provisioner
+2026-03-18T16:41:38.5920444Z Hosted Compute Agent
+2026-03-18T16:41:38.5921050Z Version: 20260213.493
+2026-03-18T16:41:38.5921924Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-03-18T16:41:38.5922625Z Build Date: 2026-02-13T00:28:41Z
+2026-03-18T16:41:38.5923355Z Worker ID: {2a6d302a-27ff-4df5-a27a-8cf02bfe035c}
+2026-03-18T16:41:38.5924000Z Azure Region: westus
+2026-03-18T16:41:38.5924574Z ##[endgroup]
+2026-03-18T16:41:38.5926115Z ##[group]Operating System
+2026-03-18T16:41:38.5926679Z Ubuntu
+2026-03-18T16:41:38.5927144Z 24.04.3
+2026-03-18T16:41:38.5927603Z LTS
+2026-03-18T16:41:38.5928080Z ##[endgroup]
+2026-03-18T16:41:38.5928565Z ##[group]Runner Image
+2026-03-18T16:41:38.5929143Z Image: ubuntu-24.04
+2026-03-18T16:41:38.5929633Z Version: 20260309.50.1
+2026-03-18T16:41:38.5930783Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260309.50/images/ubuntu/Ubuntu2404-Readme.md
+2026-03-18T16:41:38.5932602Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260309.50
+2026-03-18T16:41:38.5933603Z ##[endgroup]
+2026-03-18T16:41:38.5934847Z ##[group]GITHUB_TOKEN Permissions
+2026-03-18T16:41:38.5936791Z Actions: read
+2026-03-18T16:41:38.5937275Z Contents: read
+2026-03-18T16:41:38.5937919Z Metadata: read
+2026-03-18T16:41:38.5938418Z SecurityEvents: write
+2026-03-18T16:41:38.5938929Z ##[endgroup]
+2026-03-18T16:41:38.5940953Z Secret source: Actions
+2026-03-18T16:41:38.5941812Z Prepare workflow directory
+2026-03-18T16:41:38.6297161Z Prepare all required actions
+2026-03-18T16:41:38.6358285Z Getting action download info
+2026-03-18T16:41:39.1592198Z Download action repository 'actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-18T16:41:39.3148625Z Download action repository 'github/codeql-action@38b3b7bf288d49ccf58644769dc7a6afdccd05eb' (SHA:38b3b7bf288d49ccf58644769dc7a6afdccd05eb)
+2026-03-18T16:41:52.8406109Z Download action repository 'github/codeql-action@603b797f8b14b413fe025cd935a91c16c4782713' (SHA:603b797f8b14b413fe025cd935a91c16c4782713)
+2026-03-18T16:42:08.3088157Z Complete job name: Analyze C100K Memory Physics (c-cpp)
+2026-03-18T16:42:08.3821138Z ##[group]Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+2026-03-18T16:42:08.3822267Z with:
+2026-03-18T16:42:08.3822609Z   repository: trodjr/higgaion-core-crypto
+2026-03-18T16:42:08.3823400Z   token: ***
+2026-03-18T16:42:08.3823751Z   ssh-strict: true
+2026-03-18T16:42:08.3824044Z   ssh-user: git
+2026-03-18T16:42:08.3824482Z   persist-credentials: true
+2026-03-18T16:42:08.3824825Z   clean: true
+2026-03-18T16:42:08.3825168Z   sparse-checkout-cone-mode: true
+2026-03-18T16:42:08.3825636Z   fetch-depth: 1
+2026-03-18T16:42:08.3825986Z   fetch-tags: false
+2026-03-18T16:42:08.3826328Z   show-progress: true
+2026-03-18T16:42:08.3826728Z   lfs: false
+2026-03-18T16:42:08.3827087Z   submodules: false
+2026-03-18T16:42:08.3827409Z   set-safe-directory: true
+2026-03-18T16:42:08.3828173Z ##[endgroup]
+2026-03-18T16:42:08.4936355Z Syncing repository: trodjr/higgaion-core-crypto
+2026-03-18T16:42:08.4938321Z ##[group]Getting Git version info
+2026-03-18T16:42:08.4939152Z Working directory is '/home/runner/work/higgaion-core-crypto/higgaion-core-crypto'
+2026-03-18T16:42:08.4940152Z [command]/usr/bin/git version
+2026-03-18T16:42:08.5003157Z git version 2.53.0
+2026-03-18T16:42:08.5030772Z ##[endgroup]
+2026-03-18T16:42:08.5046980Z Temporarily overriding HOME='/home/runner/work/_temp/2ec0659f-b60d-4bbe-a762-1d6c4ed35d5d' before making global git config changes
+2026-03-18T16:42:08.5048629Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-18T16:42:08.5062002Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/higgaion-core-crypto/higgaion-core-crypto
+2026-03-18T16:42:08.5103345Z Deleting the contents of '/home/runner/work/higgaion-core-crypto/higgaion-core-crypto'
+2026-03-18T16:42:08.5107515Z ##[group]Initializing the repository
+2026-03-18T16:42:08.5112802Z [command]/usr/bin/git init /home/runner/work/higgaion-core-crypto/higgaion-core-crypto
+2026-03-18T16:42:08.5218817Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-03-18T16:42:08.5219973Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-03-18T16:42:08.5220758Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-03-18T16:42:08.5221409Z hint: call:
+2026-03-18T16:42:08.5222387Z hint:
+2026-03-18T16:42:08.5223042Z hint: 	git config --global init.defaultBranch <name>
+2026-03-18T16:42:08.5223511Z hint:
+2026-03-18T16:42:08.5224436Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-03-18T16:42:08.5225671Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-03-18T16:42:08.5226660Z hint:
+2026-03-18T16:42:08.5227401Z hint: 	git branch -m <name>
+2026-03-18T16:42:08.5228081Z hint:
+2026-03-18T16:42:08.5228873Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-03-18T16:42:08.5230559Z Initialized empty Git repository in /home/runner/work/higgaion-core-crypto/higgaion-core-crypto/.git/
+2026-03-18T16:42:08.5237239Z [command]/usr/bin/git remote add origin https://github.com/trodjr/higgaion-core-crypto
+2026-03-18T16:42:08.5272948Z ##[endgroup]
+2026-03-18T16:42:08.5274082Z ##[group]Disabling automatic garbage collection
+2026-03-18T16:42:08.5278221Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-18T16:42:08.5308526Z ##[endgroup]
+2026-03-18T16:42:08.5309515Z ##[group]Setting up auth
+2026-03-18T16:42:08.5316551Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-18T16:42:08.5349188Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-18T16:42:08.5715519Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-18T16:42:08.5751282Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-18T16:42:08.5991305Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-18T16:42:08.6024072Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-18T16:42:08.6275343Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-18T16:42:08.6313586Z ##[endgroup]
+2026-03-18T16:42:08.6314897Z ##[group]Fetching the repository
+2026-03-18T16:42:08.6323257Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +fd818ae74d4c65e21641233f5eec58730d849795:refs/remotes/origin/main
+2026-03-18T16:42:12.3483129Z From https://github.com/trodjr/higgaion-core-crypto
+2026-03-18T16:42:12.3483876Z  * [new ref]         fd818ae74d4c65e21641233f5eec58730d849795 -> origin/main
+2026-03-18T16:42:12.3516881Z ##[endgroup]
+2026-03-18T16:42:12.3517595Z ##[group]Determining the checkout info
+2026-03-18T16:42:12.3518772Z ##[endgroup]
+2026-03-18T16:42:12.3524157Z [command]/usr/bin/git sparse-checkout disable
+2026-03-18T16:42:12.3568790Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-18T16:42:12.3597172Z ##[group]Checking out the ref
+2026-03-18T16:42:12.3602033Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-03-18T16:42:12.4932996Z Switched to a new branch 'main'
+2026-03-18T16:42:12.4934899Z branch 'main' set up to track 'origin/main'.
+2026-03-18T16:42:12.4949880Z ##[endgroup]
+2026-03-18T16:42:12.4989742Z [command]/usr/bin/git log -1 --format=%H
+2026-03-18T16:42:12.5012728Z fd818ae74d4c65e21641233f5eec58730d849795
+2026-03-18T16:42:12.5323141Z ##[group]Run github/codeql-action/init@38b3b7bf288d49ccf58644769dc7a6afdccd05eb
+2026-03-18T16:42:12.5323860Z with:
+2026-03-18T16:42:12.5324040Z   languages: c-cpp
+2026-03-18T16:42:12.5324297Z   queries: security-extended,security-and-quality
+2026-03-18T16:42:12.5324613Z   analysis-kinds: code-scanning
+2026-03-18T16:42:12.5325057Z   token: ***
+2026-03-18T16:42:12.5325265Z   matrix: {
+  "language": "c-cpp"
+}
+2026-03-18T16:42:12.5325508Z   debug: false
+2026-03-18T16:42:12.5325695Z   check-run-id: 67611122042
+2026-03-18T16:42:12.5325906Z ##[endgroup]
+2026-03-18T16:42:12.7119848Z ##[warning]CodeQL Action v3 will be deprecated in December 2026. Please update all occurrences of the CodeQL Action in your workflow files to v4. For more information, see https://github.blog/changelog/2025-10-28-upcoming-deprecation-of-codeql-action-v3/
+2026-03-18T16:42:12.7129514Z Job run UUID is b9e84a41-1572-43f0-8e6b-9d025c94d2a0.
+2026-03-18T16:42:14.0422879Z ##[group]Setup CodeQL tools
+2026-03-18T16:42:14.0497445Z [command]/usr/bin/tar --version
+2026-03-18T16:42:14.0542273Z tar (GNU tar) 1.35
+2026-03-18T16:42:14.0542844Z Copyright (C) 2023 Free Software Foundation, Inc.
+2026-03-18T16:42:14.0543737Z License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+2026-03-18T16:42:14.0544633Z This is free software: you are free to change and redistribute it.
+2026-03-18T16:42:14.0545349Z There is NO WARRANTY, to the extent permitted by law.
+2026-03-18T16:42:14.0545758Z 
+2026-03-18T16:42:14.0545946Z Written by John Gilmore and Jay Fenlason.
+2026-03-18T16:42:14.0556843Z Found gnu tar version 1.35.
+2026-03-18T16:42:14.0764748Z Found CodeQL tools version 2.24.3 in the toolcache.
+2026-03-18T16:42:14.0765567Z Using CodeQL CLI version 2.24.3 from toolcache at /opt/hostedtoolcache/CodeQL/2.24.3/x64
+2026-03-18T16:42:16.9004990Z [command]/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/codeql version --format=json
+2026-03-18T16:42:17.5343832Z {
+2026-03-18T16:42:17.5344219Z   "productName" : "CodeQL",
+2026-03-18T16:42:17.5344652Z   "vendor" : "GitHub",
+2026-03-18T16:42:17.5344988Z   "version" : "2.24.3",
+2026-03-18T16:42:17.5345407Z   "sha" : "ae9e7f5e05ca366fd5fb125337e00fc8fb90e498",
+2026-03-18T16:42:17.5345903Z   "branches" : [
+2026-03-18T16:42:17.5346259Z     "codeql-cli-2.24.3"
+2026-03-18T16:42:17.5346598Z   ],
+2026-03-18T16:42:17.5346973Z   "copyright" : "Copyright (C) 2019-2026 GitHub, Inc.",
+2026-03-18T16:42:17.5347640Z   "unpackedLocation" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql",
+2026-03-18T16:42:17.5348384Z   "configFileLocation" : "/home/runner/.config/codeql/config",
+2026-03-18T16:42:17.5348899Z   "configFileFound" : false,
+2026-03-18T16:42:17.5349218Z   "overlayVersion" : 4,
+2026-03-18T16:42:17.5349531Z   "features" : {
+2026-03-18T16:42:17.5349824Z     "analysisSummaryV2Default" : true,
+2026-03-18T16:42:17.5350215Z     "buildModeOption" : true,
+2026-03-18T16:42:17.5350634Z     "bundleSupportsIncludeDiagnostics" : true,
+2026-03-18T16:42:17.5351155Z     "bundleSupportsIncludeLogs" : true,
+2026-03-18T16:42:17.5351843Z     "bundleSupportsOverlay" : true,
+2026-03-18T16:42:17.5352485Z     "databaseInterpretResultsSupportsSarifRunProperty" : true,
+2026-03-18T16:42:17.5353152Z     "featuresInVersionResult" : true,
+2026-03-18T16:42:17.5353696Z     "indirectTracingSupportsStaticBinaries" : false,
+2026-03-18T16:42:17.5354318Z     "informsAboutUnsupportedPathFilters" : true,
+2026-03-18T16:42:17.5354833Z     "supportsPython312" : true,
+2026-03-18T16:42:17.5355232Z     "mrvaPackCreate" : true,
+2026-03-18T16:42:17.5355584Z     "threatModelOption" : true,
+2026-03-18T16:42:17.5355957Z     "traceCommandUseBuildMode" : true,
+2026-03-18T16:42:17.5356387Z     "v2ramSizing" : true,
+2026-03-18T16:42:17.5356814Z     "mrvaPackCreateMultipleQueries" : true,
+2026-03-18T16:42:17.5357302Z     "setsCodeqlRunnerEnvVar" : true,
+2026-03-18T16:42:17.5357807Z     "sarifMergeRunsFromEqualCategory" : true,
+2026-03-18T16:42:17.5358321Z     "forceOverwrite" : true,
+2026-03-18T16:42:17.5358731Z     "generateSummarySymbolMap" : true,
+2026-03-18T16:42:17.5359723Z     "pythonDefaultIsToNotExtractStdlib" : true,
+2026-03-18T16:42:17.5360468Z     "queryServerRunQueries" : true,
+2026-03-18T16:42:17.5360926Z     "queryServerTrimCacheWithMode" : true,
+2026-03-18T16:42:17.5361388Z     "builtinExtractorsSpecifyDefaultQueries" : true,
+2026-03-18T16:42:17.5362190Z     "bqrsDiffResultSets" : true,
+2026-03-18T16:42:17.5362596Z     "bundleSupportsIncludeOption" : true
+2026-03-18T16:42:17.5363013Z   }
+2026-03-18T16:42:17.5363277Z }
+2026-03-18T16:42:17.5489297Z ##[endgroup]
+2026-03-18T16:42:17.5490102Z ##[group]Validating workflow
+2026-03-18T16:42:17.9925902Z [command]/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/codeql resolve languages --format=betterjson --extractor-options-verbosity=4 --extractor-include-aliases
+2026-03-18T16:42:19.5930692Z {
+2026-03-18T16:42:19.5932487Z   "aliases" : {
+2026-03-18T16:42:19.5934580Z     "c" : "cpp",
+2026-03-18T16:42:19.5934909Z     "c++" : "cpp",
+2026-03-18T16:42:19.5935224Z     "c-c++" : "cpp",
+2026-03-18T16:42:19.5935589Z     "c-cpp" : "cpp",
+2026-03-18T16:42:19.5935934Z     "c#" : "csharp",
+2026-03-18T16:42:19.5936269Z     "java-kotlin" : "java",
+2026-03-18T16:42:19.5936626Z     "kotlin" : "java",
+2026-03-18T16:42:19.5937018Z     "javascript-typescript" : "javascript",
+2026-03-18T16:42:19.5937489Z     "typescript" : "javascript"
+2026-03-18T16:42:19.5943386Z   },
+2026-03-18T16:42:19.5943707Z   "extractors" : {
+2026-03-18T16:42:19.5944026Z     "python" : [
+2026-03-18T16:42:19.5944328Z       {
+2026-03-18T16:42:19.5944794Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/python",
+2026-03-18T16:42:19.5945439Z         "extractor_options" : {
+2026-03-18T16:42:19.5945821Z           "logging" : {
+2026-03-18T16:42:19.5946217Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:19.5946764Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:19.5947273Z             "type" : "object",
+2026-03-18T16:42:19.5947635Z             "properties" : {
+2026-03-18T16:42:19.5948047Z               "verbosity" : {
+2026-03-18T16:42:19.5948562Z                 "title" : "Python extractor logging verbosity level.",
+2026-03-18T16:42:19.5950484Z                 "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:19.5958135Z                 "type" : "string",
+2026-03-18T16:42:19.5959026Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:19.5959927Z               }
+2026-03-18T16:42:19.5960377Z             }
+2026-03-18T16:42:19.5960680Z           },
+2026-03-18T16:42:19.5961018Z           "python_executable_name" : {
+2026-03-18T16:42:19.5961943Z             "title" : "Controls the name of the Python executable used by the Python extractor.",
+2026-03-18T16:42:19.5964475Z             "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+2026-03-18T16:42:19.5966787Z             "type" : "string",
+2026-03-18T16:42:19.5967220Z             "pattern" : "^(py|python|python3)$"
+2026-03-18T16:42:19.5967651Z           }
+2026-03-18T16:42:19.5967907Z         }
+2026-03-18T16:42:19.5968141Z       }
+2026-03-18T16:42:19.5968353Z     ],
+2026-03-18T16:42:19.5968577Z     "java" : [
+2026-03-18T16:42:19.5968809Z       {
+2026-03-18T16:42:19.5969253Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/java",
+2026-03-18T16:42:19.5969887Z         "extractor_options" : {
+2026-03-18T16:42:19.5970282Z           "exclude" : {
+2026-03-18T16:42:19.5971148Z             "title" : "A glob excluding files from analysis.",
+2026-03-18T16:42:19.5972946Z             "description" : "A glob indicating what files to exclude from the analysis. This accepts glob patterns that are supported by Java's 'getPathMatcher' implementation.\n",
+2026-03-18T16:42:19.5974178Z             "type" : "string"
+2026-03-18T16:42:19.5974554Z           },
+2026-03-18T16:42:19.5974880Z           "add_prefer_source" : {
+2026-03-18T16:42:19.5975467Z             "title" : "Whether to always prefer source files over class files.",
+2026-03-18T16:42:19.5977617Z             "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+2026-03-18T16:42:19.5979491Z             "type" : "string",
+2026-03-18T16:42:19.5979855Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.5980218Z           },
+2026-03-18T16:42:19.5980515Z           "buildless" : {
+2026-03-18T16:42:19.5981100Z             "title" : "Whether to use buildless (standalone) extraction (experimental).",
+2026-03-18T16:42:19.5984517Z             "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:19.5987180Z             "type" : "string",
+2026-03-18T16:42:19.5987650Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.5988052Z           },
+2026-03-18T16:42:19.5988381Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:19.5989091Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:19.5990202Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:19.5991059Z             "type" : "string"
+2026-03-18T16:42:19.5991432Z           },
+2026-03-18T16:42:19.5992011Z           "minimize_dependency_jars" : {
+2026-03-18T16:42:19.5992876Z             "title" : "Whether to rewrite and minimize downloaded JAR dependencies (experimental).",
+2026-03-18T16:42:19.5994356Z             "description" : "If 'true', JAR dependencies downloaded during extraction will be rewritten to remove unneeded data, such as method bodies. The default is 'false'.\n",
+2026-03-18T16:42:19.5995563Z             "type" : "string",
+2026-03-18T16:42:19.5995964Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.5996384Z           }
+2026-03-18T16:42:19.5996637Z         }
+2026-03-18T16:42:19.5996911Z       }
+2026-03-18T16:42:19.5997160Z     ],
+2026-03-18T16:42:19.5997412Z     "swift" : [
+2026-03-18T16:42:19.5997683Z       {
+2026-03-18T16:42:19.5998141Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/swift"
+2026-03-18T16:42:19.5998766Z       }
+2026-03-18T16:42:19.5999024Z     ],
+2026-03-18T16:42:19.5999282Z     "ruby" : [
+2026-03-18T16:42:19.5999730Z       {
+2026-03-18T16:42:19.6000193Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/ruby",
+2026-03-18T16:42:19.6000835Z         "extractor_options" : {
+2026-03-18T16:42:19.6001201Z           "trap" : {
+2026-03-18T16:42:19.6001807Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6002546Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6003038Z             "type" : "object",
+2026-03-18T16:42:19.6003423Z             "properties" : {
+2026-03-18T16:42:19.6003776Z               "compression" : {
+2026-03-18T16:42:19.6004407Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:19.6006579Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:19.6008462Z                 "type" : "string",
+2026-03-18T16:42:19.6008863Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:19.6009422Z               }
+2026-03-18T16:42:19.6009794Z             }
+2026-03-18T16:42:19.6010112Z           }
+2026-03-18T16:42:19.6010390Z         }
+2026-03-18T16:42:19.6010659Z       }
+2026-03-18T16:42:19.6010927Z     ],
+2026-03-18T16:42:19.6011194Z     "yaml" : [
+2026-03-18T16:42:19.6011496Z       {
+2026-03-18T16:42:19.6012265Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/yaml"
+2026-03-18T16:42:19.6012879Z       }
+2026-03-18T16:42:19.6013164Z     ],
+2026-03-18T16:42:19.6013470Z     "actions" : [
+2026-03-18T16:42:19.6013773Z       {
+2026-03-18T16:42:19.6014138Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/actions",
+2026-03-18T16:42:19.6014648Z         "extractor_options" : {
+2026-03-18T16:42:19.6014980Z           "trap" : {
+2026-03-18T16:42:19.6015288Z             "title" : "TRAP options",
+2026-03-18T16:42:19.6015819Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:19.6016184Z             "type" : "object",
+2026-03-18T16:42:19.6016396Z             "visibility" : 3,
+2026-03-18T16:42:19.6016613Z             "properties" : {
+2026-03-18T16:42:19.6016815Z               "cache" : {
+2026-03-18T16:42:19.6017039Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:19.6017423Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:19.6017793Z                 "type" : "object",
+2026-03-18T16:42:19.6018033Z                 "properties" : {
+2026-03-18T16:42:19.6018247Z                   "dir" : {
+2026-03-18T16:42:19.6018485Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:19.6018819Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:19.6019148Z                     "type" : "string"
+2026-03-18T16:42:19.6019360Z                   },
+2026-03-18T16:42:19.6019544Z                   "bound" : {
+2026-03-18T16:42:19.6019770Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:19.6020131Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:19.6020497Z                     "type" : "string",
+2026-03-18T16:42:19.6020732Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:19.6020968Z                   },
+2026-03-18T16:42:19.6021146Z                   "write" : {
+2026-03-18T16:42:19.6021378Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:19.6021999Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:19.6022382Z                     "type" : "string",
+2026-03-18T16:42:19.6022645Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:19.6022904Z                   }
+2026-03-18T16:42:19.6023078Z                 }
+2026-03-18T16:42:19.6023238Z               }
+2026-03-18T16:42:19.6023403Z             }
+2026-03-18T16:42:19.6023557Z           }
+2026-03-18T16:42:19.6023713Z         }
+2026-03-18T16:42:19.6023858Z       }
+2026-03-18T16:42:19.6024008Z     ],
+2026-03-18T16:42:19.6024154Z     "html" : [
+2026-03-18T16:42:19.6024315Z       {
+2026-03-18T16:42:19.6024578Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/html"
+2026-03-18T16:42:19.6024913Z       }
+2026-03-18T16:42:19.6025062Z     ],
+2026-03-18T16:42:19.6025211Z     "cpp" : [
+2026-03-18T16:42:19.6025376Z       {
+2026-03-18T16:42:19.6025620Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/cpp",
+2026-03-18T16:42:19.6025961Z         "extractor_options" : {
+2026-03-18T16:42:19.6026168Z           "trap" : {
+2026-03-18T16:42:19.6026556Z             "title" : "TRAP options",
+2026-03-18T16:42:19.6027004Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:19.6027355Z             "type" : "object",
+2026-03-18T16:42:19.6027567Z             "visibility" : 3,
+2026-03-18T16:42:19.6027777Z             "properties" : {
+2026-03-18T16:42:19.6027982Z               "cache" : {
+2026-03-18T16:42:19.6028192Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:19.6028562Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:19.6028936Z                 "type" : "object",
+2026-03-18T16:42:19.6029165Z                 "properties" : {
+2026-03-18T16:42:19.6029372Z                   "dir" : {
+2026-03-18T16:42:19.6029602Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:19.6029934Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:19.6030247Z                     "type" : "string"
+2026-03-18T16:42:19.6030468Z                   },
+2026-03-18T16:42:19.6030647Z                   "bound" : {
+2026-03-18T16:42:19.6030871Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:19.6031215Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:19.6031738Z                     "type" : "string",
+2026-03-18T16:42:19.6032012Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:19.6032239Z                   },
+2026-03-18T16:42:19.6032485Z                   "write" : {
+2026-03-18T16:42:19.6032714Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:19.6033094Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:19.6033472Z                     "type" : "string",
+2026-03-18T16:42:19.6033720Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:19.6033976Z                   }
+2026-03-18T16:42:19.6034143Z                 }
+2026-03-18T16:42:19.6034320Z               }
+2026-03-18T16:42:19.6034477Z             }
+2026-03-18T16:42:19.6034640Z           },
+2026-03-18T16:42:19.6034813Z           "scale_timeouts" : {
+2026-03-18T16:42:19.6035109Z             "title" : "Value to scale compiler introspection timeouts with",
+2026-03-18T16:42:19.6036552Z             "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+2026-03-18T16:42:19.6037903Z             "type" : "string",
+2026-03-18T16:42:19.6038125Z             "pattern" : "[0-9]+"
+2026-03-18T16:42:19.6038334Z           },
+2026-03-18T16:42:19.6038503Z           "log_verbosity" : {
+2026-03-18T16:42:19.6038757Z             "title" : "Verbosity of the extractor logging",
+2026-03-18T16:42:19.6039359Z             "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+2026-03-18T16:42:19.6039941Z             "type" : "string",
+2026-03-18T16:42:19.6040156Z             "pattern" : "[0-3]"
+2026-03-18T16:42:19.6040357Z           },
+2026-03-18T16:42:19.6040534Z           "frontend_options" : {
+2026-03-18T16:42:19.6040789Z             "title" : "C/C++ extractor frontend options",
+2026-03-18T16:42:19.6041264Z             "description" : "Set additional options that should be passed to the C/C++ extractor frontend.\n",
+2026-03-18T16:42:19.6041892Z             "type" : "array",
+2026-03-18T16:42:19.6042100Z             "visibility" : 3
+2026-03-18T16:42:19.6042301Z           }
+2026-03-18T16:42:19.6042455Z         }
+2026-03-18T16:42:19.6042610Z       }
+2026-03-18T16:42:19.6042760Z     ],
+2026-03-18T16:42:19.6042915Z     "go" : [
+2026-03-18T16:42:19.6043068Z       {
+2026-03-18T16:42:19.6043471Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/go",
+2026-03-18T16:42:19.6043926Z         "extractor_options" : {
+2026-03-18T16:42:19.6044135Z           "extract_tests" : {
+2026-03-18T16:42:19.6044439Z             "title" : "Whether to include Go test files in the CodeQL database.",
+2026-03-18T16:42:19.6045070Z             "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:19.6045601Z             "type" : "string",
+2026-03-18T16:42:19.6045840Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.6046066Z           },
+2026-03-18T16:42:19.6046232Z           "extract_vendor_dirs" : {
+2026-03-18T16:42:19.6046581Z             "title" : "Whether to include Go vendor directories in the CodeQL database.",
+2026-03-18T16:42:19.6047272Z             "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:19.6047831Z             "type" : "string",
+2026-03-18T16:42:19.6048051Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.6048275Z           }
+2026-03-18T16:42:19.6048429Z         }
+2026-03-18T16:42:19.6048577Z       }
+2026-03-18T16:42:19.6048724Z     ],
+2026-03-18T16:42:19.6048880Z     "javascript" : [
+2026-03-18T16:42:19.6049062Z       {
+2026-03-18T16:42:19.6049346Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/javascript",
+2026-03-18T16:42:19.6049716Z         "extractor_options" : {
+2026-03-18T16:42:19.6049925Z           "trap" : {
+2026-03-18T16:42:19.6050113Z             "title" : "TRAP options",
+2026-03-18T16:42:19.6050450Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:19.6050791Z             "type" : "object",
+2026-03-18T16:42:19.6051000Z             "visibility" : 3,
+2026-03-18T16:42:19.6051215Z             "properties" : {
+2026-03-18T16:42:19.6051429Z               "cache" : {
+2026-03-18T16:42:19.6051893Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:19.6052287Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:19.6052666Z                 "type" : "object",
+2026-03-18T16:42:19.6052894Z                 "properties" : {
+2026-03-18T16:42:19.6053116Z                   "dir" : {
+2026-03-18T16:42:19.6053340Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:19.6053681Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:19.6053999Z                     "type" : "string"
+2026-03-18T16:42:19.6054223Z                   },
+2026-03-18T16:42:19.6054402Z                   "bound" : {
+2026-03-18T16:42:19.6054629Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:19.6054987Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:19.6055340Z                     "type" : "string",
+2026-03-18T16:42:19.6055582Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:19.6055810Z                   },
+2026-03-18T16:42:19.6055995Z                   "write" : {
+2026-03-18T16:42:19.6056221Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:19.6056611Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:19.6056991Z                     "type" : "string",
+2026-03-18T16:42:19.6057246Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:19.6057506Z                   }
+2026-03-18T16:42:19.6057673Z                 }
+2026-03-18T16:42:19.6057842Z               }
+2026-03-18T16:42:19.6058004Z             }
+2026-03-18T16:42:19.6058161Z           },
+2026-03-18T16:42:19.6058326Z           "skip_types" : {
+2026-03-18T16:42:19.6058607Z             "title" : "Skip type extraction for TypeScript",
+2026-03-18T16:42:19.6059039Z             "description" : "Whether to skip the extraction of types in a TypeScript application",
+2026-03-18T16:42:19.6059639Z             "type" : "string",
+2026-03-18T16:42:19.6059866Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.6060235Z           }
+2026-03-18T16:42:19.6060390Z         }
+2026-03-18T16:42:19.6060537Z       }
+2026-03-18T16:42:19.6060691Z     ],
+2026-03-18T16:42:19.6060839Z     "rust" : [
+2026-03-18T16:42:19.6061006Z       {
+2026-03-18T16:42:19.6061267Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/rust",
+2026-03-18T16:42:19.6061815Z         "extractor_options" : {
+2026-03-18T16:42:19.6062166Z           "trap" : {
+2026-03-18T16:42:19.6062392Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6062701Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6062978Z             "type" : "object",
+2026-03-18T16:42:19.6063191Z             "properties" : {
+2026-03-18T16:42:19.6063400Z               "compression" : {
+2026-03-18T16:42:19.6063748Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:19.6064806Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (the default, to write uncompressed TRAP).\n",
+2026-03-18T16:42:19.6065723Z                 "type" : "string",
+2026-03-18T16:42:19.6065968Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:19.6066211Z               }
+2026-03-18T16:42:19.6066379Z             }
+2026-03-18T16:42:19.6066532Z           },
+2026-03-18T16:42:19.6066704Z           "cargo_target_dir" : {
+2026-03-18T16:42:19.6066968Z             "title" : "Directory to use for cargo output files.",
+2026-03-18T16:42:19.6068237Z             "description" : "This value is an optional path to use as `CARGO_TARGET_DIR` for the internal cargo commands the extractor uses. Pointing it to a persistent directory may reduce execution time of consecutive extractor runs. By default, a new scratch directory is used for each run.\n",
+2026-03-18T16:42:19.6069304Z             "type" : "string"
+2026-03-18T16:42:19.6069506Z           },
+2026-03-18T16:42:19.6069680Z           "cargo_target" : {
+2026-03-18T16:42:19.6069901Z             "title" : "Target architecture",
+2026-03-18T16:42:19.6070477Z             "description" : "Target architecture to use for analysis, analogous to `cargo --target`. By default the host architecture is used.\n",
+2026-03-18T16:42:19.6071047Z             "type" : "string"
+2026-03-18T16:42:19.6071248Z           },
+2026-03-18T16:42:19.6071414Z           "cargo_features" : {
+2026-03-18T16:42:19.6071818Z             "title" : "Cargo features to turn on",
+2026-03-18T16:42:19.6072858Z             "description" : "Comma-separated list of features to turn on. By default all features are enabled. If any features are specified, then only those features are enabled. The `default` feature must be explicitly specified if only default features are desired. Can be repeated.\n",
+2026-03-18T16:42:19.6073869Z             "type" : "array"
+2026-03-18T16:42:19.6074070Z           },
+2026-03-18T16:42:19.6074248Z           "cargo_cfg_overrides" : {
+2026-03-18T16:42:19.6074494Z             "title" : "Cargo cfg overrides",
+2026-03-18T16:42:19.6075000Z             "description" : "Comma-separated list of cfg settings to enable, or disable if prefixed with `-`. Can be repeated.\n",
+2026-03-18T16:42:19.6075505Z             "type" : "array"
+2026-03-18T16:42:19.6075698Z           },
+2026-03-18T16:42:19.6075857Z           "logging" : {
+2026-03-18T16:42:19.6076086Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:19.6076404Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:19.6076693Z             "type" : "object",
+2026-03-18T16:42:19.6076896Z             "properties" : {
+2026-03-18T16:42:19.6077102Z               "verbosity" : {
+2026-03-18T16:42:19.6077348Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:19.6078474Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:19.6079574Z                 "type" : "string",
+2026-03-18T16:42:19.6080037Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:19.6080516Z               },
+2026-03-18T16:42:19.6080688Z               "flamegraph" : {
+2026-03-18T16:42:19.6080984Z                 "title" : "[Experimental] File path for write flame graph log",
+2026-03-18T16:42:19.6082009Z                 "description" : "Collect flame graph data using the `tracing-flame` crate. To render a flame graph or chart, run the `inferno-flamegraph` command. See also: https://crates.io/crates/tracing-flame\n",
+2026-03-18T16:42:19.6082784Z                 "type" : "string"
+2026-03-18T16:42:19.6082991Z               }
+2026-03-18T16:42:19.6083159Z             }
+2026-03-18T16:42:19.6083325Z           },
+2026-03-18T16:42:19.6083510Z           "extract_dependencies_as_source" : {
+2026-03-18T16:42:19.6083809Z             "title" : "Extract dependencies as source code",
+2026-03-18T16:42:19.6084309Z             "description" : "Extract the full source code of dependencies instead of only extracting signatures.\n",
+2026-03-18T16:42:19.6084766Z             "type" : "string",
+2026-03-18T16:42:19.6084985Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.6085206Z           }
+2026-03-18T16:42:19.6085364Z         }
+2026-03-18T16:42:19.6085516Z       }
+2026-03-18T16:42:19.6085666Z     ],
+2026-03-18T16:42:19.6085813Z     "xml" : [
+2026-03-18T16:42:19.6085980Z       {
+2026-03-18T16:42:19.6086233Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/xml"
+2026-03-18T16:42:19.6086562Z       }
+2026-03-18T16:42:19.6086711Z     ],
+2026-03-18T16:42:19.6086861Z     "csv" : [
+2026-03-18T16:42:19.6087020Z       {
+2026-03-18T16:42:19.6087268Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/csv"
+2026-03-18T16:42:19.6087607Z       }
+2026-03-18T16:42:19.6087755Z     ],
+2026-03-18T16:42:19.6087912Z     "csharp" : [
+2026-03-18T16:42:19.6088080Z       {
+2026-03-18T16:42:19.6088353Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/csharp",
+2026-03-18T16:42:19.6088709Z         "extractor_options" : {
+2026-03-18T16:42:19.6088929Z           "trap" : {
+2026-03-18T16:42:19.6089142Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6089454Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:19.6089736Z             "type" : "object",
+2026-03-18T16:42:19.6089945Z             "properties" : {
+2026-03-18T16:42:19.6090161Z               "compression" : {
+2026-03-18T16:42:19.6090510Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:19.6091476Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:19.6092388Z                 "type" : "string",
+2026-03-18T16:42:19.6092637Z                 "pattern" : "^(none|gzip|brotli)$"
+2026-03-18T16:42:19.6092885Z               }
+2026-03-18T16:42:19.6093043Z             }
+2026-03-18T16:42:19.6093203Z           },
+2026-03-18T16:42:19.6093363Z           "buildless" : {
+2026-03-18T16:42:19.6093683Z             "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+2026-03-18T16:42:19.6095795Z             "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:19.6097618Z             "type" : "string",
+2026-03-18T16:42:19.6097844Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:19.6098075Z           },
+2026-03-18T16:42:19.6098236Z           "logging" : {
+2026-03-18T16:42:19.6098465Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:19.6098790Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:19.6099083Z             "type" : "object",
+2026-03-18T16:42:19.6099289Z             "properties" : {
+2026-03-18T16:42:19.6099496Z               "verbosity" : {
+2026-03-18T16:42:19.6099742Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:19.6100715Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:19.6101752Z                 "type" : "string",
+2026-03-18T16:42:19.6102216Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:19.6102697Z               }
+2026-03-18T16:42:19.6102861Z             }
+2026-03-18T16:42:19.6103023Z           },
+2026-03-18T16:42:19.6103180Z           "binlog" : {
+2026-03-18T16:42:19.6103370Z             "title" : "Binlog",
+2026-03-18T16:42:19.6104043Z             "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+2026-03-18T16:42:19.6104732Z             "type" : "array"
+2026-03-18T16:42:19.6104931Z           },
+2026-03-18T16:42:19.6105107Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:19.6105518Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:19.6106162Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:19.6106638Z             "type" : "string"
+2026-03-18T16:42:19.6106837Z           }
+2026-03-18T16:42:19.6106990Z         }
+2026-03-18T16:42:19.6107145Z       }
+2026-03-18T16:42:19.6107293Z     ],
+2026-03-18T16:42:19.6107452Z     "properties" : [
+2026-03-18T16:42:19.6107627Z       {
+2026-03-18T16:42:19.6107917Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/properties"
+2026-03-18T16:42:19.6108269Z       }
+2026-03-18T16:42:19.6108422Z     ]
+2026-03-18T16:42:19.6108565Z   }
+2026-03-18T16:42:19.6108720Z }
+2026-03-18T16:42:19.6213272Z ##[warning]1 issue was detected with this workflow: Not all workflow steps that use `github/codeql-action` actions use the same version. Please ensure that all such steps use the same version to avoid compatibility issues.
+2026-03-18T16:42:19.6215562Z ##[endgroup]
+2026-03-18T16:42:19.6216153Z ##[group]Load language configuration
+2026-03-18T16:42:19.6224590Z [command]/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/codeql resolve languages --format=betterjson --extractor-options-verbosity=4 --extractor-include-aliases --filter-to-languages-with-queries
+2026-03-18T16:42:20.5680758Z {
+2026-03-18T16:42:20.5681491Z   "aliases" : {
+2026-03-18T16:42:20.5685534Z     "c" : "cpp",
+2026-03-18T16:42:20.5685879Z     "c++" : "cpp",
+2026-03-18T16:42:20.5688551Z     "c-c++" : "cpp",
+2026-03-18T16:42:20.5688911Z     "c-cpp" : "cpp",
+2026-03-18T16:42:20.5689249Z     "c#" : "csharp",
+2026-03-18T16:42:20.5689589Z     "java-kotlin" : "java",
+2026-03-18T16:42:20.5689973Z     "kotlin" : "java",
+2026-03-18T16:42:20.5705256Z     "javascript-typescript" : "javascript",
+2026-03-18T16:42:20.5705791Z     "typescript" : "javascript"
+2026-03-18T16:42:20.5706188Z   },
+2026-03-18T16:42:20.5706478Z   "extractors" : {
+2026-03-18T16:42:20.5706792Z     "rust" : [
+2026-03-18T16:42:20.5707090Z       {
+2026-03-18T16:42:20.5708018Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/rust",
+2026-03-18T16:42:20.5708908Z         "extractor_options" : {
+2026-03-18T16:42:20.5709252Z           "trap" : {
+2026-03-18T16:42:20.5709579Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5710131Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5710655Z             "type" : "object",
+2026-03-18T16:42:20.5711041Z             "properties" : {
+2026-03-18T16:42:20.5711427Z               "compression" : {
+2026-03-18T16:42:20.5712318Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:20.5714239Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (the default, to write uncompressed TRAP).\n",
+2026-03-18T16:42:20.5715808Z                 "type" : "string",
+2026-03-18T16:42:20.5716238Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:20.5716684Z               }
+2026-03-18T16:42:20.5716994Z             }
+2026-03-18T16:42:20.5717261Z           },
+2026-03-18T16:42:20.5717545Z           "cargo_target_dir" : {
+2026-03-18T16:42:20.5718052Z             "title" : "Directory to use for cargo output files.",
+2026-03-18T16:42:20.5719868Z             "description" : "This value is an optional path to use as `CARGO_TARGET_DIR` for the internal cargo commands the extractor uses. Pointing it to a persistent directory may reduce execution time of consecutive extractor runs. By default, a new scratch directory is used for each run.\n",
+2026-03-18T16:42:20.5722102Z             "type" : "string"
+2026-03-18T16:42:20.5722473Z           },
+2026-03-18T16:42:20.5722781Z           "cargo_target" : {
+2026-03-18T16:42:20.5723174Z             "title" : "Target architecture",
+2026-03-18T16:42:20.5724232Z             "description" : "Target architecture to use for analysis, analogous to `cargo --target`. By default the host architecture is used.\n",
+2026-03-18T16:42:20.5725257Z             "type" : "string"
+2026-03-18T16:42:20.5725605Z           },
+2026-03-18T16:42:20.5725904Z           "cargo_features" : {
+2026-03-18T16:42:20.5726309Z             "title" : "Cargo features to turn on",
+2026-03-18T16:42:20.5728221Z             "description" : "Comma-separated list of features to turn on. By default all features are enabled. If any features are specified, then only those features are enabled. The `default` feature must be explicitly specified if only default features are desired. Can be repeated.\n",
+2026-03-18T16:42:20.5730136Z             "type" : "array"
+2026-03-18T16:42:20.5730492Z           },
+2026-03-18T16:42:20.5730829Z           "cargo_cfg_overrides" : {
+2026-03-18T16:42:20.5731267Z             "title" : "Cargo cfg overrides",
+2026-03-18T16:42:20.5732610Z             "description" : "Comma-separated list of cfg settings to enable, or disable if prefixed with `-`. Can be repeated.\n",
+2026-03-18T16:42:20.5733580Z             "type" : "array"
+2026-03-18T16:42:20.5733938Z           },
+2026-03-18T16:42:20.5734231Z           "logging" : {
+2026-03-18T16:42:20.5734611Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5735197Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5735747Z             "type" : "object",
+2026-03-18T16:42:20.5736124Z             "properties" : {
+2026-03-18T16:42:20.5736513Z               "verbosity" : {
+2026-03-18T16:42:20.5736978Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:20.5738732Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:20.5740447Z                 "type" : "string",
+2026-03-18T16:42:20.5741499Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:20.5742900Z               },
+2026-03-18T16:42:20.5743194Z               "flamegraph" : {
+2026-03-18T16:42:20.5743705Z                 "title" : "[Experimental] File path for write flame graph log",
+2026-03-18T16:42:20.5745345Z                 "description" : "Collect flame graph data using the `tracing-flame` crate. To render a flame graph or chart, run the `inferno-flamegraph` command. See also: https://crates.io/crates/tracing-flame\n",
+2026-03-18T16:42:20.5746663Z                 "type" : "string"
+2026-03-18T16:42:20.5747028Z               }
+2026-03-18T16:42:20.5747314Z             }
+2026-03-18T16:42:20.5775823Z           },
+2026-03-18T16:42:20.5776142Z           "extract_dependencies_as_source" : {
+2026-03-18T16:42:20.5776495Z             "title" : "Extract dependencies as source code",
+2026-03-18T16:42:20.5777030Z             "description" : "Extract the full source code of dependencies instead of only extracting signatures.\n",
+2026-03-18T16:42:20.5777521Z             "type" : "string",
+2026-03-18T16:42:20.5777762Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5778016Z           }
+2026-03-18T16:42:20.5778176Z         }
+2026-03-18T16:42:20.5778335Z       }
+2026-03-18T16:42:20.5778494Z     ],
+2026-03-18T16:42:20.5778654Z     "python" : [
+2026-03-18T16:42:20.5778830Z       {
+2026-03-18T16:42:20.5779110Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/python",
+2026-03-18T16:42:20.5779483Z         "extractor_options" : {
+2026-03-18T16:42:20.5779695Z           "logging" : {
+2026-03-18T16:42:20.5779930Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5780259Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5780553Z             "type" : "object",
+2026-03-18T16:42:20.5780766Z             "properties" : {
+2026-03-18T16:42:20.5780980Z               "verbosity" : {
+2026-03-18T16:42:20.5781263Z                 "title" : "Python extractor logging verbosity level.",
+2026-03-18T16:42:20.5782603Z                 "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:20.5783615Z                 "type" : "string",
+2026-03-18T16:42:20.5784085Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:20.5784573Z               }
+2026-03-18T16:42:20.5784749Z             }
+2026-03-18T16:42:20.5784911Z           },
+2026-03-18T16:42:20.5785100Z           "python_executable_name" : {
+2026-03-18T16:42:20.5785491Z             "title" : "Controls the name of the Python executable used by the Python extractor.",
+2026-03-18T16:42:20.5786946Z             "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+2026-03-18T16:42:20.5788292Z             "type" : "string",
+2026-03-18T16:42:20.5788681Z             "pattern" : "^(py|python|python3)$"
+2026-03-18T16:42:20.5789125Z           }
+2026-03-18T16:42:20.5789390Z         }
+2026-03-18T16:42:20.5789664Z       }
+2026-03-18T16:42:20.5789842Z     ],
+2026-03-18T16:42:20.5790006Z     "cpp" : [
+2026-03-18T16:42:20.5790175Z       {
+2026-03-18T16:42:20.5790443Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/cpp",
+2026-03-18T16:42:20.5790797Z         "extractor_options" : {
+2026-03-18T16:42:20.5791019Z           "trap" : {
+2026-03-18T16:42:20.5791222Z             "title" : "TRAP options",
+2026-03-18T16:42:20.5792037Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:20.5792552Z             "type" : "object",
+2026-03-18T16:42:20.5792775Z             "visibility" : 3,
+2026-03-18T16:42:20.5792997Z             "properties" : {
+2026-03-18T16:42:20.5793202Z               "cache" : {
+2026-03-18T16:42:20.5793421Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:20.5793791Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:20.5794166Z                 "type" : "object",
+2026-03-18T16:42:20.5794393Z                 "properties" : {
+2026-03-18T16:42:20.5794615Z                   "dir" : {
+2026-03-18T16:42:20.5794849Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:20.5795189Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:20.5795524Z                     "type" : "string"
+2026-03-18T16:42:20.5795744Z                   },
+2026-03-18T16:42:20.5795935Z                   "bound" : {
+2026-03-18T16:42:20.5796165Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:20.5796526Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:20.5796876Z                     "type" : "string",
+2026-03-18T16:42:20.5797115Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:20.5797345Z                   },
+2026-03-18T16:42:20.5797521Z                   "write" : {
+2026-03-18T16:42:20.5797755Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:20.5798142Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:20.5798525Z                     "type" : "string",
+2026-03-18T16:42:20.5798776Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:20.5799036Z                   }
+2026-03-18T16:42:20.5799207Z                 }
+2026-03-18T16:42:20.5799380Z               }
+2026-03-18T16:42:20.5799548Z             }
+2026-03-18T16:42:20.5799710Z           },
+2026-03-18T16:42:20.5799888Z           "scale_timeouts" : {
+2026-03-18T16:42:20.5800182Z             "title" : "Value to scale compiler introspection timeouts with",
+2026-03-18T16:42:20.5801842Z             "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+2026-03-18T16:42:20.5803214Z             "type" : "string",
+2026-03-18T16:42:20.5803431Z             "pattern" : "[0-9]+"
+2026-03-18T16:42:20.5803647Z           },
+2026-03-18T16:42:20.5803819Z           "log_verbosity" : {
+2026-03-18T16:42:20.5804075Z             "title" : "Verbosity of the extractor logging",
+2026-03-18T16:42:20.5804752Z             "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+2026-03-18T16:42:20.5805334Z             "type" : "string",
+2026-03-18T16:42:20.5805549Z             "pattern" : "[0-3]"
+2026-03-18T16:42:20.5805757Z           },
+2026-03-18T16:42:20.5805940Z           "frontend_options" : {
+2026-03-18T16:42:20.5806196Z             "title" : "C/C++ extractor frontend options",
+2026-03-18T16:42:20.5806744Z             "description" : "Set additional options that should be passed to the C/C++ extractor frontend.\n",
+2026-03-18T16:42:20.5807204Z             "type" : "array",
+2026-03-18T16:42:20.5807416Z             "visibility" : 3
+2026-03-18T16:42:20.5807623Z           }
+2026-03-18T16:42:20.5807774Z         }
+2026-03-18T16:42:20.5807933Z       }
+2026-03-18T16:42:20.5808090Z     ],
+2026-03-18T16:42:20.5808252Z     "csharp" : [
+2026-03-18T16:42:20.5808424Z       {
+2026-03-18T16:42:20.5808696Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/csharp",
+2026-03-18T16:42:20.5809236Z         "extractor_options" : {
+2026-03-18T16:42:20.5809558Z           "trap" : {
+2026-03-18T16:42:20.5809777Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5810087Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5810357Z             "type" : "object",
+2026-03-18T16:42:20.5810582Z             "properties" : {
+2026-03-18T16:42:20.5810789Z               "compression" : {
+2026-03-18T16:42:20.5811141Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:20.5812325Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:20.5813152Z                 "type" : "string",
+2026-03-18T16:42:20.5813399Z                 "pattern" : "^(none|gzip|brotli)$"
+2026-03-18T16:42:20.5813645Z               }
+2026-03-18T16:42:20.5813822Z             }
+2026-03-18T16:42:20.5813984Z           },
+2026-03-18T16:42:20.5814160Z           "buildless" : {
+2026-03-18T16:42:20.5814483Z             "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+2026-03-18T16:42:20.5816309Z             "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:20.5817993Z             "type" : "string",
+2026-03-18T16:42:20.5818212Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5818463Z           },
+2026-03-18T16:42:20.5818625Z           "logging" : {
+2026-03-18T16:42:20.5818864Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5819189Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:20.5819477Z             "type" : "object",
+2026-03-18T16:42:20.5819688Z             "properties" : {
+2026-03-18T16:42:20.5819890Z               "verbosity" : {
+2026-03-18T16:42:20.5820141Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:20.5821100Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:20.5822243Z                 "type" : "string",
+2026-03-18T16:42:20.5822732Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:20.5823210Z               }
+2026-03-18T16:42:20.5823384Z             }
+2026-03-18T16:42:20.5823543Z           },
+2026-03-18T16:42:20.5823708Z           "binlog" : {
+2026-03-18T16:42:20.5823894Z             "title" : "Binlog",
+2026-03-18T16:42:20.5824569Z             "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+2026-03-18T16:42:20.5825262Z             "type" : "array"
+2026-03-18T16:42:20.5825456Z           },
+2026-03-18T16:42:20.5825636Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:20.5826041Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:20.5826679Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:20.5827159Z             "type" : "string"
+2026-03-18T16:42:20.5827363Z           }
+2026-03-18T16:42:20.5827515Z         }
+2026-03-18T16:42:20.5827670Z       }
+2026-03-18T16:42:20.5827963Z     ],
+2026-03-18T16:42:20.5828288Z     "java" : [
+2026-03-18T16:42:20.5828457Z       {
+2026-03-18T16:42:20.5828720Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/java",
+2026-03-18T16:42:20.5829080Z         "extractor_options" : {
+2026-03-18T16:42:20.5829293Z           "exclude" : {
+2026-03-18T16:42:20.5829537Z             "title" : "A glob excluding files from analysis.",
+2026-03-18T16:42:20.5830253Z             "description" : "A glob indicating what files to exclude from the analysis. This accepts glob patterns that are supported by Java's 'getPathMatcher' implementation.\n",
+2026-03-18T16:42:20.5830925Z             "type" : "string"
+2026-03-18T16:42:20.5831128Z           },
+2026-03-18T16:42:20.5831302Z           "add_prefer_source" : {
+2026-03-18T16:42:20.5831822Z             "title" : "Whether to always prefer source files over class files.",
+2026-03-18T16:42:20.5832976Z             "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+2026-03-18T16:42:20.5834022Z             "type" : "string",
+2026-03-18T16:42:20.5834241Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5834471Z           },
+2026-03-18T16:42:20.5834643Z           "buildless" : {
+2026-03-18T16:42:20.5834964Z             "title" : "Whether to use buildless (standalone) extraction (experimental).",
+2026-03-18T16:42:20.5836664Z             "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:20.5838206Z             "type" : "string",
+2026-03-18T16:42:20.5838423Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5838658Z           },
+2026-03-18T16:42:20.5838833Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:20.5839234Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:20.5839860Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:20.5840336Z             "type" : "string"
+2026-03-18T16:42:20.5840529Z           },
+2026-03-18T16:42:20.5840711Z           "minimize_dependency_jars" : {
+2026-03-18T16:42:20.5841117Z             "title" : "Whether to rewrite and minimize downloaded JAR dependencies (experimental).",
+2026-03-18T16:42:20.5842129Z             "description" : "If 'true', JAR dependencies downloaded during extraction will be rewritten to remove unneeded data, such as method bodies. The default is 'false'.\n",
+2026-03-18T16:42:20.5842796Z             "type" : "string",
+2026-03-18T16:42:20.5843014Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5843239Z           }
+2026-03-18T16:42:20.5843391Z         }
+2026-03-18T16:42:20.5843545Z       }
+2026-03-18T16:42:20.5843687Z     ],
+2026-03-18T16:42:20.5843875Z     "go" : [
+2026-03-18T16:42:20.5844035Z       {
+2026-03-18T16:42:20.5844291Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/go",
+2026-03-18T16:42:20.5844647Z         "extractor_options" : {
+2026-03-18T16:42:20.5844867Z           "extract_tests" : {
+2026-03-18T16:42:20.5845176Z             "title" : "Whether to include Go test files in the CodeQL database.",
+2026-03-18T16:42:20.5845835Z             "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:20.5846370Z             "type" : "string",
+2026-03-18T16:42:20.5846746Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5846977Z           },
+2026-03-18T16:42:20.5847262Z           "extract_vendor_dirs" : {
+2026-03-18T16:42:20.5847609Z             "title" : "Whether to include Go vendor directories in the CodeQL database.",
+2026-03-18T16:42:20.5848315Z             "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:20.5849139Z             "type" : "string",
+2026-03-18T16:42:20.5849491Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5849841Z           }
+2026-03-18T16:42:20.5850089Z         }
+2026-03-18T16:42:20.5850334Z       }
+2026-03-18T16:42:20.5850579Z     ],
+2026-03-18T16:42:20.5850824Z     "actions" : [
+2026-03-18T16:42:20.5851108Z       {
+2026-03-18T16:42:20.5851557Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/actions",
+2026-03-18T16:42:20.5852437Z         "extractor_options" : {
+2026-03-18T16:42:20.5852804Z           "trap" : {
+2026-03-18T16:42:20.5853135Z             "title" : "TRAP options",
+2026-03-18T16:42:20.5853719Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:20.5854297Z             "type" : "object",
+2026-03-18T16:42:20.5854649Z             "visibility" : 3,
+2026-03-18T16:42:20.5855006Z             "properties" : {
+2026-03-18T16:42:20.5855232Z               "cache" : {
+2026-03-18T16:42:20.5855452Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:20.5855832Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:20.5856207Z                 "type" : "object",
+2026-03-18T16:42:20.5856432Z                 "properties" : {
+2026-03-18T16:42:20.5856649Z                   "dir" : {
+2026-03-18T16:42:20.5856877Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:20.5857220Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:20.5857537Z                     "type" : "string"
+2026-03-18T16:42:20.5857769Z                   },
+2026-03-18T16:42:20.5857953Z                   "bound" : {
+2026-03-18T16:42:20.5858180Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:20.5858545Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:20.5858894Z                     "type" : "string",
+2026-03-18T16:42:20.5859133Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:20.5859358Z                   },
+2026-03-18T16:42:20.5859542Z                   "write" : {
+2026-03-18T16:42:20.5859769Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:20.5860161Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:20.5860533Z                     "type" : "string",
+2026-03-18T16:42:20.5860795Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:20.5861053Z                   }
+2026-03-18T16:42:20.5861221Z                 }
+2026-03-18T16:42:20.5861396Z               }
+2026-03-18T16:42:20.5861561Z             }
+2026-03-18T16:42:20.5862055Z           }
+2026-03-18T16:42:20.5862211Z         }
+2026-03-18T16:42:20.5862367Z       }
+2026-03-18T16:42:20.5862512Z     ],
+2026-03-18T16:42:20.5862675Z     "javascript" : [
+2026-03-18T16:42:20.5862860Z       {
+2026-03-18T16:42:20.5863153Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/javascript",
+2026-03-18T16:42:20.5863530Z         "extractor_options" : {
+2026-03-18T16:42:20.5863745Z           "trap" : {
+2026-03-18T16:42:20.5863939Z             "title" : "TRAP options",
+2026-03-18T16:42:20.5864270Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:20.5864773Z             "type" : "object",
+2026-03-18T16:42:20.5865104Z             "visibility" : 3,
+2026-03-18T16:42:20.5865421Z             "properties" : {
+2026-03-18T16:42:20.5865726Z               "cache" : {
+2026-03-18T16:42:20.5866468Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:20.5867142Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:20.5868002Z                 "type" : "object",
+2026-03-18T16:42:20.5868383Z                 "properties" : {
+2026-03-18T16:42:20.5868741Z                   "dir" : {
+2026-03-18T16:42:20.5869142Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:20.5869758Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:20.5870363Z                     "type" : "string"
+2026-03-18T16:42:20.5870766Z                   },
+2026-03-18T16:42:20.5871101Z                   "bound" : {
+2026-03-18T16:42:20.5871494Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:20.5872391Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:20.5873014Z                     "type" : "string",
+2026-03-18T16:42:20.5873431Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:20.5873827Z                   },
+2026-03-18T16:42:20.5874131Z                   "write" : {
+2026-03-18T16:42:20.5874534Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:20.5875168Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:20.5875856Z                     "type" : "string",
+2026-03-18T16:42:20.5876307Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:20.5876728Z                   }
+2026-03-18T16:42:20.5877060Z                 }
+2026-03-18T16:42:20.5877327Z               }
+2026-03-18T16:42:20.5877597Z             }
+2026-03-18T16:42:20.5877868Z           },
+2026-03-18T16:42:20.5878159Z           "skip_types" : {
+2026-03-18T16:42:20.5878600Z             "title" : "Skip type extraction for TypeScript",
+2026-03-18T16:42:20.5879408Z             "description" : "Whether to skip the extraction of types in a TypeScript application",
+2026-03-18T16:42:20.5880148Z             "type" : "string",
+2026-03-18T16:42:20.5880575Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:20.5880974Z           }
+2026-03-18T16:42:20.5881225Z         }
+2026-03-18T16:42:20.5881503Z       }
+2026-03-18T16:42:20.5881992Z     ],
+2026-03-18T16:42:20.5882274Z     "swift" : [
+2026-03-18T16:42:20.5882563Z       {
+2026-03-18T16:42:20.5883015Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/swift"
+2026-03-18T16:42:20.5883637Z       }
+2026-03-18T16:42:20.5883911Z     ],
+2026-03-18T16:42:20.5884173Z     "ruby" : [
+2026-03-18T16:42:20.5884469Z       {
+2026-03-18T16:42:20.5884936Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/ruby",
+2026-03-18T16:42:20.5885600Z         "extractor_options" : {
+2026-03-18T16:42:20.5885990Z           "trap" : {
+2026-03-18T16:42:20.5886361Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5886925Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:20.5887430Z             "type" : "object",
+2026-03-18T16:42:20.5887804Z             "properties" : {
+2026-03-18T16:42:20.5888176Z               "compression" : {
+2026-03-18T16:42:20.5888813Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:20.5890697Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:20.5892636Z                 "type" : "string",
+2026-03-18T16:42:20.5893076Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:20.5893513Z               }
+2026-03-18T16:42:20.5893792Z             }
+2026-03-18T16:42:20.5894057Z           }
+2026-03-18T16:42:20.5894308Z         }
+2026-03-18T16:42:20.5894547Z       }
+2026-03-18T16:42:20.5894785Z     ]
+2026-03-18T16:42:20.5895005Z   }
+2026-03-18T16:42:20.5895227Z }
+2026-03-18T16:42:20.5896108Z Languages from configuration: cpp
+2026-03-18T16:42:20.5897241Z [command]/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/codeql resolve languages --format=betterjson --extractor-options-verbosity=4 --extractor-include-aliases
+2026-03-18T16:42:21.5052865Z {
+2026-03-18T16:42:21.5053292Z   "aliases" : {
+2026-03-18T16:42:21.5053639Z     "c" : "cpp",
+2026-03-18T16:42:21.5053981Z     "c++" : "cpp",
+2026-03-18T16:42:21.5054307Z     "c-c++" : "cpp",
+2026-03-18T16:42:21.5054669Z     "c-cpp" : "cpp",
+2026-03-18T16:42:21.5054997Z     "c#" : "csharp",
+2026-03-18T16:42:21.5055348Z     "java-kotlin" : "java",
+2026-03-18T16:42:21.5055735Z     "kotlin" : "java",
+2026-03-18T16:42:21.5056843Z     "javascript-typescript" : "javascript",
+2026-03-18T16:42:21.5057373Z     "typescript" : "javascript"
+2026-03-18T16:42:21.5057755Z   },
+2026-03-18T16:42:21.5058042Z   "extractors" : {
+2026-03-18T16:42:21.5058353Z     "python" : [
+2026-03-18T16:42:21.5058664Z       {
+2026-03-18T16:42:21.5059190Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/python",
+2026-03-18T16:42:21.5059872Z         "extractor_options" : {
+2026-03-18T16:42:21.5060269Z           "logging" : {
+2026-03-18T16:42:21.5060678Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5061269Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5066564Z             "type" : "object",
+2026-03-18T16:42:21.5066993Z             "properties" : {
+2026-03-18T16:42:21.5067370Z               "verbosity" : {
+2026-03-18T16:42:21.5067864Z                 "title" : "Python extractor logging verbosity level.",
+2026-03-18T16:42:21.5069818Z                 "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:21.5071905Z                 "type" : "string",
+2026-03-18T16:42:21.5072780Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:21.5073682Z               }
+2026-03-18T16:42:21.5073986Z             }
+2026-03-18T16:42:21.5074259Z           },
+2026-03-18T16:42:21.5074585Z           "python_executable_name" : {
+2026-03-18T16:42:21.5075277Z             "title" : "Controls the name of the Python executable used by the Python extractor.",
+2026-03-18T16:42:21.5077855Z             "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+2026-03-18T16:42:21.5080376Z             "type" : "string",
+2026-03-18T16:42:21.5080818Z             "pattern" : "^(py|python|python3)$"
+2026-03-18T16:42:21.5081282Z           }
+2026-03-18T16:42:21.5081565Z         }
+2026-03-18T16:42:21.5082017Z       }
+2026-03-18T16:42:21.5082284Z     ],
+2026-03-18T16:42:21.5082553Z     "java" : [
+2026-03-18T16:42:21.5082833Z       {
+2026-03-18T16:42:21.5083317Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/java",
+2026-03-18T16:42:21.5083979Z         "extractor_options" : {
+2026-03-18T16:42:21.5084357Z           "exclude" : {
+2026-03-18T16:42:21.5084789Z             "title" : "A glob excluding files from analysis.",
+2026-03-18T16:42:21.5086139Z             "description" : "A glob indicating what files to exclude from the analysis. This accepts glob patterns that are supported by Java's 'getPathMatcher' implementation.\n",
+2026-03-18T16:42:21.5087397Z             "type" : "string"
+2026-03-18T16:42:21.5087752Z           },
+2026-03-18T16:42:21.5088065Z           "add_prefer_source" : {
+2026-03-18T16:42:21.5088648Z             "title" : "Whether to always prefer source files over class files.",
+2026-03-18T16:42:21.5091212Z             "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+2026-03-18T16:42:21.5093706Z             "type" : "string",
+2026-03-18T16:42:21.5094098Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5094513Z           },
+2026-03-18T16:42:21.5094799Z           "buildless" : {
+2026-03-18T16:42:21.5095392Z             "title" : "Whether to use buildless (standalone) extraction (experimental).",
+2026-03-18T16:42:21.5098513Z             "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:21.5101373Z             "type" : "string",
+2026-03-18T16:42:21.5102026Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5102475Z           },
+2026-03-18T16:42:21.5102805Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:21.5103581Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:21.5104785Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:21.5105604Z             "type" : "string"
+2026-03-18T16:42:21.5106019Z           },
+2026-03-18T16:42:21.5106391Z           "minimize_dependency_jars" : {
+2026-03-18T16:42:21.5107168Z             "title" : "Whether to rewrite and minimize downloaded JAR dependencies (experimental).",
+2026-03-18T16:42:21.5108795Z             "description" : "If 'true', JAR dependencies downloaded during extraction will be rewritten to remove unneeded data, such as method bodies. The default is 'false'.\n",
+2026-03-18T16:42:21.5110080Z             "type" : "string",
+2026-03-18T16:42:21.5110495Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5110905Z           }
+2026-03-18T16:42:21.5111172Z         }
+2026-03-18T16:42:21.5111424Z       }
+2026-03-18T16:42:21.5111900Z     ],
+2026-03-18T16:42:21.5112169Z     "swift" : [
+2026-03-18T16:42:21.5112454Z       {
+2026-03-18T16:42:21.5112918Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/swift"
+2026-03-18T16:42:21.5113562Z       }
+2026-03-18T16:42:21.5113849Z     ],
+2026-03-18T16:42:21.5114129Z     "ruby" : [
+2026-03-18T16:42:21.5114431Z       {
+2026-03-18T16:42:21.5114928Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/ruby",
+2026-03-18T16:42:21.5115602Z         "extractor_options" : {
+2026-03-18T16:42:21.5115996Z           "trap" : {
+2026-03-18T16:42:21.5116415Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5116983Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5117481Z             "type" : "object",
+2026-03-18T16:42:21.5117859Z             "properties" : {
+2026-03-18T16:42:21.5118223Z               "compression" : {
+2026-03-18T16:42:21.5118865Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:21.5120838Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:21.5122789Z                 "type" : "string",
+2026-03-18T16:42:21.5123236Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:21.5123659Z               }
+2026-03-18T16:42:21.5123956Z             }
+2026-03-18T16:42:21.5124230Z           }
+2026-03-18T16:42:21.5124494Z         }
+2026-03-18T16:42:21.5124750Z       }
+2026-03-18T16:42:21.5125285Z     ],
+2026-03-18T16:42:21.5125714Z     "yaml" : [
+2026-03-18T16:42:21.5125996Z       {
+2026-03-18T16:42:21.5126458Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/yaml"
+2026-03-18T16:42:21.5127073Z       }
+2026-03-18T16:42:21.5127340Z     ],
+2026-03-18T16:42:21.5127598Z     "actions" : [
+2026-03-18T16:42:21.5127783Z       {
+2026-03-18T16:42:21.5128073Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/actions",
+2026-03-18T16:42:21.5128463Z         "extractor_options" : {
+2026-03-18T16:42:21.5128687Z           "trap" : {
+2026-03-18T16:42:21.5128895Z             "title" : "TRAP options",
+2026-03-18T16:42:21.5129436Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:21.5130011Z             "type" : "object",
+2026-03-18T16:42:21.5130327Z             "visibility" : 3,
+2026-03-18T16:42:21.5130737Z             "properties" : {
+2026-03-18T16:42:21.5131073Z               "cache" : {
+2026-03-18T16:42:21.5131429Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:21.5132182Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:21.5132566Z                 "type" : "object",
+2026-03-18T16:42:21.5132803Z                 "properties" : {
+2026-03-18T16:42:21.5133017Z                   "dir" : {
+2026-03-18T16:42:21.5133252Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:21.5133586Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:21.5133914Z                     "type" : "string"
+2026-03-18T16:42:21.5134136Z                   },
+2026-03-18T16:42:21.5134316Z                   "bound" : {
+2026-03-18T16:42:21.5134541Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:21.5134898Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:21.5135256Z                     "type" : "string",
+2026-03-18T16:42:21.5135496Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:21.5135731Z                   },
+2026-03-18T16:42:21.5135906Z                   "write" : {
+2026-03-18T16:42:21.5136136Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:21.5136531Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:21.5136919Z                     "type" : "string",
+2026-03-18T16:42:21.5137181Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:21.5137437Z                   }
+2026-03-18T16:42:21.5137610Z                 }
+2026-03-18T16:42:21.5137772Z               }
+2026-03-18T16:42:21.5137936Z             }
+2026-03-18T16:42:21.5138093Z           }
+2026-03-18T16:42:21.5138248Z         }
+2026-03-18T16:42:21.5138395Z       }
+2026-03-18T16:42:21.5138548Z     ],
+2026-03-18T16:42:21.5138695Z     "html" : [
+2026-03-18T16:42:21.5138861Z       {
+2026-03-18T16:42:21.5139132Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/html"
+2026-03-18T16:42:21.5139463Z       }
+2026-03-18T16:42:21.5139619Z     ],
+2026-03-18T16:42:21.5139766Z     "cpp" : [
+2026-03-18T16:42:21.5139931Z       {
+2026-03-18T16:42:21.5140181Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/cpp",
+2026-03-18T16:42:21.5140524Z         "extractor_options" : {
+2026-03-18T16:42:21.5140734Z           "trap" : {
+2026-03-18T16:42:21.5140929Z             "title" : "TRAP options",
+2026-03-18T16:42:21.5141264Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:21.5141838Z             "type" : "object",
+2026-03-18T16:42:21.5142076Z             "visibility" : 3,
+2026-03-18T16:42:21.5142287Z             "properties" : {
+2026-03-18T16:42:21.5142612Z               "cache" : {
+2026-03-18T16:42:21.5142954Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:21.5143562Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:21.5144448Z                 "type" : "object",
+2026-03-18T16:42:21.5145096Z                 "properties" : {
+2026-03-18T16:42:21.5145440Z                   "dir" : {
+2026-03-18T16:42:21.5145821Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:21.5146361Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:21.5146867Z                     "type" : "string"
+2026-03-18T16:42:21.5147226Z                   },
+2026-03-18T16:42:21.5147516Z                   "bound" : {
+2026-03-18T16:42:21.5147884Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:21.5148460Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:21.5149058Z                     "type" : "string",
+2026-03-18T16:42:21.5149425Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:21.5149788Z                   },
+2026-03-18T16:42:21.5150146Z                   "write" : {
+2026-03-18T16:42:21.5150556Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:21.5151232Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:21.5152075Z                     "type" : "string",
+2026-03-18T16:42:21.5152491Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:21.5152904Z                   }
+2026-03-18T16:42:21.5153167Z                 }
+2026-03-18T16:42:21.5153427Z               }
+2026-03-18T16:42:21.5153676Z             }
+2026-03-18T16:42:21.5153925Z           },
+2026-03-18T16:42:21.5154195Z           "scale_timeouts" : {
+2026-03-18T16:42:21.5154664Z             "title" : "Value to scale compiler introspection timeouts with",
+2026-03-18T16:42:21.5157118Z             "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+2026-03-18T16:42:21.5159467Z             "type" : "string",
+2026-03-18T16:42:21.5159831Z             "pattern" : "[0-9]+"
+2026-03-18T16:42:21.5160168Z           },
+2026-03-18T16:42:21.5160446Z           "log_verbosity" : {
+2026-03-18T16:42:21.5160864Z             "title" : "Verbosity of the extractor logging",
+2026-03-18T16:42:21.5162091Z             "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+2026-03-18T16:42:21.5163034Z             "type" : "string",
+2026-03-18T16:42:21.5163369Z             "pattern" : "[0-3]"
+2026-03-18T16:42:21.5163712Z           },
+2026-03-18T16:42:21.5163999Z           "frontend_options" : {
+2026-03-18T16:42:21.5164430Z             "title" : "C/C++ extractor frontend options",
+2026-03-18T16:42:21.5165331Z             "description" : "Set additional options that should be passed to the C/C++ extractor frontend.\n",
+2026-03-18T16:42:21.5166111Z             "type" : "array",
+2026-03-18T16:42:21.5166467Z             "visibility" : 3
+2026-03-18T16:42:21.5166793Z           }
+2026-03-18T16:42:21.5167051Z         }
+2026-03-18T16:42:21.5167299Z       }
+2026-03-18T16:42:21.5167550Z     ],
+2026-03-18T16:42:21.5167797Z     "go" : [
+2026-03-18T16:42:21.5168062Z       {
+2026-03-18T16:42:21.5168499Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/go",
+2026-03-18T16:42:21.5169100Z         "extractor_options" : {
+2026-03-18T16:42:21.5169470Z           "extract_tests" : {
+2026-03-18T16:42:21.5169991Z             "title" : "Whether to include Go test files in the CodeQL database.",
+2026-03-18T16:42:21.5171127Z             "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:21.5172237Z             "type" : "string",
+2026-03-18T16:42:21.5172608Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5173209Z           },
+2026-03-18T16:42:21.5173649Z           "extract_vendor_dirs" : {
+2026-03-18T16:42:21.5174246Z             "title" : "Whether to include Go vendor directories in the CodeQL database.",
+2026-03-18T16:42:21.5175454Z             "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+2026-03-18T16:42:21.5176452Z             "type" : "string",
+2026-03-18T16:42:21.5176816Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5177202Z           }
+2026-03-18T16:42:21.5177452Z         }
+2026-03-18T16:42:21.5177708Z       }
+2026-03-18T16:42:21.5177953Z     ],
+2026-03-18T16:42:21.5178221Z     "javascript" : [
+2026-03-18T16:42:21.5178514Z       {
+2026-03-18T16:42:21.5178960Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/javascript",
+2026-03-18T16:42:21.5179591Z         "extractor_options" : {
+2026-03-18T16:42:21.5179946Z           "trap" : {
+2026-03-18T16:42:21.5180285Z             "title" : "TRAP options",
+2026-03-18T16:42:21.5180869Z             "description" : "Options about how the extractor handles TRAP files",
+2026-03-18T16:42:21.5181485Z             "type" : "object",
+2026-03-18T16:42:21.5182018Z             "visibility" : 3,
+2026-03-18T16:42:21.5182384Z             "properties" : {
+2026-03-18T16:42:21.5182729Z               "cache" : {
+2026-03-18T16:42:21.5183094Z                 "title" : "TRAP cache options",
+2026-03-18T16:42:21.5183736Z                 "description" : "Options about how the extractor handles its TRAP cache",
+2026-03-18T16:42:21.5184349Z                 "type" : "object",
+2026-03-18T16:42:21.5184713Z                 "properties" : {
+2026-03-18T16:42:21.5185063Z                   "dir" : {
+2026-03-18T16:42:21.5185429Z                     "title" : "TRAP cache directory",
+2026-03-18T16:42:21.5186003Z                     "description" : "The directory of the TRAP cache to use",
+2026-03-18T16:42:21.5186564Z                     "type" : "string"
+2026-03-18T16:42:21.5186938Z                   },
+2026-03-18T16:42:21.5187250Z                   "bound" : {
+2026-03-18T16:42:21.5187628Z                     "title" : "TRAP cache bound",
+2026-03-18T16:42:21.5188237Z                     "description" : "A soft limit (in MB) on the size of the TRAP cache",
+2026-03-18T16:42:21.5188858Z                     "type" : "string",
+2026-03-18T16:42:21.5189213Z                     "pattern" : "[0-9]+"
+2026-03-18T16:42:21.5189563Z                   },
+2026-03-18T16:42:21.5189834Z                   "write" : {
+2026-03-18T16:42:21.5190209Z                     "title" : "TRAP cache writeable",
+2026-03-18T16:42:21.5190877Z                     "description" : "Whether to write to the TRAP cache as well as reading it",
+2026-03-18T16:42:21.5191536Z                     "type" : "string",
+2026-03-18T16:42:21.5192170Z                     "pattern" : "(true|TRUE|false|FALSE)"
+2026-03-18T16:42:21.5192610Z                   }
+2026-03-18T16:42:21.5192899Z                 }
+2026-03-18T16:42:21.5193183Z               }
+2026-03-18T16:42:21.5193467Z             }
+2026-03-18T16:42:21.5193733Z           },
+2026-03-18T16:42:21.5194017Z           "skip_types" : {
+2026-03-18T16:42:21.5194438Z             "title" : "Skip type extraction for TypeScript",
+2026-03-18T16:42:21.5195207Z             "description" : "Whether to skip the extraction of types in a TypeScript application",
+2026-03-18T16:42:21.5195902Z             "type" : "string",
+2026-03-18T16:42:21.5196281Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5196656Z           }
+2026-03-18T16:42:21.5196901Z         }
+2026-03-18T16:42:21.5197164Z       }
+2026-03-18T16:42:21.5197404Z     ],
+2026-03-18T16:42:21.5197657Z     "rust" : [
+2026-03-18T16:42:21.5197921Z       {
+2026-03-18T16:42:21.5198363Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/rust",
+2026-03-18T16:42:21.5198964Z         "extractor_options" : {
+2026-03-18T16:42:21.5199322Z           "trap" : {
+2026-03-18T16:42:21.5199845Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5200597Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5201084Z             "type" : "object",
+2026-03-18T16:42:21.5201438Z             "properties" : {
+2026-03-18T16:42:21.5201941Z               "compression" : {
+2026-03-18T16:42:21.5202539Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:21.5204429Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (the default, to write uncompressed TRAP).\n",
+2026-03-18T16:42:21.5206137Z                 "type" : "string",
+2026-03-18T16:42:21.5206545Z                 "pattern" : "^(none|gzip|zstd)$"
+2026-03-18T16:42:21.5207031Z               }
+2026-03-18T16:42:21.5207306Z             }
+2026-03-18T16:42:21.5207565Z           },
+2026-03-18T16:42:21.5207855Z           "cargo_target_dir" : {
+2026-03-18T16:42:21.5208323Z             "title" : "Directory to use for cargo output files.",
+2026-03-18T16:42:21.5210303Z             "description" : "This value is an optional path to use as `CARGO_TARGET_DIR` for the internal cargo commands the extractor uses. Pointing it to a persistent directory may reduce execution time of consecutive extractor runs. By default, a new scratch directory is used for each run.\n",
+2026-03-18T16:42:21.5212305Z             "type" : "string"
+2026-03-18T16:42:21.5212650Z           },
+2026-03-18T16:42:21.5212929Z           "cargo_target" : {
+2026-03-18T16:42:21.5213308Z             "title" : "Target architecture",
+2026-03-18T16:42:21.5214293Z             "description" : "Target architecture to use for analysis, analogous to `cargo --target`. By default the host architecture is used.\n",
+2026-03-18T16:42:21.5215287Z             "type" : "string"
+2026-03-18T16:42:21.5215622Z           },
+2026-03-18T16:42:21.5215905Z           "cargo_features" : {
+2026-03-18T16:42:21.5216361Z             "title" : "Cargo features to turn on",
+2026-03-18T16:42:21.5218156Z             "description" : "Comma-separated list of features to turn on. By default all features are enabled. If any features are specified, then only those features are enabled. The `default` feature must be explicitly specified if only default features are desired. Can be repeated.\n",
+2026-03-18T16:42:21.5219863Z             "type" : "array"
+2026-03-18T16:42:21.5220183Z           },
+2026-03-18T16:42:21.5220471Z           "cargo_cfg_overrides" : {
+2026-03-18T16:42:21.5220832Z             "title" : "Cargo cfg overrides",
+2026-03-18T16:42:21.5221345Z             "description" : "Comma-separated list of cfg settings to enable, or disable if prefixed with `-`. Can be repeated.\n",
+2026-03-18T16:42:21.5222109Z             "type" : "array"
+2026-03-18T16:42:21.5222302Z           },
+2026-03-18T16:42:21.5222475Z           "logging" : {
+2026-03-18T16:42:21.5222703Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5223077Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5223555Z             "type" : "object",
+2026-03-18T16:42:21.5223930Z             "properties" : {
+2026-03-18T16:42:21.5224279Z               "verbosity" : {
+2026-03-18T16:42:21.5224615Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:21.5225590Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:21.5226507Z                 "type" : "string",
+2026-03-18T16:42:21.5226976Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:21.5227448Z               },
+2026-03-18T16:42:21.5227632Z               "flamegraph" : {
+2026-03-18T16:42:21.5228104Z                 "title" : "[Experimental] File path for write flame graph log",
+2026-03-18T16:42:21.5229095Z                 "description" : "Collect flame graph data using the `tracing-flame` crate. To render a flame graph or chart, run the `inferno-flamegraph` command. See also: https://crates.io/crates/tracing-flame\n",
+2026-03-18T16:42:21.5229876Z                 "type" : "string"
+2026-03-18T16:42:21.5230085Z               }
+2026-03-18T16:42:21.5230258Z             }
+2026-03-18T16:42:21.5230415Z           },
+2026-03-18T16:42:21.5230631Z           "extract_dependencies_as_source" : {
+2026-03-18T16:42:21.5230931Z             "title" : "Extract dependencies as source code",
+2026-03-18T16:42:21.5231432Z             "description" : "Extract the full source code of dependencies instead of only extracting signatures.\n",
+2026-03-18T16:42:21.5232400Z             "type" : "string",
+2026-03-18T16:42:21.5232628Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5232857Z           }
+2026-03-18T16:42:21.5233013Z         }
+2026-03-18T16:42:21.5233168Z       }
+2026-03-18T16:42:21.5233320Z     ],
+2026-03-18T16:42:21.5233475Z     "xml" : [
+2026-03-18T16:42:21.5233630Z       {
+2026-03-18T16:42:21.5233887Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/xml"
+2026-03-18T16:42:21.5234210Z       }
+2026-03-18T16:42:21.5234359Z     ],
+2026-03-18T16:42:21.5234510Z     "csv" : [
+2026-03-18T16:42:21.5234660Z       {
+2026-03-18T16:42:21.5234907Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/csv"
+2026-03-18T16:42:21.5235222Z       }
+2026-03-18T16:42:21.5235372Z     ],
+2026-03-18T16:42:21.5235519Z     "csharp" : [
+2026-03-18T16:42:21.5235690Z       {
+2026-03-18T16:42:21.5235954Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/csharp",
+2026-03-18T16:42:21.5236311Z         "extractor_options" : {
+2026-03-18T16:42:21.5236517Z           "trap" : {
+2026-03-18T16:42:21.5236735Z             "title" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5237051Z             "description" : "Options pertaining to TRAP.",
+2026-03-18T16:42:21.5237370Z             "type" : "object",
+2026-03-18T16:42:21.5237584Z             "properties" : {
+2026-03-18T16:42:21.5237788Z               "compression" : {
+2026-03-18T16:42:21.5238140Z                 "title" : "Controls compression for the TRAP files written by the extractor.",
+2026-03-18T16:42:21.5239094Z                 "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+2026-03-18T16:42:21.5239910Z                 "type" : "string",
+2026-03-18T16:42:21.5240154Z                 "pattern" : "^(none|gzip|brotli)$"
+2026-03-18T16:42:21.5240398Z               }
+2026-03-18T16:42:21.5240563Z             }
+2026-03-18T16:42:21.5240718Z           },
+2026-03-18T16:42:21.5240886Z           "buildless" : {
+2026-03-18T16:42:21.5241212Z             "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+2026-03-18T16:42:21.5243268Z             "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+2026-03-18T16:42:21.5245776Z             "type" : "string",
+2026-03-18T16:42:21.5246174Z             "pattern" : "^(false|true)$"
+2026-03-18T16:42:21.5246566Z           },
+2026-03-18T16:42:21.5246852Z           "logging" : {
+2026-03-18T16:42:21.5247240Z             "title" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5247803Z             "description" : "Options pertaining to logging.",
+2026-03-18T16:42:21.5248278Z             "type" : "object",
+2026-03-18T16:42:21.5248694Z             "properties" : {
+2026-03-18T16:42:21.5249034Z               "verbosity" : {
+2026-03-18T16:42:21.5249303Z                 "title" : "Extractor logging verbosity level.",
+2026-03-18T16:42:21.5250658Z                 "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+2026-03-18T16:42:21.5252301Z                 "type" : "string",
+2026-03-18T16:42:21.5253045Z                 "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+2026-03-18T16:42:21.5253886Z               }
+2026-03-18T16:42:21.5254063Z             }
+2026-03-18T16:42:21.5254223Z           },
+2026-03-18T16:42:21.5254400Z           "binlog" : {
+2026-03-18T16:42:21.5254597Z             "title" : "Binlog",
+2026-03-18T16:42:21.5255291Z             "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+2026-03-18T16:42:21.5256594Z             "type" : "array"
+2026-03-18T16:42:21.5256807Z           },
+2026-03-18T16:42:21.5256994Z           "buildless_dependency_dir" : {
+2026-03-18T16:42:21.5257409Z             "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+2026-03-18T16:42:21.5258055Z             "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+2026-03-18T16:42:21.5258545Z             "type" : "string"
+2026-03-18T16:42:21.5258740Z           }
+2026-03-18T16:42:21.5258895Z         }
+2026-03-18T16:42:21.5259044Z       }
+2026-03-18T16:42:21.5259195Z     ],
+2026-03-18T16:42:21.5259350Z     "properties" : [
+2026-03-18T16:42:21.5259534Z       {
+2026-03-18T16:42:21.5259822Z         "extractor_root" : "/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/properties"
+2026-03-18T16:42:21.5260183Z       }
+2026-03-18T16:42:21.5260335Z     ]
+2026-03-18T16:42:21.5260487Z   }
+2026-03-18T16:42:21.5260632Z }
+2026-03-18T16:42:21.5260836Z Found 1 languages that support TRAP caching
+2026-03-18T16:42:21.5261180Z Analyzing default branch. Skipping downloading of TRAP caches.
+2026-03-18T16:42:21.5304252Z Using Git version 2.53.0
+2026-03-18T16:42:21.5310721Z Using overlay database mode: none without caching.
+2026-03-18T16:42:21.5314606Z Not performing diff-informed analysis because we are not analyzing a pull request.
+2026-03-18T16:42:21.5315623Z ##[endgroup]
+2026-03-18T16:42:21.5332372Z While resolving threads, found a cgroup CPUs file with 4 CPUs in /sys/fs/cgroup/cpuset.cpus.effective.
+2026-03-18T16:42:21.5342930Z Enabling CodeQL C++ TRAP caching support
+2026-03-18T16:42:22.4864359Z Writing augmented user configuration file to /home/runner/work/_temp/user-config.yaml
+2026-03-18T16:42:22.4865837Z ##[group]Augmented user configuration file contents
+2026-03-18T16:42:22.4877928Z queries:
+2026-03-18T16:42:22.4878258Z   - uses: security-extended
+2026-03-18T16:42:22.4878719Z   - uses: security-and-quality
+2026-03-18T16:42:22.4878999Z 
+2026-03-18T16:42:22.4879367Z ##[endgroup]
+2026-03-18T16:42:22.4883959Z [command]/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/codeql database init --force-overwrite --db-cluster /home/runner/work/_temp/codeql_databases --source-root=/home/runner/work/higgaion-core-crypto/higgaion-core-crypto --calculate-language-specific-baseline --sublanguage-file-coverage --extractor-include-aliases --language=cpp --begin-tracing -O=cpp.trap.cache.dir=/home/runner/work/_temp/trapCaches/cpp -O=cpp.trap.cache.bound=1024 -O=cpp.trap.cache.write=true --trace-process-name=Runner.Worker.exe --codescanning-config=/home/runner/work/_temp/user-config.yaml
+2026-03-18T16:42:24.0256016Z Package install location: /home/runner/.codeql/packages
+2026-03-18T16:42:24.0257139Z Nothing downloaded.
+2026-03-18T16:42:28.0427795Z Calculating baseline information in /home/runner/work/higgaion-core-crypto/higgaion-core-crypto
+2026-03-18T16:42:28.3513108Z Running command in /home/runner/work/higgaion-core-crypto/higgaion-core-crypto: [/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/actions/tools/configure-baseline.sh]
+2026-03-18T16:42:28.3780093Z Running command in /home/runner/work/higgaion-core-crypto/higgaion-core-crypto: [/opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/go/tools/configure-baseline.sh]
+2026-03-18T16:42:28.4984411Z Calculated baseline information for languages: actions, c, go, python, rust (453ms).
+2026-03-18T16:42:31.7604946Z Resolving extractor cpp.
+2026-03-18T16:42:31.7658200Z Successfully loaded extractor C/C++ (cpp) from /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/cpp.
+2026-03-18T16:42:31.8102171Z Created skeleton CodeQL database at /home/runner/work/_temp/codeql_databases/cpp. This in-progress database is ready to be populated by an extractor.
+2026-03-18T16:42:33.1474262Z ##[group]Run sudo apt-get update && sudo apt-get install -y libssl-dev
+2026-03-18T16:42:33.1474822Z [36;1msudo apt-get update && sudo apt-get install -y libssl-dev[0m
+2026-03-18T16:42:33.1475176Z [36;1mmake all[0m
+2026-03-18T16:42:33.1475690Z [36;1mcd gateway && gcc -Wall -Wextra -O2 -Iinclude -Ideps/cJSON src/gateway.c -lm -lssl -lcrypto -lpthread -ldl -o higgaion_gateway[0m
+2026-03-18T16:42:33.1529166Z shell: /usr/bin/bash -e {0}
+2026-03-18T16:42:33.1529411Z env:
+2026-03-18T16:42:33.1529613Z   CODEQL_ACTION_FEATURE_MULTI_LANGUAGE: false
+2026-03-18T16:42:33.1529916Z   CODEQL_ACTION_FEATURE_SANDWICH: false
+2026-03-18T16:42:33.1530190Z   CODEQL_ACTION_FEATURE_SARIF_COMBINE: true
+2026-03-18T16:42:33.1530473Z   CODEQL_ACTION_FEATURE_WILL_UPLOAD: true
+2026-03-18T16:42:33.1530734Z   CODEQL_ACTION_VERSION: 3.33.0
+2026-03-18T16:42:33.1530999Z   CODEQL_ACTION_DID_LOG_VERSION_DEPRECATION: true
+2026-03-18T16:42:33.1531308Z   JOB_RUN_UUID: b9e84a41-1572-43f0-8e6b-9d025c94d2a0
+2026-03-18T16:42:33.1531798Z   CODEQL_ACTION_INIT_HAS_RUN: true
+2026-03-18T16:42:33.1532116Z   CODEQL_ACTION_ANALYSIS_KEY: .github/workflows/codeql.yml:analyze
+2026-03-18T16:42:33.1532491Z   CODEQL_WORKFLOW_STARTED_AT: 2026-03-18T16:42:12.703Z
+2026-03-18T16:42:33.1532777Z   CODEQL_RAM: 14576
+2026-03-18T16:42:33.1532961Z   CODEQL_THREADS: 4
+2026-03-18T16:42:33.1533162Z   CODEQL_EXTRACTOR_CPP_TRAP_CACHING: true
+2026-03-18T16:42:33.1533507Z   CODEQL_SCRATCH_DIR: /home/runner/work/_temp/codeql_databases/working
+2026-03-18T16:42:33.1533857Z   CODEQL_VERBOSITY: warnings
+2026-03-18T16:42:33.1534133Z   CODEQL_DIST: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql
+2026-03-18T16:42:33.1534451Z   CODEQL_PLATFORM: linux64
+2026-03-18T16:42:33.1534668Z   CODEQL_PLATFORM_DLL_EXTENSION: .so
+2026-03-18T16:42:33.1535062Z   CODEQL_JAVA_HOME: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/java
+2026-03-18T16:42:33.1535580Z   CODEQL_EXTRACTOR_CPP_ROOT: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/cpp
+2026-03-18T16:42:33.1536078Z   CODEQL_EXTRACTOR_CPP_WIP_DATABASE: /home/runner/work/_temp/codeql_databases/cpp
+2026-03-18T16:42:33.1536690Z   CODEQL_EXTRACTOR_CPP_DIAGNOSTIC_DIR: /home/runner/work/_temp/codeql_databases/cpp/diagnostic/extractors/cpp
+2026-03-18T16:42:33.1537301Z   CODEQL_EXTRACTOR_CPP_LOG_DIR: /home/runner/work/_temp/codeql_databases/cpp/log
+2026-03-18T16:42:33.1537837Z   CODEQL_EXTRACTOR_CPP_SCRATCH_DIR: /home/runner/work/_temp/codeql_databases/cpp/working
+2026-03-18T16:42:33.1538383Z   CODEQL_EXTRACTOR_CPP_TRAP_DIR: /home/runner/work/_temp/codeql_databases/cpp/trap/cpp
+2026-03-18T16:42:33.1538932Z   CODEQL_EXTRACTOR_CPP_SOURCE_ARCHIVE_DIR: /home/runner/work/_temp/codeql_databases/cpp/src
+2026-03-18T16:42:33.1539345Z   CODEQL_EXTRACTOR_CPP_THREADS: 4
+2026-03-18T16:42:33.1539577Z   CODEQL_EXTRACTOR_CPP_RAM: 14576
+2026-03-18T16:42:33.1539847Z   CODEQL_EXTRACTOR_CPP_OPTION_TRAP_CACHE_WRITE: true
+2026-03-18T16:42:33.1540164Z   CODEQL_EXTRACTOR_CPP_OPTION_TRAP_CACHE_BOUND: 1024
+2026-03-18T16:42:33.1540568Z   CODEQL_EXTRACTOR_CPP_OPTION_TRAP_CACHE_DIR: /home/runner/work/_temp/trapCaches/cpp
+2026-03-18T16:42:33.1541075Z   CODEQL_TRACER_LOG: /home/runner/work/_temp/codeql_databases/log/build-tracer.log
+2026-03-18T16:42:33.1542158Z   CODEQL_TRACER_DIAGNOSTICS_DIR: /home/runner/work/_temp/codeql_databases/diagnostic/tracer
+2026-03-18T16:42:33.1542583Z   CODEQL_TRACER_LANGUAGES: cpp
+2026-03-18T16:42:33.1543047Z   SEMMLE_PRELOAD_libtrace: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/${LIB}_${PLATFORM}_trace.so
+2026-03-18T16:42:33.1543744Z   SEMMLE_PRELOAD_libtrace32: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/lib32trace.so
+2026-03-18T16:42:33.1544375Z   SEMMLE_PRELOAD_libtrace64: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/lib64trace.so
+2026-03-18T16:42:33.1544938Z   CODEQL_RUNNER: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/runner
+2026-03-18T16:42:33.1545494Z   LD_PRELOAD: /opt/hostedtoolcache/CodeQL/2.24.3/x64/codeql/tools/linux64/${LIB}_${PLATFORM}_trace.so
+2026-03-18T16:42:33.1546093Z ##[endgroup]
+2026-03-18T16:42:33.2970083Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-03-18T16:42:33.3288999Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-03-18T16:42:33.3297288Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-03-18T16:42:33.3352476Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-03-18T16:42:33.3359153Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-03-18T16:42:33.4730935Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1838 kB]
+2026-03-18T16:42:33.4928528Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [337 kB]
+2026-03-18T16:42:33.4935885Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [177 kB]
+2026-03-18T16:42:33.4955760Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [16.7 kB]
+2026-03-18T16:42:33.5004419Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1567 kB]
+2026-03-18T16:42:33.5081156Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [319 kB]
+2026-03-18T16:42:33.5102273Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+2026-03-18T16:42:33.5128546Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [33.0 kB]
+2026-03-18T16:42:33.5142178Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2819 kB]
+2026-03-18T16:42:33.5166360Z Hit:19 https://packages.microsoft.com/repos/azure-cli noble InRelease
+2026-03-18T16:42:33.5209691Z Get:20 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-03-18T16:42:33.5343697Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [652 kB]
+2026-03-18T16:42:33.5792928Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+2026-03-18T16:42:33.5829349Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 c-n-f Metadata [556 B]
+2026-03-18T16:42:33.5836654Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+2026-03-18T16:42:33.5849702Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [40.4 kB]
+2026-03-18T16:42:33.5856803Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7364 B]
+2026-03-18T16:42:33.5868029Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]
+2026-03-18T16:42:33.5876717Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [30.7 kB]
+2026-03-18T16:42:33.5885424Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [18.2 kB]
+2026-03-18T16:42:33.5894994Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [13.2 kB]
+2026-03-18T16:42:33.5907452Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1480 B]
+2026-03-18T16:42:33.5921893Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+2026-03-18T16:42:33.5923361Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [780 B]
+2026-03-18T16:42:33.5931430Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse Translation-en [372 B]
+2026-03-18T16:42:33.5937687Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+2026-03-18T16:42:33.6553614Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1541 kB]
+2026-03-18T16:42:33.6649156Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [247 kB]
+2026-03-18T16:42:33.6668987Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+2026-03-18T16:42:33.6676284Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [10.6 kB]
+2026-03-18T16:42:33.6689835Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [977 kB]
+2026-03-18T16:42:33.6749847Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [219 kB]
+2026-03-18T16:42:33.6769514Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.1 kB]
+2026-03-18T16:42:33.6783020Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [20.8 kB]
+2026-03-18T16:42:33.6795647Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2683 kB]
+2026-03-18T16:42:33.6950792Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [623 kB]
+2026-03-18T16:42:33.6988442Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+2026-03-18T16:42:33.6995719Z Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 c-n-f Metadata [544 B]
+2026-03-18T16:42:33.7004681Z Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B]
+2026-03-18T16:42:33.7158509Z Get:45 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [103 kB]
+2026-03-18T16:42:33.7219575Z Get:46 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [81.5 kB]
+2026-03-18T16:42:33.7248222Z Get:47 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.4 kB]
+2026-03-18T16:42:39.3380095Z Fetched 15.3 MB in 2s (8808 kB/s)
+2026-03-18T16:42:40.1524730Z Reading package lists...
+2026-03-18T16:42:40.1876347Z Reading package lists...
+2026-03-18T16:42:40.4150458Z Building dependency tree...
+2026-03-18T16:42:40.4160533Z Reading state information...
+2026-03-18T16:42:40.6416127Z libssl-dev is already the newest version (3.0.13-0ubuntu3.7).
+2026-03-18T16:42:40.6416890Z 0 upgraded, 0 newly installed, 0 to remove and 105 not upgraded.
+2026-03-18T16:42:40.6964127Z gcc -Wall -Wextra -Iinclude -O2 -c src/pqc_crypto.c -o obj/pqc_crypto.o
+2026-03-18T16:42:42.6166361Z ==> Running mechanized proofs in Gallina (Coq)...
+2026-03-18T16:42:42.6167288Z cd verification/coq && coqc -Q . Higgaion HiggaionTypes.v
+2026-03-18T16:42:42.6184634Z /bin/sh: 1: coqc: not found
+2026-03-18T16:42:42.6186941Z make: *** [Makefile:37: verify] Error 127
+2026-03-18T16:42:42.6199050Z ##[error]Process completed with exit code 2.
+2026-03-18T16:42:42.6302868Z Post job cleanup.
+2026-03-18T16:42:44.0925251Z CodeQL job status was configuration error.
+2026-03-18T16:42:44.0934501Z Sending status report for init-post step.
+2026-03-18T16:42:44.3044463Z Status report sent for init-post step.
+2026-03-18T16:42:44.3223471Z Post job cleanup.
+2026-03-18T16:42:44.4178531Z [command]/usr/bin/git version
+2026-03-18T16:42:44.4230446Z git version 2.53.0
+2026-03-18T16:42:44.4275566Z Temporarily overriding HOME='/home/runner/work/_temp/3bba0eeb-7c28-45cb-8ca0-5a27e93f312c' before making global git config changes
+2026-03-18T16:42:44.4276920Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-18T16:42:44.4291280Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/higgaion-core-crypto/higgaion-core-crypto
+2026-03-18T16:42:44.4341350Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-18T16:42:44.4389518Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-18T16:42:44.4821983Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-18T16:42:44.4857892Z http.https://github.com/.extraheader
+2026-03-18T16:42:44.4872298Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-18T16:42:44.4918329Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-18T16:42:44.5354461Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-18T16:42:44.5402556Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-18T16:42:44.5959706Z Cleaning up orphan processes
+2026-03-18T16:42:44.6268320Z ##[warning]Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5, github/codeql-action/init@38b3b7bf288d49ccf58644769dc7a6afdccd05eb. Actions will be forced to run with Node.js 24 by default starting June 2nd, 2026. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

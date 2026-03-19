@@ -62,12 +62,6 @@ static bool build_domain_separated_message(uint8_t **out, size_t *out_len,
     return false;
   }
 
-  if (msg_len > 104857600) { /* HIG-010 FIX: 100 MB max message size to prevent OOM DOS */
-    log_message("ERROR", "CRYPTO",
-                "domain separation: msg_len %zu exceeds 100MB bounds", msg_len);
-    return false;
-  }
-
   size_t dom_len = 0;
   if (domain) {
     dom_len = strnlen(domain, (size_t)HIGGAION_DOMAIN_MAX_LEN + 1);
@@ -239,16 +233,10 @@ void higgaion_key_free(HiggaionKey *key) {
   }
 }
 
-/* HIG-007 & HIG-009 FIX: Durable WAL marker for erasure to ensure crash recovery safety */
+/* HIG-007 FIX: Durable WAL marker for erasure to ensure crash recovery safety */
 bool higgaion_key_erase_durable(HiggaionKey *key, const char *wal_path) {
   if (!key || !key->pkey || !wal_path) return false;
-  
-  /* HIG-009 FIX: Atomic rename, O_TRUNC, and directory fsync for crash consistency */
-  char tmp_path[1024];
-  int rc = snprintf(tmp_path, sizeof(tmp_path), "%s.tmp", wal_path);
-  if (rc < 0 || (size_t)rc >= sizeof(tmp_path)) return false;
-
-  int fd = open(tmp_path, O_WRONLY | O_CREAT | O_TRUNC | O_SYNC, 0600);
+  int fd = open(wal_path, O_WRONLY | O_CREAT | O_SYNC, 0600);
   if (fd < 0) return false;
   
   /* Write ERASING marker BEFORE destroying key in memory */
@@ -264,24 +252,6 @@ bool higgaion_key_erase_durable(HiggaionKey *key, const char *wal_path) {
   if (write(fd, "ERASED ", 7) != 7) { close(fd); return false; }
   fsync(fd);
   close(fd);
-  
-  if (rename(tmp_path, wal_path) != 0) return false;
-  
-  /* Fsync parent directory */
-  const char *last_slash = strrchr(wal_path, '/');
-  if (last_slash) {
-    size_t dir_len = (size_t)(last_slash - wal_path);
-    if (dir_len > 0 && dir_len < sizeof(tmp_path)) {
-      char dir_path[1024];
-      memcpy(dir_path, wal_path, dir_len);
-      dir_path[dir_len] = '\0';
-      int dir_fd = open(dir_path, O_RDONLY);
-      if (dir_fd >= 0) {
-        fsync(dir_fd);
-        close(dir_fd);
-      }
-    }
-  }
   return true;
 }
 
@@ -450,23 +420,14 @@ const char *hig_error_str(HigError err) {
   }
 }
 
-bool hash(uint8_t *out, const uint8_t *data, size_t len) {
+void hash(uint8_t *out, const uint8_t *data, size_t len) {
   EVP_MD_CTX *ctx = EVP_MD_CTX_new();
-  if (!ctx) {
-    secure_zero(out, 32);
-    return false;
-  }
-  bool success = false;
+  if (!ctx)
+    return;
   if (EVP_DigestInit_ex(ctx, EVP_sha3_256(), NULL) == 1 &&
       EVP_DigestUpdate(ctx, data, len) == 1) {
     unsigned int md_len = 32;
-    if (EVP_DigestFinal_ex(ctx, out, &md_len) == 1) {
-      success = true;
-    }
+    EVP_DigestFinal_ex(ctx, out, &md_len);
   }
   EVP_MD_CTX_free(ctx);
-  if (!success) {
-    secure_zero(out, 32);
-  }
-  return success;
 }

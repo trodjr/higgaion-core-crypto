@@ -1,0 +1,20 @@
+name: "Flawfinder Legacy C Sub-System Isolation"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+permissions:
+  contents: read
+jobs:
+  flawfinder:
+    name: Execute Flawfinder Bounds
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+    - name: Install flawfinder
+      run: sudo apt-get update && sudo apt-get install -y flawfinder
+    - name: Scan Global C codebase natively for forbidden buffers
+      run: flawfinder --error-level=4 src/ tests/ include/
