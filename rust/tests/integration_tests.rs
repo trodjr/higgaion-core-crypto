@@ -52,3 +52,34 @@ fn test_pqc_nil_signing() -> Result<(), HiggaionError> {
 
     Ok(())
 }
+
+#[test]
+fn test_domain_separation_prefix_collision_resistance() -> Result<(), HiggaionError> {
+    let (priv_key, pub_key) = match generate_keypair("ML-DSA-87") {
+        Ok(keys) => keys,
+        Err(_) => generate_keypair("ED25519")?,
+    };
+
+    // Old broken construction: ("A","BC") == ("AB","C") if using raw concatenation.
+    let sig = priv_key.sign(b"BC", "A")?;
+    assert!(
+        !pub_key.verify(b"C", &sig, "AB"),
+        "Domain separation failed: prefix-collision verified across domains/messages"
+    );
+
+    Ok(())
+}
+
+#[test]
+fn test_overlong_domain_rejected() -> Result<(), HiggaionError> {
+    let (priv_key, _) = match generate_keypair("ML-DSA-87") {
+        Ok(keys) => keys,
+        Err(_) => generate_keypair("ED25519")?,
+    };
+
+    let long_domain = "A".repeat(4096) + "B"; // 4097 bytes
+    let res = priv_key.sign(b"payload", &long_domain);
+    assert!(res.is_err(), "Expected signing to reject overlong domain tag");
+
+    Ok(())
+}

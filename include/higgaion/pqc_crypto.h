@@ -11,6 +11,16 @@
 #include "pqc_types.h"
 #include <openssl/x509.h>
 
+/* ── Domain separation limits ───────────────────────────────────────── */
+
+/**
+ * Maximum domain separation tag length (bytes, excluding NUL terminator).
+ *
+ * Domain separation tags longer than this limit MUST be rejected by the
+ * implementation (not truncated), to avoid cross-domain confusion.
+ */
+#define HIGGAION_DOMAIN_MAX_LEN 4096
+
 /* ── Key lifecycle ───────────────────────────────────────────────────── */
 
 /** Initialize a HiggaionKey to safe defaults (pkey = NULL). */
