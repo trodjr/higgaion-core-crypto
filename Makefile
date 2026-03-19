@@ -14,14 +14,14 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 TEST_SRCS = $(wildcard $(TEST_DIR)/bench_*.c $(TEST_DIR)/test_*.c)
 TEST_BINS = $(patsubst $(TEST_DIR)/%.c, $(BIN_DIR)/%, $(TEST_SRCS))
 
-# Default targets
+# Default targets (production: PQC-only)
 all: prep $(OBJS) verify
 
 # Directory preparation
 prep:
 	@mkdir -p $(OBJ_DIR) $(BIN_DIR)
 
-# Compile C source files
+# Compile C source files (production: PQC-only)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -38,7 +38,24 @@ verify:
 	cd $(COQ_DIR) && coqc -Q . Higgaion PQCMigration.v
 	cd $(COQ_DIR) && coqc -Q . Higgaion Gateway.v
 
-# Main test runner
+# ── Test object/library targets (classical algorithms allowed) ──────
+# HIG-002: Test builds permit ED25519 fallback via -DHIGGAION_ALLOW_CLASSICAL.
+# These produce artifacts that Go/Python/Rust test targets can link against.
+
+obj/pqc_crypto_test.o: src/pqc_crypto.c
+	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -c $< -o $@
+
+# Production shared library (PQC-only)
+obj/libpqc_crypto.so: src/pqc_crypto.c
+	$(CC) $(CFLAGS) -shared -fPIC $< -o $@ $(LDFLAGS)
+
+# Test shared library — output as libpqc_crypto.so so ctypes/Cargo find it
+obj/libpqc_crypto_test.so: src/pqc_crypto.c
+	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -shared -fPIC $< -o obj/libpqc_crypto.so $(LDFLAGS)
+
+# ── Test runners ────────────────────────────────────────────────────
+
+# Main C test runner
 test: prep $(TEST_BINS)
 	@echo "==> Running C cryptographic test suite..."
 	@for test in $(TEST_BINS); do \
@@ -47,32 +64,27 @@ test: prep $(TEST_BINS)
 	done
 	@echo "==> All C tests passed."
 
-test-go: prep obj/pqc_crypto.o
+# Go: override CGO_LDFLAGS to link the test-compiled object file
+test-go: prep obj/pqc_crypto_test.o
 	@echo "==> Running Go CGO integration tests..."
-	@cd go && CGO_CFLAGS="-DHIGGAION_ALLOW_CLASSICAL" go test -v ./...
+	@cd go && CGO_LDFLAGS="-L../obj -l:pqc_crypto_test.o -lcrypto" go test -v ./...
 
+# Python: build test SO under the standard name so ctypes finds it
 test-python: prep obj/libpqc_crypto_test.so
 	@echo "==> Running Python CTypes integration tests..."
 	@PYTHONPATH=$(PWD)/python python3 -m unittest discover -v -s python/tests/
 
+# Rust: build test SO under the standard name so Cargo finds it
 test-rust: prep obj/libpqc_crypto_test.so
 	@echo "==> Running Rust FFI integration tests..."
 	@cd rust && LD_LIBRARY_PATH=$(PWD)/obj cargo test
-
-# Shared library for production (PQC-only)
-obj/libpqc_crypto.so: src/pqc_crypto.c
-	$(CC) $(CFLAGS) -shared -fPIC $< -o $@ $(LDFLAGS)
-
-# Shared library for test builds (classical algorithms allowed)
-obj/libpqc_crypto_test.so: src/pqc_crypto.c
-	$(CC) $(CFLAGS) -DHIGGAION_ALLOW_CLASSICAL -shared -fPIC $< -o $@ $(LDFLAGS)
 
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	cd $(COQ_DIR) && rm -f *.vo *.glob *.vok *.vos .*.aux
 
-# Code Coverage
-coverage: CFLAGS += --coverage
+# Code Coverage (test mode: classical allowed)
+coverage: CFLAGS += --coverage -DHIGGAION_ALLOW_CLASSICAL
 coverage: LDFLAGS += --coverage
 coverage: clean test
 	@echo "==> Generating coverage report..."
