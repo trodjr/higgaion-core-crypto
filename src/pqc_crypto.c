@@ -15,6 +15,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
 
 /* ── Internal helpers ────────────────────────────────────────────────── */
 
@@ -229,6 +231,28 @@ void higgaion_key_free(HiggaionKey *key) {
     EVP_PKEY_free(key->pkey);
     key->pkey = NULL;
   }
+}
+
+/* HIG-007 FIX: Durable WAL marker for erasure to ensure crash recovery safety */
+bool higgaion_key_erase_durable(HiggaionKey *key, const char *wal_path) {
+  if (!key || !key->pkey || !wal_path) return false;
+  int fd = open(wal_path, O_WRONLY | O_CREAT | O_SYNC, 0600);
+  if (fd < 0) return false;
+  
+  /* Write ERASING marker BEFORE destroying key in memory */
+  if (write(fd, "ERASING", 7) != 7) { close(fd); return false; }
+  fsync(fd);
+  
+  /* Destroy key material */
+  EVP_PKEY_free(key->pkey);
+  key->pkey = NULL;
+  
+  /* Write ERASED monotonic marker AFTER destruction is complete */
+  lseek(fd, 0, SEEK_SET);
+  if (write(fd, "ERASED ", 7) != 7) { close(fd); return false; }
+  fsync(fd);
+  close(fd);
+  return true;
 }
 
 int higgaion_key_up_ref(HiggaionKey *dst, const HiggaionKey *src) {

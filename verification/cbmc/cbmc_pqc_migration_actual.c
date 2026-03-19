@@ -180,9 +180,9 @@ static long lseek(int fd, long o, int w) { (void)fd; (void)o; (void)w; return 0;
 #define MIGRATION_PQC_ONLY 3
 typedef int MigrationState;
 
-/* --- Exact copies from pqc_migration.c (verified against source) --- */
+/* --- src/pqc_crypto.c
 
-/* WAL record - EXACT copy from pqc_migration.c:341-354 */
+/* WAL record - src/pqc_crypto.c
 typedef struct __attribute__((packed)) {
   uint64_t magic;
   uint8_t version;
@@ -196,7 +196,7 @@ typedef struct __attribute__((packed)) {
   uint32_t crc32;
 } MigrationWALRecord;
 
-/* hex_nibble - EXACT copy from pqc_migration.c:51-59 */
+/* hex_nibble - src/pqc_crypto.c
 static int hex_nibble(char c) {
   if (c >= '0' && c <= '9') return c - '0';
   if (c >= 'a' && c <= 'f') return c - 'a' + 10;
@@ -204,7 +204,7 @@ static int hex_nibble(char c) {
   return -1;
 }
 
-/* hash_key_id - EXACT copy from pqc_migration.c:269-276 */
+/* hash_key_id - src/pqc_crypto.c
 static unsigned hash_key_id(const char *key_id) {
   uint32_t h = 2166136261u;
   for (const char *p = key_id; *p; p++) {
@@ -214,7 +214,7 @@ static unsigned hash_key_id(const char *key_id) {
   return h % MIGRATION_HASH_BUCKETS;
 }
 
-/* wal_crc32 - EXACT copy from pqc_migration.c:357-366 */
+/* wal_crc32 - src/pqc_crypto.c
 static uint32_t wal_crc32(const void *data, size_t len) {
   const uint8_t *p = (const uint8_t *)data;
   uint32_t crc = 0xFFFFFFFF;

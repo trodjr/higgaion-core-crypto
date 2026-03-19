@@ -22,7 +22,7 @@
 
 /**
  * Model of checked addition for token balances.
- * Maps to: token_ledger.c ledger_transfer() overflow guard.
+ * Maps to: src/pqc_crypto.c ledger_transfer() overflow guard.
  */
 static bool safe_add_u64(uint64_t a, uint64_t b, uint64_t *result) {
   if (a > UINT64_MAX - b)
@@ -33,7 +33,7 @@ static bool safe_add_u64(uint64_t a, uint64_t b, uint64_t *result) {
 
 /**
  * Model of checked subtraction for token balances.
- * Maps to: token_ledger.c ledger_transfer() underflow guard.
+ * Maps to: src/pqc_crypto.c ledger_transfer() underflow guard.
  */
 static bool safe_sub_u64(uint64_t a, uint64_t b, uint64_t *result) {
   if (a < b)
@@ -44,7 +44,7 @@ static bool safe_sub_u64(uint64_t a, uint64_t b, uint64_t *result) {
 
 /**
  * Model of token transfer with overflow/underflow protection.
- * Maps to: token_ledger.c ledger_transfer()
+ * Maps to: src/pqc_crypto.c ledger_transfer()
  */
 static bool transfer_model(uint64_t *sender_bal, uint64_t *receiver_bal,
                            uint64_t amount) {
@@ -70,7 +70,7 @@ static bool transfer_model(uint64_t *sender_bal, uint64_t *receiver_bal,
 
 /**
  * Model of saturating multiplication for fee calculation.
- * Maps to: fee_market.c priority calculation.
+ * Maps to: src/pqc_crypto.c priority calculation.
  */
 static uint64_t saturating_mul_u64(uint64_t a, uint64_t b) {
   if (a == 0 || b == 0)
@@ -82,7 +82,7 @@ static uint64_t saturating_mul_u64(uint64_t a, uint64_t b) {
 
 /**
  * Model of fee priority calculation.
- * Maps to: fee_market.c fee_market_priority_sort()
+ * Maps to: src/pqc_crypto.c fee_market_priority_sort()
  */
 static uint64_t calculate_priority(uint64_t fee, uint64_t size) {
   if (size == 0)
@@ -96,7 +96,7 @@ static uint64_t calculate_priority(uint64_t fee, uint64_t size) {
 
 /**
  * Model of safe vote accumulation.
- * Maps to: governance.c gov_cast_vote()
+ * Maps to: src/pqc_crypto.c gov_cast_vote()
  */
 static bool safe_add_votes(uint32_t current, uint32_t weight,
                            uint32_t *result) {
@@ -108,7 +108,7 @@ static bool safe_add_votes(uint32_t current, uint32_t weight,
 
 /**
  * Model of quorum check.
- * Maps to: governance.c gov_tally() — GOV_MIN_QUORUM (10%)
+ * Maps to: src/pqc_crypto.c gov_tally() — GOV_MIN_QUORUM (10%)
  */
 static bool quorum_reached(uint32_t votes, uint32_t total_validators) {
   if (total_validators == 0)

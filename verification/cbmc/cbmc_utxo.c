@@ -38,7 +38,7 @@ typedef struct {
    * thread safety is verified separately via TSAN CI gate */
 } UTXOSet;
 
-/* ---- Model of utxo_mark_spent logic (from src/utxo.c) ---- */
+/* ---- src/pqc_crypto.c
 
 typedef enum {
   HIG_OK = 0,

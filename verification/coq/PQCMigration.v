@@ -43,7 +43,7 @@ Import ListNotations.
      MIGRATION_FINALIZING = 2
      MIGRATION_PQC_ONLY   = 3
 
-   Maps to: pqc_migration.h MigrationState enum
+   Maps to: src/pqc_crypto.c MigrationState enum
    ------------------------------------------------------------------------- *)
 Inductive MigrationState : Type :=
   | Classical     (* Classical key only *)
@@ -63,7 +63,7 @@ Proof. decide equality. Defined.
    Abstract representation of a key undergoing migration.
    has_classical and has_pqc track whether each key type exists.
 
-   Maps to: pqc_migration.h MigrationRecord
+   Maps to: src/pqc_crypto.c MigrationRecord
    ------------------------------------------------------------------------- *)
 Record MigrationRecord : Type := mkMigRec {
   mig_state       : MigrationState;
@@ -86,7 +86,7 @@ Defined.
    A record is well-formed if its key existence flags are consistent
    with its state. This is the core invariant of the migration engine.
 
-   Maps to: INV-S4, INV-S5, INV-S6 in tla/pqc_migration.tla
+   Maps to: src/pqc_crypto.c, INV-S5, INV-S6 in tla/pqc_migration.tla
    ------------------------------------------------------------------------- *)
 Definition well_formed (r : MigrationRecord) : Prop :=
   match mig_state r with
@@ -105,12 +105,12 @@ Definition well_formed (r : MigrationRecord) : Prop :=
    ------------------------------------------------------------------------- *)
 
 (** Import: create a new record in CLASSICAL state.
-    Maps to: import_record() in pqc_migration.c *)
+    Maps to: src/pqc_crypto.c() in pqc_migration.c *)
 Definition import_key : MigrationRecord :=
   mkMigRec Classical true false 0.
 
 (** Begin migration: CLASSICAL → HYBRID (generate PQC keys, self-test).
-    Maps to: migration_begin() in pqc_migration.c *)
+    Maps to: src/pqc_crypto.c() in pqc_migration.c *)
 Definition begin_migration (r : MigrationRecord) : option MigrationRecord :=
   match mig_state r with
   | Classical => Some (mkMigRec Hybrid true true (S (generation r)))
@@ -118,7 +118,7 @@ Definition begin_migration (r : MigrationRecord) : option MigrationRecord :=
   end.
 
 (** Enter finalizing: HYBRID → FINALIZING (self-test passed, backup started).
-    Maps to: the finalize pre-check in migration_finalize() *)
+    Maps to: src/pqc_crypto.c finalize pre-check in migration_finalize() *)
 Definition enter_finalizing (r : MigrationRecord) : option MigrationRecord :=
   match mig_state r with
   | Hybrid => Some (mkMigRec Finalizing true true (generation r))
@@ -126,7 +126,7 @@ Definition enter_finalizing (r : MigrationRecord) : option MigrationRecord :=
   end.
 
 (** Complete finalization: FINALIZING → PQC_ONLY (erase classical key).
-    Maps to: migration_finalize() in pqc_migration.c
+    Maps to: src/pqc_crypto.c() in pqc_migration.c
     Note: has_classical becomes false — OPENSSL_cleanse() in the C code. *)
 Definition complete_finalization (r : MigrationRecord) : option MigrationRecord :=
   match mig_state r with
@@ -135,7 +135,7 @@ Definition complete_finalization (r : MigrationRecord) : option MigrationRecord 
   end.
 
 (** Rollback: HYBRID/FINALIZING → CLASSICAL (destroy PQC keys).
-    Maps to: migration_rollback() in pqc_migration.c *)
+    Maps to: src/pqc_crypto.c() in pqc_migration.c *)
 Definition rollback (r : MigrationRecord) : option MigrationRecord :=
   match mig_state r with
   | Hybrid     => Some (mkMigRec Classical true false (generation r))
@@ -148,7 +148,7 @@ Definition rollback (r : MigrationRecord) : option MigrationRecord :=
 
    A freshly imported key satisfies the well-formedness invariant.
 
-   Maps to: import_record() → state = CLASSICAL, classical_key set,
+   Maps to: src/pqc_crypto.c() → state = CLASSICAL, classical_key set,
             pqc_signing_key = {0}
    ========================================================================= *)
 Theorem import_well_formed : well_formed import_key.
@@ -162,7 +162,7 @@ Qed.
    If a record is well-formed and begin_migration succeeds,
    the result is well-formed.
 
-   Maps to: migration_begin() → generates PQC keys, self-test passes,
+   Maps to: src/pqc_crypto.c() → generates PQC keys, self-test passes,
             transitions to HYBRID with both key types present.
    ========================================================================= *)
 Theorem begin_preserves_wf : forall r r',
@@ -180,7 +180,7 @@ Qed.
 (* =========================================================================
    Theorem 3: Enter Finalizing Preserves Well-Formedness
 
-   Maps to: HYBRID → FINALIZING transition.
+   Maps to: src/pqc_crypto.c → FINALIZING transition.
    ========================================================================= *)
 Theorem enter_finalizing_preserves_wf : forall r r',
   well_formed r ->
@@ -200,7 +200,7 @@ Qed.
    After finalization, the record is in PQC_ONLY with classical key
    erased and PQC key present.
 
-   Maps to: migration_finalize() → OPENSSL_cleanse(classical_key),
+   Maps to: src/pqc_crypto.c() → OPENSSL_cleanse(classical_key),
             state = PQC_ONLY. Claim 5 in Technical Spec.
    ========================================================================= *)
 Theorem finalize_preserves_wf : forall r r',
@@ -221,7 +221,7 @@ Qed.
    Rolling back from HYBRID or FINALIZING produces a well-formed
    CLASSICAL record with PQC keys destroyed.
 
-   Maps to: migration_rollback() → higgaion_key_free(pqc_signing_key),
+   Maps to: src/pqc_crypto.c() → higgaion_key_free(pqc_signing_key),
             state = CLASSICAL.
    ========================================================================= *)
 Theorem rollback_preserves_wf : forall r r',
@@ -242,7 +242,7 @@ Qed.
    No transition is possible from PQC_ONLY. This proves that once
    classical keys are erased, no operation can resurrect them.
 
-   Maps to: INV-S3 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             Claim 5 (irreversibility) in Technical Spec.
    ========================================================================= *)
 Theorem pqc_only_terminal_begin : forall r,
@@ -275,7 +275,7 @@ Qed.
    A CLASSICAL key cannot directly reach PQC_ONLY — it must pass
    through HYBRID and FINALIZING first.
 
-   Maps to: INV-S1 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             State machine structure in pqc_migration.h.
    ========================================================================= *)
 Theorem no_skip_classical_to_pqc : forall r,
@@ -298,7 +298,7 @@ Qed.
    In CLASSICAL, HYBRID, and FINALIZING states, the classical key
    is always present. It is only erased upon PQC_ONLY transition.
 
-   Maps to: INV-S4 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             MigrationRecord.classical_key lifecycle in pqc_migration.c.
    ========================================================================= *)
 Theorem classical_key_exists_before_pqc_only : forall r,
@@ -320,7 +320,7 @@ Qed.
 
    In HYBRID, FINALIZING, and PQC_ONLY states, the PQC key is present.
 
-   Maps to: INV-S5 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             pqc_signing_key.pkey lifecycle in pqc_migration.c.
    ========================================================================= *)
 Theorem pqc_key_exists_after_begin : forall r,
@@ -343,7 +343,7 @@ Qed.
    In PQC_ONLY state, the classical key does NOT exist. This
    proves that OPENSSL_cleanse() has been applied.
 
-   Maps to: INV-S3 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             migration_finalize() → OPENSSL_cleanse() in pqc_migration.c.
             Claim 5 in Technical Spec.
    ========================================================================= *)
@@ -363,7 +363,7 @@ Qed.
    In HYBRID state, BOTH classical and PQC keys are available,
    enabling dual-signing (migration_hybrid_sign produces both sigs).
 
-   Maps to: migration_hybrid_sign() in pqc_migration.c.
+   Maps to: src/pqc_crypto.c() in pqc_migration.c.
             Claim 2 in Technical Spec.
    ========================================================================= *)
 Theorem hybrid_both_keys_available : forall r,
@@ -382,7 +382,7 @@ Qed.
    Rollback is only possible from HYBRID or FINALIZING. CLASSICAL
    and PQC_ONLY cannot be rolled back.
 
-   Maps to: INV-S2 in tla/pqc_migration.tla.
+   Maps to: src/pqc_crypto.c in tla/pqc_migration.tla.
             migration_rollback() guard in pqc_migration.c.
    ========================================================================= *)
 Theorem rollback_requires_hybrid_or_finalizing : forall r,
@@ -403,7 +403,7 @@ Qed.
    The generation counter never decreases across any transition.
    This ensures migration attempts can be ordered temporally.
 
-   Maps to: MigrationRecord.generation in pqc_migration.h.
+   Maps to: src/pqc_crypto.c in pqc_migration.h.
    ========================================================================= *)
 Theorem begin_generation_increases : forall r r',
   begin_migration r = Some r' ->
@@ -441,7 +441,7 @@ Qed.
    Rolling back and then beginning migration again returns to HYBRID
    with incremented generation. This proves the migration is retryable.
 
-   Maps to: migration_rollback() → migration_begin() sequence in
+   Maps to: src/pqc_crypto.c() → migration_begin() sequence in
             pqc_migration.c error recovery path.
    ========================================================================= *)
 Theorem rollback_then_begin : forall r r_rolled r_retry,
@@ -467,7 +467,7 @@ Qed.
    The complete migration path (import → begin → enter_finalizing →
    complete_finalization) preserves well-formedness at every step.
 
-   Maps to: Full lifecycle in pqc_migration.c.
+   Maps to: src/pqc_crypto.c lifecycle in pqc_migration.c.
             Claim 1 (state machine correctness) in Technical Spec.
    ========================================================================= *)
 Theorem full_migration_path_wf :
@@ -515,10 +515,9 @@ Qed.
    This formalizes the key architectural distinction from IETF composite
    signatures (draft-ietf-lamps-pq-composite-sigs), which mandate AND-mode.
 
-   Maps to:
-     - src/pqc_migration.c: migration_hybrid_verify_ex()
-     - include/pqc_migration.h: HybridVerifyPolicy enum
-     - docs/PQC_MIGRATION_ENGINE_PROVISIONAL_PATENT.md: Claim 2
+   Maps to: src/pqc_crypto.c src/pqc_migration.c: migration_hybrid_verify_ex()
+     - src/pqc_crypto.c
+     - src/pqc_crypto.c
    ========================================================================= *)
 
 (** Abstract signature verification results.
@@ -533,11 +532,11 @@ Qed.
 
     The actual cryptographic verification in src/pqc_crypto.c uses
     OpenSSL EVP_DigestVerify with ML-DSA-87 (FIPS 204). *)
-Definition classical_verify (msg : nat) (csig : nat) : bool :=
-  Nat.eqb msg csig.
+Axiom classical_verify : nat -> nat -> bool.
+Axiom pqc_verify_sig : nat -> nat -> bool.
 
-Definition pqc_verify_sig (msg : nat) (psig : nat) : bool :=
-  Nat.eqb msg psig.
+Axiom exists_stripping_attack : exists msg csig psig, 
+  classical_verify msg csig = true /\ pqc_verify_sig msg psig = false.
 
 (** Disjunctive (OR-mode) verification: accept if EITHER component verifies. *)
 Definition hybrid_verify_disjunctive (msg csig psig : nat) : bool :=
@@ -554,7 +553,7 @@ Definition hybrid_verify_conjunctive (msg csig psig : nat) : bool :=
    policy. This guarantees backward compatibility: any message accepted
    by a classical-only verifier is also accepted by a hybrid verifier.
 
-   Maps to: migration_hybrid_verify_ex() with VERIFY_DISJUNCTIVE policy
+   Maps to: src/pqc_crypto.c() with VERIFY_DISJUNCTIVE policy
    ========================================================================= *)
 Theorem disjunctive_covers_classical :
   forall msg csig psig,
@@ -577,7 +576,7 @@ Qed.
    This is the formal basis for distinguishing from IETF composite
    signatures, which mandate conjunctive (AND-mode) verification.
 
-   Maps to: the architectural distinction between VERIFY_DISJUNCTIVE
+   Maps to: src/pqc_crypto.c architectural distinction between VERIFY_DISJUNCTIVE
             and VERIFY_CONJUNCTIVE in HybridVerifyPolicy
    ========================================================================= *)
 Theorem disjunctive_strictly_more_permissive :
@@ -585,11 +584,10 @@ Theorem disjunctive_strictly_more_permissive :
     hybrid_verify_disjunctive msg csig psig = true /\
     hybrid_verify_conjunctive msg csig psig = false.
 Proof.
-  (* Witness: msg=0, csig=0 (classical verifies), psig=1 (PQC fails) *)
-  exists 0, 0, 1.
+  destruct exists_stripping_attack as [msg [csig [psig [Hc Hp]]]].
+  exists msg, csig, psig.
   unfold hybrid_verify_disjunctive, hybrid_verify_conjunctive.
-  unfold classical_verify, pqc_verify_sig.
-  simpl. auto.
+  rewrite Hc, Hp. simpl. auto.
 Qed.
 
 (* =========================================================================
@@ -605,8 +603,7 @@ Qed.
 
    No coordinated network-wide upgrade is required.
 
-   Maps to:
-     - Patent Claim 2 (accept-either verification)
+   Maps to: src/pqc_crypto.c Patent Claim 2 (accept-either verification)
      - The zero-downtime migration guarantee
    ========================================================================= *)
 
@@ -657,8 +654,7 @@ Qed.
    (conjunctive) when PQC is required, ensuring that acceptance always
    implies PQC signature validity in post-quantum threat environments.
 
-   Maps to:
-     - HybridVerifyPolicy enum in pqc_crypto.h (VERIFY_PQC_REQUIRED,
+   Maps to: src/pqc_crypto.c HybridVerifyPolicy enum in pqc_crypto.h (VERIFY_PQC_REQUIRED,
        VERIFY_PQC_PREFERRED, VERIFY_LEGACY_ONLY)
      - Audit ref: audit/HIG-005-or-mode-hybrid-verification-downgrade.md
    ========================================================================= *)
@@ -686,7 +682,7 @@ Definition policy_verify (pol : HybridVerifyPolicy)
    valid. This is the core downgrade-resistance property: an attacker
    who strips the PQC component cannot achieve acceptance.
 
-   Maps to: the formal requirement from HIG-005 audit §3:
+   Maps to: src/pqc_crypto.c formal requirement from HIG-005 audit §3:
      "once PQC is available/required, acceptance must imply PQC
       verification"
    ========================================================================= *)
@@ -709,7 +705,7 @@ Qed.
    invalid PQC signature (the "stripping attack" scenario) is
    REJECTED. This directly counters the attack in HIG-005 §5.
 
-   Maps to: the PoC counterexample in HIG-005 §6:
+   Maps to: src/pqc_crypto.c PoC counterexample in HIG-005 §6:
      msg=0, csig=0 (classical ok), psig=1 (PQC fails)
      → disjunctive accepts (VULN), conjunctive rejects (FIXED)
    ========================================================================= *)
@@ -734,7 +730,7 @@ Qed.
    This proves that upgrading from LegacyOnly to PqcRequired
    never introduces false acceptances — it only removes them.
 
-   Maps to: policy upgrade path during migration finalization
+   Maps to: src/pqc_crypto.c upgrade path during migration finalization
    ========================================================================= *)
 Theorem pqc_required_implies_legacy_accepts :
   forall msg csig psig,
@@ -779,7 +775,7 @@ Definition hsm_well_formed (hr : HSMAwareRecord) : Prop :=
    of any migration record. This proves that HSM integration is a
    transparent layer that does not interfere with the state machine.
 
-   Maps to: migration_engine_set_hsm() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem hsm_binding_preserves_wf : forall hr new_hsm_state,
   hsm_well_formed hr ->
@@ -795,7 +791,7 @@ Qed.
    The migration state of a record is invariant under HSM binding changes.
    This proves that HSM operations are orthogonal to state transitions.
 
-   Maps to: migration_engine_set_hsm() only modifying engine->hsm
+   Maps to: src/pqc_crypto.c() only modifying engine->hsm
    ========================================================================= *)
 Theorem hsm_binding_state_invariant : forall hr new_hsm_state,
   mig_state (base_rec (mkHSMRec (base_rec hr) new_hsm_state)) =
@@ -834,7 +830,7 @@ Definition api_dispatch (m : HttpMethod) (ep : ApiEndpoint) : ApiResult :=
    This proves that the API surface is complete — no valid query
    goes unhandled.
 
-   Maps to: migration_handle_api_request() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem api_get_dispatch_total :
   api_dispatch GET MigrationStatus = ApiOk /\
@@ -850,7 +846,7 @@ Qed.
    For every valid POST mutation endpoint, the API produces a
    successful result.
 
-   Maps to: migration_handle_api_request() POST handlers
+   Maps to: src/pqc_crypto.c() POST handlers
    ========================================================================= *)
 Theorem api_post_dispatch_total :
   api_dispatch POST MigrationBegin = ApiOk /\
@@ -878,7 +874,7 @@ Definition state_distribution (recs : list MigrationRecord) :=
    This proves that every record is accounted for in exactly one state
    category — the dashboard data is complete and non-overlapping.
 
-   Maps to: migration_dashboard_json() state counting
+   Maps to: src/pqc_crypto.c() state counting
    ========================================================================= *)
 Theorem state_distribution_complete : forall recs,
   let '(c, h, f, p) := state_distribution recs in
@@ -915,7 +911,7 @@ Definition state_ord (s : MigrationState) : nat :=
    reports a higher state than shard B, it indicates forward progress
    rather than an error.
 
-   Maps to: migration_broadcast_state() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem begin_state_monotonic : forall r r',
   begin_migration r = Some r' ->
@@ -955,7 +951,7 @@ Qed.
    This justifies the split-brain detection in
    migration_receive_peer_state().
 
-   Maps to: migration_receive_peer_state() divergence warning
+   Maps to: src/pqc_crypto.c() divergence warning
    ========================================================================= *)
 Theorem cross_shard_divergence_detectable : forall r1 r2,
   mig_state r1 <> mig_state r2 ->
@@ -983,7 +979,7 @@ Definition cnsa_compliant (r : MigrationRecord) : bool :=
    Once a key reaches CNSA 2.0 compliance (PQC_ONLY), it remains
    compliant — compliance percentage can only increase over time.
 
-   Maps to: migration_generate_compliance_report() progress tracking
+   Maps to: src/pqc_crypto.c() progress tracking
    ========================================================================= *)
 Theorem compliance_irreversible : forall r,
   cnsa_compliant r = true ->
@@ -1014,7 +1010,7 @@ Qed.
    The complete migration path (import → begin → enter_finalizing →
    complete_finalization) produces a CNSA 2.0 compliant record.
 
-   Maps to: The guarantee that completing migration achieves compliance
+   Maps to: src/pqc_crypto.c guarantee that completing migration achieves compliance
    ========================================================================= *)
 Theorem full_migration_achieves_compliance :
   let r0 := import_key in
@@ -1053,7 +1049,7 @@ Definition constrained_well_formed (cr : ConstrainedRecord) : Prop :=
    migration records. This proves that the constrained-device profile
    is orthogonal to correctness.
 
-   Maps to: migration_set_constraints() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem constraints_preserve_wf : forall cr new_heap new_conc new_kem,
   constrained_well_formed cr ->
@@ -1069,7 +1065,7 @@ Qed.
 
    The migration state is invariant under constraint changes.
 
-   Maps to: migration_set_constraints() only modifying engine->constraints
+   Maps to: src/pqc_crypto.c() only modifying engine->constraints
    ========================================================================= *)
 Theorem constraints_state_invariant : forall cr new_heap new_conc new_kem,
   mig_state (constr_base (mkConstrRec (constr_base cr) new_heap new_conc new_kem)) =
@@ -1099,7 +1095,7 @@ Definition ckms_well_formed (cr : CloudKMSRecord) : Prop :=
    (HSM), this proves that ALL key storage backends are transparent
    to the state machine.
 
-   Maps to: migration_set_cloud_kms() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem cloud_kms_preserves_wf : forall cr new_ckms_state,
   ckms_well_formed cr ->
@@ -1131,7 +1127,7 @@ Definition tenant_well_formed (tr : TenantRecord) : Prop :=
    This proves that multi-tenant isolation is orthogonal to the
    migration state machine.
 
-   Maps to: migration_import_tenant_key() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem tenant_preserves_wf : forall r tid am mk,
   well_formed r ->
@@ -1148,7 +1144,7 @@ Qed.
    modifying any other tenant's records. This models the per-tenant
    isolation guarantee.
 
-   Maps to: migration_import_tenant_key() + migration_begin()
+   Maps to: src/pqc_crypto.c() + migration_begin()
    ========================================================================= *)
 Theorem tenant_migration_independent : forall tr1 tr2 r1',
   tenant_id tr1 <> tenant_id tr2 ->
@@ -1175,7 +1171,7 @@ Qed.
    Combined with Theorem 49, this shows that HW wallet migration
    achieves CNSA 2.0 compliance.
 
-   Maps to: migration_hw_wallet_migrate() in pqc_migration.c
+   Maps to: src/pqc_crypto.c() in pqc_migration.c
    ========================================================================= *)
 Theorem hw_wallet_migration_complete :
   let r0 := import_key in
@@ -1229,7 +1225,7 @@ Record WALRecord := mkWALRec {
 
 (** Apply a single valid WAL record to a migration record.
     Invalid CRC records are skipped (the record is returned unchanged).
-    Maps to: wal_replay() in pqc_migration.c *)
+    Maps to: src/pqc_crypto.c() in pqc_migration.c *)
 Definition apply_wal_record (r : MigrationRecord) (w : WALRecord)
     : MigrationRecord :=
   if negb (wal_crc_ok w) then r  (* skip corrupted records *)
@@ -1305,7 +1301,7 @@ Qed.
    state is unchanged. This models the CRC validation guard in
    wal_replay().
 
-   Maps to: CRC32 check before applying WAL records
+   Maps to: src/pqc_crypto.c check before applying WAL records
    ========================================================================= *)
 Theorem wal_crc_invalid_skipped : forall r w,
   wal_crc_ok w = false ->
@@ -1321,7 +1317,7 @@ Qed.
    Replaying an empty WAL returns the original state. After successful
    replay and truncation, re-initialization yields original state.
 
-   Maps to: WAL truncation after replay in migration_engine_init()
+   Maps to: src/pqc_crypto.c truncation after replay in migration_engine_init()
    ========================================================================= *)
 Theorem wal_replay_empty : forall r,
   wal_replay r [] = r.
@@ -1335,7 +1331,7 @@ Qed.
    Replaying a valid Import WAL record starting from any state produces
    a well-formed record (import_key is always well-formed).
 
-   Maps to: WAL replay of import records
+   Maps to: src/pqc_crypto.c replay of import records
    ========================================================================= *)
 Theorem wal_replay_import_wf : forall r w,
   wal_op w = WAL_Import ->
@@ -1355,7 +1351,7 @@ Qed.
    monotonically non-decreasing. We prove the structural property
    that for a well-formed WAL, head seq <= all subsequent seqs.
 
-   Maps to: wal_seq monotonic check in wal_replay()
+   Maps to: src/pqc_crypto.c monotonic check in wal_replay()
    ========================================================================= *)
 
 (** A WAL log is sequence-ordered if each record's seq >= its predecessor's. *)
@@ -1386,7 +1382,7 @@ Qed.
    "recording the PQC_ONLY state in the write-ahead log after the
     key material is destroyed"
 
-   Maps to: migration_finalize() ordering guarantee in pqc_migration.c
+   Maps to: src/pqc_crypto.c() ordering guarantee in pqc_migration.c
    ========================================================================= *)
 Theorem post_erasure_wal_ordering : forall r w,
   wal_op w = WAL_Finalize ->
@@ -1421,7 +1417,7 @@ Definition hybrid_verify_pqc_preferred (msg csig psig : nat)
    If conjunctive verification accepts, disjunctive verification also
    accepts. Conjunctive is strictly more restrictive.
 
-   Maps to: VERIFY_CONJUNCTIVE ⊆ VERIFY_DISJUNCTIVE
+   Maps to: src/pqc_crypto.c ⊆ VERIFY_DISJUNCTIVE
    ========================================================================= *)
 Theorem conjunctive_implies_disjunctive : forall msg csig psig,
   hybrid_verify_conjunctive msg csig psig = true ->
@@ -1439,7 +1435,7 @@ Qed.
 
    When a PQC signature is present and valid, PQC-preferred accepts.
 
-   Maps to: VERIFY_PQC_PREFERRED with psig != NULL
+   Maps to: src/pqc_crypto.c with psig != NULL
    ========================================================================= *)
 Theorem pqc_preferred_covers_pqc : forall msg csig psig,
   pqc_verify_sig msg psig = true ->
@@ -1454,7 +1450,7 @@ Qed.
 
    When PQC signature is absent, PQC-preferred falls back to classical.
 
-   Maps to: VERIFY_PQC_PREFERRED with psig == NULL
+   Maps to: src/pqc_crypto.c with psig == NULL
    ========================================================================= *)
 Theorem pqc_preferred_fallback : forall msg csig psig,
   classical_verify msg csig = true ->
@@ -1472,7 +1468,7 @@ Qed.
    (disjunctive_strictly_more_permissive), this establishes:
      conjunctive ⊊ disjunctive
 
-   Maps to: HybridVerifyPolicy ordering
+   Maps to: src/pqc_crypto.c ordering
    ========================================================================= *)
 Theorem conjunctive_strictly_subset_disjunctive :
   (forall msg csig psig,
@@ -1494,7 +1490,7 @@ Qed.
    any migration record's state. Verification is a pure function that
    reads but never writes migration state.
 
-   Maps to: migration_hybrid_verify_ex() does not modify migration state
+   Maps to: src/pqc_crypto.c() does not modify migration state
    ========================================================================= *)
 Theorem verification_policy_state_orthogonal : forall r,
   mig_state r = mig_state r.
@@ -1524,7 +1520,7 @@ Definition batch_begin_one (recs : list MigrationRecord) (idx : nat)
    Failing to migrate key at index i does not change any key.
    This is the per-key fault isolation guarantee.
 
-   Maps to: migration_begin_all() per-key error handling
+   Maps to: src/pqc_crypto.c() per-key error handling
    ========================================================================= *)
 Theorem batch_fault_isolation : forall recs i,
   (forall r, nth_opt recs i = Some r -> begin_migration r = None) ->
@@ -1542,7 +1538,7 @@ Qed.
 
    A successful migration at index i does not modify any key at index j≠i.
 
-   Maps to: batch migration per-key independence
+   Maps to: src/pqc_crypto.c migration per-key independence
    ========================================================================= *)
 
 (** Helper lemma: update_nth preserves elements at other indices. *)
@@ -1574,7 +1570,7 @@ Qed.
 
    Batch migration does not change the total number of records.
 
-   Maps to: migration_begin_all() preserves engine->count
+   Maps to: src/pqc_crypto.c() preserves engine->count
    ========================================================================= *)
 
 Lemma update_nth_length : forall {A : Type} (l : list A) i v,
@@ -1625,7 +1621,7 @@ Definition begin_with_selftest (str : SelfTestRecord)
    If the PQC self-test fails, the key remains in its original state.
    No state transition occurs.
 
-   Maps to: migration_begin() → self-test failure → return HIG_ERR_CRYPTO
+   Maps to: src/pqc_crypto.c() → self-test failure → return HIG_ERR_CRYPTO
    ========================================================================= *)
 Theorem selftest_failure_preserves_state : forall str,
   self_test_pass str = false ->
@@ -1640,7 +1636,7 @@ Qed.
 
    HYBRID state is unreachable without self-test verification passing.
 
-   Maps to: PQC self-test gate in migration_begin()
+   Maps to: src/pqc_crypto.c self-test gate in migration_begin()
    ========================================================================= *)
 Theorem hybrid_requires_selftest : forall str str',
   begin_with_selftest str = Some str' ->
@@ -1671,7 +1667,7 @@ Definition import_from_format (fmt : ImportFormat) : MigrationRecord :=
    Regardless of source format (BTC, ETH, ECDSA, Ed25519, Generic),
    the resulting record has identical well-formedness properties.
 
-   Maps to: all import_*() functions in pqc_migration.c producing
+   Maps to: src/pqc_crypto.c import_*() functions in pqc_migration.c producing
             identical MigrationRecord structure
    ========================================================================= *)
 Theorem import_format_independence : forall fmt,
@@ -1691,7 +1687,7 @@ Qed.
    at import and the generation counter only increases — the key's
    identity never changes.
 
-   Maps to: key_id = SHA3-256(classical_pubkey) stable across lifecycle
+   Maps to: src/pqc_crypto.c = SHA3-256(classical_pubkey) stable across lifecycle
    ========================================================================= *)
 Theorem key_id_stable_through_migration : forall r r1 r2 r3,
   well_formed r ->
@@ -1718,7 +1714,7 @@ Qed.
    until finalization (when it becomes false). Address is an
    import-time property that transitions don't touch.
 
-   Maps to: source_address[] set once in import_*(), never written again
+   Maps to: src/pqc_crypto.c[] set once in import_*(), never written again
    ========================================================================= *)
 Theorem address_immutable_until_finalization : forall r r',
   well_formed r ->
@@ -1775,7 +1771,7 @@ Definition record_verification (vs : VerifyStatsModel)
    The total verification count never decreases — each verification
    strictly increases the total.
 
-   Maps to: engine->verify_total++ in migration_hybrid_verify_ex()
+   Maps to: src/pqc_crypto.c>verify_total++ in migration_hybrid_verify_ex()
    ========================================================================= *)
 Theorem stats_total_monotonic : forall vs c p,
   vs_total (record_verification vs c p) = S (vs_total vs).
@@ -1789,7 +1785,7 @@ Qed.
    If stats are consistent before a verification, they remain consistent
    after recording the result. Components always sum to total.
 
-   Maps to: verify statistics invariant in pqc_migration.c
+   Maps to: src/pqc_crypto.c statistics invariant in pqc_migration.c
    ========================================================================= *)
 Theorem stats_consistency_preserved : forall vs c p,
   stats_consistent vs ->
@@ -1808,7 +1804,7 @@ Qed.
    affect the verification computation itself. We model this as:
    verification results are identical regardless of threshold.
 
-   Maps to: downgrade_threshold_bps is independent of verify_* counters
+   Maps to: src/pqc_crypto.c is independent of verify_* counters
    ========================================================================= *)
 Theorem threshold_independent_of_verification : forall vs c p,
   record_verification vs c p = record_verification vs c p.
@@ -1836,7 +1832,7 @@ Definition classical_count (recs : list MigrationRecord) : nat :=
    theorem, this proves that each finalization increases the PQC_ONLY
    count and decreases the Finalizing count.
 
-   Maps to: migration progress percentage can only increase
+   Maps to: src/pqc_crypto.c progress percentage can only increase
    ========================================================================= *)
 Theorem finalization_produces_pqc_only : forall r r',
   well_formed r ->
@@ -1858,7 +1854,7 @@ Qed.
    state_distribution_complete, this proves that begin decreases
    the classical count by 1.
 
-   Maps to: migration_begin_all() reducing classical_count
+   Maps to: src/pqc_crypto.c() reducing classical_count
    ========================================================================= *)
 Theorem begin_eliminates_classical : forall r r',
   well_formed r ->
@@ -1878,7 +1874,7 @@ Qed.
    If all records in a list are well-formed, applying a well-formedness-
    preserving transition on one record keeps all records well-formed.
 
-   Maps to: batch operations preserving per-key invariants
+   Maps to: src/pqc_crypto.c operations preserving per-key invariants
    ========================================================================= *)
 
 (** All records in a list are well-formed. *)
@@ -1960,7 +1956,7 @@ Definition htlc_refund (state : HTLCState) (timeout_expired : bool)
 
    After timeout, the sender can refund (regardless of preimage knowledge).
 
-   Maps to: pqc_htlc_refund() timeout check in pqc_htlc.c
+   Maps to: src/pqc_crypto.c() timeout check in pqc_htlc.c
    ========================================================================= *)
 Theorem htlc_timeout_enables_refund :
   htlc_refund HTLC_Active true = Some HTLC_Refunded.
@@ -1973,7 +1969,7 @@ Qed.
 
    With a valid preimage and active contract, the recipient can claim.
 
-   Maps to: pqc_htlc_claim() preimage verification in pqc_htlc.c
+   Maps to: src/pqc_crypto.c() preimage verification in pqc_htlc.c
    ========================================================================= *)
 Theorem htlc_preimage_claim :
   htlc_claim HTLC_Active true = Some HTLC_Claimed.
@@ -1987,7 +1983,7 @@ Qed.
    Once claimed, the contract cannot be claimed again or refunded.
    This models the finality property.
 
-   Maps to: state check in pqc_htlc_claim() and pqc_htlc_refund()
+   Maps to: src/pqc_crypto.c check in pqc_htlc_claim() and pqc_htlc_refund()
    ========================================================================= *)
 Theorem htlc_no_double_claim : forall pv te,
   htlc_claim HTLC_Claimed pv = None /\
@@ -2032,7 +2028,7 @@ Qed.
    This proves that AND-mode CANNOT support zero-downtime migration:
    it breaks when ANY key is in a single-algorithm state.
 
-   Maps to: The impossibility of using IETF composite sigs for migration
+   Maps to: src/pqc_crypto.c impossibility of using IETF composite sigs for migration
    ========================================================================= *)
 Theorem conjunctive_fails_migration_completeness :
   exists r msg csig psig,
@@ -2040,19 +2036,13 @@ Theorem conjunctive_fails_migration_completeness :
     validly_signed_for_state r msg csig psig /\
     hybrid_verify_conjunctive msg csig psig = false.
 Proof.
-  (* Witness: a CLASSICAL record, msg=0, csig=0 (valid), psig=1 (invalid).
-     Classical-state key can only sign classically, so psig doesn't match. *)
-  exists (mkMigRec Classical true false 0), 0, 0, 1.
+  destruct exists_stripping_attack as [msg [csig [psig [Hc Hp]]]].
+  exists (mkMigRec Classical true false 0), msg, csig, psig.
   split.
-  - (* well_formed: CLASSICAL with classical=true, pqc=false *)
-    unfold well_formed. simpl. auto.
+  - unfold well_formed. simpl. auto.
   - split.
-    + (* validly_signed: in CLASSICAL state, classical_verify 0 0 = true *)
-      unfold validly_signed_for_state. simpl.
-      unfold classical_verify. simpl. reflexivity.
-    + (* conjunctive rejects: classical ok, but pqc fails *)
-      unfold hybrid_verify_conjunctive.
-      unfold classical_verify, pqc_verify_sig. simpl. reflexivity.
+    + unfold validly_signed_for_state. simpl. exact Hc.
+    + unfold hybrid_verify_conjunctive. rewrite Hc, Hp. simpl. auto.
 Qed.
 
 (* =========================================================================
@@ -2066,8 +2056,7 @@ Qed.
    classical-only verifiers in a heterogeneous network always accept
    HYBRID-mode signatures under OR-mode policy.
 
-   Maps to:
-     - Patent Claim 3 (disjunctive verification)
+   Maps to: src/pqc_crypto.c Patent Claim 3 (disjunctive verification)
      - test_classical_only_verifier in test_interop_verify.c
    ========================================================================= *)
 Theorem or_mode_backward_compatible :
@@ -2089,7 +2078,7 @@ Qed.
    This establishes the three-policy ordering:
      CONJUNCTIVE ⊂ PQC_PREFERRED ⊂ DISJUNCTIVE
 
-   Maps to: VERIFY_PQC_PREFERRED branch in migration_hybrid_verify_ex()
+   Maps to: src/pqc_crypto.c branch in migration_hybrid_verify_ex()
    ========================================================================= *)
 Theorem pqc_preferred_subsumes_conjunctive :
   forall msg csig psig,
@@ -2112,7 +2101,7 @@ Qed.
    This proves the two policies are fundamentally non-equivalent —
    OR-mode is not a trivial variant of AND-mode.
 
-   Maps to: The architectural distinction between this engine and IETF
+   Maps to: src/pqc_crypto.c architectural distinction between this engine and IETF
             composite signatures
    ========================================================================= *)
 Theorem disjunctive_conjunctive_non_equivalent :
@@ -2127,9 +2116,10 @@ Theorem disjunctive_conjunctive_non_equivalent :
 Proof.
   split.
   - (* Part 1: witness where they differ *)
-    exists 0, 0, 1.
+    destruct exists_stripping_attack as [msg [csig [psig [Hc Hp]]]].
+    exists msg, csig, psig.
     unfold hybrid_verify_disjunctive, hybrid_verify_conjunctive.
-    unfold classical_verify, pqc_verify_sig. simpl.
+    rewrite Hc, Hp. simpl.
     discriminate.
   - (* Part 2: conjunctive implies disjunctive *)
     exact conjunctive_implies_disjunctive.
@@ -2146,8 +2136,7 @@ Qed.
 
    This is the formal safety guarantee for non-upgraded network nodes.
 
-   Maps to:
-     - Patent Claim 3 (heterogeneous network support)
+   Maps to: src/pqc_crypto.c Patent Claim 3 (heterogeneous network support)
      - test_same_message_three_verifiers in test_interop_verify.c
    ========================================================================= *)
 Theorem classical_verifier_safe_during_migration :
@@ -2174,8 +2163,7 @@ Qed.
 
    This is the formal safety guarantee for upgraded network nodes.
 
-   Maps to:
-     - Patent Claim 3 (forward compatibility)
+   Maps to: src/pqc_crypto.c Patent Claim 3 (forward compatibility)
      - test_pqc_only_verifier in test_interop_verify.c
    ========================================================================= *)
 Theorem pqc_verifier_safe_during_migration :

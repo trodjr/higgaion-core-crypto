@@ -37,7 +37,7 @@ uint8_t nondet_uint8(void);
 size_t  nondet_size(void);
 #endif
 
-/* --- Inline copies of static functions from pqc_migration.c --- */
+/* --- src/pqc_crypto.c
 /* These are exact copies, allowing CBMC to verify the actual logic
  * without needing to link the full engine (which requires OpenSSL). */
 
