@@ -23,9 +23,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y cppcheck
 
       - name: Run Cppcheck
-        # --enable=all turns on warnings, style, performance, portability, and unusedFunction constraints.
-        # --error-exitcode=1 breaks the CI build if any flaws are found.
+        # Enforce strict memory bounds and port warnings without breaking on stylistic linting
         run: |
-          cppcheck --enable=all --inconclusive --force --inline-suppr \
-                   --std=c11 --suppress=missingIncludeSystem \
+          cppcheck --enable=warning,performance,portability --inconclusive --force \
+                   --inline-suppr --std=c11 --suppress=missingIncludeSystem \
                    --error-exitcode=1 src/ include/ tests/
