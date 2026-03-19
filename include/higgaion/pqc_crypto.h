@@ -29,6 +29,9 @@ void higgaion_key_init(HiggaionKey *key);
 /** Free internal resources of a HiggaionKey. */
 void higgaion_key_free(HiggaionKey *key);
 
+/** Monotonically erase the classical private key while enforcing ERASING/ERASED durable WAL markers. */
+bool higgaion_key_erase_durable(HiggaionKey *key, const char *wal_path);
+
 /**
  * Safely share an EVP_PKEY between two HiggaionKey structs by incrementing
  * the OpenSSL reference count (EVP_PKEY_up_ref).  Returns 1 on success, 0
