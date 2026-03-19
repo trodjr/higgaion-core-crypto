@@ -291,7 +291,7 @@ void harness_wal_crc_on_actual_struct(void) {
   rec.magic = MIGRATION_WAL_MAGIC;
   rec.version = MIGRATION_WAL_VERSION;
   rec.operation = 1; /* begin */
-  strncpy(rec.key_id, "test_key_001", MIGRATION_KEY_ID_LEN - 1);
+  snprintf(rec.key_id, MIGRATION_KEY_ID_LEN, "test_key_001");
   rec.new_state = MIGRATION_HYBRID;
   rec.seq = 42;
 
