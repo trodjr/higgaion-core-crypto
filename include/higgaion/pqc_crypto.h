@@ -40,8 +40,22 @@ void higgaion_key_free(HiggaionKey *key);
  */
 int higgaion_key_up_ref(HiggaionKey *dst, const HiggaionKey *src);
 
-/** Generate an ML-DSA-87 or ML-KEM-1024 keypair via OpenSSL EVP. */
+/** Generate an ML-DSA-87 or ML-KEM-1024 keypair via OpenSSL EVP.
+ *
+ *  HIG-002: In production builds (HIGGAION_PQC_REQUIRED == 1), only
+ *  FIPS 203/204 algorithms are accepted.  Compile with
+ *  -DHIGGAION_ALLOW_CLASSICAL to permit classical algorithms in tests.
+ */
 void generate_keypair(HiggaionKey *key, const char *alg_name);
+
+/**
+ * Query whether an algorithm name is permitted by the current PQC policy.
+ * Returns true if allowed, false if the algorithm would be rejected.
+ *
+ * HIG-002 mitigation: enforces algorithm allowlist at the cryptographic
+ * boundary, preventing silent downgrade to classical signatures.
+ */
+bool higgaion_is_algorithm_allowed(const char *alg_name);
 
 /* ── PQC signing (ML-DSA-87 via EVP_DigestSign) ──────────────────────── */
 
