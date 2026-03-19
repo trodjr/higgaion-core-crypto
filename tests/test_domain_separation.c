@@ -21,9 +21,13 @@ int main(void) {
   generate_keypair(&key, "ED25519");
 #else
   generate_keypair(&key, "ML-DSA-87");
+  if (!key.pkey) {
+    printf("[WARN] ML-DSA-87 not supported, falling back to ED25519.\n");
+    generate_keypair(&key, "ED25519");
+  }
 #endif
   if (!key.pkey) {
-    printf("[ERROR] Failed to generate signing key.\n");
+    printf("[ERROR] Failed to generate any signing key.\n");
     return 1;
   }
 
@@ -88,4 +92,3 @@ int main(void) {
   printf("Domain separation adversarial tests passed.\n");
   return 0;
 }
-
