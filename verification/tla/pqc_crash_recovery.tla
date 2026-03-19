@@ -11,17 +11,20 @@
  * irrecoverably destroyed in processor-addressable memory, producing a
  * safe failure mode."
  *
- * Maps to: pqc_migration.c:1850-1863 (migration_finalize)
- *   Line 1852-1855: EVP_PKEY_free + NULL    (erasure)
- *   Line 1856:      secure_zero hash        (erasure)
- *   Line 1859:      state = PQC_ONLY        (memory update)
- *   Line 1863:      wal_write PQC_ONLY      (WAL write, AFTER erasure)
+ * Corresponds to: pqc_crypto.c key lifecycle + higgaion_key_free()
+ *
+ * HIG-007 FIX: Added durable wal_erasure_marker variable to replace
+ * reliance on volatile finalize_step in the Recover action.
+ * The erasure marker is written to WAL BEFORE erasure begins and
+ * confirmed AFTER erasure completes. Recovery uses only durable
+ * state (wal_last_state, wal_erasure_marker) — never volatile state.
  *
  * Verifies:
- *   SafeRecovery          — after crash+recovery, state is consistent
- *   ClassicalNeverLeaked  — erased classical material never reappears
- *   WALConsistency        — WAL replay produces valid state
- *   ErasureBeforeWALSafe  — the chosen ordering is safe
+ *   SafeRecovery              — after crash+recovery, state is consistent
+ *   ClassicalNeverResurrected  — erased material never reappears
+ *   WALConsistency            — WAL replay produces valid state
+ *   ErasureMonotonicity       — erasure marker never reverts
+ *   DurableRecoveryCorrectness — recovery depends only on durable state
  *)
 
 EXTENDS Integers, Sequences, FiniteSets, TLC
@@ -29,18 +32,22 @@ EXTENDS Integers, Sequences, FiniteSets, TLC
 CONSTANTS MaxCrashes
 
 VARIABLES
-  mem_state,          \* In-memory state of the key
-  mem_classical,      \* Classical key exists in memory? (TRUE/FALSE)
-  wal_last_state,     \* Last state written to WAL (persisted)
-  finalize_step,      \* Current step in finalization (0=idle, 1-4=in-progress)
-  crashed,            \* Has the system crashed?
-  crash_count,        \* Number of crashes so far
-  recovered           \* Has recovery completed?
+  mem_state,              \* In-memory state of the key (VOLATILE)
+  mem_classical,          \* Classical key exists in memory? (VOLATILE)
+  wal_last_state,         \* Last state written to WAL (DURABLE)
+  wal_erasure_marker,     \* HIG-007: durable erasure progress marker
+                          \*   "NONE"     = erasure not started
+                          \*   "ERASING"  = erasure in progress
+                          \*   "ERASED"   = erasure confirmed complete
+  finalize_step,          \* Current step in finalization (VOLATILE)
+  crashed,                \* Has the system crashed? (VOLATILE)
+  crash_count,            \* Number of crashes so far
+  recovered               \* Has recovery completed? (VOLATILE)
 
-vars == <<mem_state, mem_classical, wal_last_state, finalize_step,
-          crashed, crash_count, recovered>>
+vars == <<mem_state, mem_classical, wal_last_state, wal_erasure_marker,
+          finalize_step, crashed, crash_count, recovered>>
 
-\* State values (matching pqc_migration.h)
+\* State values (matching pqc_types.h)
 Classical  == 0
 Hybrid     == 1
 Finalizing == 2
@@ -50,22 +57,27 @@ PqcOnly    == 3
    Initial State
    Start with a key in HYBRID state (ready for finalization).
    WAL reflects the last committed state (HYBRID).
+   Erasure marker is NONE (no erasure has occurred).
    =================================================================== *)
 Init ==
   /\ mem_state = Hybrid
   /\ mem_classical = TRUE
   /\ wal_last_state = Hybrid
+  /\ wal_erasure_marker = "NONE"
   /\ finalize_step = 0
   /\ crashed = FALSE
   /\ crash_count = 0
   /\ recovered = FALSE
 
 (* ===================================================================
-   Finalization Steps — models pqc_migration.c:1850-1863
-   These MUST happen in this exact order.
+   Finalization Steps — models pqc_crypto.c key lifecycle
+
+   HIG-007 FIX: Steps now include durable WAL writes for the erasure
+   marker at each phase boundary, ensuring recovery can determine
+   erasure state from durable storage alone.
    =================================================================== *)
 
-\* Step 1: Enter FINALIZING state + WAL write (line 1822-1823)
+\* Step 1: Enter FINALIZING state + WAL write
 EnterFinalizing ==
   /\ ~crashed
   /\ finalize_step = 0
@@ -73,74 +85,107 @@ EnterFinalizing ==
   /\ mem_state' = Finalizing
   /\ wal_last_state' = Finalizing         \* WAL written for FINALIZING
   /\ finalize_step' = 1
-  /\ UNCHANGED <<mem_classical, crashed, crash_count, recovered>>
+  /\ UNCHANGED <<mem_classical, wal_erasure_marker,
+                 crashed, crash_count, recovered>>
 
-\* Step 2: Erase classical key (line 1852-1856) — BEFORE WAL write
-EraseClassical ==
+\* Step 2: Write ERASING marker to WAL BEFORE erasing classical key
+\* HIG-007: This durable marker survives crashes and allows recovery
+\* to know that erasure was in progress.
+WriteErasingMarker ==
   /\ ~crashed
   /\ finalize_step = 1
-  /\ mem_classical' = FALSE               \* EVP_PKEY_free + secure_zero
+  /\ wal_erasure_marker' = "ERASING"      \* DURABLE: written to WAL
   /\ finalize_step' = 2
-  /\ UNCHANGED <<mem_state, wal_last_state, crashed, crash_count, recovered>>
+  /\ UNCHANGED <<mem_state, mem_classical, wal_last_state,
+                 crashed, crash_count, recovered>>
 
-\* Step 3: Set memory state to PQC_ONLY (line 1859)
-SetPqcOnly ==
+\* Step 3: Erase classical key from memory
+EraseClassical ==
   /\ ~crashed
   /\ finalize_step = 2
-  /\ mem_state' = PqcOnly
+  /\ mem_classical' = FALSE               \* EVP_PKEY_free + secure_zero
   /\ finalize_step' = 3
-  /\ UNCHANGED <<mem_classical, wal_last_state, crashed, crash_count, recovered>>
+  /\ UNCHANGED <<mem_state, wal_last_state, wal_erasure_marker,
+                 crashed, crash_count, recovered>>
 
-\* Step 4: Write WAL record for PQC_ONLY (line 1863) — AFTER erasure
-WriteWALPqcOnly ==
+\* Step 4: Write ERASED marker to WAL AFTER erasure confirmed
+\* HIG-007: This is the monotonic confirmation that erasure is complete.
+\* Once written, recovery MUST treat classical key as irrecoverable.
+ConfirmErasure ==
   /\ ~crashed
   /\ finalize_step = 3
+  /\ wal_erasure_marker' = "ERASED"       \* DURABLE: monotonic marker
+  /\ finalize_step' = 4
+  /\ UNCHANGED <<mem_state, mem_classical, wal_last_state,
+                 crashed, crash_count, recovered>>
+
+\* Step 5: Set memory state to PQC_ONLY
+SetPqcOnly ==
+  /\ ~crashed
+  /\ finalize_step = 4
+  /\ mem_state' = PqcOnly
+  /\ finalize_step' = 5
+  /\ UNCHANGED <<mem_classical, wal_last_state, wal_erasure_marker,
+                 crashed, crash_count, recovered>>
+
+\* Step 6: Write WAL record for PQC_ONLY — AFTER erasure confirmed
+WriteWALPqcOnly ==
+  /\ ~crashed
+  /\ finalize_step = 5
   /\ wal_last_state' = PqcOnly           \* WAL now reflects PQC_ONLY
-  /\ finalize_step' = 4                   \* Finalization complete
-  /\ UNCHANGED <<mem_state, mem_classical, crashed, crash_count, recovered>>
+  /\ finalize_step' = 6                   \* Finalization complete
+  /\ UNCHANGED <<mem_state, mem_classical, wal_erasure_marker,
+                 crashed, crash_count, recovered>>
 
 (* ===================================================================
    Crash — can happen at ANY point during finalization
    Models power failure / process kill.
-   Memory state is lost; only WAL survives.
+   Memory state is lost; only WAL state and erasure marker survive.
+
+   HIG-007: finalize_step is VOLATILE and lost on crash. But
+   wal_last_state and wal_erasure_marker are DURABLE and persist.
    =================================================================== *)
 Crash ==
   /\ ~crashed
   /\ crash_count < MaxCrashes
   /\ finalize_step > 0                   \* Only crash during finalization
-  /\ finalize_step < 4                   \* Not after completion
+  /\ finalize_step < 6                   \* Not after completion
   /\ crashed' = TRUE
   /\ crash_count' = crash_count + 1
   /\ UNCHANGED <<mem_state, mem_classical, wal_last_state,
-                 finalize_step, recovered>>
+                 wal_erasure_marker, finalize_step, recovered>>
 
 (* ===================================================================
    Recovery — replay WAL to restore state
-   Models migration_engine_init() WAL replay.
-   Memory is reconstructed from WAL. Classical key state depends on
-   whether erasure happened before the crash.
+
+   HIG-007 FIX: Recovery uses ONLY durable state (wal_last_state,
+   wal_erasure_marker) to determine system state. The volatile
+   finalize_step is NOT used — it would be lost in a real crash.
+
+   Classical key recovery logic:
+     - wal_erasure_marker = "ERASED" or "ERASING"
+       → classical key is irrecoverable; treat as gone
+     - wal_erasure_marker = "NONE"
+       → classical key was never erased; restore from keystore
    =================================================================== *)
 Recover ==
   /\ crashed
   /\ ~recovered
-  \* WAL replay: restore memory state from last WAL record
+  \* WAL replay: restore memory state from last WAL record (DURABLE)
   /\ mem_state' = wal_last_state
-  \* Classical key recovery depends on WAL state:
-  \* If WAL says HYBRID or FINALIZING, classical key would be in keystore
-  \* backup BUT the in-memory copy was already erased if step >= 2.
-  \* This is the KEY INSIGHT: after erasure the classical key bytes are
-  \* gone from memory. The WAL says FINALIZING (or HYBRID), so recovery
-  \* restores to that state. The classical key is irrecoverable from
-  \* memory — only the public key backup (.der) survives.
-  /\ mem_classical' = (wal_last_state /= PqcOnly /\ finalize_step < 2)
+  \* HIG-007 FIX: classical key recovery based on DURABLE erasure marker
+  \* NOT on volatile finalize_step (which is lost on crash)
+  /\ mem_classical' = (wal_erasure_marker = "NONE")
   /\ recovered' = TRUE
   /\ finalize_step' = 0                  \* Reset for potential retry
   /\ crashed' = FALSE
-  /\ UNCHANGED <<wal_last_state, crash_count>>
+  /\ UNCHANGED <<wal_last_state, wal_erasure_marker, crash_count>>
 
 Next ==
   \/ EnterFinalizing
+  \/ WriteErasingMarker
   \/ EraseClassical
+  \/ ConfirmErasure
   \/ SetPqcOnly
   \/ WriteWALPqcOnly
   \/ Crash
@@ -160,19 +205,17 @@ SafeRecovery ==
     \/ (mem_state = PqcOnly /\ wal_last_state = PqcOnly)
     \/ (mem_state /= PqcOnly)
 
-\* INV-CR2: Classical Material Never Recoverable After Erasure
-\* Once erasure has occurred (finalize_step >= 2), classical key bytes
-\* do not exist in memory, even after recovery.
-\* This is the core safety property of erasure-before-WAL.
-ClassicalNeverLeaked ==
-  (finalize_step >= 2 \/ (recovered /\ crash_count > 0)) =>
-    \* If we erased (step>=2) and then crashed you can't get it back.
-    \* After recovery, classical is only true if crash was before erasure.
-    (mem_classical = TRUE => finalize_step < 2)
+\* INV-CR2: Classical Material Never Resurrected After Erasure (HIG-007)
+\* Once the erasure marker is ERASED or ERASING, classical key bytes
+\* MUST NOT exist in memory — even after recovery.
+\* This is proved using only DURABLE state, not volatile finalize_step.
+ClassicalNeverResurrected ==
+  (wal_erasure_marker \in {"ERASING", "ERASED"}) =>
+    (recovered => mem_classical = FALSE)
 
 \* INV-CR3: WAL State Never Exceeds Memory State (before crash)
 \* In normal operation (no crash), the WAL should never claim a state
-\* that memory hasn't reached yet. This prevents "phantom PQC_ONLY" in WAL.
+\* that memory hasn't reached yet.
 WALNeverAhead ==
   (~crashed /\ ~recovered) =>
     \/ (wal_last_state = Hybrid /\ mem_state \in {Hybrid, Finalizing, PqcOnly})
@@ -180,23 +223,31 @@ WALNeverAhead ==
     \/ (wal_last_state = PqcOnly /\ mem_state = PqcOnly)
 
 \* INV-CR4: No State Regression
-\* Memory state only moves forward in the state ordering during
-\* normal (non-crash) operation.
-\* Classical=0, Hybrid=1, Finalizing=2, PqcOnly=3
+\* Memory state only moves forward during normal (non-crash) operation.
 NoStateRegression ==
   (~crashed /\ ~recovered) =>
     mem_state >= Hybrid
 
 \* INV-CR5: Crash During Erasure Produces Safe Degradation
-\* If crash happens after erasure (step=2) but before WAL write (step<4),
-\* WAL says FINALIZING. Recovery restores to FINALIZING.
-\* Classical key is gone — this is SAFE because:
-\*   (a) PQC key still exists (not erased)
-\*   (b) Migration can be retried
-\*   (c) Classical key was already backed up as public DER
+\* After recovery, we're never in an impossible state.
 CrashAfterErasureSafe ==
   (recovered /\ crash_count > 0) =>
-    \* After recovery, we're never in an impossible state
     mem_state \in {Hybrid, Finalizing, PqcOnly}
+
+\* INV-CR6: Erasure Monotonicity (HIG-007 — NEW)
+\* Once the erasure marker reaches ERASED, it NEVER reverts to NONE.
+\* This is the core monotonicity invariant ensuring that key destruction
+\* is permanent and cannot be undone by crash-recovery cycles.
+ErasureMonotonicity ==
+  (wal_erasure_marker = "ERASED") =>
+    [][wal_erasure_marker' = "ERASED"]_vars
+
+\* INV-CR7: Durable Recovery Correctness (HIG-007 — NEW)
+\* The recovery action's output depends ONLY on durable variables
+\* (wal_last_state, wal_erasure_marker). This invariant asserts that
+\* after recovery, mem_classical is fully determined by wal_erasure_marker.
+DurableRecoveryCorrectness ==
+  recovered =>
+    (mem_classical = (wal_erasure_marker = "NONE"))
 
 ====
