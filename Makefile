@@ -80,6 +80,25 @@ test-rust: prep obj/libpqc_crypto_test.so
 	@echo "==> Running Rust FFI integration tests..."
 	@cd rust && LD_LIBRARY_PATH=$(PWD)/obj cargo test
 
+# ── Dynamic Security Analysis ───────────────────────────────────────
+
+# AddressSanitizer (ASan) and UndefinedBehaviorSanitizer (UBSan)
+sanitize: CFLAGS += -fsanitize=address,undefined -g -O1 -fno-omit-frame-pointer -DHIGGAION_ALLOW_CLASSICAL
+sanitize: LDFLAGS += -fsanitize=address,undefined
+sanitize: clean test
+
+# Valgrind Memory Leak Checker
+valgrind: clean test
+	@echo "==> Running Valgrind Memcheck..."
+	@for test in $(TEST_BINS); do \
+		valgrind --leak-check=full --error-exitcode=1 ./$$test || exit 1; \
+	done
+
+# libFuzzer Target
+fuzz: clean prep
+	clang -g -fsanitize=fuzzer,address -Iinclude src/pqc_crypto.c tests/fuzz_target.c \
+		-o $(BIN_DIR)/fuzz_target -lcrypto -DHIGGAION_ALLOW_CLASSICAL
+
 clean:
 	rm -rf $(OBJ_DIR) $(BIN_DIR)
 	cd $(COQ_DIR) && rm -f *.vo *.glob *.vok *.vos .*.aux
