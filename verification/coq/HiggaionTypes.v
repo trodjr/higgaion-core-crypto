@@ -6,11 +6,10 @@
    mathematical objects (validators, phases, states) used to state
    and prove protocol theorems.
 
-   Maps to:
-     - src/consensus.c  (phase enum, quorum formula)
-     - src/utxo.c       (UTXO status)
-     - src/shard_wal.c  (coordinator/participant states)
-     - docs/INVARIANTS.md (INV-001 through INV-003)
+   Maps to: src/pqc_crypto.c src/consensus.c  (phase enum, quorum formula)
+     - src/pqc_crypto.c
+     - src/pqc_crypto.c
+     - src/pqc_crypto.c
    ========================================================================= *)
 
 From Coq Require Import Arith.
@@ -21,7 +20,7 @@ Import ListNotations.
 
 (* -------------------------------------------------------------------------
    Protocol Phases (HotStuff 3-phase commit)
-   Maps to: consensus.c CONSENSUS_PHASE_* enum
+   Maps to: src/pqc_crypto.c CONSENSUS_PHASE_* enum
    ------------------------------------------------------------------------- *)
 Inductive Phase : Type :=
   | Idle
@@ -35,7 +34,7 @@ Proof. decide equality. Defined.
 
 (* -------------------------------------------------------------------------
    UTXO Status
-   Maps to: utxo.c  utxo->spent (bool)
+   Maps to: src/pqc_crypto.c  utxo->spent (bool)
    ------------------------------------------------------------------------- *)
 Inductive UTXOStatus : Type :=
   | Unspent
@@ -46,7 +45,7 @@ Proof. decide equality. Defined.
 
 (* -------------------------------------------------------------------------
    2PC Coordinator State
-   Maps to: consensus.c cross-shard state machine
+   Maps to: src/pqc_crypto.c cross-shard state machine
    ------------------------------------------------------------------------- *)
 Inductive CoordState : Type :=
   | CInit
@@ -59,7 +58,7 @@ Proof. decide equality. Defined.
 
 (* -------------------------------------------------------------------------
    2PC Participant State
-   Maps to: consensus.c participant state in cross-shard protocol
+   Maps to: src/pqc_crypto.c participant state in cross-shard protocol
    ------------------------------------------------------------------------- *)
 Inductive PartState : Type :=
   | PInit
@@ -77,10 +76,9 @@ Proof. decide equality. Defined.
    This is the foundation of BFT safety: any two quorums must overlap
    in at least one honest validator.
 
-   Maps to:
-     - consensus.c: bft_quorum() function
-     - INV-002 in docs/INVARIANTS.md
-     - wp_consensus.c: Frama-C WP proof (3q > 2n)
+   Maps to: src/pqc_crypto.c consensus.c: bft_quorum() function
+     - src/pqc_crypto.c
+     - src/pqc_crypto.c
    ------------------------------------------------------------------------- *)
 Definition quorum (n : nat) : nat := 2 * n / 3 + 1.
 
@@ -95,7 +93,7 @@ Definition bft_valid (n f : nat) : Prop := n >= 3 * f + 1.
 
 (* -------------------------------------------------------------------------
    WAL Entry Types (for cross-shard 2PC model)
-   Maps to: shard_wal.c WAL record types
+   Maps to: src/pqc_crypto.c WAL record types
    ------------------------------------------------------------------------- *)
 Inductive WALEntryType : Type :=
   | WAL_Prepare
