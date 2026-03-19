@@ -83,6 +83,6 @@ bool pqc_verify(const uint8_t *message, size_t msg_len,
 void secure_zero(void *ptr, size_t len);
 
 /** SHA3-256 hash: out must be 32 bytes. */
-void hash(uint8_t *out, const uint8_t *data, size_t len);
+bool hash(uint8_t *out, const uint8_t *data, size_t len);
 
 #endif /* PQC_CRYPTO_H */

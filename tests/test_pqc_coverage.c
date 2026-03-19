@@ -38,7 +38,7 @@ int test_edge_cases() {
     // 5. hash
     uint8_t out[32];
     uint8_t data[] = "Hello World";
-    hash(out, data, sizeof(data) - 1);
+    assert(hash(out, data, sizeof(data) - 1) == true);
     // basic check it's populated
     bool all_zero = true;
     for(int i=0; i<32; i++) if (out[i] != 0) all_zero = false;
@@ -53,8 +53,8 @@ int test_edge_cases() {
     // Overflow check
     generate_keypair(&key, "ML-DSA-87");
     if (!key.pkey) {
-        printf("[WARN] ML-DSA-87 not supported, falling back to ED25519 for wrapper coverage.\n");
-        generate_keypair(&key, "ED25519");
+        printf("[ERROR] ML-DSA-87 key generation failed.\n");
+        return 1;
     }
 
     size_t huge_len = SIZE_MAX;
