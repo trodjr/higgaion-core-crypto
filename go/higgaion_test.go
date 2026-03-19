@@ -1,6 +1,7 @@
 package higgaion
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -67,5 +68,43 @@ func TestNilMessageSigning(t *testing.T) {
 
 	if !pub.Verify(nil, sig, domain) {
 		t.Error("Failed to verify signature for nil message")
+	}
+}
+
+func TestDomainSeparationPrefixCollisionResistance(t *testing.T) {
+	priv, pub, err := GenerateKeypair("ML-DSA-87")
+	if err != nil {
+		priv, pub, err = GenerateKeypair("ED25519")
+		if err != nil {
+			t.Fatalf("Failed to generate keypair: %v", err)
+		}
+	}
+	defer priv.Free()
+
+	// Old broken construction: ("A","BC") == ("AB","C") if using raw concatenation.
+	sig, err := priv.Sign([]byte("BC"), "A")
+	if err != nil {
+		t.Fatalf("Failed to sign: %v", err)
+	}
+
+	if pub.Verify([]byte("C"), sig, "AB") {
+		t.Fatal("Domain separation failed: prefix-collision verified across domains/messages")
+	}
+}
+
+func TestOverlongDomainRejected(t *testing.T) {
+	priv, _, err := GenerateKeypair("ML-DSA-87")
+	if err != nil {
+		priv, _, err = GenerateKeypair("ED25519")
+		if err != nil {
+			t.Fatalf("Failed to generate keypair: %v", err)
+		}
+	}
+	defer priv.Free()
+
+	longDomain := strings.Repeat("A", 4096) + "B" // 4097 bytes
+	_, err = priv.Sign([]byte("payload"), longDomain)
+	if err == nil {
+		t.Fatal("Expected signing to fail for overlong domain tag, but it succeeded")
 	}
 }
