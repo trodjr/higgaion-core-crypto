@@ -2,7 +2,6 @@
 
 [![Build Status](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml/badge.svg)](https://github.com/trodjr/higgaion-core-crypto/actions/workflows/coq-build.yml)
 [![codecov](https://codecov.io/gh/trodjr/higgaion-core-crypto/graph/badge.svg)](https://codecov.io/gh/trodjr/higgaion-core-crypto)
-
 [![Coq](https://img.shields.io/badge/Language-Coq-blue.svg)](https://coq.inria.fr)
 [![Lemmas](https://img.shields.io/badge/Admitted_Lemmas-0-success.svg)](#quad-tier-formal-verification)
 [![Go Reference](https://pkg.go.dev/badge/github.com/trodjr/higgaion-core-crypto/go.svg)](https://pkg.go.dev/github.com/trodjr/higgaion-core-crypto/go)
@@ -138,6 +137,6 @@ We don't ask you to trust the AI's output, nor do we ask you to trust human ego.
 
 ## Licensing
 
-- **Code & Coq proofs** (, , etc.): Proprietary License (see [LICENSE](LICENSE))
+- **Code & Coq proofs** (`pqc_crypto.c`, `coq/`, etc.): Proprietary License (see [LICENSE](LICENSE))
 - **Academic Whitepaper** (`higgaion_ACADEMIC_PAPER.pdf`): Creative Commons Attribution 4.0 (CC BY 4.0) — see footer on page 1
 - **Patent-protected core**: U.S. Provisional Patent Application No. 64/000,480 (state machine, Erasure-Before-WAL, disjunctive protocol). Full enterprise SDK available via commercial license — contact inquiries@higgaion.io
