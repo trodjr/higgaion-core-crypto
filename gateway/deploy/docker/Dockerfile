@@ -13,10 +13,14 @@ WORKDIR /opt/higgaion
 
 # Inject the naked C executable independently
 COPY --from=builder /opt/src/higgaion_gateway .
-RUN chmod +x higgaion_gateway
+RUN chmod +x higgaion_gateway && \
+    useradd -m -s /bin/bash higgaion && \
+    chown -R higgaion:higgaion /opt/higgaion
 
 # Map TLS Edge & Internal Telemetry channels
 EXPOSE 8443 8081
+
+USER higgaion
 
 # Expose C100K constraints bounds organically to OS
 CMD ["./higgaion_gateway"]

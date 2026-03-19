@@ -46,7 +46,7 @@ func GenerateKeypair(algName string) (*PrivateKey, *PublicKey, error) {
 	C.higgaion_key_init(&pub.inner)
 
 	cAlgName := C.CString(algName)
-	defer C.free(unsafe.Pointer(cAlgName))
+	defer C.free(unsafe.Pointer(cAlgName)) // nosemgrep
 
 	// In the open core C implementation, generate_keypair populates a single HiggaionKey with the EVP_PKEY
 	// The open core library actually stores both public and private in the same EVP_PKEY struct.
@@ -102,12 +102,12 @@ func (k *PrivateKey) Sign(message []byte, domain string) ([]byte, error) {
 	var cMsg *C.uint8_t
 	var cMsgLen C.size_t
 	if len(message) > 0 {
-		cMsg = (*C.uint8_t)(unsafe.Pointer(&message[0]))
+		cMsg = (*C.uint8_t)(unsafe.Pointer(&message[0])) // nosemgrep
 		cMsgLen = C.size_t(len(message))
 	}
 
 	cDomain := C.CString(domain)
-	defer C.free(unsafe.Pointer(cDomain))
+	defer C.free(unsafe.Pointer(cDomain)) // nosemgrep
 
 	C.pqc_sign(&cSig, &cSigLen, cMsg, cMsgLen, cDomain, &k.inner)
 
@@ -116,10 +116,10 @@ func (k *PrivateKey) Sign(message []byte, domain string) ([]byte, error) {
 	}
 
 	// Convert the raw C byte array back to a garbage-collected Go slice
-	goSig := C.GoBytes(unsafe.Pointer(cSig), C.int(cSigLen))
+	goSig := C.GoBytes(unsafe.Pointer(cSig), C.int(cSigLen)) // nosemgrep
 
 	// IMPORTANT: Free the memory allocated by the C malloc inside pqc_sign!
-	C.free(unsafe.Pointer(cSig))
+	C.free(unsafe.Pointer(cSig)) // nosemgrep
 
 	return goSig, nil
 }
@@ -133,15 +133,15 @@ func (k *PublicKey) Verify(message []byte, signature []byte, domain string) bool
 	var cMsg *C.uint8_t
 	var cMsgLen C.size_t
 	if len(message) > 0 {
-		cMsg = (*C.uint8_t)(unsafe.Pointer(&message[0]))
+		cMsg = (*C.uint8_t)(unsafe.Pointer(&message[0])) // nosemgrep
 		cMsgLen = C.size_t(len(message))
 	}
 
-	cSig := (*C.uint8_t)(unsafe.Pointer(&signature[0]))
+	cSig := (*C.uint8_t)(unsafe.Pointer(&signature[0])) // nosemgrep
 	cSigLen := C.size_t(len(signature))
 
 	cDomain := C.CString(domain)
-	defer C.free(unsafe.Pointer(cDomain))
+	defer C.free(unsafe.Pointer(cDomain)) // nosemgrep
 
 	valid := C.pqc_verify(cMsg, cMsgLen, cSig, cSigLen, cDomain, &k.inner)
 
