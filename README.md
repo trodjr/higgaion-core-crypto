@@ -10,7 +10,10 @@
 [![Rust Crate](https://img.shields.io/badge/Rust-Safe_FFI-orange.svg)](rust/)
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/63/badge)](https://bestpractices.coreinfrastructure.org/projects/63)
 
-This repository contains the core post-quantum cryptographic primitives (ML-DSA OpenSSL wrappers) and the **101 Gallina (Coq) Mechanized Proofs** that verify the basic safety invariants of the Higgaion cryptographic library.
+This repository contains the cryptographic primitive abstractions (ML-DSA OpenSSL wrappers) and the **107 VST Mathematical Bounds** that verify the fundamental safety invariants of the Higgaion cryptographic library.
+
+> [!IMPORTANT]
+> **Proprietary Engine Exclusion:** This public repository is strictly limited to the abstract mathematical frameworks and open cryptographic wrapper scaffolding. The actual proprietary execution logic, specifically the Zero-Copy Rust FFI Gateway and the patented Erasure-Before-WAL crash recovery engine (`pqc_migration.c`), have been fundamentally **excluded** from this public tree. To deploy the execution logic routing architecture in production, an Enterprise Service Level Agreement (SLA) is required.
 
 🌐 **Official Website:** [higgaion.io](https://higgaion.io)
 
@@ -99,11 +102,11 @@ make test-rust
 ```
 
 ## AI Methodology Disclosure (Radical Transparency)
-This project embraces *radical transparency* regarding its development methodology. The C implementations, cryptographic wrappers, and specifically the 101 Gallina formal proofs were engineered using state-of-the-art AI pair-programming models under the strict architectural guidance of a human protocol expert. 
+This project embraces *radical transparency* regarding its development methodology. The C implementations, cryptographic wrappers, and specifically the 107 VST formal proofs were engineered using state-of-the-art AI pair-programming models under the strict architectural guidance of a human protocol expert. 
 
-We don't ask you to trust the AI's output, nor do we ask you to trust human ego. We ask you to trust the Coq compiler's AST evaluator. If there is a single hallucination, memory leak, or unproven lemma, the 101 proofs fail to compile. Mathematical truth supersedes all origins.
+We don't ask you to trust the AI's output, nor do we ask you to trust human ego. We ask you to trust the Coq compiler's AST evaluator and the Princeton Verifiable Software Toolchain mapped logic. If there is a single hallucination, memory leak, or unproven lemma, the 107 proofs fail to compile. Mathematical truth supersedes all origins.
 
 ## Licensing
 
 - **Code & Core Cryptography SDK** (`pqc_crypto.c`, `verification/`, etc.): **Business Source License (BSL-1.1)** - Source available for review, commercial deployment strictly prohibited (see [LICENSE](LICENSE))
-- **Enterprise Capabilities**: U.S. Patent Pending features covering advanced multi-layer architecture solutions. A full Higgaion Enterprise SDK (incorporating our proprietary Zero-Downtime Migration Engine and Gateway Proxies) is available via commercial license — contact inquiries@higgaion.io
+- **Enterprise Capabilities**: U.S. Patent Pending features covering advanced multi-layer architecture solutions. A full Higgaion Enterprise SDK (incorporating our proprietary Zero-Downtime Migration Engine and Gateway Proxies) is available via commercial license - contact inquiries@higgaion.io
