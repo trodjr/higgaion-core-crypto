@@ -1,0 +1,29 @@
+replicaCount: 3
+
+image:
+  repository: trodjr/higgaion-gateway
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 8443
+  adminPort: 8081
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 512Mi
+  requests:
+    cpu: 500m
+    memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 50
+  targetCPUUtilizationPercentage: 75
+
+env:
+  VAULT_ADDR: "http://vault-active.vault.svc.cluster.local:8200"
+  VAULT_TOKEN: "injected-via-k8s-secret"

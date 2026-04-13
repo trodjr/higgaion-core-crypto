@@ -1,0 +1,30 @@
+name: "Cppcheck Deep SSDF Analysis"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  cppcheck:
+    name: Scan with Cppcheck (Strict Mode)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Install Cppcheck
+        run: sudo apt-get update && sudo apt-get install -y cppcheck
+
+      - name: Run Cppcheck
+        # Enforce strict memory bounds and port warnings without breaking on stylistic linting
+        run: |
+          cppcheck --enable=warning,performance,portability --inconclusive --force \
+                   --inline-suppr --std=c11 --suppress=missingIncludeSystem \
+                   --error-exitcode=1 src/ include/ tests/

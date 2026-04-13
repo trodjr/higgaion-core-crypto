@@ -1,0 +1,11 @@
+[package]
+name = "higgaion-core-crypto"
+version = "1.0.0"
+edition = "2021"
+description = "A safe Rust wrapper over the Higgaion ML-DSA-87 PQC Core Primitives"
+license = "BSL-1.1"
+
+[dependencies]
+libc = "0.2"
+
+[build-dependencies]

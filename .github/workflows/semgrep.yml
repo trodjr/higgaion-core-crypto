@@ -1,0 +1,31 @@
+name: "Semgrep Security Analysis"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '30 14 * * 3' # Weekly scan
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    name: Scan with Semgrep (OWASP Enforced)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Run Semgrep with OWASP & C-Sec rulesets
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/c
+            p/owasp-top-ten
+            p/security-audit
