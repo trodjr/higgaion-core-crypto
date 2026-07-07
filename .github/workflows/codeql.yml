@@ -33,7 +33,7 @@ jobs:
         sudo apt-get update && sudo apt-get install -y libssl-dev coq
         make all
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@603b797f8b14b413fe025cd935a91c16c4782713 # v3
+      uses: github/codeql-action/analyze@54f647b7e1bb85c95cddabcd46b0c578ec92bc1a # v3
       with:
         category: "/language:${{matrix.language}}"
         upload: ${{ github.event_name == 'pull_request' && 'false' || 'true' }}
